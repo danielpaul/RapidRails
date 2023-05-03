@@ -52,6 +52,11 @@ gem "sassc-rails"
 gem 'hamlit-rails'
 gem 'meta-tags'
 
+# Authentication & Authorization
+gem 'devise'
+gem 'pundit'
+
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
