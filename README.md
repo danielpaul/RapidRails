@@ -30,4 +30,4 @@
 - realtime notifications with action cable
 - staging env with mail catcher, etc.
 - active storage for file uploads (profile picture first)
-- sidekiq and background jobs 
+- sidekiq and background jobs
