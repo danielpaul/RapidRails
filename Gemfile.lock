@@ -88,8 +88,18 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
+    ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hamlit (3.0.3)
+      temple (>= 0.8.2)
+      thor
+      tilt
+    hamlit-rails (0.2.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      hamlit (>= 1.2.0)
+      railties (>= 4.0.1)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.6)
@@ -111,6 +121,8 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    meta-tags (2.18.0)
+      actionpack (>= 3.2.0, < 7.1)
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
@@ -168,6 +180,14 @@ GEM
       io-console (~> 0.5)
     rexml (3.2.5)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     selenium-webdriver (4.9.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -183,7 +203,9 @@ GEM
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.29-arm64-darwin)
       railties (>= 6.0.0)
+    temple (0.10.0)
     thor (1.2.1)
+    tilt (2.1.0)
     timeout (0.3.2)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
@@ -215,12 +237,15 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  hamlit-rails
   importmap-rails
   jbuilder
+  meta-tags
   pg (~> 1.1)
   puma
   rails (~> 7.0.4, >= 7.0.4.3)
   redis (~> 4.0)
+  sassc-rails
   selenium-webdriver
   sprockets-rails
   stimulus-rails
