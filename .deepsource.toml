@@ -1,0 +1,28 @@
+version = 1
+
+[[analyzers]]
+name = "javascript"
+
+  [analyzers.meta]
+  environment = ["browser"]
+
+[[analyzers]]
+name = "test-coverage"
+
+[[analyzers]]
+name = "secrets"
+
+[[analyzers]]
+name = "ruby"
+
+[[transformers]]
+name = "rubocop"
+
+[[transformers]]
+name = "standardrb"
+
+[[transformers]]
+name = "prettier"
+
+[[transformers]]
+name = "standardjs"
