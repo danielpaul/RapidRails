@@ -14,3 +14,18 @@
 - pundit authorisation
 - admin panel for internal use
 - HTML email
+- error tracking
+- email delivery
+- analytics
+- SEO / meta tags for differnt cases including mobile
+- privacy poicy and terms and condition from basecamp template
+- GDPR marketing opt-in and opt-out
+- payment gateway and user accounts for sass
+- user notifications system ?
+- user impersonation 
+- API framework 
+- realtime notifications with action cable
+- staging env with mail catcher, etc. 
+- active storage for file uploads (profile picture first)
+- sidekiq nad background jobs 
+
