@@ -69,6 +69,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Front-end Things
+  gem 'html2haml'
 end
 
 group :test do
