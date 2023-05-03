@@ -51,6 +51,7 @@ gem "sassc-rails"
 # Front-end Things
 gem 'hamlit-rails'
 gem 'meta-tags'
+gem 'pagy'
 
 # Authentication & Authorization
 gem 'devise'
