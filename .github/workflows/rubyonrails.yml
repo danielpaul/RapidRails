@@ -40,4 +40,4 @@ jobs:
       - name: Run Minitest
         run: bin/rake
       - name: Run Rspec
-        run: rspec
+        run: bundle exec rspec
