@@ -1,3 +1,6 @@
+[![Ruby on Rails CI](https://github.com/IdentitySquare/ProGPT/actions/workflows/rubyonrails.yml/badge.svg)](https://github.com/IdentitySquare/ProGPT/actions/workflows/rubyonrails.yml)
+[![DeepSource](https://app.deepsource.com/gh/danielpaul/rails-starter.svg/?label=active+issues&show_trend=true&token=EPgQdBy2pEYTcBb-PA1yZnFc)](https://app.deepsource.com/gh/danielpaul/rails-starter/?ref=repository-badge)
+
 # Getting Started
 
 - [] Rename database name in `config/database.yml`
