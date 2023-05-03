@@ -2,12 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
 
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600;
+  }
+
+  a.link {
+    @apply text-orange-500 hover:text-orange-400;
+  }
+
+  a.link-secondary {
+    @apply hover:underline hover:text-indigo-600;
   }
 }
-
-*/
