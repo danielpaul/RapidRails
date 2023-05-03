@@ -14,7 +14,6 @@
 - devise pages
 - sign in with google -> verify email because of this
 - user settings page UI
-- pundit authorisation
 - admin panel for internal use
 - HTML email
 - error tracking
