@@ -1,0 +1,23 @@
+<%
+  type ||= 'text'
+  autofocus ||= false
+  autocomplete ||= nil
+
+  label ||= field.to_s.humanize
+  placeholder ||= label
+
+  required ||= false
+
+  input_class = 'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+%>
+
+<%= f.label field, label, class: 'block text-sm font-medium leading-6 text-gray-900' %>
+<div class="mt-2">
+  <% if type == 'email' %>
+    <%= f.email_field field, autofocus: autofocus, autocomplete: autocomplete, class: input_class, placeholder: placeholder, required: required %>
+  <% elsif type == 'password' %>
+    <%= f.password_field field, autofocus: autofocus, autocomplete: autocomplete, class: input_class, placeholder: placeholder, required: required %>
+  <% else %>
+    <%= f.text_field field, autofocus: autofocus, autocomplete: autocomplete, class: input_class, placeholder: placeholder, required: required %>%
+  <% end %>
+</div>
