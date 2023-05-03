@@ -10,6 +10,8 @@
 #  current_sign_in_ip     :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  first_name             :string           not null
+#  last_name              :string           not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
 #  remember_created_at    :datetime
