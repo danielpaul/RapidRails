@@ -1,5 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-
   protected
 
   def update_resource(resource, params)
@@ -19,5 +18,4 @@ class RegistrationsController < Devise::RegistrationsController
     flash[:notice] = "Account succesfully updated."
     edit_user_registration_path
   end
-  
 end

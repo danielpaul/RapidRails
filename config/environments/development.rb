@@ -2,18 +2,18 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   config.after_initialize do
-    Bullet.enable        = true
-    Bullet.alert         = false
+    Bullet.enable = true
+    Bullet.alert = false
     Bullet.bullet_logger = false
-    Bullet.console       = true
-    Bullet.rails_logger  = false
-    Bullet.add_footer    = true
+    Bullet.console = true
+    Bullet.rails_logger = false
+    Bullet.add_footer = true
   end
 
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
 
   # Settings specified here will take precedence over those in config/application.rb.
 
