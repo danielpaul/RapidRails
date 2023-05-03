@@ -25,9 +25,9 @@
 - GDPR marketing opt-in and opt-out
 - payment gateway and user accounts for sass
 - user notifications system ?
-- user impersonation 
-- API framework 
+- user impersonation
+- API framework
 - realtime notifications with action cable
-- staging env with mail catcher, etc. 
+- staging env with mail catcher, etc.
 - active storage for file uploads (profile picture first)
-- sidekiq nad background jobs 
+- sidekiq and background jobs 
