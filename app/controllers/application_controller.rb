@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    signup_params = [:first_name, :last_name]
+    signup_params = %i[first_name last_name]
 
     # Add other fields that can be edited from the user's profile page here
     edit_user_params = []
