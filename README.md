@@ -8,9 +8,9 @@
 - [] Refresh `master.key` and `credentials.yml.enc` with `rails credentials:edit`
 - [] Update `config/initializers/constants.rb` with all the variables
 
-
 ## TODO
-- front-end UI 
+
+- front-end UI
 - devise pages
 - sign in with google -> verify email because of this
 - user settings page UI
@@ -25,10 +25,9 @@
 - GDPR marketing opt-in and opt-out
 - payment gateway and user accounts for sass
 - user notifications system ?
-- user impersonation 
-- API framework 
+- user impersonation
+- API framework
 - realtime notifications with action cable
-- staging env with mail catcher, etc. 
+- staging env with mail catcher, etc.
 - active storage for file uploads (profile picture first)
-- sidekiq nad background jobs 
-
+- sidekiq nad background jobs
