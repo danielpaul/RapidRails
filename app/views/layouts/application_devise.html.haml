@@ -1,0 +1,14 @@
+!!!
+%html.h-full{lang: "en"}
+  %head
+    = render 'layouts/components/head'
+
+  %body.h-full
+
+    %div{class: "flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8"}
+      %img.h-12{alt: APP_NAME, src: "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"}
+
+      %div{class: "mt-2 sm:mx-auto sm:w-full sm:max-w-md"}
+        = yield
+
+    = render 'layouts/footer_scripts'
