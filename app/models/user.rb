@@ -34,22 +34,22 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable, :trackable
+    :recoverable, :rememberable, :validatable,
+    :confirmable, :trackable
 
-  validates :full_name, presence: true, length: { maximum: 100 }
+  validates :full_name, presence: true, length: {maximum: 100}
 
   def first_name
     full_name_parts.first
   end
 
   def last_name
-    full_name_parts.length > 1 ? full_name_parts.last : nil
+    (full_name_parts.length > 1) ? full_name_parts.last : nil
   end
 
   private
 
   def full_name_parts
-    full_name.split(' ')
+    full_name.split(" ")
   end
 end
