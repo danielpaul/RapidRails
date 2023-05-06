@@ -33,7 +33,7 @@
 - devise pages
 - sign in with google -> verify email because of this
 - user settings page UI
-- admin panel for internal use - ForestAdmin? 
+- admin panel for internal use - ForestAdmin?
 - HTML email
 - error tracking - Sentry
 - email delivery - Postmark
