@@ -1,3 +1,5 @@
+# https://github.com/Daniel-N-Huss/tailwind_form_builder_example/blob/f103e5208a88c09715d8dfa9d1d7aeeeefe9de3d/app/lib/form_builders/tailwind_form_builder.rb
+
 class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   class_attribute :text_field_helpers,
                   default: field_helpers - %i[label check_box radio_button fields_for fields hidden_field file_field]
@@ -51,14 +53,23 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
 
     labels = labels(object_method, custom_opts[:label], options)
 
-    @template.content_tag('div', labels + field)
+    hint = hint(options[:hint])
+    error_label = error_label(object_method, options)
+
+    # only display error label or hint
+    @template.content_tag('div', labels + field + (error_label || hint))
+  end
+
+  def hint(hint_text)
+    return unless hint_text.present?
+
+    @template.content_tag('p', hint_text, { class: 'text-sm text-gray-500 mt-1' })
   end
 
   def labels(object_method, label_options, field_options)
     label = tailwind_label(object_method, label_options, field_options)
-    error_label = error_label(object_method, field_options)
 
-    @template.content_tag('div', label + error_label, { class: 'flex flex-col items-start mb-2' })
+    @template.content_tag('div', label, { class: 'flex flex-col items-start mb-2' })
   end
 
   def tailwind_label(object_method, label_options, field_options)
@@ -79,12 +90,12 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     return unless errors_for(object_method).present?
 
     error_message = @object.errors[object_method].collect(&:titleize).join(', ')
-    tailwind_label(object_method, { text: error_message, class: ' font-bold text-red-500' }, options)
+    tailwind_label(object_method, { text: error_message, class: ' mt-2 text-sm text-red-600' }, options)
   end
 
   def border_color_classes(object_method)
     if errors_for(object_method).present?
-      ' border-2 border-red-400 focus:border-rose-200'
+      ' text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500'
     else
       ' border border-gray-300 focus:border-yellow-700'
     end
