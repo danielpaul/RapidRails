@@ -5,22 +5,17 @@
     <%= link_to "create your free account", new_user_registration_path, class: "font-medium link" %>
   </p>
 </div>
-
-<div class="mt-8">
+<div class="mt-8 card card-body p-10">
   <%= render 'devise/shared/social_login' %>
-
-  <div class="mt-6">
+  <div class="mt-5">
     <%= render 'shared/flash' %>
-
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'space-y-6'}) do |f| %>
       <div>
         <%= render 'forms/input', f: f, field: :email, type: 'email', placeholder: "Your email address", autocomplete: 'email', autofocus: true, required: true %>
       </div>
-
-      <div class="space-y-1">
+      <div>
         <%= render 'forms/input', f: f, field: :password, type: 'password', placeholder: "Your password", autocomplete: 'current-password', required: true %>
       </div>
-
       <div class="flex items-center justify-between">
         <div class="flex items-center">
           <% if devise_mapping.rememberable? %>
@@ -28,18 +23,13 @@
             <%= f.label :remember_me, class: 'ml-2 block text-sm text-gray-900' %>
           <% end %>
         </div>
-
         <div class="text-sm">
           <%= link_to "Forgot your password?", new_password_path(resource_name), class: "font-medium link" %>
         </div>
       </div>
-
       <div>
-        <%= f.button "Sign in", class: "flex w-full justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", data: {disable_with: "Signing in..."} %>
+        <%= f.button "Sign in", class: "flex w-full justify-center btn-primary", data: {disable_with: "Signing in..."} %>
       </div>
-
     <% end %>
-
   </div>
 </div>
-

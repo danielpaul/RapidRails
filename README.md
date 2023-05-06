@@ -12,8 +12,8 @@
 ## TODO
 
 - front-end UI
-  - typography
-  - colors
+  - typography [x]
+  - colors [x]
   - buttons
   - forms
     - text input
@@ -28,6 +28,8 @@
   - modals - side modal turboframe and normal modal for content
   - alerts
   - dark mode
+- dark mode selector
+  - settings in user account for dark mode preference
 - devise pages
 - sign in with google -> verify email because of this
 - user settings page UI
