@@ -12,22 +12,35 @@
 ## TODO
 
 - front-end UI
+  - typography
+  - colors
+  - buttons
+  - forms
+    - text input
+    - text area
+    - select
+    - radio
+    - checkbox
+    - date picker
+    - time picker
+    - file upload
+  - cards
+  - modals - side modal turboframe and normal modal for content
+  - alerts
+  - dark mode
 - devise pages
 - sign in with google -> verify email because of this
 - user settings page UI
-- admin panel for internal use
+- admin panel for internal use - ForestAdmin? 
 - HTML email
-- error tracking
-- email delivery
-- analytics
-- SEO / meta tags for differnt cases including mobile
-- privacy poicy and terms and condition from basecamp template
-- GDPR marketing opt-in and opt-out
-- payment gateway and user accounts for sass
-- user notifications system ?
-- user impersonation
-- API framework
-- realtime notifications with action cable
+- error tracking - Sentry
+- email delivery - Postmark
+- analytics - GA and Mixpanel for product based events
+- SEO / meta tags for differnt cases including mobile ios tags
+- privacy poicy and terms and condition from basecamp template - static page with markdown ?
+- GDPR marketing opt-in and opt-out - settings on user model
+- payment gateway and user accounts for sass - maybe as a seperate codebase that is built for sass
+- user impersonation - from forest admin / consider papertrail
 - staging env with mail catcher, etc.
 - active storage for file uploads (profile picture first)
 - sidekiq and background jobs

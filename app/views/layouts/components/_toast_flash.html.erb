@@ -1,6 +1,8 @@
 <!-- Global notification live region, render this permanently at the end of the document -->
 <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex px-4 py-6 items-start sm:p-6">
-  <div class="flex w-full flex-col items-center space-y-4 mt-14">
+  <%# items-end = right, items-start = left, items-center = middle %>
+  <%# margin top spacing for menu bar %>
+  <div class="flex w-full flex-col items-end space-y-4 mt-0">
     <!--
       Notification panel, dynamically insert this into the live region when it needs to be displayed
 
