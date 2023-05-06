@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    signup_params = %i[first_name last_name]
+    signup_params = %i[full_name]
 
     # Add other fields that can be edited from the user's profile page here
     edit_user_params = []
@@ -24,15 +24,15 @@ class ApplicationController < ActionController::Base
   private
 
   def pundishing_user
-    flash_message(:error, "Not Authorized", "You are not authorized to perform this action.")
+    flash_message(:error, 'Not Authorized', 'You are not authorized to perform this action.')
     redirect_to root_path
   end
 
   def layout_by_resource
-    if devise_controller? && !(resource_name == :user && action_name == "edit")
-      "application_devise"
+    if devise_controller? && !(resource_name == :user && action_name == 'edit')
+      'application_devise'
     else
-      "application"
+      'application'
     end
   end
 end

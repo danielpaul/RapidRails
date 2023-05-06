@@ -10,8 +10,7 @@
 #  current_sign_in_ip     :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
-#  first_name             :string           not null
-#  last_name              :string           not null
+#  full_name              :string           not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
 #  remember_created_at    :datetime
@@ -32,7 +31,6 @@ FactoryBot.define do
   factory :user do
     email { Faker::Internet.email }
     password { "password123" }
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
+    full_name { Faker::Name.name }
   end
 end

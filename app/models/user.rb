@@ -10,8 +10,7 @@
 #  current_sign_in_ip     :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
-#  first_name             :string           not null
-#  last_name              :string           not null
+#  full_name              :string           not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
 #  remember_created_at    :datetime
@@ -35,13 +34,22 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :validatable,
-    :confirmable, :trackable
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :trackable
 
-  validates :first_name, presence: true, length: {maximum: 50}
-  validates :last_name, presence: true, length: {maximum: 50}
+  validates :full_name, presence: true, length: { maximum: 100 }
 
-  def full_name
-    "#{first_name} #{last_name}"
+  def first_name
+    full_name_parts.first
+  end
+
+  def last_name
+    full_name_parts.length > 1 ? full_name_parts.last : nil
+  end
+
+  private
+
+  def full_name_parts
+    full_name.split(' ')
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_503_095_006) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_095006) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,8 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_095_006) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
+    t.string "full_name", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -46,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_095_006) do
     t.text "object"
     t.datetime "created_at"
     t.text "object_changes"
-    t.index %w[item_type item_id], name: "index_versions_on_item_type_and_item_id"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
+
 end

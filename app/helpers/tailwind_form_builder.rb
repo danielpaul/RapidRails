@@ -1,4 +1,4 @@
-# https://github.com/Daniel-N-Huss/tailwind_form_builder_example/blob/f103e5208a88c09715d8dfa9d1d7aeeeefe9de3d/app/lib/form_builders/tailwind_form_builder.rb
+# https://blog.testdouble.com/posts/2022-12-05-blending-tailwind-with-rails-forms/
 
 class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   class_attribute :text_field_helpers,
