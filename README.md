@@ -11,6 +11,7 @@
 
 ## TODO
 
+- confirm email page for forced email confirmation with [sniper link](https://www.indiehackers.com/post/how-to-get-more-user-signups-using-the-sniper-link-technique-47690dfbf1?utm_source=indie-hackers-emails&utm_campaign=ih-newsletter&utm_medium=email) to open email
 - front-end UI
   - typography [x]
   - colors [x]
