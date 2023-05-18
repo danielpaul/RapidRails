@@ -1,0 +1,22 @@
+.text-center
+  %h2.mt-6.text-3xl.font-bold.tracking-tight Sign in to your account
+  %p.mt-2.text-sm.text-gray-600
+    Or
+    \#{link_to "create your free account", new_user_registration_path, class: "font-medium link"}
+.mt-8.card.card-body.p-10
+  = render 'devise/shared/social_login'
+  .mt-5
+    = render 'shared/flash'
+    = form_for(resource, as: resource_name, url: session_path(resource_name), builder: TailwindFormBuilder, html: {class: 'space-y-6'}) do |f|
+      = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: "Your email address", required: true
+      = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true
+      .flex.items-center.justify-between
+        .flex.items-center
+          - if devise_mapping.rememberable?
+            = f.check_box :remember_me, class: 'h-4 w-4 rounded border-gray-300 dark:border-grey text-blue-600 focus:ring-blue-600 dark:bg-dark'
+            = f.label :remember_me, class: 'ml-2 block text-sm'
+        .text-sm
+          = link_to "Forgot your password?", new_password_path(resource_name), class: "font-medium link"
+      %div
+        = f.button "Sign in", class: "flex w-full justify-center btn-primary", data: {disable_with: "Signing in..."}
+

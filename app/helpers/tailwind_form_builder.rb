@@ -6,7 +6,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   #  leans on the FormBuilder class_attribute `field_helpers`
   #  you'll want to add a method for each of the specific helpers listed here if you want to style them
 
-  TEXT_FIELD_STYLE = 'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 text-slate-800'.freeze
+  TEXT_FIELD_STYLE = 'block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-card-dark placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 text-slate-800 dark:bg-dark dark:text-light'.freeze
   SELECT_FIELD_STYLE = 'block bg-gray-200 text-gray-700 py-2 px-4 rounded leading-tight focus:outline-none focus:bg-white'.freeze
   SUBMIT_BUTTON_STYLE = ''.freeze
 
@@ -79,7 +79,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
                          [nil, {}]
                        end
 
-    label_classes = label_opts[:class] || 'block text-sm font-medium leading-6 text-gray-900'
+    label_classes = label_opts[:class] || 'block text-sm font-medium leading-6 text-gray-900 dark:text-light'
     label_classes += ' text-yellow-800 dark:text-yellow-400' if field_options[:disabled]
     label(object_method, text, {
       class: label_classes
