@@ -15,7 +15,7 @@ module.exports = {
       },
       colors: {
         dark: "#030712",
-        grey: "#6b7280",
+        grey: "#52525b",
         light: "#f9fafb",
 
         card: {

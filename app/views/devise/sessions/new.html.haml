@@ -13,7 +13,7 @@
       .flex.items-center.justify-between
         .flex.items-center
           - if devise_mapping.rememberable?
-            = f.check_box :remember_me, class: 'h-4 w-4 rounded border-gray-300 dark:border-grey text-blue-600 focus:ring-blue-600 dark:bg-dark'
+            = f.check_box :remember_me, class: 'h-4 w-4 rounded border-gray-300 dark:border-grey text-blue-600 focus:ring-blue-600 dark:bg-card-dark'
             = f.label :remember_me, class: 'ml-2 block text-sm'
         .text-sm
           = link_to "Forgot your password?", new_password_path(resource_name), class: "font-medium link"
