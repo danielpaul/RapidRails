@@ -8,7 +8,7 @@
   }
 
   body.devise {
-    @apply h-full bg-body text-slate-500 dark:bg-body-dark dark:text-white;
+    @apply h-full bg-body text-slate-500 dark:bg-body-dark dark:text-neutral-400;
   }
 
   /* Typeography */
