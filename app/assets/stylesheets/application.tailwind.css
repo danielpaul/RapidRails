@@ -43,7 +43,6 @@
     @apply hover:underline hover:text-primary-500 transition-all duration-300;
   }
 
-
   /* Cards */
 
   .card-border {
@@ -70,7 +69,6 @@
     @apply px-6 py-4 border-t card-border;
   }
 
-
   /* Forms */
 
   .text-input {
@@ -80,5 +78,4 @@
   .select-input {
     @apply block bg-gray-200 text-gray-700 py-2 px-4 rounded leading-tight focus:outline-none focus:bg-white;
   }
-
 }
