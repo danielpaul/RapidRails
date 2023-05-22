@@ -14,12 +14,19 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans]
       },
       colors: {
-        dark: '#030712',
-        grey: '#52525b',
-        light: '#f9fafb',
+        primary: {
+          DEFAULT: '#0071e3',
+          500: '#0077ed'
+        },
+
+        body: {
+          DEFAULT: '#f5f5f7',
+          dark: '#1d1d1f'
+        },
 
         card: {
-          dark: '#222222'
+          DEFAULT: '#ffffff',
+          dark: '#000000'
         }
       }
     }
