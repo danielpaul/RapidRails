@@ -47,7 +47,7 @@
   /* Cards */
 
   .card-border {
-    @apply border-slate-900/5 dark:border-neutral-900/5;
+    @apply border-slate-900/5 dark:border-neutral-800;
   }
 
   .card {
