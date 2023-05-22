@@ -12,6 +12,22 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+      },
+      colors: {
+        primary: {
+          DEFAULT: '#0071e3',
+          500: '#0077ed'
+        },
+
+        body: {
+          DEFAULT: '#f5f5f7',
+          dark: '#1d1d1f'
+        },
+
+        card: {
+          DEFAULT: '#ffffff',
+          dark: '#000000'
+        }
       }
     }
   },
