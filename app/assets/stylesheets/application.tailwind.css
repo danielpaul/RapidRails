@@ -62,7 +62,7 @@
   }
 
   .card-body {
-    @apply px-6 py-5;
+    @apply px-6 sm:px-10 py-10;
   }
 
   .card-footer {
