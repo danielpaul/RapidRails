@@ -20,3 +20,5 @@
       %div
         = f.button "Sign in", class: "flex w-full justify-center btn-primary", data: {disable_with: "Signing in..."}
 
+.text-center.mt-4
+  = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "link text-sm font-medium"
