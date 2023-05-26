@@ -2,16 +2,15 @@
   %h1.h1.mt-6 Forgot your password?
 
 .mt-8.card.card-body
+  .pb-4
+    Enter the email address associated with your account and we'll send you a link to reset your&nbsp;password.
+
   = render "devise/shared/error_messages", resource: resource
   = form_for(resource, as: resource_name, url: password_path(resource_name), builder: TailwindFormBuilder, html: {method: :post, class: 'space-y-6 -mt-6'}) do |f|
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your email address"
+    = f.button "Send password reset email", class: "w-full btn-primary"
 
-    .pb-2
-      = f.button "Send password reset email", class: "w-full btn-primary"
-
-  %hr.my-4.border-gray-200.dark:border-neutral-800
-
-  .text-center
-    = link_to "Back to sign in", new_user_session_path, class: "link text-sm"
+.text-center.mt-4
+  = link_to "Back to sign in", new_user_session_path, class: "link text-sm"
 
   
