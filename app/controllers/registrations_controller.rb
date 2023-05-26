@@ -18,4 +18,8 @@ class RegistrationsController < Devise::RegistrationsController
     flash[:notice] = "Account succesfully updated."
     edit_user_registration_path
   end
+
+  def after_inactive_sign_up_path_for(resource)
+    confirm_email_path(email: resource.email)
+  end
 end
