@@ -1,0 +1,5 @@
+:ruby
+  custom_class ||= 'h-8'
+
+= image_tag "logo.svg", class: "#{custom_class} block dark:hidden", alt: APP_NAME
+= image_tag "logo-dark.svg", class: "#{custom_class} hidden dark:block", alt: APP_NAME

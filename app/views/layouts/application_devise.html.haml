@@ -6,8 +6,8 @@
   %body.devise
 
     %div{class: "flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8 my-auto"}
-      = image_tag "logo.svg", class: "h-12 block dark:hidden", alt: APP_NAME
-      = image_tag "logo-dark.svg", class: "h-12 hidden dark:block", alt: APP_NAME
+      = link_to root_path, class: 'mx-auto' do
+        = render 'layouts/components/logo', custom_class: "h-12"
 
       %div{class: "mt-2 sm:mx-auto sm:w-full sm:max-w-md"}
         = yield
