@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  layout "landing_page"
+
   def index
     flash_message(
       :success,

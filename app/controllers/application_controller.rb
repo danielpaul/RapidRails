@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: signup_params + edit_user_params)
   end
 
+  def after_sign_in_path_for(resource)
+    dashboard_index_path
+  end
+
   private
 
   def pundishing_user
