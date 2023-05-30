@@ -6,7 +6,7 @@ module ApplicationHelper
     if (record_id = record.hashid)
       "#{dom_class(record, prefix)}_#{record_id}"
     else
-      dom_class(record, prefix || NEW)
+      dom_class(record, prefix || "NEW")
     end
   end
 
@@ -16,7 +16,7 @@ module ApplicationHelper
     if /@(gmail\.com|googlemail\.com|google\.com)\z/.match?(email_address.downcase)
       base_url = "https://mail.google.com"
       encoded_email_address = ERB::Util.url_encode(email_address)
-      search_params = "from:#{encoded_email_address} in:anywhere newer_than:1d"
+      search_params = "from:#{DEFAULT_FROM_EMAIL_ONLY} in:anywhere newer_than:1d"
       "#{base_url}/mail/u/#{encoded_email_address}/#search/#{ERB::Util.url_encode(search_params)}"
     else
       domain = email_address.split("@").last
