@@ -1,0 +1,10 @@
+!!!
+%html{lang: "en"}
+  %head
+    = render "layouts/components/head"
+
+  %body
+    = render "shared/top_menu"
+    = yield
+
+    = render "layouts/components/footer_scripts"
