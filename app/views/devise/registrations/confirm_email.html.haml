@@ -2,7 +2,12 @@
   %h1.h1.mt-6 Check your inbox
 
 .mt-8.card.card-body
-  We've sent an activation link to your email inbox. Click the confirmation link in our email and make sure we're not marked as spam.
+  %p 
+    We've sent an activation link to your email inbox. 
+    Click the confirmation link in our email and make sure we're not marked as spam.
 
   .flex.mt-6.text-center
-    = link_to "Check your inbox", open_email_inbox_url(@email), class: "btn-white w-full"
+    = link_to "Check your inbox", open_email_inbox_url(@email), class: "btn-white w-full", target: :blank
+
+.text-center.mt-10
+  = link_to "Back to sign in", new_user_session_path, class: "link font-medium text-sm"
