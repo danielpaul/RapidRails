@@ -6,7 +6,7 @@ module ApplicationHelper
     if (record_id = record.hashid)
       "#{dom_class(record, prefix)}_#{record_id}"
     else
-      dom_class(record, prefix || 'NEW')
+      dom_class(record, prefix || "NEW")
     end
   end
 
