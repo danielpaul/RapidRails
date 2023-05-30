@@ -1,0 +1,46 @@
+%header.fixed.z-20.w-full{class: "bg-body/95 dark:bg-body-dark/95", "x-data": "{ dropdownOpen: false }"}
+  %nav.mx-auto.flex.max-w-7xl.items-center.justify-between.gap-x-6.p-6.lg:px-8{"aria-label" => "Global"}
+    .flex.lg:flex-1
+      = image_tag "logo.svg", class: "h-8 block dark:hidden", alt: APP_NAME
+      = image_tag "logo-dark.svg", class: "h-8 hidden dark:block", alt: APP_NAME
+
+    .hidden.lg:flex.lg:gap-x-12
+      %a.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{:href => "#"} Product
+      %a.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{:href => "#"} Features
+      %a.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{:href => "#"} Marketplace
+      %a.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{:href => "#"} Company
+
+    .flex.flex-1.items-center.justify-end.gap-x-6
+      = link_to("Sign In", new_user_session_path, class: "link hidden lg:flex text-sm font-medium")
+      = link_to("Sign Up", new_user_registration_path, class: "btn-primary justify-end")
+      
+    .flex.lg:hidden
+      %button.inline-flex.items-center.justify-center.rounded-md.text-gray-700.dark:text-gray-300{:class => "-m-2.5 p-2.5", :type => "button", "@click": "dropdownOpen = !dropdownOpen"}
+        %span.sr-only Open main menu
+        %svg.h-6.w-6{"aria-hidden" => "true", :fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24"}
+          %path{:d => "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+  
+  / Mobile menu, show/hide based on menu open state.
+  .lg:hidden{"aria-modal" => "true", :role => "dialog", "x-show": "dropdownOpen"}
+    / Background backdrop, show/hide based on slide-over state.
+    .fixed.inset-0.z-10
+    .fixed.inset-y-0.right-0.z-10.w-full.overflow-y-auto.bg-white.dark:bg-body-dark.px-6.py-6.sm:max-w-sm.sm:ring-1{:class => "sm:ring-gray-900/10"}
+      .flex.items-center.gap-x-6
+        = image_tag "logo.svg", class: "h-8 block dark:hidden", alt: APP_NAME
+        = image_tag "logo-dark.svg", class: "h-8 hidden dark:block", alt: APP_NAME
+        
+        = link_to("Sign Up", new_user_registration_path, class: "btn-primary justify-end ml-auto")
+        %button.rounded-md.text-gray-700.dark:text-gray-300{:class => "-m-2.5 p-2.5", :type => "button", "@click": "dropdownOpen = !dropdownOpen"}
+          %span.sr-only Close menu
+          %svg.h-6.w-6{"aria-hidden" => "true", :fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24"}
+            %path{:d => "M6 18L18 6M6 6l12 12", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      
+      .mt-6.flow-root
+        .-my-6.divide-y{:class => "divide-gray-500/10"}
+          .space-y-2.py-6
+            %a.-mx-3.block.rounded-lg.px-3.py-2.text-base.font-semibold.leading-7.text-gray-900.dark:text-white.hover:bg-gray-50.dark:hover:bg-card-dark{:href => "#"} Product
+            %a.-mx-3.block.rounded-lg.px-3.py-2.text-base.font-semibold.leading-7.text-gray-900.dark:text-white.hover:bg-gray-50.dark:hover:bg-card-dark{:href => "#"} Features
+            %a.-mx-3.block.rounded-lg.px-3.py-2.text-base.font-semibold.leading-7.text-gray-900.dark:text-white.hover:bg-gray-50.dark:hover:bg-card-dark{:href => "#"} Marketplace
+            %a.-mx-3.block.rounded-lg.px-3.py-2.text-base.font-semibold.leading-7.text-gray-900.dark:text-white.hover:bg-gray-50.dark:hover:bg-card-dark{:href => "#"} Company
+          .py-6
+            = link_to("Sign In", new_user_session_path, class: "-mx-3 block rounded-lg px-3 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-5 dark:hover:bg-card-dark py-2.5")
