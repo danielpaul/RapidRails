@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations"}
 
   devise_scope :user do
-    get :confirm_email, to: 'registrations#confirm_email', as: 'confirm_email', path: 'users/confirm-email'
+    get :confirm_email, to: "registrations#confirm_email", as: "confirm_email", path: "users/confirm-email"
   end
 
   scope controller: :static do
