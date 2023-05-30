@@ -1,4 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
+
+  def confirm_email
+    @email = params[:email]
+    redirect_to root_path if @email.nil?
+  end
+
   protected
 
   def update_resource(resource, params)
