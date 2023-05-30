@@ -1,4 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
+  def confirm_email
+    @email = params[:email]
+    redirect_to root_path if @email.nil?
+  end
+
   protected
 
   def update_resource(resource, params)
@@ -17,5 +22,9 @@ class RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(_resource)
     flash[:notice] = "Account succesfully updated."
     edit_user_registration_path
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    confirm_email_path(email: resource.email)
   end
 end
