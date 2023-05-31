@@ -140,6 +140,8 @@ GEM
       activerecord (>= 4.0)
       hashids (~> 1.0)
     hashids (1.0.6)
+    heroicon (1.0.0)
+      rails (>= 5.2)
     html2haml (2.3.0)
       erubis (~> 2.7.0)
       haml (>= 4.0)
@@ -360,6 +362,7 @@ DEPENDENCIES
   faker
   hamlit-rails
   hashid-rails
+  heroicon
   html2haml
   importmap-rails
   jbuilder

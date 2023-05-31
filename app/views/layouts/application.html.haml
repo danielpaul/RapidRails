@@ -3,7 +3,13 @@
   %head
     = render "layouts/components/head"
 
-  %body
-    = render "shared/navbars"
+  %body{"x-data": "{ sidebarOpen: false }"}
+    = render "layouts/components/off_canvas_mobile_menu"
+    = render 'layouts/components/desktop_sidebar'
+    = render 'layouts/components/top_bar'
+
+    .lg:pl-72
+      %main.py-10.px-4.sm:px-6.lg:px-8
+        = yield
 
     = render "layouts/components/footer_scripts"

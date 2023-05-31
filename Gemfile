@@ -50,6 +50,7 @@ gem 'sassc-rails'
 
 # Front-end Things
 gem 'hamlit-rails'
+gem 'heroicon'
 gem 'meta-tags'
 gem 'pagy'
 gem 'phlex-rails'
