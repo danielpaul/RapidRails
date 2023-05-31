@@ -15,20 +15,20 @@ class LandingPage::TopMenuComponent < Phlex::HTML
 
   def template
     header class: 'bg-body/95 dark:bg-body-dark/95 fixed z-20 w-full', x_data: '{ dropdownOpen: false }' do
-      nav aria_label: 'Global', class: 'md:px-8 mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6' do
+      nav aria_label: 'Global', class: 'lg:px-8 mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6' do
         div class: 'flex md:flex-1' do
           link_to root_path do
             render 'layouts/components/logo'
           end
         end
 
-        div class: 'hidden md:flex md:gap-x-12' do
+        div class: 'hidden lg:flex lg:gap-x-12' do
           main_menu_items.each do |item|
             link_to item[:label], item[:path], class: 'text-sm font-semibold leading-6 text-gray-900 dark:text-white'
           end
         end
         div class: 'flex flex-1 items-center justify-end gap-x-6' do
-          link_to 'Sign In', new_user_session_path, class: 'link hidden md:flex text-sm font-medium'
+          link_to 'Sign In', new_user_session_path, class: 'link hidden lg:flex text-sm font-medium'
           sign_up_button
         end
         mobile_menu_open_button
@@ -45,7 +45,7 @@ class LandingPage::TopMenuComponent < Phlex::HTML
   end
 
   def mobile_menu
-    div class: 'md:hidden', style: 'display:none', aria_modal: 'true', role: 'dialog', x_show: 'dropdownOpen' do
+    div class: 'lg:hidden', style: 'display:none', aria_modal: 'true', role: 'dialog', x_show: 'dropdownOpen' do
       # Background backdrop, show/hide based on slide-over state.
       div class: 'fixed inset-0 z-20 backdrop-blur-md bg-white/30', "@click": 'dropdownOpen = false'
 
@@ -76,7 +76,7 @@ class LandingPage::TopMenuComponent < Phlex::HTML
   end
 
   def mobile_menu_open_button
-    div(class: 'flex md:hidden') do
+    div(class: 'flex lg:hidden') do
       button(
         class: 'inline-flex items-center justify-center rounded-md text-gray-700 dark:text-gray-300 -m-2.5 p-2.5',
         type: 'button',
