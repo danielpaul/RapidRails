@@ -53,20 +53,20 @@
     @apply bg-card dark:bg-card-dark ring-1 ring-slate-900/5 dark:ring-neutral-900/5 rounded-lg shadow-xl my-auto;
   }
 
+  .card-body {
+    @apply px-6 py-4;
+  }
+
   .card-header {
-    @apply px-6 py-4 border-b card-border;
+    @apply card-body border-b card-border;
   }
 
   .card-title {
     @apply font-semibold text-slate-900 dark:text-slate-100;
   }
 
-  .card-body {
-    @apply px-6 sm:px-10 py-10;
-  }
-
   .card-footer {
-    @apply px-6 py-4 border-t card-border;
+    @apply card-body border-t card-border;
   }
 
   /* Forms */
