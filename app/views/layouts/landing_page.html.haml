@@ -4,7 +4,7 @@
     = render "layouts/components/head"
 
   %body
-    = render "shared/top_menu"
+    = render LandingPage::TopMenuComponent.new
     = yield
 
     = render "layouts/components/footer_scripts"
