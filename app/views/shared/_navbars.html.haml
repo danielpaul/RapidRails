@@ -85,12 +85,12 @@
           
           %input#search-field.dark:bg-body-dark.block.h-full.w-full.border-0.py-0.pl-8.pr-0.text-gray-900.placeholder:text-gray-400.focus:ring-0.sm:text-sm{:name => "search", :placeholder => "Search...", :type => "search"}/
         .flex.items-center.gap-x-4.lg:gap-x-6
-          -# %button.text-gray-400.hover:text-gray-500{:class => "-m-2.5 p-2.5", :type => "button"}
-          -#   %span.sr-only View notifications
-          -#   %svg.h-6.w-6{"aria-hidden" => "true", :fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24"}
-          -#     %path{:d => "M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
-          -# / Separator
-          -# .hidden.lg:block.lg:h-6.lg:w-px.lg:bg-gray-200{"aria-hidden" => "true"}
+          %button.text-gray-400.hover:text-gray-500{:class => "-m-2.5 p-2.5", :type => "button"}
+            %span.sr-only View notifications
+            %svg.h-6.w-6{"aria-hidden" => "true", :fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24"}
+              %path{:d => "M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+          / Separator
+          .hidden.lg:block.lg:h-6.lg:w-px.lg:bg-gray-200.dark:lg:bg-gray-400{"aria-hidden" => "true"}
           
           / Profile dropdown
           .relative{"x-data": "{ dropdownOpen: false }"}
