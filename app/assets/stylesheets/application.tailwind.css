@@ -36,11 +36,11 @@
   }
 
   a {
-    @apply transition-all duration-300;
+    @apply transition-colors duration-300;
   }
   
   a.link {
-    @apply text-primary hover:text-primary-500;
+    @apply text-primary hover:text-primary-500 hover:underline hover:underline-offset-2;
   }
 
   a.link-secondary {
@@ -58,11 +58,11 @@
   }
 
   .card-body {
-    @apply px-6 py-4;
+    @apply p-6;
   }
 
   .card-header {
-    @apply card-body border-b card-border;
+    @apply px-6 py-4 border-b card-border;
   }
 
   .card-title {
@@ -70,7 +70,7 @@
   }
 
   .card-footer {
-    @apply card-body border-t card-border;
+    @apply px-6 py-4 border-t card-border;
   }
 
   /* Forms */
