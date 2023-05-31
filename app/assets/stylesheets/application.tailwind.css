@@ -35,12 +35,16 @@
     @apply btn text-gray-900 dark:text-white shadow-sm ring-1 ring-gray-300 dark:ring-neutral-700 hover:bg-gray-50 dark:hover:bg-neutral-900;
   }
 
+  a {
+    @apply transition-all duration-300;
+  }
+  
   a.link {
-    @apply text-primary hover:text-primary-500 transition-all duration-300;
+    @apply text-primary hover:text-primary-500;
   }
 
   a.link-secondary {
-    @apply hover:underline hover:text-primary-500 transition-all duration-300;
+    @apply hover:underline hover:text-primary-500;
   }
 
   /* Cards */
