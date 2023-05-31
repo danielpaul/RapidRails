@@ -38,7 +38,7 @@
   a {
     @apply transition-colors duration-300;
   }
-  
+
   a.link {
     @apply text-primary hover:text-primary-500 hover:underline hover:underline-offset-2;
   }
