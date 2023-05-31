@@ -106,7 +106,7 @@
             .absolute.right-0.z-10.w-32.origin-top-right.rounded-md.bg-white.dark:bg-card-dark.py-2.shadow-lg.ring-1.focus:outline-none.text-gray-900.dark:text-white{"aria-labelledby" => "user-menu-button", "aria-orientation" => "vertical", :class => "mt-2.5 ring-gray-900/5", :role => "menu", :tabindex => "-1", "x-show": "dropdownOpen", "@click.outside": "dropdownOpen = false", "x-transition:enter": "ease-out duration-100", "x-transition:enter-start": "transform opacity-0 scale-95", "x-transition:enter-end": "transform opacity-100 scale-100", "x-transition:leave": "transition ease-in duration-75", "x-transition:leave-start": "transform opacity-100 scale-100", "x-transition:leave-end": "transform opacity-0 scale-95"}
               -# %a#user-menu-item-0.block.px-3.py-1.text-sm.leading-6.text-gray-900{:href => "#", :role => "menuitem", :tabindex => "-1"} Your profile
               = link_to "Profile", edit_user_registration_path, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
-              = link_to "Sign Out", destroy_user_session_path, method: :delete, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+              = link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
               
     %main.py-10
       .px-4.sm:px-6.lg:px-8
