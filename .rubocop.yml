@@ -1,0 +1,8 @@
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Rails:
+  Enabled: true
