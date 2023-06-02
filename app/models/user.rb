@@ -52,7 +52,10 @@ class User < ApplicationRecord
   end
 
   def avatar_url
-    "https://api.dicebear.com/6.x/initials/png?seed=#{initials}"
+    # Don't share real names. Just initials. 
+    # Add hash to get unique color variant for each user. Otherwise all DP will be same.
+    hash = Digest::MD5.hexdigest(email.downcase)
+    "https://api.dicebear.com/6.x/initials/png?seed=#{initials + hash}"
   end
 
   private
