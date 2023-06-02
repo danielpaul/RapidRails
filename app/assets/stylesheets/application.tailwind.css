@@ -50,11 +50,12 @@
   /* Cards */
 
   .card-border {
-    @apply border-slate-900/5 dark:border-neutral-800;
+    /* duplicated as ring on the .card. It does not use this border. */
+    @apply border-neutral-300/50 dark:border-neutral-700;
   }
 
   .card {
-    @apply bg-card dark:bg-card-dark ring-1 ring-slate-900/5 dark:ring-neutral-900/5 rounded-lg shadow-sm my-auto;
+    @apply bg-card dark:bg-card-dark ring-1 ring-neutral-300/50 dark:ring-neutral-700 rounded-lg shadow-sm my-auto;
   }
 
   .card-body {
@@ -62,7 +63,7 @@
   }
 
   .card-header {
-    @apply px-6 py-4 border-b card-border;
+    @apply px-6 py-3 border-b card-border;
   }
 
   .card-title {
@@ -70,7 +71,7 @@
   }
 
   .card-footer {
-    @apply px-6 py-4 border-t card-border;
+    @apply px-6 py-3 border-t card-border;
   }
 
   /* Forms */
