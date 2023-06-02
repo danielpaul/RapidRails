@@ -11,11 +11,28 @@
     @apply h-full bg-body text-slate-500 dark:bg-body-dark dark:text-neutral-400;
   }
 
-  /* Typeography */
+  /* Typography */
 
   .h1 {
     @apply text-3xl font-bold tracking-tight text-gray-900 dark:text-white;
   }
+
+  .h2 {
+    @apply text-2xl font-bold tracking-tight text-gray-900 dark:text-white;
+  }
+
+  .h3 {
+    @apply text-xl font-bold tracking-tight text-gray-900 dark:text-white;
+  }
+
+  .p {
+    @apply text-base text-gray-700 dark:text-gray-300 leading-6;
+  }
+
+  .text-danger {
+    @apply text-red-500;
+  }
+
 
   /* Links & Buttons */
 
