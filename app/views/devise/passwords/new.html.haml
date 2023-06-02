@@ -5,13 +5,15 @@
     #{link_to "sign in to your account", new_user_session_path, class: "font-medium link"}
     
 
-.mt-8.card.card-body
-  %p.pb-6
-    Enter the email address associated with your account and we'll send you a link to reset your&nbsp;password.
-
-  = render "devise/shared/error_messages", resource: resource
-  = form_for(resource, as: resource_name, url: password_path(resource_name), builder: TailwindFormBuilder, html: {method: :post, class: 'space-y-6 -mt-6'}) do |f|
-    = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your email address", autofocus: true
-    = f.button "Send password reset email", class: "w-full btn-primary"
+.mt-8.card
+  .card-header
+    %p
+      Enter the email address associated with your account and we'll send you a link to reset your&nbsp;password.
+  
+  .card-body
+    = render "devise/shared/error_messages", resource: resource
+    = form_for(resource, as: resource_name, url: password_path(resource_name), builder: TailwindFormBuilder, html: {method: :post, class: 'space-y-6 -mt-6'}) do |f|
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your email address", autofocus: true
+      = f.button "Send password reset email", class: "w-full btn-primary"
 
   
