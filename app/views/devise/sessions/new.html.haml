@@ -3,10 +3,12 @@
   %p.mt-2.text-sm
     Or
     \#{link_to "create your free account", new_user_registration_path, class: "font-medium link"}
+
 .mt-8.card.card-body
   = render 'devise/shared/social_login'
   .mt-5
     = render 'shared/flash'
+
     = form_for(resource, as: resource_name, url: session_path(resource_name), builder: TailwindFormBuilder, html: {class: 'space-y-6'}) do |f|
       = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: "Your email address", required: true
       = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true
@@ -20,5 +22,5 @@
       %div
         = f.button "Sign in", class: "flex w-full justify-center btn-primary", data: {disable_with: "Signing in..."}
 
-.text-center.mt-4
+.text-center.mt-8
   = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "link text-sm font-medium"

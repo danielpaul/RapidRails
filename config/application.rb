@@ -24,5 +24,10 @@ module RailsStarter
       g.helper false
       g.jbuilder false
     end
+
+    # Phlex
+    config.autoload_paths << "#{root}/app/views"
+    config.autoload_paths << "#{root}/app/views/layouts"
+    config.autoload_paths << "#{root}/app/views/components"
   end
 end

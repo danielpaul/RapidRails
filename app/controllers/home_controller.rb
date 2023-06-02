@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  layout "landing_page"
+  layout "application_landing_page"
 
   def index
     flash_message(
