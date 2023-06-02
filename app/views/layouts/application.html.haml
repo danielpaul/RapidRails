@@ -3,7 +3,7 @@
   %head
     = render "layouts/components/head"
 
-  %body{"x-data": "{ sidebarOpen: false }"}
+  %body.app{"x-data": "{ sidebarOpen: false }"}
     = render "layouts/components/off_canvas_mobile_menu"
     = render 'layouts/components/desktop_sidebar'
     = render 'layouts/components/top_bar'
