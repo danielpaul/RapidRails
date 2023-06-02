@@ -1,5 +1,5 @@
 .lg:pl-72
-  .sticky.top-0.z-40.flex.h-16.shrink-0.items-center.gap-x-4.border-b.border-gray-200.dark:border-neutral-800.bg-white.dark:bg-body-dark.px-4.shadow-sm.sm:gap-x-6.sm:px-6.lg:px-8
+  .sticky.top-0.z-40.flex.h-16.shrink-0.items-center.gap-x-4.border-b.border-gray-200.dark:border-neutral-800.bg-card.dark:bg-card-dark.px-4.sm:gap-x-6.sm:px-6.lg:px-8
     %button.text-gray-700.dark:text-slate-400.lg:hidden{:class => "-m-2.5 p-2.5", :type => "button", "@click": "sidebarOpen = !sidebarOpen"}
       %span.sr-only Open sidebar
       %svg.h-6.w-6{"aria-hidden" => "true", :fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24"}
@@ -13,7 +13,7 @@
         %svg.pointer-events-none.absolute.inset-y-0.left-0.h-full.w-5.text-gray-400{"aria-hidden" => "true", :fill => "currentColor", :viewbox => "0 0 20 20"}
           %path{"clip-rule" => "evenodd", :d => "M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z", "fill-rule" => "evenodd"}
         
-        %input#search-field.dark:bg-body-dark.block.h-full.w-full.border-0.py-0.pl-8.pr-0.text-gray-900.placeholder:text-gray-400.focus:ring-0.sm:text-sm{:name => "search", :placeholder => "Search...", :type => "search"}/
+        %input#search-field.dark:bg-card-dark.block.h-full.w-full.border-0.py-0.pl-8.pr-0.text-gray-900.dark:text-white.placeholder:text-gray-400.focus:ring-0.sm:text-sm{:name => "search", :placeholder => "Search...", :type => "search"}/
       .flex.items-center.gap-x-4.lg:gap-x-6
         %button.text-gray-400.hover:text-gray-500{:class => "-m-2.5 p-2.5", :type => "button"}
           %span.sr-only View notifications
@@ -33,7 +33,7 @@
                 %path{"clip-rule" => "evenodd", :d => "M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z", "fill-rule" => "evenodd"}
           /
             Dropdown menu, show/hide based on menu state.
-          .absolute.right-0.z-10.w-32.origin-top-right.rounded-md.bg-white.dark:bg-card-dark.py-2.shadow-lg.ring-1.focus:outline-none.text-gray-900.dark:text-white{"aria-labelledby" => "user-menu-button", "aria-orientation" => "vertical", :class => "mt-2.5 ring-gray-900/5", :role => "menu", :tabindex => "-1", "x-show": "dropdownOpen", "@click.away": "dropdownOpen = false", "x-transition:enter": "ease-out duration-100", "x-transition:enter-start": "transform opacity-0 scale-95", "x-transition:enter-end": "transform opacity-100 scale-100", "x-transition:leave": "transition ease-in duration-75", "x-transition:leave-start": "transform opacity-100 scale-100", "x-transition:leave-end": "transform opacity-0 scale-95"}
+          .absolute.right-0.z-10.w-32.origin-top-right.rounded-md.bg-card.dark:bg-card-dark.py-2.shadow-lg.ring-1.focus:outline-none.text-gray-900.dark:text-white{"aria-labelledby" => "user-menu-button", "aria-orientation" => "vertical", :class => "mt-2.5 ring-gray-900/5", :role => "menu", :tabindex => "-1", "x-show": "dropdownOpen", "@click.away": "dropdownOpen = false", "x-transition:enter": "ease-out duration-100", "x-transition:enter-start": "transform opacity-0 scale-95", "x-transition:enter-end": "transform opacity-100 scale-100", "x-transition:leave": "transition ease-in duration-75", "x-transition:leave-start": "transform opacity-100 scale-100", "x-transition:leave-end": "transform opacity-0 scale-95"}
             -# %a#user-menu-item-0.block.px-3.py-1.text-sm.leading-6.text-gray-900{:href => "#", :role => "menuitem", :tabindex => "-1"} Your profile
             = link_to "Profile", edit_user_registration_path, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
             = link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"

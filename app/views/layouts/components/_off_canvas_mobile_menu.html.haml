@@ -1,6 +1,6 @@
 .relative.z-50.lg:hidden{"aria-modal" => "true", :role => "dialog", "x-show": "sidebarOpen"}
   .fixed.inset-0{
-    :class => "bg-gray-900/80",
+    :class => "bg-body-dark/60",
     "x-show": "sidebarOpen",
     "x-transition:enter": "transition-opacity ease-linear duration-300",
     "x-transition:enter-start": "opacity-0",
@@ -34,5 +34,5 @@
           %svg.h-6.w-6.text-white{"aria-hidden" => "true", :fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24"}
             %path{:d => "M6 18L18 6M6 6l12 12", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
 
-      .flex.grow.flex-col.gap-y-5.overflow-y-auto.bg-white.dark:bg-body-dark.px-6.pb-4
+      .flex.grow.flex-col.gap-y-5.overflow-y-auto.bg-card.dark:bg-card-dark.px-6.pb-4
         = render "layouts/shared/sidebar_menu_items"

@@ -54,7 +54,7 @@
   }
 
   .card {
-    @apply bg-card dark:bg-card-dark ring-1 ring-slate-900/5 dark:ring-neutral-900/5 rounded-lg shadow-xl my-auto;
+    @apply bg-card dark:bg-card-dark ring-1 ring-slate-900/5 dark:ring-neutral-900/5 rounded-lg shadow-lg my-auto;
   }
 
   .card-body {
