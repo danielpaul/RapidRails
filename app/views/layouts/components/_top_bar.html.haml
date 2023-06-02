@@ -26,9 +26,9 @@
         .relative{"x-data": "{ dropdownOpen: false }"}
           %button#user-menu-button.flex.items-center{"aria-expanded" => "false", "aria-haspopup" => "true", :class => "-m-1.5 p-1.5", :type => "button", "@click": "dropdownOpen = !dropdownOpen"}
             %span.sr-only Open user menu
-            %img.h-8.w-8.rounded-full.bg-gray-50{:alt => "", :src => "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"}/
+            = image_tag current_user.avatar_url, class: "h-8 w-8 rounded-full bg-gray-50", alt: ""
             %span.hidden.lg:flex.lg:items-center
-              %span.ml-4.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{"aria-hidden" => "true"} Tom Cook
+              %span.ml-4.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{"aria-hidden" => "true"} #{current_user.full_name}
               %svg.ml-2.h-5.w-5.text-gray-400{"aria-hidden" => "true", :fill => "currentColor", :viewbox => "0 0 20 20"}
                 %path{"clip-rule" => "evenodd", :d => "M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z", "fill-rule" => "evenodd"}
           /

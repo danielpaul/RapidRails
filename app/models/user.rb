@@ -47,6 +47,14 @@ class User < ApplicationRecord
     full_name_parts.length > 1 ? full_name_parts.last : nil
   end
 
+  def initials
+    full_name_parts.map(&:first).join
+  end
+
+  def avatar_url
+    "https://api.dicebear.com/6.x/initials/png?seed=#{initials}"
+  end
+
   private
 
   def full_name_parts
