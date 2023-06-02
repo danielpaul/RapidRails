@@ -47,6 +47,17 @@ class User < ApplicationRecord
     full_name_parts.length > 1 ? full_name_parts.last : nil
   end
 
+  def initials
+    full_name_parts.map(&:first).join
+  end
+
+  def avatar_url
+    # Don't share real names. Just initials. 
+    # Add hash to get unique color variant for each user. Otherwise all DP will be same.
+    hash = Digest::MD5.hexdigest(email.downcase)
+    "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
+  end
+
   private
 
   def full_name_parts

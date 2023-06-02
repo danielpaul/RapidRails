@@ -1,5 +1,6 @@
 :ruby
-  rounded = true if rounded.nil?
+  -# TODO: make into a component
+  -# add close icon with alpine JS to dismiss the alert
 
   success ||= flash[:success]
   notice ||= flash[:notice]
@@ -7,28 +8,28 @@
   error ||= flash[:error]
 
 - if success
-  .bg-green-50.p-4{class: "#{'rounded-md' if rounded}"}
+  .bg-green-50.p-4.rounded-md.mb-2{class: "dark:bg-black border card-border"}
     .flex
       .flex-shrink-0
         = heroicon 'check-circle', variant: 'solid', options: {class: 'h-5 w-5 text-green-400'}
       .ml-3
-        %h3.text-sm.font-medium.text-green-800
+        %h3.text-sm.font-medium.text-green-800{class: 'dark:text-white'}
           = sanitize success
 
 
 - if notice
-  .bg-yellow-50.p-4{class: "#{'rounded-md' if rounded}"}
+  .bg-yellow-50.p-4.rounded-md.mb-2{class: "dark:bg-black border card-border"}
     .flex
       .flex-shrink-0
         = heroicon 'exclamation-circle', variant: 'solid', options: {class: 'h-5 w-5 text-yellow-400'}
       .ml-3
-        %h3.text-sm.font-medium.text-yellow-800
+        %h3.text-sm.font-medium.text-yellow-800{class: 'dark:text-white'}
           = sanitize notice
 
 
 - [alert, error].each do |type|
   - next unless type
-  .bg-red-50.text-red-800.p-4{class: "dark:bg-red-900 dark:text-white #{'rounded-md' if rounded}"}
+  .bg-red-50.text-red-800.p-4.rounded-md.mb-2{class: "dark:bg-black border card-border dark:text-white"}
     .flex
       .flex-shrink-0
         = heroicon 'x-circle', variant: 'solid', options: {class: 'h-5 w-5 text-red-400'}
