@@ -55,7 +55,7 @@ class User < ApplicationRecord
     # Don't share real names. Just initials. 
     # Add hash to get unique color variant for each user. Otherwise all DP will be same.
     hash = Digest::MD5.hexdigest(email.downcase)
-    "https://api.dicebear.com/6.x/initials/png?seed=#{initials + hash}"
+    "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
   end
 
   private
