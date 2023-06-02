@@ -87,6 +87,5 @@
 
   body.devise .card {
     @apply shadow-lg;
-  } 
-
+  }
 }
