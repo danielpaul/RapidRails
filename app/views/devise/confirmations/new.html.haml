@@ -1,5 +1,9 @@
 .text-center
-  %h1.h1.mt-6 Resend Confirmation Instructions
+  %h1.h1.mt-6 Resend Email Confirmation
+  %p.mt-2.text-sm
+    Or
+    #{link_to "sign in to your account", new_user_session_path, class: "font-medium link"}
+    
 
 .mt-8.card.card-body
   = form_for(resource, as: resource_name, url: confirmation_path(resource_name), builder: TailwindFormBuilder, html: { method: :post, class: 'space-y-6 -mt-6' }) do |f|
@@ -7,6 +11,3 @@
 
     = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your email address", value: params[:email] || (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), required: true
     = f.button "Resend confirmation instructions", class: "w-full btn-primary"
-
-.text-center.mt-10
-  = link_to "Back to sign in", new_user_session_path, class: "link font-medium text-sm"

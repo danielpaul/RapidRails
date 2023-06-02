@@ -2,6 +2,8 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
+    './app/views/**/*.rb',
+    './app/components/**/*rb',
     './public/*.html',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
@@ -15,18 +17,18 @@ module.exports = {
       },
       colors: {
         primary: {
-          DEFAULT: '#0071e3',
+          DEFAULT: '#007aff',
           500: '#0077ed'
         },
 
         body: {
           DEFAULT: '#f5f5f7',
-          dark: '#1d1d1f'
+          dark: '#000000'
         },
 
         card: {
           DEFAULT: '#ffffff',
-          dark: '#000000'
+          dark: '#1c1c1e'
         }
       }
     }

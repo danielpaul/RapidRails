@@ -1,0 +1,11 @@
+!!!
+%html.h-full{lang: "en"}
+  %head
+    = render "layouts/components/head"
+
+  %body
+    = render LandingPage::TopMenuComponent.new
+
+    = yield
+    
+    = render "layouts/components/footer_scripts"

@@ -21,18 +21,22 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: signup_params + edit_user_params)
   end
 
+  def after_sign_in_path_for(_resource)
+    user_root_path
+  end
+
   private
 
   def pundishing_user
-    flash_message(:error, 'Not Authorized', 'You are not authorized to perform this action.')
+    flash_message(:error, "Not Authorized", "You are not authorized to perform this action.")
     redirect_to root_path
   end
 
   def layout_by_resource
-    if devise_controller? && !(resource_name == :user && action_name == 'edit')
-      'application_devise'
+    if devise_controller? && !(resource_name == :user && action_name == "edit")
+      "application_devise"
     else
-      'application'
+      "application"
     end
   end
 end
