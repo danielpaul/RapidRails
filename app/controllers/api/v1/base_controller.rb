@@ -1,7 +1,7 @@
 class Api::V1::BaseController < ActionController::Base
   include Pundit
 
-  # before_action :set_api_key!, :authenticate_api_key!
+  before_action :set_api_key!, :authenticate_api_key!
 
   skip_before_action :verify_authenticity_token
 
