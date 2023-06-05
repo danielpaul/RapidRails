@@ -64,6 +64,7 @@ gem 'hashid-rails'
 gem 'paper_trail'
 
 # API
+gem 'blueprinter'
 gem 'jwt'
 
 # TODO:
