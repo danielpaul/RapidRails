@@ -30,6 +30,9 @@ module.exports = {
           DEFAULT: '#ffffff',
           dark: '#1c1c1e'
         }
+      },
+      fontSize: {
+        base: '0.9rem'
       }
     }
   },

@@ -1,55 +1,44 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name, autocomplete: "first_name", required: true
-  
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name, autocomplete: "last_name", required: true
-  
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autocomplete: "email", required: true
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+%h1.h1 Your Account
+
+.py-10
+  .grid.grid-cols-1.gap-x-8.gap-y-8.md:grid-cols-3
     %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "current-password"
+      %h3.h3 Profile
+      %p.mt-1.p This information will be displayed publicly so be careful what you share.
 
+    .card.md:col-span-2
+      = form_with(model: resource, as: resource_name, url: registration_path(resource_name), builder: TailwindFormBuilder, method: :put) do |f|
+        .card-body
+          .space-y-6
+            = f.text_field :full_name, autocomplete: "name", placeholder: "John Doe", required: true
+            
+            = f.email_field :email, autocomplete: "email", placeholder: "you@example.com", required: true
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              %div
+                Currently waiting confirmation for: #{resource.unconfirmed_email}
+        
+        .card-footer.text-right
+          = button_to "Delete Account", registration_path(resource_name), {data: { turbo_confirm: "Are you sure?" }, class: 'text-danger text-sm mr-6', method: :delete}
+          = f.button "Save", class: "btn-primary"
 
-  -# Your current API key is #{resource.openai_api_key_display}
+.py-10
+  .grid.grid-cols-1.gap-x-8.gap-y-8.md:grid-cols-3
+    %div
+      %h3.h3 Password
+      %p.mt-1.p This information will be displayed publicly so be careful what you share.
 
-  .field
-    = f.label :openai_api_key, "Update OpenAI API Key"
-    %br/
-    = f.text_field :openai_api_key, value: ""
+    .card.md:col-span-2
+      = form_with(model: resource, as: resource_name, url: registration_path(resource_name), builder: TailwindFormBuilder, method: :put) do |f|
+        .card-body
+          .space-y-6
+            = f.password_field :password, placeholder: "Your new password", autocomplete: "new-password", required: true
+            - if @minimum_password_length
+              %em.text-sm
+                = @minimum_password_length
+                characters minimum
 
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%div
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+            = f.password_field :password_confirmation, placeholder: "Confirm new password", autocomplete: "new-password", required: true
+            = f.password_field :current_password, placeholder: "Your current password", autocomplete: "current-password", required: true
+
+        .card-footer.text-right
+          = f.button "Update password", class: "btn-primary"
