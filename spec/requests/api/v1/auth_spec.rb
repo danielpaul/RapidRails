@@ -1,4 +1,4 @@
-RSpec.describe 'Auth Controller', type: :request do
+RSpec.describe "Auth Controller", type: :request do
   #----- HELPER METHODS -----#
   def post_request(path, params, headers)
     post path, params: params, headers: headers
@@ -6,53 +6,53 @@ RSpec.describe 'Auth Controller', type: :request do
 
   def expected_error(message, status)
     expect(response.status).to eq(status)
-    expect(JSON.parse(response.body)['errors'][0]['message']).to eq message
+    expect(JSON.parse(response.body)["errors"][0]["message"]).to eq message
   end
 
   def expected_message(message)
     expect(response.status).to eq(200)
-    expect(JSON.parse(response.body)['message']).to eq message
+    expect(JSON.parse(response.body)["message"]).to eq message
   end
 
   before :each do
     @user = create(:user, confirmed_at: 1.day.ago)
-    @api_key = 'test'#create(:api_key, name: 'Test key', api_key: 'test1234').api_key
+    @api_key = "test" # create(:api_key, name: 'Test key', api_key: 'test1234').api_key
   end
 
-  describe '#sign_in (Basic API authorization)' do
-    context 'when active API key is passed' do
-      it 'should gain access and return user token' do
+  describe "#sign_in (Basic API authorization)" do
+    context "when active API key is passed" do
+      it "should gain access and return user token" do
         post_request(
           api_v1_auth_sign_in_path,
-          { email: @user.email, password: @user.password },
-          { "X-API-KEY": @api_key }
+          {email: @user.email, password: @user.password},
+          {"X-API-KEY": @api_key}
         )
 
         expect(response.status).to eq(200)
-        expect(JSON.parse(response.body)['token']).to_not be nil
+        expect(JSON.parse(response.body)["token"]).to_not be nil
       end
     end
 
-    context 'when user is not confirmed' do
-      it 'should throw unprocessable entity error' do
+    context "when user is not confirmed" do
+      it "should throw unprocessable entity error" do
         @user.update confirmed_at: nil
         post_request(
           api_v1_auth_sign_in_path,
-          { email: @user.email, password: @user.password },
-          { "X-API-KEY": @api_key }
+          {email: @user.email, password: @user.password},
+          {"X-API-KEY": @api_key}
         )
 
-        expected_error(I18n.t('devise.failure.unconfirmed'), 422)
+        expected_error(I18n.t("devise.failure.unconfirmed"), 422)
       end
     end
 
-    describe 'unauthorized cases' do
-      context 'when wrong password is passed' do
-        it 'should not gain access' do
+    describe "unauthorized cases" do
+      context "when wrong password is passed" do
+        it "should not gain access" do
           post_request(
             api_v1_auth_sign_in_path,
-            { email: @user.email, password: 'random password' },
-            { "X-API-KEY": @api_key }
+            {email: @user.email, password: "random password"},
+            {"X-API-KEY": @api_key}
           )
 
           expected_error(
@@ -62,13 +62,13 @@ RSpec.describe 'Auth Controller', type: :request do
         end
       end
 
-      describe 'generic errors' do
-        context 'when wrong email is passed' do
-          it 'should not gain access' do
+      describe "generic errors" do
+        context "when wrong email is passed" do
+          it "should not gain access" do
             post_request(
               api_v1_auth_sign_in_path,
-              { email: 'random email' },
-              { "X-API-KEY": @api_key }
+              {email: "random email"},
+              {"X-API-KEY": @api_key}
             )
           end
         end
@@ -217,7 +217,7 @@ RSpec.describe 'Auth Controller', type: :request do
   #   end
   # end
 
-  describe '#extend_token' do
+  describe "#extend_token" do
     # context 'when valid JWT token is passed' do
     #   it 'returns a JWT token' do
     #     jwt_token = JwtTokenService.generate!({ id: @user.id })
@@ -231,48 +231,48 @@ RSpec.describe 'Auth Controller', type: :request do
     #   end
     # end
 
-    context 'when invalid JWT token is passed' do
-      it 'renders unauthorized state' do
+    context "when invalid JWT token is passed" do
+      it "renders unauthorized state" do
         post_request(
           api_v1_auth_extend_token_path,
-          { verification_code: 'random code' },
-          { "X-API-KEY": @api_key, 'Authorization': 'Bearer random token' }
+          {verification_code: "random code"},
+          {"X-API-KEY": @api_key, Authorization: "Bearer random token"}
         )
         expect(response.status).to eq(401)
       end
     end
   end
 
-  describe 'GET#user' do
-    context 'when valid JWT token is passed' do
-      it 'returns user details' do
-        jwt_token = JwtTokenService.generate!({ id: @user.id })
+  describe "GET#user" do
+    context "when valid JWT token is passed" do
+      it "returns user details" do
+        jwt_token = JwtTokenService.generate!({id: @user.id})
         get api_v1_auth_user_path,
-            headers: { "X-API-KEY": @api_key, 'Authorization': "Bearer #{jwt_token}" }
+          headers: {"X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}"}
 
         expect(response.status).to eq(200)
         expect(JSON.parse(response.body)).to eq(
           {
-            'first_name' => @user.first_name,
-            'last_name' => @user.last_name,
-            'email' => @user.email,
-            'avatar_url' => @user.avatar_url
+            "first_name" => @user.first_name,
+            "last_name" => @user.last_name,
+            "email" => @user.email,
+            "avatar_url" => @user.avatar_url
           }
         )
       end
     end
 
-    context 'when invalid JWT token is passed' do
-      it 'renders unauthorized state' do
+    context "when invalid JWT token is passed" do
+      it "renders unauthorized state" do
         get api_v1_auth_user_path,
-            headers: { "X-API-KEY": @api_key, 'Authorization': 'Bearer random_token' }
+          headers: {"X-API-KEY": @api_key, Authorization: "Bearer random_token"}
 
         expected_error("Looks like you don't have the permission to do this.", 401)
       end
     end
   end
 
-  describe 'PUT#user' do
+  describe "PUT#user" do
     # context 'when valid JWT token is passed with valid params' do
     #   it 'updates the user' do
     #     jwt_token = JwtTokenService.generate!({ id: @user.id })
@@ -286,21 +286,21 @@ RSpec.describe 'Auth Controller', type: :request do
     #   end
     # end
 
-    context 'when valid JWT token is passed with invalid params' do
-      it 'does not update the user' do
-        jwt_token = JwtTokenService.generate!({ id: @user.id })
+    context "when valid JWT token is passed with invalid params" do
+      it "does not update the user" do
+        jwt_token = JwtTokenService.generate!({id: @user.id})
         put api_v1_auth_user_path,
-            params: { password: '1234' },
-            headers: { "X-API-KEY": @api_key, 'Authorization': "Bearer #{jwt_token}" }
+          params: {password: "1234"},
+          headers: {"X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}"}
 
-        expected_error('Password is too short (minimum is 6 characters)', 422)
+        expected_error("Password is too short (minimum is 6 characters)", 422)
       end
     end
 
-    context 'when invalid JWT token is passed' do
-      it 'renders unauthorized state' do
+    context "when invalid JWT token is passed" do
+      it "renders unauthorized state" do
         put api_v1_auth_user_path,
-            headers: { "X-API-KEY": @api_key, 'Authorization': 'Bearer random_token' }
+          headers: {"X-API-KEY": @api_key, Authorization: "Bearer random_token"}
 
         expected_error("Looks like you don't have the permission to do this.", 401)
       end

@@ -23,19 +23,19 @@ Rails.application.routes.draw do
     namespace :v1 do
       # ---------- [ Auth Controller ] ---------- #
       namespace :auth do
-        post '/sign_in', to: 'auth#sign_in'
-        post '/forgot_password', to: 'auth#forgot_password'
-        post '/resend_invite', to: 'auth#forgot_password'
-        post '/confirm_email', to: 'auth#confirm_email'
-        post '/send_verification_code', to: 'auth#send_verification_code'
-        post '/code_sign_in', to: 'auth#sign_in_via_email_code'
-        post '/extend_token', to: 'auth#extend_token'
-        get '/user', to: 'auth#user'
-        put '/user', to: 'auth#update_user'
+        post "/sign_in", to: "auth#sign_in"
+        post "/forgot_password", to: "auth#forgot_password"
+        post "/resend_invite", to: "auth#forgot_password"
+        post "/confirm_email", to: "auth#confirm_email"
+        post "/send_verification_code", to: "auth#send_verification_code"
+        post "/code_sign_in", to: "auth#sign_in_via_email_code"
+        post "/extend_token", to: "auth#extend_token"
+        get "/user", to: "auth#user"
+        put "/user", to: "auth#update_user"
       end
     end
   end
 
   # ---------- [ Gems ] ---------- #
-  mount ForestLiana::Engine => '/forest'
+  mount ForestLiana::Engine => "/forest"
 end

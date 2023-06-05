@@ -2,7 +2,7 @@ class JwtTokenService
   SECRET_KEY = Rails.application.credentials.secret_key_base
 
   def self.generate!(payload, expiration: 1.month.from_now)
-    payload['exp'] = expiration.to_i
+    payload["exp"] = expiration.to_i
     JWT.encode(payload, SECRET_KEY)
   end
 
@@ -11,6 +11,6 @@ class JwtTokenService
   end
 
   def self.decode_without_validation!(token)
-    JWT.decode(token, SECRET_KEY, true, { verify_expiration: false })
+    JWT.decode(token, SECRET_KEY, true, {verify_expiration: false})
   end
 end
