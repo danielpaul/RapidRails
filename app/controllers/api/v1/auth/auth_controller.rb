@@ -27,21 +27,6 @@ class Api::V1::Auth::AuthController < Api::V1::BaseController
     render_ok!({message: t("devise.confirmations.send_paranoid_instructions")})
   end
 
-  def send_verification_code
-    # Send the verification code to the user via email
-    VerificationCodeService.new(user_id: current_user.id).send_verification_code! if current_user
-    render_ok!({message: t("verification_codes.create.notice_message")})
-  end
-
-  def sign_in_via_email_code
-    # Render JWT token if the verification code is valid
-    if current_user.verification_code_valid?
-      set_user_token!
-    else
-      render_unauthorized!
-    end
-  end
-
   def extend_token
     # Gets JWT token from header and return a new JWT token
     set_user_from_token!
