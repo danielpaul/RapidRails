@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :dashboard, only: :index
+
+  # ---------- [ Gems ] ---------- #
+  mount ForestLiana::Engine => '/forest'
 end
