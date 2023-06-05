@@ -16,7 +16,7 @@ RSpec.describe "Auth Controller", type: :request do
 
   before :each do
     @user = create(:user, confirmed_at: 1.day.ago)
-    @api_key_record = create(:api_key, name: 'Test key', api_key: 'test1234')
+    @api_key_record = create(:api_key, name: "Test key", api_key: "test1234")
     @api_key = @api_key_record.api_key
   end
 
@@ -74,23 +74,23 @@ RSpec.describe "Auth Controller", type: :request do
           end
         end
 
-        context 'when disabled API key is passed' do
-          it 'should not gain access' do
+        context "when disabled API key is passed" do
+          it "should not gain access" do
             @api_key_record.disabled!
             post_request(
               api_v1_auth_sign_in_path,
-              { email: @user.email, password: @user.password },
-              { "X-API-KEY": @api_key }
+              {email: @user.email, password: @user.password},
+              {"X-API-KEY": @api_key}
             )
           end
         end
 
-        context 'when invalid API key is passed' do
-          it 'should not gain access' do
+        context "when invalid API key is passed" do
+          it "should not gain access" do
             post_request(
               api_v1_auth_sign_in_path,
-              { email: @user.email, password: @user.password },
-              { "X-API-KEY": 'random key' }
+              {email: @user.email, password: @user.password},
+              {"X-API-KEY": "random key"}
             )
           end
         end
@@ -101,76 +101,76 @@ RSpec.describe "Auth Controller", type: :request do
     end
   end
 
-  describe '#forgot_password' do
-    context 'when existing user is passed' do
-      it 'sends the password reset email' do
+  describe "#forgot_password" do
+    context "when existing user is passed" do
+      it "sends the password reset email" do
         post_request(
           api_v1_auth_forgot_password_path,
-          { email: @user.email },
-          { "X-API-KEY": @api_key }
+          {email: @user.email},
+          {"X-API-KEY": @api_key}
         )
 
         expect(ActionMailer::Base.deliveries.count).to eq 1
-        expect(ActionMailer::Base.deliveries[0].subject).to eq I18n.t('devise.mailer.reset_password_instructions.subject')
+        expect(ActionMailer::Base.deliveries[0].subject).to eq I18n.t("devise.mailer.reset_password_instructions.subject")
       end
     end
 
-    context 'when invalid user is passed' do
-      it 'returns paranoid instructions' do
+    context "when invalid user is passed" do
+      it "returns paranoid instructions" do
         post_request(
           api_v1_auth_forgot_password_path,
-          { email: 'random email' },
-          { "X-API-KEY": @api_key }
+          {email: "random email"},
+          {"X-API-KEY": @api_key}
         )
         expect(ActionMailer::Base.deliveries.count).to eq 0
       end
     end
 
     after :each do
-      expected_message(I18n.t('devise.passwords.send_paranoid_instructions'))
+      expected_message(I18n.t("devise.passwords.send_paranoid_instructions"))
     end
   end
 
-  describe '#confirm_email' do
-    context 'when existing user is passed' do
-      it 'sends the confirmation email' do
+  describe "#confirm_email" do
+    context "when existing user is passed" do
+      it "sends the confirmation email" do
         post_request(
           api_v1_auth_confirm_email_path,
-          { email: @user.email },
-          { "X-API-KEY": @api_key }
+          {email: @user.email},
+          {"X-API-KEY": @api_key}
         )
         expect(ActionMailer::Base.deliveries.count).to eq 1
-        expect(ActionMailer::Base.deliveries[0].subject).to eq I18n.t('devise.mailer.confirmation_instructions.subject')
+        expect(ActionMailer::Base.deliveries[0].subject).to eq I18n.t("devise.mailer.confirmation_instructions.subject")
       end
     end
 
-    context 'when invalid user is passed' do
-      it 'returns paranoid instructions' do
+    context "when invalid user is passed" do
+      it "returns paranoid instructions" do
         post_request(
           api_v1_auth_confirm_email_path,
-          { email: 'random email' },
-          { "X-API-KEY": @api_key }
+          {email: "random email"},
+          {"X-API-KEY": @api_key}
         )
         expect(ActionMailer::Base.deliveries.count).to eq 0
       end
     end
 
     after :each do
-      expected_message(I18n.t('devise.confirmations.send_paranoid_instructions'))
+      expected_message(I18n.t("devise.confirmations.send_paranoid_instructions"))
     end
   end
 
   describe "#extend_token" do
-    context 'when valid JWT token is passed' do
-      it 'returns a JWT token' do
-        jwt_token = JwtTokenService.generate!({ id: @user.id })
+    context "when valid JWT token is passed" do
+      it "returns a JWT token" do
+        jwt_token = JwtTokenService.generate!({id: @user.id})
         post_request(
           api_v1_auth_extend_token_path,
           nil,
-          { "X-API-KEY": @api_key, 'Authorization': "Bearer #{jwt_token}" }
+          {"X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}"}
         )
         expect(response.status).to eq(200)
-        expect(JSON.parse(response.body)['token']).to_not be nil
+        expect(JSON.parse(response.body)["token"]).to_not be nil
       end
     end
 
@@ -216,15 +216,15 @@ RSpec.describe "Auth Controller", type: :request do
   end
 
   describe "PUT#user" do
-    context 'when valid JWT token is passed with valid params' do
-      it 'updates the user' do
-        jwt_token = JwtTokenService.generate!({ id: @user.id })
+    context "when valid JWT token is passed with valid params" do
+      it "updates the user" do
+        jwt_token = JwtTokenService.generate!({id: @user.id})
         put api_v1_auth_user_path,
-            params: { full_name: 'Sample full name' },
-            headers: { "X-API-KEY": @api_key, 'Authorization': "Bearer #{jwt_token}" }
+          params: {full_name: "Sample full name"},
+          headers: {"X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}"}
 
-        expected_message('Your account has been updated successfully.')
-        expect(@user.reload.full_name).to eq('Sample full name')
+        expected_message("Your account has been updated successfully.")
+        expect(@user.reload.full_name).to eq("Sample full name")
       end
     end
 
