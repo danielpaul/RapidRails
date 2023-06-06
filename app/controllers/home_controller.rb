@@ -2,6 +2,8 @@ class HomeController < ApplicationController
   layout "application_landing_page"
 
   def index
+    set_meta_tags title: "Home"
+
     flash_message(
       :success,
       "Welcome to Rails Starter!",
