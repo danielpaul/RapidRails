@@ -36,7 +36,3 @@
 !/app/assets/builds/.keep
 .DS_Store
 dump.rdb
-
-/config/credentials/production.key
-
-/config/credentials/environment.key
