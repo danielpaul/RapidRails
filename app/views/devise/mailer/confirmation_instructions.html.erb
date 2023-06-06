@@ -1,0 +1,12 @@
+
+<h1> Welcome! </h1>
+
+<p> You can confirm your account email through the link below: </p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+  <tr>
+    <td align="center">
+      <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: 'button' %>
+     
+    </td>
+  </tr>
+</table>
