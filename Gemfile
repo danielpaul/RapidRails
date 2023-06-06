@@ -63,6 +63,10 @@ gem 'pundit'
 gem 'hashid-rails'
 gem 'paper_trail'
 
+# Error Tracking & Performance
+gem 'sentry-ruby'
+gem 'sentry-rails'
+
 # TODO:
 # gem 'sidekiq'
 
