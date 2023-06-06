@@ -67,6 +67,8 @@ gem 'paper_trail'
 gem 'sentry-ruby'
 gem 'sentry-rails'
 
+gem "sentry-sidekiq"
+
 # TODO:
 # gem 'sidekiq'
 
