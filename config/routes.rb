@@ -18,10 +18,9 @@ Rails.application.routes.draw do
   resources :dashboard, only: :index
 
   # ---------- [ Gems ] ---------- #
-  mount ForestLiana::Engine => '/forest'
+  mount ForestLiana::Engine => "/forest"
 
   if Rails.env.development? || Rails.env.test?
-    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
-
 end
