@@ -17,7 +17,7 @@ class ApiKey < ApplicationRecord
   enum status: {active: 0, disabled: 1}
 
   validates_presence_of :name, :api_key
-  validates_length_of :api_key, is: 30
+  validates_length_of :api_key, is: 27
   validates_uniqueness_of :api_key
 
   before_validation :set_api_key!, on: :create
