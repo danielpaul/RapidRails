@@ -2,8 +2,6 @@ class HomeController < ApplicationController
   layout "application_landing_page"
 
   def index
-
-
     flash_message(
       :success,
       "Welcome to Rails Starter!",
