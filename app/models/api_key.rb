@@ -25,6 +25,6 @@ class ApiKey < ApplicationRecord
   private
 
   def set_api_key!
-    self.api_key = "uv_#{Rails.env.production? ? "live" : "test"}_#{SecureRandom.urlsafe_base64}"
+    self.api_key = "#{Rails.env.production? ? "live" : "test"}_#{SecureRandom.urlsafe_base64}"
   end
 end
