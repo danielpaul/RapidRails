@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   def set_sentry_user
     Sentry.set_user(id: current_user.id)
   end
-  
+
   def pundishing_user
     flash_message(:error, "Not Authorized", "You are not authorized to perform this action.")
     redirect_to root_path
