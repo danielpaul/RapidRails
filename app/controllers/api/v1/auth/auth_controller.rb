@@ -1,8 +1,7 @@
 class Api::V1::Auth::AuthController < Api::V1::BaseController
-  before_action :set_user!, except: %i[extend_token sign_in_via_email_code]
-  before_action :set_user_for_verification_code!, only: :sign_in_via_email_code
+  before_action :set_user!, except: :extend_token
   before_action :set_user_from_token!, only: %i[extend_token user update_user]
-  before_action :render_unauthorized_user!, only: %i[sign_in sign_in_via_email_code]
+  before_action :render_unauthorized_user!, only: :sign_in
   before_action :authorize_confirmed_user!, only: :sign_in
 
   def sign_in
