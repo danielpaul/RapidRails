@@ -32,21 +32,21 @@ class User < ApplicationRecord
   has_paper_trail
 
   has_one_attached :profile_picture
-  
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable, :trackable
+    :recoverable, :rememberable, :validatable,
+    :confirmable, :trackable
 
-  validates :full_name, presence: true, length: { maximum: 100 }
+  validates :full_name, presence: true, length: {maximum: 100}
 
   def first_name
     full_name_parts.first
   end
 
   def last_name
-    full_name_parts.length > 1 ? full_name_parts.last : nil
+    (full_name_parts.length > 1) ? full_name_parts.last : nil
   end
 
   def initials
@@ -54,7 +54,7 @@ class User < ApplicationRecord
   end
 
   def avatar_url
-    # Don't share real names. Just initials. 
+    # Don't share real names. Just initials.
     # Add hash to get unique color variant for each user. Otherwise all DP will be same.
     if profile_picture.attached?
       profile_picture
@@ -67,6 +67,6 @@ class User < ApplicationRecord
   private
 
   def full_name_parts
-    full_name.split(' ')
+    full_name.split(" ")
   end
 end
