@@ -58,6 +58,23 @@ class User < ApplicationRecord
     "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
   end
 
+  # Return or create user from google_oauth data and confirm userif required
+  def self.from_omniauth(data)
+    user = User.where(email: data['email']).first
+
+    if user
+      user.confirm
+    else
+      user = User.new(full_name: data['name'],
+          email: data['email'],
+          password: Devise.friendly_token[0,20]
+      )
+      user.skip_confirmation!
+      user.save!
+    end
+    user
+  end
+
   private
 
   def full_name_parts
