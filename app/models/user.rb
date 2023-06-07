@@ -13,7 +13,6 @@
 #  full_name              :string           not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
-#  profile_picture        :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -32,6 +31,8 @@ class User < ApplicationRecord
   include Hashid::Rails
   has_paper_trail
 
+  has_one_attached :profile_picture
+  
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -55,8 +56,12 @@ class User < ApplicationRecord
   def avatar_url
     # Don't share real names. Just initials. 
     # Add hash to get unique color variant for each user. Otherwise all DP will be same.
-    hash = Digest::MD5.hexdigest(email.downcase)
-    "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
+    if profile_picture.attached?
+      profile_picture
+    else
+      hash = Digest::MD5.hexdigest(email.downcase)
+      "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
+    end
   end
 
   private

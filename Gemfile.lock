@@ -75,6 +75,22 @@ GEM
     arel-helpers (2.14.0)
       activerecord (>= 3.1.0, < 8)
     attr_required (1.0.1)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.776.0)
+    aws-sdk-core (3.174.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.651.0)
+      aws-sigv4 (~> 1.5)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.66.0)
+      aws-sdk-core (~> 3, >= 3.174.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.123.1)
+      aws-sdk-core (~> 3, >= 3.174.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.5.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.18)
     better_errors (2.10.0)
       erubi (>= 1.0.0)
@@ -182,6 +198,9 @@ GEM
     httpclient (2.8.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (1.1.6)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
@@ -192,6 +211,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.6.2)
     json (2.6.3)
     json-jwt (1.15.3)
       activesupport (>= 4.2)
@@ -219,6 +239,7 @@ GEM
     meta-tags (2.18.0)
       actionpack (>= 3.2.0, < 7.1)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
     msgpack (1.7.0)
@@ -345,6 +366,8 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     ruby_parser (3.20.0)
       sexp_processor (~> 4.16)
     rubyzip (2.3.2)
@@ -428,6 +451,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  aws-sdk-s3
   better_errors
   binding_of_caller
   bootsnap
@@ -443,6 +467,7 @@ DEPENDENCIES
   hashid-rails
   heroicon
   html2haml
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   letter_opener

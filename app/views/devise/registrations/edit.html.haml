@@ -9,10 +9,13 @@
     .card.md:col-span-2
       = form_with(model: resource, as: resource_name, url: registration_path(resource_name), builder: TailwindFormBuilder, method: :put) do |f|
         .card-body
-          .space-y-6
+          .space-y-6 
+
+  
+            = image_tag @user.avatar_url, style: "width: 100px; height: 100px;", class:  "rounded-full"
 
             = f.file_field :profile_picture, accept: "image/*" # Add this line for the file input field
-            
+           
             = f.text_field :full_name, autocomplete: "name", placeholder: "John Doe", required: true
             
             = f.email_field :email, autocomplete: "email", placeholder: "you@example.com", required: true
