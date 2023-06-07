@@ -60,15 +60,14 @@ class User < ApplicationRecord
 
   # Return or create user from google_oauth data and confirm userif required
   def self.from_omniauth(data)
-    user = User.where(email: data['email']).first
+    user = User.where(email: data["email"]).first
 
     if user
       user.confirm
     else
-      user = User.new(full_name: data['name'],
-          email: data['email'],
-          password: Devise.friendly_token[0,20]
-      )
+      user = User.new(full_name: data["name"],
+        email: data["email"],
+        password: Devise.friendly_token[0, 20])
       user.skip_confirmation!
       user.save!
     end
