@@ -66,7 +66,6 @@ gem 'paper_trail'
 # Error Tracking & Performance
 gem 'sentry-ruby'
 gem 'sentry-rails'
-
 gem "sentry-sidekiq"
 
 # TODO:
