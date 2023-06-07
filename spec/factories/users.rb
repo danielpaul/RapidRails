@@ -13,6 +13,7 @@
 #  full_name              :string           not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
+#  profile_picture        :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
