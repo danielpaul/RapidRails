@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   # ---------- [ Devise ] ---------- #
   devise_for :users, controllers: {
     registrations: "registrations",
-    confirmations: "confirmations"
+    confirmations: "confirmations",
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   devise_scope :user do
