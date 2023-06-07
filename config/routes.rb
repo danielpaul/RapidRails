@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   get '/500', to: "errors#internal_server"
   
   # ---------- [ Gems ] ---------- #
-  mount ForestLiana::Engine => '/forest'
+  mount ForestLiana::Engine => "/forest"
 end
