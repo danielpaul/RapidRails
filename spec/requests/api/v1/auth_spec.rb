@@ -71,7 +71,7 @@ RSpec.describe "Auth Controller", type: :request do
             {"X-API-KEY": @api_key}
           )
 
-          expected_error(I18n.t('devise.failure.api_invalid_sign_in'), 401)
+          expected_error(I18n.t("devise.failure.api_invalid_sign_in"), 401)
         end
       end
 
