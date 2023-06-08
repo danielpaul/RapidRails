@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   # ---------- [ Main Routes ] ---------- #
   resources :dashboard, only: :index
-  
+
   # ---------- [ Custom Error Pages ] ---------- #
 
   get "/404", to: "errors#not_found"
