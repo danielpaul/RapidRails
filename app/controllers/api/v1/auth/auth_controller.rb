@@ -53,7 +53,7 @@ class Api::V1::Auth::AuthController < Api::V1::BaseController
   private
 
   def auth_params
-    params.permit(:email, :password, :verification_code)
+    params.permit(:email, :password)
   end
 
   def user_params
@@ -63,16 +63,6 @@ class Api::V1::Auth::AuthController < Api::V1::BaseController
   def set_user!
     # Find user from email
     @user = User.find_by_email(auth_params[:email]&.downcase)
-  end
-
-  def set_user_for_verification_code!
-    # Find user from email and verification code
-    @user = User.where.not(magic_link_token: nil)
-      .where(
-        email: auth_params[:email],
-        magic_link_token: auth_params[:verification_code]
-      )
-      .first
   end
 
   def set_user_from_token!
