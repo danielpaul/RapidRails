@@ -17,6 +17,11 @@ Rails.application.routes.draw do
 
   # ---------- [ Main Routes ] ---------- #
   resources :dashboard, only: :index
+  
+  # ---------- [ Custom Error Pages ] ---------- #
+
+  get "/404", to: "errors#not_found"
+  get "/500", to: "errors#internal_server"
 
   # ---------- [ API Routes ] ---------- #
   namespace :api do
