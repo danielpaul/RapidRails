@@ -63,6 +63,8 @@ gem 'pundit'
 gem 'hashid-rails'
 gem 'paper_trail'
 
+gem 'execjs'
+
 # TODO:
 # gem 'sidekiq'
 
