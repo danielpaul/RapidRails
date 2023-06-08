@@ -63,17 +63,19 @@ RSpec.describe "Auth Controller", type: :request do
         end
       end
 
-      describe "generic errors" do
-        context "when wrong email is passed" do
-          it "should not gain access" do
-            post_request(
-              api_v1_auth_sign_in_path,
-              {email: "random email"},
-              {"X-API-KEY": @api_key}
-            )
-          end
-        end
+      context "when wrong email is passed" do
+        it "should not gain access" do
+          post_request(
+            api_v1_auth_sign_in_path,
+            {email: "random email"},
+            {"X-API-KEY": @api_key}
+          )
 
+          expected_error(I18n.t('devise.failure.api_invalid_sign_in'), 401)
+        end
+      end
+
+      describe "generic errors" do
         context "when disabled API key is passed" do
           it "should not gain access" do
             @api_key_record.disabled!

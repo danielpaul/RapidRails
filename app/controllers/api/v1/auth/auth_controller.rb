@@ -1,17 +1,14 @@
 class Api::V1::Auth::AuthController < Api::V1::BaseController
   before_action :set_user!, except: :extend_token
   before_action :set_user_from_token!, only: %i[extend_token user update_user]
-  before_action :render_unauthorized_user!, only: :sign_in
   before_action :authorize_confirmed_user!, only: :sign_in
 
   def sign_in
-    if current_user.valid_password?(auth_params[:password])
+    if current_user&.valid_password?(auth_params[:password])
       # Render JWT token with expiry and user's email
       set_user_token!
     else
-      render_unauthorized!(
-        message: t("devise.passwords.invalid", authentication_keys: "email")
-      )
+      render_unauthorized!(message: I18n.t('devise.failure.api_invalid_sign_in'))
     end
   end
 
@@ -80,6 +77,8 @@ class Api::V1::Auth::AuthController < Api::V1::BaseController
   end
 
   def authorize_confirmed_user!
+    return unless current_user
+
     render_unprocessable_entity!(message: t("devise.failure.unconfirmed")) unless current_user.confirmed?
   end
 end
