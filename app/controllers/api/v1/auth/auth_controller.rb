@@ -10,8 +10,7 @@ class Api::V1::Auth::AuthController < Api::V1::BaseController
       set_user_token!
     else
       render_unauthorized!(
-        message: "Oops. That doesn't look like the correct password. " \
-        "Please try again or you can request to reset your password."
+        message: t("devise.passwords.invalid", authentication_keys: 'email')
       )
     end
   end
