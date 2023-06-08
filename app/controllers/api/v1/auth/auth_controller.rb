@@ -10,7 +10,7 @@ class Api::V1::Auth::AuthController < Api::V1::BaseController
       set_user_token!
     else
       render_unauthorized!(
-        message: t("devise.passwords.invalid", authentication_keys: 'email')
+        message: t("devise.passwords.invalid", authentication_keys: "email")
       )
     end
   end
