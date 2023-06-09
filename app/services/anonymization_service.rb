@@ -7,14 +7,16 @@ class AnonymizationService
 
     user.full_name = 'Deleted User'
     user.email = generate_anonymized_email(user.id)
+    user.save
+    user.confirm
     user.password = SecureRandom.hex(10)
-    user.ip_address = nil
+    user.current_sign_in_ip = nil
+    user.last_sign_in_ip = nil
     user.unconfirmed_email = nil
     user.reset_password_token = nil
     user.confirmation_token = nil
-
     user.anonymized_at = Time.current
-    user.save
+    user.save  
   end
 
   private
