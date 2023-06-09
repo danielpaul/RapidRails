@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   end
 
   resources :dashboard, only: :index
-  
+
   # all pages that don't match
 
-  get '/*id' => 'pages#show', as: :page, format: false
+  get "/*id" => "pages#show", :as => :page, :format => false
 
-  root to: 'pages#show', id: 'home'
+  root to: "pages#show", id: "home"
 
   # ---------- [ Custom Error Pages ] ---------- #
 

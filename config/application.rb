@@ -32,6 +32,6 @@ module RailsStarter
     # Custom error pages
     config.exceptions_app = routes
 
-    config.action_controller.page_cache_directory = Rails.root.join('public', 'cached_pages')
+    config.action_controller.page_cache_directory = Rails.root.join("public", "cached_pages")
   end
 end
