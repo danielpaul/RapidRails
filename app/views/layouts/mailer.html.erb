@@ -1,12 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="x-apple-disable-message-reformatting" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="color-scheme" content="light dark" />
     <meta name="supported-color-schemes" content="light dark" />
     <title></title>
+   
     <style type="text/css" rel="stylesheet" media="all">
     /* Base ------------------------------ */
     
@@ -446,8 +448,12 @@
           <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
             <tr>
               <td class="email-masthead">
-                <a href="https://example.com" class="f-fallback email-masthead_name">
-                [Product Name]
+                <a href= "root_url}"  class="f-fallback email-masthead_name">
+               
+                <a href="<%= root_url %>">
+                  <%= image_tag "logo.svg", alt: APP_NAME %>
+
+                </a>
               </a>
               </td>
             </tr>
@@ -461,6 +467,12 @@
                       <div class="f-fallback">
                         <p>
                           <%= yield %>
+
+
+                          <br>
+                          <p class="sub">
+                            P.S. If you need to contact us, you can reach us at  <%= CONTACT_EMAIL %>
+                          </p>
                         </p>
                         <!-- Sub copy -->
 
@@ -476,8 +488,10 @@
                   <tr>
                     <td class="content-cell" align="center">
                       <p class="f-fallback sub align-center">
-                        ISQUARE, LLC
-                        <br>London, UK
+                        <%= COMPANY_NAME %>
+                        <br>
+                        <%= COMPANY_LOCATION  %>
+
                       </p>
                     </td>
                   </tr>
