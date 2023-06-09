@@ -3,6 +3,8 @@
 class LandingPage::TopMenuComponent < Phlex::HTML
   include Phlex::Rails::Helpers::LinkTo
   include Phlex::Rails::Helpers::Routes
+  include ActionView::Helpers::OutputSafetyHelper
+  include Heroicon::Engine.helpers
 
   def main_menu_items
     [
@@ -21,9 +23,18 @@ class LandingPage::TopMenuComponent < Phlex::HTML
       "@scroll.window": "atTop = (window.pageYOffset < 50)"
     ) do
       nav aria_label: "Global", class: "lg:px-8 mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6" do
-        div class: "flex md:flex-1" do
+        div class: "flex md:flex-1 gap-3 items-center" do
           link_to root_path do
             render "layouts/components/logo"
+          end
+          div class: 'bg-white p-1 rounded-lg cursor-pointer ring-1 ring-inset ring-gray-200' do
+            unsafe_raw heroicon(
+              "sun",
+              variant: "solid",
+              options: {
+                class: "h-5 w-5 text-primary"
+              }
+            )
           end
         end
 
