@@ -34,17 +34,17 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable, :trackable
+    :recoverable, :rememberable, :validatable,
+    :confirmable, :trackable
 
-  validates :full_name, presence: true, length: { maximum: 100 }
+  validates :full_name, presence: true, length: {maximum: 100}
 
   def first_name
     full_name_parts.first
   end
 
   def last_name
-    full_name_parts.length > 1 ? full_name_parts.last : nil
+    (full_name_parts.length > 1) ? full_name_parts.last : nil
   end
 
   def initials
@@ -52,7 +52,7 @@ class User < ApplicationRecord
   end
 
   def avatar_url
-    # Don't share real names. Just initials. 
+    # Don't share real names. Just initials.
     # Add hash to get unique color variant for each user. Otherwise all DP will be same.
     hash = Digest::MD5.hexdigest(email.downcase)
     "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
@@ -61,6 +61,6 @@ class User < ApplicationRecord
   private
 
   def full_name_parts
-    full_name.split(' ')
+    full_name.split(" ")
   end
 end
