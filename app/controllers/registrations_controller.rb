@@ -4,6 +4,13 @@ class RegistrationsController < Devise::RegistrationsController
     redirect_to root_path if @email.nil?
   end
 
+  def destroy
+    resource.discard
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    set_flash_message! :notice, :destroyed
+    redirect_to after_sign_out_path_for(resource_name)
+  end
+  
   protected
 
   def update_resource(resource, params)

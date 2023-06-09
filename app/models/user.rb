@@ -8,6 +8,7 @@
 #  confirmed_at           :datetime
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :string
+#  discarded_at           :datetime
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  full_name              :string           not null
@@ -24,11 +25,13 @@
 # Indexes
 #
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
+#  index_users_on_discarded_at          (discarded_at)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
   include Hashid::Rails
+  include Discard::Model
   has_paper_trail
 
   # Include default devise modules. Others available are:
@@ -51,6 +54,10 @@ class User < ApplicationRecord
     full_name_parts.map(&:first).join
   end
 
+  def active_for_authentication?
+    super && !discarded?
+  end
+  
   def avatar_url
     # Don't share real names. Just initials. 
     # Add hash to get unique color variant for each user. Otherwise all DP will be same.
