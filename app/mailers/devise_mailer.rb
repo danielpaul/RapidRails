@@ -5,7 +5,7 @@ class DeviseMailer < Devise::Mailer
   end
 
   def reset_password_instructions(*)
-    super    
+    super
     @preheader = "Reset your Password"
   end
 
