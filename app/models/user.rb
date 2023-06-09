@@ -58,6 +58,10 @@ class User < ApplicationRecord
     "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
   end
 
+  def email_greeting
+    "Hi #{first_name.present? ? 'there' : first_name},"
+  end
+
   private
 
   def full_name_parts
