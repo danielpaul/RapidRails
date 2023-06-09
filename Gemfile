@@ -64,6 +64,7 @@ gem 'hashid-rails'
 gem 'paper_trail'
 
 gem 'execjs'
+gem 'json'
 
 # TODO:
 # gem 'sidekiq'

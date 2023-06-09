@@ -447,6 +447,7 @@ DEPENDENCIES
   html2haml
   importmap-rails
   jbuilder
+  json
   letter_opener
   meta-tags
   pagy
