@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 
   # ---------- [ Gems ] ---------- #
   mount ForestLiana::Engine => "/forest"
+  resources :blog, only: %i[index show], path: 'blog'
+  post '/contentful/webhook', to: 'contentful#webhook'
 end

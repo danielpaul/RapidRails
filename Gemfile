@@ -62,6 +62,10 @@ gem 'phlex-rails'
 gem 'devise'
 gem 'pundit'
 
+# CMS
+gem 'contentful'
+gem 'rich_text_renderer'
+
 # Backend Things
 gem 'hashid-rails'
 gem 'paper_trail'

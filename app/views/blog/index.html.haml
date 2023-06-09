@@ -1,0 +1,27 @@
+.container.pb-7
+  .row.justify-content-center
+    .col-lg-8
+      #blog-title.text-center.my-6
+
+      - @posts.each_with_index do |post, index|
+        .card
+          .card-body
+            %h2.display-5.mb-2= post.entry_title
+
+            Continue reading
+            %i.fe.fe-arrow-right.ms-1
+    
+      
+      - unless @posts.total == @posts.count
+        #pagination.row.mt-6
+          .col
+            - if @page > 1
+              = link_to blog_index_path(page: @page - 1) do
+                %i.fe.fe-arrow-left
+                Previous Page
+
+          .col.text-end
+            - if @posts.total > (@posts.limit * @page)
+              = link_to blog_index_path(page: @page + 1) do
+                Next Page
+                %i.fe.fe-arrow-right
