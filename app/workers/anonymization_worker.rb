@@ -7,4 +7,3 @@ class AnonymizationWorker
     AnonymizationService.anonymize_user(user_id)
   end
 end
-  
