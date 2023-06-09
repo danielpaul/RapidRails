@@ -36,7 +36,7 @@ class DarkModeButtonComponent < Phlex::HTML
               class: "h-5 w-5 text-primary dark:text-white"
             }
           )
-          div do "Light" end
+          div { "Light" }
         end
         link_to "javascript:void()", class: "flex gap-2 items-center block px-4 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", "data-action": "dark-mode#darkMode" do
           unsafe_raw heroicon(
@@ -46,7 +46,7 @@ class DarkModeButtonComponent < Phlex::HTML
               class: "h-5 w-5 text-primary dark:text-white"
             }
           )
-          div do "Dark" end
+          div { "Dark" }
         end
         link_to "javascript:void()", class: "flex gap-2 items-center block px-4 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", "data-action": "dark-mode#systemSetting" do
           unsafe_raw heroicon(
@@ -56,7 +56,7 @@ class DarkModeButtonComponent < Phlex::HTML
               class: "h-5 w-5 text-primary dark:text-white"
             }
           )
-          div do "System" end
+          div { "System" }
         end
       end
     end
