@@ -33,9 +33,17 @@
                 %path{"clip-rule" => "evenodd", :d => "M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z", "fill-rule" => "evenodd"}
           /
             Dropdown menu, show/hide based on menu state.
-          .absolute.right-0.z-10.w-32.origin-top-right.rounded-md.bg-card.dark:bg-card-dark.py-2.shadow-lg.ring-1.focus:outline-none.text-gray-900.dark:text-white{"aria-labelledby" => "user-menu-button", "aria-orientation" => "vertical", :class => "mt-2.5 ring-gray-900/5", :role => "menu", :tabindex => "-1", "x-show": "dropdownOpen", "@click.away": "dropdownOpen = false", "x-transition:enter": "ease-out duration-100", "x-transition:enter-start": "transform opacity-0 scale-95", "x-transition:enter-end": "transform opacity-100 scale-100", "x-transition:leave": "transition ease-in duration-75", "x-transition:leave-start": "transform opacity-100 scale-100", "x-transition:leave-end": "transform opacity-0 scale-95", style: "display: none"}
-            -# %a#user-menu-item-0.block.px-3.py-1.text-sm.leading-6.text-gray-900{:href => "#", :role => "menuitem", :tabindex => "-1"} Your profile
-            = link_to "Profile", edit_user_registration_path, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+          .absolute.right-0.z-10.origin-top-right.rounded-md.bg-card.dark:bg-card-dark.py-2.shadow-lg.ring-1.focus:outline-none.text-gray-900.dark:text-white{"aria-labelledby" => "user-menu-button", "aria-orientation" => "vertical", :class => "mt-2.5 ring-gray-900/5", :role => "menu", :tabindex => "-1", "x-show": "dropdownOpen", "@click.away": "dropdownOpen = false", "x-transition:enter": "ease-out duration-100", "x-transition:enter-start": "transform opacity-0 scale-95", "x-transition:enter-end": "transform opacity-100 scale-100", "x-transition:leave": "transition ease-in duration-75", "x-transition:leave-start": "transform opacity-100 scale-100", "x-transition:leave-end": "transform opacity-0 scale-95", style: "display: none"}
+            .py-2.px-3.mb-1.border-b.border-gray-200
+              .text-xs.text-gray-500 Signed in as
+              .text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{"aria-hidden" => "true"} #{current_user.email}
+            = link_to "Changelog", '#', class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+            = link_to "Support", '#', class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+            = link_to "License", '#', class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+            .border-b.border-gray-200.mt-1.mb-1
+            = link_to "Upgrade to Team License", '#', class: "block px-3 py-2 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+            .border-b.border-gray-200.mt-1.mb-1
+            = link_to "Account Settings", edit_user_registration_path, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
             = link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
 
 - if flash.any?
