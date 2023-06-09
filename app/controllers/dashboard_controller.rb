@@ -2,6 +2,7 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    set_meta_tags title: "Home"
     flash_message(
       :success,
       "Welcome to Rails Starter!",
