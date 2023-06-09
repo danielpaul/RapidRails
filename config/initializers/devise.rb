@@ -27,7 +27,7 @@ Devise.setup do |config|
   config.mailer_sender = DEFAULT_FROM_EMAIL
 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'DeviseMailer'
+  # config.mailer = 'Devise::Mailer'
   # config.mailer.layout = 'mailer'
   # Configure the parent class responsible to send e-mails.
   config.parent_mailer = "ApplicationMailer"
