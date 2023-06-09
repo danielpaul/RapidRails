@@ -22,4 +22,12 @@ export default class extends Controller {
     localStorage.theme = 'light'
     document.documentElement.classList.remove('dark')
   }
+
+  systemSetting () {
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }
 }
