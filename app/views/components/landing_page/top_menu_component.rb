@@ -27,12 +27,12 @@ class LandingPage::TopMenuComponent < Phlex::HTML
           link_to root_path do
             render "layouts/components/logo"
           end
-          div class: "relative bg-white p-1 rounded-lg cursor-pointer ring-1 ring-inset ring-gray-200", "@click": "darkModeMenu = !darkModeMenu", "x-data": "{ darkModeMenu: false }" do
+          div class: "relative bg-white dark:bg-slate-900/50 p-1 rounded-lg cursor-pointer ring-1 ring-inset ring-gray-300 dark:ring-slate-700", "@click": "darkModeMenu = !darkModeMenu", "x-data": "{ darkModeMenu: false }" do
             unsafe_raw heroicon(
               "sun",
               variant: "solid",
               options: {
-                class: "h-5 w-5 text-primary"
+                class: "h-5 w-5 text-primary dark:text-white"
               }
             )
 
