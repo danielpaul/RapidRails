@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  anonymized_at          :datetime
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string
 #  confirmed_at           :datetime
@@ -24,6 +25,7 @@
 #
 # Indexes
 #
+#  index_users_on_anonymized_at         (anonymized_at)
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_discarded_at          (discarded_at)
 #  index_users_on_email                 (email) UNIQUE
