@@ -36,7 +36,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { "password123" }
     full_name { Faker::Name.name }
-    current_sign_in_ip {  Faker::Internet.ip_v4_address}
-    last_sign_in_ip {  Faker::Internet.ip_v4_address}
+    current_sign_in_ip { Faker::Internet.ip_v4_address }
+    last_sign_in_ip { Faker::Internet.ip_v4_address }
   end
 end

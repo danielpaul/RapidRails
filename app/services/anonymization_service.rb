@@ -5,7 +5,7 @@ class AnonymizationService
 
     return if user.nil? || user.anonymized_at.present?
 
-    user.full_name = 'Deleted User'
+    user.full_name = "Deleted User"
     user.email = generate_anonymized_email(user.id)
     user.save
     user.confirm
@@ -16,7 +16,7 @@ class AnonymizationService
     user.reset_password_token = nil
     user.confirmation_token = nil
     user.anonymized_at = Time.current
-    user.save  
+    user.save
   end
 
   private
@@ -35,4 +35,3 @@ class AnonymizationService
     rand(1..9999)
   end
 end
-  
