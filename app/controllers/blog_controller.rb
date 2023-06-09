@@ -18,6 +18,6 @@ class BlogController < ApplicationController
   end
 
   def render_404
-    raise ActionController::RoutingError, 'Not Found'
+    raise ActionController::RoutingError, "Not Found"
   end
 end

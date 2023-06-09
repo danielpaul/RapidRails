@@ -36,7 +36,7 @@ module ApplicationHelper
     return nil if rich_text.nil?
 
     RichTextRenderer::Renderer.new(
-      'embedded-asset-block' => RichText::Image
+      "embedded-asset-block" => RichText::Image
     ).render(rich_text).html_safe
   end
 end
