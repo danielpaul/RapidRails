@@ -58,6 +58,9 @@ gem 'meta-tags'
 gem 'pagy'
 gem 'phlex-rails'
 
+# for static pages
+gem 'high_voltage', '~> 3.1'
+
 # Authentication & Authorization
 gem 'devise'
 gem 'pundit'
