@@ -28,9 +28,36 @@ class DarkModeButtonComponent < Phlex::HTML
         :"x-transition:leave-start" => "transform opacity-100 scale-100",
         :"x-transition:leave-end" => "transform opacity-0 scale-95"
       ) do
-        link_to "Light", "javascript:void()", class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", "data-action": "dark-mode#lightMode"
-        link_to "Dark", "javascript:void()", class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", "data-action": "dark-mode#darkMode"
-        link_to "System", "javascript:void()", class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", "data-action": "dark-mode#systemSetting"
+        link_to "javascript:void()", class: "flex gap-2 items-center block px-4 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", "data-action": "dark-mode#lightMode" do
+          unsafe_raw heroicon(
+            "sun",
+            variant: "solid",
+            options: {
+              class: "h-5 w-5 text-primary dark:text-white"
+            }
+          )
+          div do "Light" end
+        end
+        link_to "javascript:void()", class: "flex gap-2 items-center block px-4 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", "data-action": "dark-mode#darkMode" do
+          unsafe_raw heroicon(
+            "moon",
+            variant: "solid",
+            options: {
+              class: "h-5 w-5 text-primary dark:text-white"
+            }
+          )
+          div do "Dark" end
+        end
+        link_to "javascript:void()", class: "flex gap-2 items-center block px-4 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", "data-action": "dark-mode#systemSetting" do
+          unsafe_raw heroicon(
+            "computer-desktop",
+            variant: "solid",
+            options: {
+              class: "h-5 w-5 text-primary dark:text-white"
+            }
+          )
+          div do "System" end
+        end
       end
     end
   end
