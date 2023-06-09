@@ -58,8 +58,11 @@ gem 'meta-tags'
 gem 'pagy'
 gem 'phlex-rails'
 
-# for static pages
+# For Static Pages
 gem 'high_voltage', '~> 3.1'
+
+# Caching
+gem "actionpack-page_caching"
 
 # Authentication & Authorization
 gem 'devise'

@@ -17,6 +17,12 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: :index
   
+  # all pages that don't match
+
+  get '/*id' => 'pages#show', as: :page, format: false
+
+  root to: 'pages#show', id: 'home'
+
   # ---------- [ Custom Error Pages ] ---------- #
 
   get "/404", to: "errors#not_found"
