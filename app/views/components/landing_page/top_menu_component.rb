@@ -27,7 +27,7 @@ class LandingPage::TopMenuComponent < Phlex::HTML
           link_to root_path do
             render "layouts/components/logo"
           end
-          div class: 'bg-white p-1 rounded-lg cursor-pointer ring-1 ring-inset ring-gray-200' do
+          div class: "bg-white p-1 rounded-lg cursor-pointer ring-1 ring-inset ring-gray-200" do
             unsafe_raw heroicon(
               "sun",
               variant: "solid",
