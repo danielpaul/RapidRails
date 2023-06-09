@@ -3,8 +3,6 @@ Rails.application.routes.draw do
     root to: "dashboard#index", as: :user_root
   end
 
-  root to: "home#index"
-
   # ---------- [ Devise ] ---------- #
   devise_for :users, controllers: {
     registrations: "registrations",
