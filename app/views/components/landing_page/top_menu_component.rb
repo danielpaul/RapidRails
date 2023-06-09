@@ -27,7 +27,7 @@ class LandingPage::TopMenuComponent < Phlex::HTML
           link_to root_path do
             render "layouts/components/logo"
           end
-          div class: "bg-white p-1 rounded-lg cursor-pointer ring-1 ring-inset ring-gray-200" do
+          div class: "relative bg-white p-1 rounded-lg cursor-pointer ring-1 ring-inset ring-gray-200", "@click": "darkModeMenu = !darkModeMenu", "x-data": "{ darkModeMenu: false }" do
             unsafe_raw heroicon(
               "sun",
               variant: "solid",
@@ -35,6 +35,26 @@ class LandingPage::TopMenuComponent < Phlex::HTML
                 class: "h-5 w-5 text-primary"
               }
             )
+
+            div(
+              class: "absolute left-0 z-10 w-32 origin-top-right rounded-md bg-card dark:bg-card-dark py-2 shadow-lg ring-1 focus:outline-none text-gray-900 dark:text-white mt-2.5 ring-gray-900/5",
+              "aria-labelledby" => "user-menu-button",
+              "aria-orientation" => "vertical", 
+              :role => "menu", 
+              :tabindex => "-1", 
+              "x-show": "darkModeMenu", 
+              "@click.away": "darkModeMenu = false", 
+              "x-transition:enter": "ease-out duration-100", 
+              "x-transition:enter-start": "transform opacity-0 scale-95", 
+              "x-transition:enter-end": "transform opacity-100 scale-100", 
+              "x-transition:leave": "transition ease-in duration-75", 
+              "x-transition:leave-start": "transform opacity-100 scale-100", 
+              "x-transition:leave-end": "transform opacity-0 scale-95"
+            ) do
+              link_to "Light", "javascript:void()", class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", 'data-action': 'dark-mode#lightMode'
+              link_to "Dark", "javascript:void()", class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", 'data-action': 'dark-mode#darkMode'
+              link_to "System", "javascript:void()", class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark", 'data-action': 'dark-mode#systemSetting'
+            end
           end
         end
 
