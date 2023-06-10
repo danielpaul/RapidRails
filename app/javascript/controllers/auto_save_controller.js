@@ -4,7 +4,7 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static targets = ['form']
 
-  connect() {
+  connect () {
     // Create a unique key to store the form data into localStorage.
     // This could be anything as long as it's unique.
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
@@ -14,7 +14,7 @@ export default class extends Controller {
     this.setFormData()
   }
 
-  clearLocalStorage() {
+  clearLocalStorage () {
     // See if there is data stored for this particular form.
     if (localStorage.getItem(this.localStorageKey) != null) {
       // Clear data from localStorage when the form is submitted.
@@ -22,7 +22,7 @@ export default class extends Controller {
     }
   }
 
-  getFormData() {
+  getFormData () {
     // Construct a set of of key/value pairs representing form fields and their values.
     // https://developer.mozilla.org/en-US/docs/Web/API/FormData
     const form = new FormData(this.formTarget)
@@ -43,13 +43,13 @@ export default class extends Controller {
     return Object.fromEntries(data)
   }
 
-  saveToLocalStorage() {
+  saveToLocalStorage () {
     const data = this.getFormData()
     // Save the form data into localStorage. We need to convert the data Object into a String.
     localStorage.setItem(this.localStorageKey, JSON.stringify(data))
   }
 
-  setFormData() {
+  setFormData () {
     // See if there is data stored for this particular form.
     if (localStorage.getItem(this.localStorageKey) != null) {
       // We need to convert the String of data back into an Object.
