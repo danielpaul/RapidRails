@@ -1,4 +1,14 @@
-%h1 Welcome!
-%p You can confirm your account email through the link below:
+%p Hey #{@resource.first_name}! 
+
+%p Welcome to the #{APP_NAME} community.
+
+%p We’re thrilled to have you on board! We just need to verify your email address to complete your account setup.
 
 = render 'layouts/mailer/cta_button', text: 'Confirm my account', url: confirmation_url(@resource, confirmation_token: @token)
+
+%p If you need any help, just reply to this email, we'd love to help.
+
+%p 
+  Cheers,
+  %br
+  The #{APP_NAME} team

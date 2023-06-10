@@ -23,6 +23,10 @@
     
     a {
       color: #0077ed;
+
+      text-decoration: underline;
+      text-decoration-skip-ink: auto;
+      text-decoration-color: #0077ed;
     }
     
     a img {
@@ -482,8 +486,8 @@
   <![endif]-->
   </head>
   <body>
-    <% if @preheader.present? %>
-      <span class="preheader"><%= @preheader %></span>
+    <% if content_for?(:preheader) %>
+      <span class="preheader"><%= yield(:preheader) %></span>
     <% end %>
     <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
       <tr>
