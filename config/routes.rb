@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get "/500", to: "errors#internal_server"
 
   # ---------- [ API Routes ] ---------- #
-  draw :api if ENABLE_API == true
+  draw :api if ENABLE_API == true || Rails.env.test?
 
   # ---------- [ Gems ] ---------- #
   mount ForestLiana::Engine => "/forest"
