@@ -25,6 +25,10 @@
     @apply text-xl font-bold tracking-tight text-gray-900 dark:text-white;
   }
 
+  .text-huge {
+    @apply h1 text-3xl sm:text-5xl;
+  }
+
   .p {
     @apply text-base text-gray-700 dark:text-gray-300 leading-6;
   }
