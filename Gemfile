@@ -66,9 +66,6 @@ gem 'paper_trail'
 
 # Email Delivery
 gem 'postmark-rails'
-# read variables from tailwind.config.css for email styling
-gem 'execjs'
-gem 'json'
 
 # Background Jobs
 gem 'sidekiq'
