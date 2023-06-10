@@ -93,9 +93,7 @@ class LandingPage::FooterComponent < Phlex::HTML
                 type: "email",
                 name: "email-address",
                 id: "email-address",
-                autocomplete: "email",
                 required: true,
-                autofocus: false,
                 class:
                   "text-input",
                 placeholder: "Enter your email"
@@ -113,15 +111,15 @@ class LandingPage::FooterComponent < Phlex::HTML
 
         div(
           class:
-            "mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24"
+            "mt-12 border-t card-border pt-8 flex items-center justify-between lg:mt-16"
         ) do
           p(
             class:
-              "mt-8 text-xs leading-5 text-gray-500 dark:text-gray-400 md:order-1 md:mt-0"
+              "text-xs leading-5 text-gray-500 dark:text-gray-400 order-1 md:mt-0"
           ) do
             plain "© #{Date.today.year} #{COMPANY_NAME}. All rights reserved."
           end
-          div class: "md:order-2" do
+          div class: "order-2" do
             render DarkModeButtonComponent.new
           end
         end
