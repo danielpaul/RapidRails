@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   # ---------- [ Gems ] ---------- #
   mount ForestLiana::Engine => "/forest"
 
-  if Rails.env.development? || Rails.env.test?
+  if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 end
