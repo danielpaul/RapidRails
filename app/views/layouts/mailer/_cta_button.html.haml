@@ -1,0 +1,8 @@
+:ruby
+  text ||= 'Click here'
+  url ||= root_url
+
+%table{border: "0", cellpadding: "0", cellspacing: "0", role: "presentation", width: "100%"}
+  %tr
+    %td{align: "center"}
+      = link_to text, url, class: 'button'

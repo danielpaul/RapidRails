@@ -2,7 +2,7 @@
 
 APP_NAME = "Rapid Rails".freeze
 
-COMPANY_NAME = "Identity Square, Inc".freeze
+COMPANY_NAME = "Daniel Paul".freeze
 COMPANY_LOCATION = "London, UK".freeze
 
 DEFAULT_FROM_EMAIL_ONLY = "team@example.com".freeze

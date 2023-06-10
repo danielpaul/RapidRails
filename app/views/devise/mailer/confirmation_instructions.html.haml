@@ -1,0 +1,4 @@
+%h1 Welcome!
+%p You can confirm your account email through the link below:
+
+= render 'layouts/mailer/cta_button', text: 'Confirm my account', url: confirmation_url(@resource, confirmation_token: @token)
