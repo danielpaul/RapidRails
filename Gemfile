@@ -32,9 +32,7 @@ gem 'tailwindcss-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
-
-
+gem 'redis'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -70,8 +68,16 @@ gem 'paper_trail'
 gem 'blueprinter'
 gem 'jwt'
 
-# TODO:
-# gem 'sidekiq'
+# Email Delivery
+gem 'postmark-rails'
+
+# Background Jobs
+gem 'sidekiq'
+
+# Error Tracking & Performance
+gem 'sentry-ruby'
+gem 'sentry-rails'
+gem "sentry-sidekiq"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -108,6 +114,7 @@ group :development do
   # Front-end Things
   gem 'html2haml'
   gem 'letter_opener'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'rails_live_reload'
 
   gem 'better_errors'

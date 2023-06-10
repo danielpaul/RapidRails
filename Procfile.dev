@@ -1,2 +1,6 @@
 web: bin/rails server -p 3000
 css: bin/rails tailwindcss:watch
+
+# not running sidekiq server as will be processed in sync
+# it's better locally so we don't have to run a redis-server & run another process
+# check config/initializers/sidekiq.rb
