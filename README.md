@@ -4,11 +4,11 @@
 
 # Getting Started
 
-- [] Update `config/initializers/0_constants.rb` with all the variables
-- [] Rename database name in `config/database.yml`
-- [] run `rails db:create db:migrate db:seed`
-- [] Refresh `master.key` and `credentials.yml.enc` with `rails credentials:edit` - ensure to update the `secret_key_base` to encrypt with your own key. Copy over the `credentials.sample.yml` contents.
-- [] Copy `.env.sample` to `.env` and update the variables
+- [ ] Update `config/initializers/0_constants.rb` with all the variables
+- [ ] Rename database name in `config/database.yml`
+- [ ] run `rails db:create db:migrate db:seed`
+- [ ] Refresh `master.key` and `credentials.yml.enc` with `rails credentials:edit` - ensure to update the `secret_key_base` to encrypt with your own key. Copy over the `credentials.sample.yml` contents.
+- [ ] Copy `.env.sample` to `.env` and update the variables
 
 
 # Running the app for development
@@ -20,27 +20,32 @@
 
 
 # Gems Documentations
+HTML templating & components:
 - [HAML](https://haml.info/) - for HTML templating
 - [Phlex](https://www.phlex.fun) - for Ruby components architecture
 
+Backend:
 - [Pagy](https://ddnexus.github.io/pagy/) - for pagination
 - [Devise](https://github.com/heartcombo/devise) - for authentication
 - [Pundit](https://github.com/varvet/pundit) - for authorization
 - [PaperTrail](https://github.com/paper-trail-gem/paper_trail) - for versioning
 - [ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html) - for file uploads
 - [Blueprinter](https://github.com/procore/blueprinter) - for JSON API serialization
+- [Sidekiq](https://github.com/sidekiq/sidekiq) - for background jobs queue
 
+Frontend:
 - [Importmap Rails](https://github.com/rails/importmap-rails) - for JS modules
 - [Tailwind CSS](https://tailwindcss.com/docs) - for CSS framework
 - [Alpine JS](https://alpinejs.dev/) - for JS framework for inline JS animation & toggles, etc.
 - [Stimulus JS](https://stimulus.hotwire.dev/handbook/introduction) - for JS framework
 - [Hotwire](https://hotwire.dev/) - for Turbo and Stimulus JS
 
-- [Sidekiq](https://github.com/sidekiq/sidekiq) - for background jobs queue
+Testing:
 - [Rspec](https://rspec.info/) - for testing
 - [FactoryBot](https://github.com/thoughtbot/factory_bot) - for factories
 - [Faker](https://github.com/faker-ruby/faker) - for fake data
 - [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers) - for testing matchers quickly
+
 
 # External Services
 - [Sentry](https://sentry.io/welcome/) - for error tracking - Rails & JS frontend
