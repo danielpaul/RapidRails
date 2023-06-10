@@ -9,7 +9,7 @@ class LandingPage::FooterComponent < Phlex::HTML
   def main_menu_items
     [
       {
-        heading: 'Solutions',
+        heading: "Solutions",
         items: [
           {label: "Marketing", path: "#"},
           {label: "Analytics", path: "#"},
@@ -18,7 +18,7 @@ class LandingPage::FooterComponent < Phlex::HTML
         ]
       },
       {
-        heading: 'Support',
+        heading: "Support",
         items: [
           {label: "Pricing", path: "#"},
           {label: "Documentation", path: "#"},
@@ -27,7 +27,7 @@ class LandingPage::FooterComponent < Phlex::HTML
         ]
       },
       {
-        heading: 'Company',
+        heading: "Company",
         items: [
           {label: "About", path: "#"},
           {label: "Blog", path: "#"},
@@ -37,7 +37,7 @@ class LandingPage::FooterComponent < Phlex::HTML
         ]
       },
       {
-        heading: 'Legal',
+        heading: "Legal",
         items: [
           {label: "Claim", path: "#"},
           {label: "Privacy", path: "#"},
@@ -52,12 +52,11 @@ class LandingPage::FooterComponent < Phlex::HTML
       h2(id: "footer-heading", class: "sr-only") { "Footer" }
       div(class: "mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-32") do
         div(class: "xl:grid xl:grid-cols-3 xl:gap-8") do
-          
           div(class: "grid grid-cols-2 gap-8 xl:col-span-2") do
             main_menu_items.each_slice(2) do |slice|
               div(class: "md:grid md:grid-cols-2 md:gap-8") do
                 slice.each_with_index do |item, index|
-                  div(class: index != 0 ? 'mt-10 md:mt-0' : nil) do
+                  div(class: (index != 0) ? "mt-10 md:mt-0" : nil) do
                     h3(
                       class:
                         "text-sm font-semibold leading-6 text-gray-900 dark:text-white "
@@ -78,7 +77,7 @@ class LandingPage::FooterComponent < Phlex::HTML
               end
             end
           end
-            
+
           div(class: "mt-10 xl:mt-0") do
             h3(
               class:
@@ -110,12 +109,11 @@ class LandingPage::FooterComponent < Phlex::HTML
             end
           end
         end
-        
+
         div(
           class:
             "mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24"
         ) do
-
           p(
             class:
               "mt-8 text-xs leading-5 text-gray-500 dark:text-gray-400 md:order-1 md:mt-0"
@@ -124,6 +122,6 @@ class LandingPage::FooterComponent < Phlex::HTML
           end
         end
       end
-    end 
+    end
   end
 end
