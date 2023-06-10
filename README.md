@@ -55,9 +55,9 @@ Testing:
 
 # Deploying to Heroku
 The usual steps to deploy to Heroku plus the following:
-- [] Redis addon
-- [] Heroku Scheduler addon
-- [] Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
+- [ ] Redis addon
+- [ ] Heroku Scheduler addon
+- [ ] Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
 
 
 ## TODO
