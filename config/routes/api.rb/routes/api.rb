@@ -1,6 +1,5 @@
 namespace :api do
   namespace :v1 do
-    
     # ---------- [ Auth Controller ] ---------- #
     namespace :auth do
       post "/sign_in", to: "auth#sign_in"
@@ -11,6 +10,5 @@ namespace :api do
       get "/user", to: "auth#user"
       put "/user", to: "auth#update_user"
     end
-
   end
 end
