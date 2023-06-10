@@ -34,8 +34,6 @@ gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 
-
-
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -65,6 +63,9 @@ gem 'pundit'
 # Backend Things
 gem 'hashid-rails'
 gem 'paper_trail'
+
+# Email Delivery
+gem 'postmark-rails'
 
 # TODO:
 # gem 'sidekiq'
@@ -104,6 +105,7 @@ group :development do
   # Front-end Things
   gem 'html2haml'
   gem 'letter_opener'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'rails_live_reload'
 
   gem 'better_errors'
