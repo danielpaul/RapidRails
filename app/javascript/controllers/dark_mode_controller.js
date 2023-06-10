@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  connect() {
+  connect () {
     if (
       localStorage.theme === 'dark' ||
       (!('theme' in localStorage) &&
@@ -13,12 +13,12 @@ export default class extends Controller {
     }
   }
 
-  darkMode() {
+  darkMode () {
     localStorage.theme = 'dark'
     document.documentElement.classList.add('dark')
   }
 
-  lightMode() {
+  lightMode () {
     localStorage.theme = 'light'
     document.documentElement.classList.remove('dark')
   }

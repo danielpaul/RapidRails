@@ -7,13 +7,12 @@ class DarkModeButtonComponent < Phlex::HTML
     div(
       "@click": "darkModeMenu = !darkModeMenu",
       "x-data": "{ darkModeMenu: false }",
-      'data-controller': 'dark-mode'
-     ) do
-
+      "data-controller": "dark-mode"
+    ) do
       a(
         href: "#",
         class: "text-gray-400 hover:text-gray-500 dark:hidden",
-        data: {action: 'click->dark-mode#darkMode:prevent'}
+        data: {action: "click->dark-mode#darkMode:prevent"}
       ) do
         unsafe_raw heroicon(
           "sun",
@@ -26,7 +25,7 @@ class DarkModeButtonComponent < Phlex::HTML
       a(
         href: "#",
         class: "text-gray-400 hover:text-gray-500 hidden dark:block",
-        data: {action: 'click->dark-mode#lightMode:prevent'}
+        data: {action: "click->dark-mode#lightMode:prevent"}
       ) do
         unsafe_raw heroicon(
           "moon",
@@ -37,5 +36,4 @@ class DarkModeButtonComponent < Phlex::HTML
       end
     end
   end
-  
 end
