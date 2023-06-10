@@ -41,8 +41,8 @@ class LandingPage::FooterComponent < Phlex::HTML
         heading: "Legal",
         items: [
           {label: "Claim", path: "#"},
-          {label: "Privacy", path: "#"},
-          {label: "Terms", path: "#"}
+          {label: "Privacy", path: page_path('legal/privacy_policy')},
+          {label: "Terms", path: page_path('legal/terms_conditions')}
         ]
       }
     ]

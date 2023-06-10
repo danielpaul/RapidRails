@@ -67,6 +67,10 @@
     @apply hover:underline hover:text-primary-500;
   }
 
+  .porse-section {
+    @apply prose-sm prose prose-slate prose-a:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-500 hover:prose-a:underline hover:prose-a:underline-offset-2;
+  }
+
   /* Cards */
 
   .card-border {
