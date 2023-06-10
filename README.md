@@ -4,14 +4,61 @@
 
 # Getting Started
 
+- [] Update `config/initializers/0_constants.rb` with all the variables
 - [] Rename database name in `config/database.yml`
-- [] Rename application name in `config/application.rb`
-- [] Refresh `master.key` and `credentials.yml.enc` with `rails credentials:edit`
-- [] Update `config/initializers/constants.rb` with all the variables
+- [] run `rails db:create db:migrate db:seed`
+- [] Refresh `master.key` and `credentials.yml.enc` with `rails credentials:edit` - ensure to update the `secret_key_base` to encrypt with your own key. Copy over the `credentials.sample.yml` contents.
+- [] Copy `.env.sample` to `.env` and update the variables
+
+
+# Running the app for development
+- `bin/dev` to run the app locally
+- `localhost:3000` to view the app
+- `localhost:3000/rails/mailers` to view mailers preview locally
+- `localhost:3000/letter_opener` to view emails sent locally
+- `localhost:3000/sidekiq` to view sidekiq dashboard
+
+
+# Gems Documentations
+- [HAML](https://haml.info/) - for HTML templating
+- [Phlex](https://www.phlex.fun) - for Ruby components architecture
+
+- [Pagy](https://ddnexus.github.io/pagy/) - for pagination
+- [Devise](https://github.com/heartcombo/devise) - for authentication
+- [Pundit](https://github.com/varvet/pundit) - for authorization
+- [PaperTrail](https://github.com/paper-trail-gem/paper_trail) - for versioning
+- [ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html) - for file uploads
+- [Blueprinter](https://github.com/procore/blueprinter) - for JSON API serialization
+
+- [Importmap Rails](https://github.com/rails/importmap-rails) - for JS modules
+- [Tailwind CSS](https://tailwindcss.com/docs) - for CSS framework
+- [Alpine JS](https://alpinejs.dev/) - for JS framework for inline JS animation & toggles, etc.
+- [Stimulus JS](https://stimulus.hotwire.dev/handbook/introduction) - for JS framework
+- [Hotwire](https://hotwire.dev/) - for Turbo and Stimulus JS
+
+- [Sidekiq](https://github.com/sidekiq/sidekiq) - for background jobs queue
+- [Rspec](https://rspec.info/) - for testing
+- [FactoryBot](https://github.com/thoughtbot/factory_bot) - for factories
+- [Faker](https://github.com/faker-ruby/faker) - for fake data
+- [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers) - for testing matchers quickly
+
+# External Services
+- [Sentry](https://sentry.io/welcome/) - for error tracking - Rails & JS frontend
+- [Postmark](https://postmarkapp.com/) - for transactional emails
+- [Forest Admin](https://www.forestadmin.com/) - for admin panel
+
+
+# Deploying to Heroku
+The usual steps to deploy to Heroku plus the following:
+- [] Redis addon
+- [] Heroku Scheduler addon
+- [] Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
+
 
 ## TODO
 
-- confirm email page for forced email confirmation with [sniper link](https://www.indiehackers.com/post/how-to-get-more-user-signups-using-the-sniper-link-technique-47690dfbf1?utm_source=indie-hackers-emails&utm_campaign=ih-newsletter&utm_medium=email) to open email
+- rename codebase and move repo to new name
+
 - front-end UI
   - typography [x]
   - colors [x]
@@ -25,25 +72,13 @@
     - date picker
     - time picker
     - file upload
-  - cards
   - modals - side modal turboframe and normal modal for content
-  - alerts
-  - dark mode
-- dark mode selector
-  - settings in user account for dark mode preference
-- devise pages
-- sign in with google -> verify email because of this
-- user settings page UI
-- admin panel for internal use - ForestAdmin?
-- HTML email
-- error tracking - Sentry
-- email delivery - Postmark
+
 - analytics - GA and Mixpanel for product based events
 - SEO / meta tags for differnt cases including mobile ios tags
+- sitemap
 - privacy poicy and terms and condition from basecamp template - static page with markdown ?
 - GDPR marketing opt-in and opt-out - settings on user model
 - payment gateway and user accounts for sass - maybe as a seperate codebase that is built for sass
 - user impersonation - from forest admin / consider papertrail
-- staging env with mail catcher, etc.
-- active storage for file uploads (profile picture first)
-- sidekiq and background jobs
+
