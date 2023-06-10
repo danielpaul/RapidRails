@@ -21,7 +21,7 @@ class LandingPage::TopMenuComponent < Phlex::HTML
       "@scroll.window": "atTop = (window.pageYOffset < 50)"
     ) do
       nav aria_label: "Global", class: "lg:px-8 mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6" do
-        div class: "flex md:flex-1 gap-3 items-center" do
+        div class: "flex md:flex-1" do
           link_to root_path do
             render "layouts/components/logo"
           end
