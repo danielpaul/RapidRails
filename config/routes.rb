@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :dashboard, only: :index
-  
+
   # ---------- [ Custom Error Pages ] ---------- #
 
   get "/404", to: "errors#not_found"
@@ -24,4 +24,24 @@ Rails.application.routes.draw do
 
   # ---------- [ Gems ] ---------- #
   mount ForestLiana::Engine => "/forest"
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
+  if defined?(Sidekiq) && ENV["SIDEKIQ_ADMIN_PASSWORD"] && ENV["SIDEKIQ_ADMIN_USERNAME"]
+    require "sidekiq/web"
+
+    Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
+      # Protect against timing attacks:
+      # - See https://codahale.com/a-lesson-in-timing-attacks/
+      # - See https://thisdata.com/blog/timing-attacks-against-string-comparison/
+      # - Use & (do not use &&) so that it doesn't short circuit.
+      # - Use digests to stop length information leaking
+      ActiveSupport::SecurityUtils.secure_compare(user, ENV["SIDEKIQ_ADMIN_USERNAME"]) &
+        ActiveSupport::SecurityUtils.secure_compare(password, ENV["SIDEKIQ_ADMIN_PASSWORD"])
+    end
+
+    mount Sidekiq::Web => "/sidekiq"
+  end
 end

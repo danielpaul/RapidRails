@@ -1,7 +1,7 @@
 %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
 %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}
 
-= display_meta_tags site: APP_NAME
+= display_meta_tags site: APP_NAME, reverse: true
 
 = csrf_meta_tags
 = csp_meta_tag
@@ -10,3 +10,15 @@
 = stylesheet_link_tag "application", "data-turbo-track": "reload"
 
 = javascript_importmap_tags
+
+- if ENABLE_SENTRY
+  -# JS Error Tracking 
+  = javascript_include_tag "https://browser.sentry-cdn.com/7.8.0/bundle.tracing.min.js", crossorigin: "anonymous", integrity: "sha384-davt05dZyy9wSVcYU+nxmOaNugUmN7v0WYFUlbE6d6kVDbYxqWKzJXY7ZM04YbJf", async: true
+
+  :javascript
+    Sentry.init({
+      dsn: "#{SENTRY_DSN_JS}",
+      environment: "#{Rails.env}",
+      integrations: [new Sentry.BrowserTracing()],
+      tracesSampleRate: 0.25,
+    });
