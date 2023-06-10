@@ -67,7 +67,7 @@ gem 'paper_trail'
 # Email Delivery
 gem 'postmark-rails'
 
-# TODO:
+# TODO: to be setup
 # gem 'sidekiq'
 
 # Error Tracking & Performance
