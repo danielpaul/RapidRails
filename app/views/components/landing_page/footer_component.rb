@@ -51,7 +51,7 @@ class LandingPage::FooterComponent < Phlex::HTML
   def template
     footer(class: "bg-card dark:bg-card-dark border-t card-border", aria_labelledby: "footer-heading") do
       h2(id: "footer-heading", class: "sr-only") { "Footer" }
-      div(class: "mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-32") do
+      div(class: "mx-auto max-w-7xl px-6 pb-8 pt-12 sm:pt-16 lg:px-8 lg:pt-20") do
         div(class: "xl:grid xl:grid-cols-3 xl:gap-8") do
           div(class: "grid grid-cols-2 gap-8 xl:col-span-2") do
             main_menu_items.each_slice(2) do |slice|
