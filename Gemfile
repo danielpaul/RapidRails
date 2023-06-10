@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 
@@ -63,6 +64,9 @@ gem 'pundit'
 gem 'hashid-rails'
 gem 'paper_trail'
 
+# Email Delivery
+gem 'postmark-rails'
+
 gem 'execjs'
 gem 'json'
 
@@ -104,12 +108,14 @@ group :development do
   # Front-end Things
   gem 'html2haml'
   gem 'letter_opener'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'rails_live_reload'
 
   gem 'better_errors'
   gem 'binding_of_caller'
 
   gem 'annotate'
+
 end
 
 group :test do
