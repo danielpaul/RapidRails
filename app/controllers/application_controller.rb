@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_paper_trail_whodunnit
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_sentry_user, if: -> { user_signed_in? }
+  before_action :set_sentry_user, if: -> { ENABLE_SENTRY && user_signed_in? }
   rescue_from Pundit::NotAuthorizedError, with: :pundishing_user
 
   layout :layout_by_resource
