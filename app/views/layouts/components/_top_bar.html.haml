@@ -29,7 +29,7 @@
             %span.sr-only Open user menu
             = image_tag current_user.avatar_url, class: "h-8 w-8 rounded-full bg-gray-50", alt: ""
             %span.hidden.lg:flex.lg:items-center
-              %span.ml-4.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{"aria-hidden" => "true"} #{current_user.full_name}
+              %span.ml-4.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{"aria-hidden" => "true"} #{current_user.first_name.capitalize.truncate(20)}
               %svg.ml-2.h-5.w-5.text-gray-400{"aria-hidden" => "true", :fill => "currentColor", :viewbox => "0 0 20 20"}
                 %path{"clip-rule" => "evenodd", :d => "M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z", "fill-rule" => "evenodd"}
           /
