@@ -11,12 +11,14 @@
 
 = javascript_importmap_tags
 
-- if Rails.env.production?  || ENABLE_SENTRY == true
+- if ENABLE_SENTRY
   -# JS Error Tracking 
-  %script{crossorigin: "anonymous", integrity: "sha384-davt05dZyy9wSVcYU+nxmOaNugUmN7v0WYFUlbE6d6kVDbYxqWKzJXY7ZM04YbJf", src: "https://browser.sentry-cdn.com/7.8.0/bundle.tracing.min.js"}
+  = javascript_include_tag "https://browser.sentry-cdn.com/7.8.0/bundle.tracing.min.js", crossorigin: "anonymous", integrity: "sha384-davt05dZyy9wSVcYU+nxmOaNugUmN7v0WYFUlbE6d6kVDbYxqWKzJXY7ZM04YbJf", async: true
+
   :javascript
     Sentry.init({
       dsn: "#{SENTRY_DSN_JS}",
+      environment: "#{Rails.env}",
       integrations: [new Sentry.BrowserTracing()],
       tracesSampleRate: 0.25,
     });
