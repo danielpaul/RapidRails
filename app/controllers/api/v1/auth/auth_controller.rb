@@ -8,7 +8,7 @@ class Api::V1::Auth::AuthController < Api::V1::BaseController
       # Render JWT token with expiry and user's email
       set_user_token!
     else
-      render_unauthorized!(message: I18n.t("devise.failure.api_invalid_sign_in"))
+      render_unauthorized!(message: I18n.t("devise.failure.invalid", authentication_keys: "email"))
     end
   end
 

@@ -57,7 +57,7 @@ RSpec.describe "Auth Controller", type: :request do
           )
 
           expected_error(
-            "Oops. That doesn't look like the correct password. Please try again or you can request to reset your password.",
+            "Invalid email or password.",
             401
           )
         end
@@ -71,7 +71,7 @@ RSpec.describe "Auth Controller", type: :request do
             {"X-API-KEY": @api_key}
           )
 
-          expected_error(I18n.t("devise.failure.api_invalid_sign_in"), 401)
+          expected_error(I18n.t("devise.failure.invalid", authentication_keys: "email"), 401)
         end
       end
 
