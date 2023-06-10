@@ -121,6 +121,9 @@ class LandingPage::FooterComponent < Phlex::HTML
           ) do
             plain "© #{Date.today.year} #{COMPANY_NAME}. All rights reserved."
           end
+          div class: "md:order-2" do
+            render DarkModeButtonComponent.new
+          end
         end
       end
     end

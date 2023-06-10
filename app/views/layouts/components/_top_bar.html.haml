@@ -23,6 +23,7 @@
         .hidden.lg:block.lg:h-6.lg:w-px.lg:bg-gray-200.dark:lg:bg-gray-400{"aria-hidden" => "true"}
 
         = render DarkModeButtonComponent.new
+        
         / Profile dropdown
         .relative{"x-data": "{ dropdownOpen: false }"}
           %button#user-menu-button.flex.items-center{"aria-expanded" => "false", "aria-haspopup" => "true", :class => "-m-1.5 p-1.5", :type => "button", "@click": "dropdownOpen = !dropdownOpen"}

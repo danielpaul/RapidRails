@@ -25,7 +25,6 @@ class LandingPage::TopMenuComponent < Phlex::HTML
           link_to root_path do
             render "layouts/components/logo"
           end
-          render DarkModeButtonComponent.new
         end
 
         div class: "hidden lg:flex lg:gap-x-12" do
