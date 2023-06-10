@@ -38,6 +38,7 @@ class User < ApplicationRecord
     :confirmable, :trackable
 
   validates :full_name, presence: true, length: {maximum: 100}
+  validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
 
   def first_name
     full_name_parts.first
