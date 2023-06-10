@@ -23,10 +23,6 @@ Rails.application.routes.draw do
   get "/404", to: "errors#not_found"
   get "/500", to: "errors#internal_server"
 
-  # ---------- [ Pages ] ---------- #
-  # all pages that don't match
-  get "/*id" => "pages#show", :as => :page, :format => false
-
   # ---------- [ API Routes ] ---------- #
   draw :api if ENABLE_API == true || Rails.env.test?
 
@@ -52,4 +48,8 @@ Rails.application.routes.draw do
 
     mount Sidekiq::Web => "/sidekiq"
   end
+
+  # ---------- [ Pages ] ---------- #
+  # all pages that don't match
+  get "/*id" => "pages#show", :as => :page, :format => false
 end
