@@ -32,6 +32,9 @@ module RapidRails
     # Custom error pages
     config.exceptions_app = routes
 
+    # Landing pages cache
+    config.action_controller.page_cache_directory = Rails.root.join("public", "cached_pages")
+
     # Mailer
     config.action_mailer.default_url_options = {host: ENV.fetch("HOST")}
     config.action_mailer.asset_host = ENV["ASSET_HOST"] || ENV.fetch("HOST")

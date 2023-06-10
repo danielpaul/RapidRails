@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root to: "dashboard#index", as: :user_root
   end
 
-  root to: "home#index"
+  root to: "pages#show", id: "home"
 
   # ---------- [ Devise ] ---------- #
   devise_for :users, controllers: {
@@ -48,4 +48,8 @@ Rails.application.routes.draw do
 
     mount Sidekiq::Web => "/sidekiq"
   end
+
+  # ---------- [ Pages ] ---------- #
+  # all pages that don't match
+  get "/*id" => "pages#show", :as => :page, :format => false
 end

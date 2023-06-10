@@ -55,6 +55,10 @@ gem 'heroicon'
 gem 'meta-tags'
 gem 'pagy'
 gem 'phlex-rails'
+gem 'high_voltage'
+
+# Caching
+gem "actionpack-page_caching"
 
 # Authentication & Authorization
 gem 'devise'

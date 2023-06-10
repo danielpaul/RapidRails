@@ -31,6 +31,7 @@
 /config/master.key
 
 .env
+public/cached_pages/*
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
