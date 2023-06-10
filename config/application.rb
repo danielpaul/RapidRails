@@ -31,5 +31,9 @@ module RailsStarter
 
     # Custom error pages
     config.exceptions_app = routes
+
+    # Mailer
+    config.action_mailer.default_url_options = {host: ENV.fetch("HOST")}
+    config.action_mailer.asset_host = ENV["ASSET_HOST"] || ENV.fetch("HOST")
   end
 end
