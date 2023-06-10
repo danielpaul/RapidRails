@@ -484,7 +484,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 7.0.4, >= 7.0.4.3)
   rails_live_reload
-  redis (~> 4.0)
+  redis
   rspec-rails
   sassc-rails
   selenium-webdriver
@@ -492,6 +492,7 @@ DEPENDENCIES
   sentry-ruby
   sentry-sidekiq
   shoulda-matchers
+  sidekiq
   spring
   sprockets-rails
   stimulus-rails
