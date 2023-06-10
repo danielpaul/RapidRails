@@ -3,6 +3,6 @@
 # Also benefit from code reloading.
 
 if Rails.env.development? || Rails.env.test?
-  require 'sidekiq/testing'
+  require "sidekiq/testing"
   Sidekiq::Testing.inline!
 end
