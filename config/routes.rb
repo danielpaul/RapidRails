@@ -15,12 +15,16 @@ Rails.application.routes.draw do
     get :confirm_email, to: "registrations#confirm_email", as: "confirm_email", path: "users/confirm-email"
   end
 
+  # ---------- [ Main Routes ] ---------- #
   resources :dashboard, only: :index
 
   # ---------- [ Custom Error Pages ] ---------- #
 
   get "/404", to: "errors#not_found"
   get "/500", to: "errors#internal_server"
+
+  # ---------- [ API Routes ] ---------- #
+  draw :api if ENABLE_API == true || Rails.env.test?
 
   # ---------- [ Gems ] ---------- #
   mount ForestLiana::Engine => "/forest"

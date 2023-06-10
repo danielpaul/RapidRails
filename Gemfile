@@ -64,6 +64,10 @@ gem 'pundit'
 gem 'hashid-rails'
 gem 'paper_trail'
 
+# API
+gem 'blueprinter'
+gem 'jwt'
+
 # Email Delivery
 gem 'postmark-rails'
 

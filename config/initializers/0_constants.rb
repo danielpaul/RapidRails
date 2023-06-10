@@ -11,3 +11,5 @@ DEFAULT_FROM_EMAIL = "#{APP_NAME} <#{DEFAULT_FROM_EMAIL_ONLY}>".freeze
 ENABLE_SENTRY = Rails.env.production? || Rails.env.staging?
 SENTRY_DSN_RAILS = "XXX".freeze
 SENTRY_DSN_JS = "XXX".freeze
+
+ENABLE_API = false
