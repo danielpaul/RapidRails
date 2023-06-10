@@ -17,6 +17,15 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: :index
 
+  # ---------- [ Custom Error Pages ] ---------- #
+
+  get "/404", to: "errors#not_found"
+  get "/500", to: "errors#internal_server"
+
   # ---------- [ Gems ] ---------- #
-  mount ForestLiana::Engine => '/forest'
+  mount ForestLiana::Engine => "/forest"
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
