@@ -23,8 +23,7 @@
             
             = f.email_field :email, autocomplete: "email", placeholder: "you@example.com", required: true
             - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-              %div
-                Currently waiting confirmation for: #{resource.unconfirmed_email}
+              = render 'shared/flash', notice: "Currently waiting confirmation for: #{resource.unconfirmed_email}", close: false
         
         .card-footer.text-right
           = f.button "Save", class: "btn-primary"

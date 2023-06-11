@@ -7,6 +7,8 @@
   alert ||= flash[:alert]
   error ||= flash[:error]
 
+  close = true if close.nil?
+
 - if success
   .bg-green-50.p-4.rounded-md.mb-2{class: "dark:bg-black border card-border"}
     .flex
