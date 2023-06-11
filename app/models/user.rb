@@ -74,19 +74,36 @@ class User < ApplicationRecord
     "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
   end
 
-  # Return or create user from google_oauth data and confirm userif required
   def self.from_omniauth(data)
-    user = User.where(email: data["email"]).first
+    # Return or create user from google_oauth data and confirm userif required
+    # we use email as the unique identifier
 
-    if user
+    # find user record that matches the email case-insensitive
+    user = User.where("lower(email) = ?", data["email"].downcase).first
+
+    # if user is not found and the user has not confirmed their email address, confirm
+    # the user account and reset password - we don't want another user who might have created
+    # the account and left it to be able to get in with the password that they set
+    if user && !user.confirmed?
       user.confirm
-    else
-      user = User.new(full_name: data["name"],
+      user.reset_password
+    end
+
+    # if the user account is not found, create a new user account and confirm it
+    # save the user profile picture if it exists
+    if user.nil?
+      user = User.new(
+        full_name: data["name"],
         email: data["email"],
-        password: Devise.friendly_token[0, 20])
-      user.skip_confirmation!
+        profile_picture: URI.parse(data["image"]) if data["image"].present?,
+
+        password: Devise.friendly_token[0, 20],
+        confirmed_at: Time.now.utc
+      )
+
       user.save!
     end
+
     user
   end
 

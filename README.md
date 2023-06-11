@@ -80,10 +80,11 @@ Testing:
 
 # External Services
 
-- [Sentry](https://sentry.io/welcome/) - for error tracking - Rails & JS frontend
-- [Postmark](https://postmarkapp.com/) - for transactional emails
-- [Forest Admin](https://www.forestadmin.com/) - for admin panel
-- [AWS S3](https://aws.amazon.com/s3/) - for file uploads
+- [Google OAuth2](https://code.google.com/apis/console/) - connecting with Google. Update Authorized redirect URIs and update credentials in our app.
+- [Sentry](https://sentry.io/welcome/) - for error tracking. Setup two projects and update credentials - for Rails & JS frontend.
+- [Postmark](https://postmarkapp.com/) - for transactional emails. Verify domain for sending emails.
+- [Forest Admin](https://www.forestadmin.com/) - for admin panel.
+- [AWS S3](https://aws.amazon.com/s3/) - for file uploads. Setup a S3 bucket and update credentials.
 
 # Deploying to Heroku
 
