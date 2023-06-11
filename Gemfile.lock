@@ -46,6 +46,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (1.0.4)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activejob (7.0.5)
       activesupport (= 7.0.5)
       globalid (>= 0.3.6)
@@ -75,6 +80,22 @@ GEM
     arel-helpers (2.14.0)
       activerecord (>= 3.1.0, < 8)
     attr_required (1.0.1)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.776.0)
+    aws-sdk-core (3.174.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.651.0)
+      aws-sigv4 (~> 1.5)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.66.0)
+      aws-sdk-core (~> 3, >= 3.174.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.123.1)
+      aws-sdk-core (~> 3, >= 3.174.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.5.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.18)
     better_errors (2.10.0)
       erubi (>= 1.0.0)
@@ -84,6 +105,7 @@ GEM
     bindex (0.8.1)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
+    blueprinter (0.25.3)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -101,6 +123,7 @@ GEM
       xpath (~> 3.2)
     cgi (0.3.6)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
     debug (1.7.2)
@@ -176,6 +199,7 @@ GEM
     hashie (5.0.0)
     heroicon (1.0.0)
       rails (>= 5.2)
+    high_voltage (3.1.2)
     html2haml (2.3.0)
       erubis (~> 2.7.0)
       haml (>= 4.0)
@@ -187,6 +211,9 @@ GEM
     httpclient (2.8.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (1.1.6)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
@@ -197,6 +224,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.6.2)
     json (2.6.3)
     json-jwt (1.15.3)
       activesupport (>= 4.2)
@@ -229,6 +257,7 @@ GEM
     meta-tags (2.18.0)
       actionpack (>= 3.2.0, < 7.1)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
     msgpack (1.7.0)
@@ -244,6 +273,8 @@ GEM
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.2-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.2-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
@@ -356,7 +387,10 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redcarpet (3.6.0)
     redis (4.8.1)
+    redis-client (0.14.1)
+      connection_pool
     regexp_parser (2.8.0)
     reline (0.3.3)
       io-console (~> 0.5)
@@ -385,6 +419,8 @@ GEM
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
     ruby2_keywords (0.0.5)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     ruby_parser (3.20.0)
       sexp_processor (~> 4.16)
     rubyzip (2.3.2)
@@ -400,12 +436,25 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sentry-rails (5.9.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.9.0)
+    sentry-ruby (5.9.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+    sentry-sidekiq (5.9.0)
+      sentry-ruby (~> 5.9.0)
+      sidekiq (>= 3.0)
     sexp_processor (4.16.1)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
+    sidekiq (7.1.1)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.14.0)
     spring (4.1.1)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -421,6 +470,8 @@ GEM
       attr_required (>= 0.0.5)
       httpclient (>= 2.4)
     tailwindcss-rails (2.0.29-arm64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.29-x86_64-darwin)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.29-x86_64-linux)
       railties (>= 6.0.0)
@@ -468,12 +519,16 @@ GEM
 PLATFORMS
   arm64-darwin-20
   arm64-darwin-22
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
+  active_storage_validations
   annotate
+  aws-sdk-s3
   better_errors
   binding_of_caller
+  blueprinter
   bootsnap
   bullet
   capybara
@@ -486,9 +541,12 @@ DEPENDENCIES
   hamlit-rails
   hashid-rails
   heroicon
+  high_voltage
   html2haml
+  image_processing
   importmap-rails
   jbuilder
+  jwt
   letter_opener
   letter_opener_web (~> 2.0)
   meta-tags
@@ -504,11 +562,16 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 7.0.4, >= 7.0.4.3)
   rails_live_reload
-  redis (~> 4.0)
+  redcarpet
+  redis
   rspec-rails
   sassc-rails
   selenium-webdriver
+  sentry-rails
+  sentry-ruby
+  sentry-sidekiq
   shoulda-matchers
+  sidekiq
   spring
   sprockets-rails
   stimulus-rails

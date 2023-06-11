@@ -1,8 +1,28 @@
 %p
-  Hello #{@email}!
+  Hey #{@resource.first_name},
+
 - if @resource.try(:unconfirmed_email?)
   %p
-    We're contacting you to notify you that your email is being changed to #{@resource.unconfirmed_email}.
+    Just a quick heads up! We wanted to give you a heads up that your #{APP_NAME} account email is being changed to 
+    = succeed '.' do
+      %strong #{@resource.unconfirmed_email}
+
+  - content_for :preheader do
+    Your #{APP_NAME} account email is being changed.
+    
 - else
   %p
-    We're contacting you to notify you that your email has been changed to #{@resource.email}.
+    Just a quick heads up! We wanted to give you a heads up that your #{APP_NAME} account email has been changed to 
+    = succeed '.' do
+      %strong #{@resource.email}
+  
+  - content_for :preheader do
+    Your #{APP_NAME} account email has been changed.
+
+%p
+  If this change wasn't requested by you, please hit us up right away. We'll get things sorted out in a jiffy!
+
+%p
+  Thanks a bunch,
+  %br
+  The #{APP_NAME} Team

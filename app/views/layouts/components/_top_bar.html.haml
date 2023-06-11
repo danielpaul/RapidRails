@@ -21,6 +21,8 @@
             %path{:d => "M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
         / Separator
         .hidden.lg:block.lg:h-6.lg:w-px.lg:bg-gray-200.dark:lg:bg-gray-400{"aria-hidden" => "true"}
+
+        = render DarkModeButtonComponent.new
         
         / Profile dropdown
         .relative{"x-data": "{ dropdownOpen: false }"}
@@ -28,7 +30,7 @@
             %span.sr-only Open user menu
             = image_tag current_user.avatar_url, class: "h-8 w-8 rounded-full bg-gray-50", alt: ""
             %span.hidden.lg:flex.lg:items-center
-              %span.ml-4.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{"aria-hidden" => "true"} #{current_user.full_name}
+              %span.ml-4.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{"aria-hidden" => "true"} #{current_user.first_name.capitalize.truncate(20)}
               %svg.ml-2.h-5.w-5.text-gray-400{"aria-hidden" => "true", :fill => "currentColor", :viewbox => "0 0 20 20"}
                 %path{"clip-rule" => "evenodd", :d => "M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z", "fill-rule" => "evenodd"}
           /

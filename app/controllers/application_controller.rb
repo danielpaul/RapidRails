@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_paper_trail_whodunnit
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_sentry_user, if: -> { ENABLE_SENTRY && user_signed_in? }
   rescue_from Pundit::NotAuthorizedError, with: :pundishing_user
 
   layout :layout_by_resource
@@ -15,7 +16,7 @@ class ApplicationController < ActionController::Base
     signup_params = %i[full_name]
 
     # Add other fields that can be edited from the user's profile page here
-    edit_user_params = []
+    edit_user_params = [:profile_picture]
 
     devise_parameter_sanitizer.permit(:sign_up, keys: signup_params)
     devise_parameter_sanitizer.permit(:account_update, keys: signup_params + edit_user_params)
@@ -26,6 +27,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_sentry_user
+    Sentry.set_user(id: current_user.id)
+  end
 
   def pundishing_user
     flash_message(:error, "Not Authorized", "You are not authorized to perform this action.")

@@ -36,3 +36,4 @@
 !/app/assets/builds/.keep
 .DS_Store
 dump.rdb
+Brewfile.lock.json
