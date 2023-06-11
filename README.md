@@ -147,7 +147,7 @@ Run migrations:
 
 Other setup:
 
-- [ ] Contentful - setup webhook to production server for clearing cache. `https://<HOST>/contentful/webhook`
+- [ ] Contentful - setup webhook to production server for clearing cache. `https://<HOST>/contentful/webhook`. Setup HTTP auth - username is the space id and the password is set in our credentials file.
 - [ ] Setup Rake tasks below on the scheduler addon
 
 # Rake Tasks
@@ -175,11 +175,7 @@ Other setup:
     - file upload
   - modals - side modal turboframe and normal modal for content
 
-- analytics - GA and Mixpanel for product based events
 - SEO / meta tags for differnt cases including mobile ios tags
-- sitemap
-- privacy poicy and terms and condition from basecamp template - static page with markdown ?
-- GDPR marketing opt-in and opt-out - settings on user model
-- payment gateway and user accounts for sass - maybe as a seperate codebase that is built for sass
-- user impersonation - from forest admin / consider papertrail
 - update favicon and other apple icons
+- sitemap
+- user impersonation - from forest admin / consider papertrail
