@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     signup_params = %i[full_name]
 
     # Add other fields that can be edited from the user's profile page here
-    edit_user_params = []
+    edit_user_params = [:profile_picture]
 
     devise_parameter_sanitizer.permit(:sign_up, keys: signup_params)
     devise_parameter_sanitizer.permit(:account_update, keys: signup_params + edit_user_params)

@@ -85,7 +85,9 @@ gem 'sentry-rails'
 gem "sentry-sidekiq"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing"
+gem "aws-sdk-s3"
+gem "active_storage_validations"
 
 # Internal Admin Panel
 gem 'forest_liana'

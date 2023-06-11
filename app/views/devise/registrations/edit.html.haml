@@ -13,6 +13,12 @@
       = form_with(model: resource, as: resource_name, url: registration_path(resource_name), builder: TailwindFormBuilder, method: :put) do |f|
         .card-body
           .space-y-6
+            .grid.grid-cols-10.gap-6.items-center
+              .col-span-2
+                = image_tag @user.avatar_url, class:  "rounded-full h-16 w-16 col-span-2"
+              .col-span-8
+                = f.file_field :profile_picture, accept: "image/png, image/jpg, image/jpeg", hint: "png, jpg or jpeg image formats. Max file size 5MB.", label: {text: "Change Profile Picture"}
+           
             = f.text_field :full_name, autocomplete: "name", placeholder: "John Doe", required: true
             
             = f.email_field :email, autocomplete: "email", placeholder: "you@example.com", required: true
@@ -33,11 +39,12 @@
       = form_with(model: resource, as: resource_name, url: registration_path(resource_name), builder: TailwindFormBuilder, method: :put) do |f|
         .card-body
           .space-y-6
-            = f.password_field :password, placeholder: "Your new password", autocomplete: "new-password", required: true
-            - if @minimum_password_length
-              %em.text-sm
-                = @minimum_password_length
-                characters minimum
+
+            :ruby
+              password_hint = "Leave blank if you don't want to change it."
+              password_hint << " #{@minimum_password_length} characters minimum." if @minimum_password_length
+
+            = f.password_field :password, placeholder: "Your new password", autocomplete: "new-password", required: true, hint: password_hint
 
             = f.password_field :password_confirmation, placeholder: "Confirm new password", autocomplete: "new-password", required: true
             = f.password_field :current_password, placeholder: "Your current password", autocomplete: "current-password", required: true
