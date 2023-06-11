@@ -33,34 +33,16 @@ class ContentfulService
     cache_key
   end
 
-  def page_content(key, field)
-    Rails.cache.fetch(page_content_cache_key(key, field)) do
-      entry = client.entries(content_type: "pageString", "fields.key": key).first
-      return nil unless entry
-
-      entry.fields[field.to_sym]
-    end
-  end
-
-  def page_content_cache_clear(key)
-    cache_key = "#{page_content_cache_key(key)}*"
-    clear_cache_pattern(cache_key)
-    cache_key
-  end
 
   private
 
   def client
     @client ||= Contentful::Client.new(
-      space: Rails.application.credentials.dig(:staging, :contentful, :space_id),
-      access_token: Rails.application.credentials.dig(:staging, :contentful, :delivery_access_token),
+      space: Rails.credentials.dig(Rails.env.to_sym, :contentful, :space_id),
+      access_token: Rails.credentials.dig(Rails.env.to_sym, :contentful, :delivery_access_token),
       dynamic_entries: :auto,
       raise_errors: true
     )
-  end
-
-  def page_content_cache_key(key, field = nil)
-    "page/#{key}/#{field}"
   end
 
   def posts_index_cache_key_base

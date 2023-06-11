@@ -102,7 +102,7 @@ To get setup:
 1. Setup a new Contentful space.
 2. Install the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/).
 3. Import our sample model structure to the space. `contentful space import --space-id <space_id> --content-file lib/templates/contentful.json`
-4. Create a Contentful API Key & udpate our credentails file.
+4. Create a Contentful API Key & update our credentails file.
 5. Add some blog posts in Contentful & enjoy!
 
 
@@ -147,6 +147,7 @@ Run migrations:
 
 Other setup:
 
+- [ ] Contentful - setup webhook to production server for clearing cache. `https://<HOST>/contentful/webhook`
 - [ ] Setup Rake tasks below on the scheduler addon
 
 # Rake Tasks

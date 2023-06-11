@@ -1,5 +1,8 @@
 class ContentfulController < ApplicationController
-  http_basic_authenticate_with name: 'DanielPaul', password: 'IdentitySquare'
+  http_basic_authenticate_with 
+    name: Rails.credentials.dig(Rails.env.to_sym, :contentful, :space_id),
+    password: Rails.credentials.dig(Rails.env.to_sym, :contentful, :webhook_password)
+
   skip_before_action :verify_authenticity_token, only: :webhook
 
   def webhook
@@ -20,10 +23,7 @@ class ContentfulController < ApplicationController
         cleared_cache_keys << contentful.post_cache_clear(post_slug)
         new_cached_data << contentful.post(post_slug)&.id
       end
-
-    elsif data['sys']['contentType']['sys']['id'] == 'pageString' && data['fields'] && data['fields']['key']
-
-      cleared_cache_keys << contentful.page_content_cache_clear(data['fields']['key']['en-US'])
+      
     end
 
     render json: {
