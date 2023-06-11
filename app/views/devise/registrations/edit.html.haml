@@ -23,8 +23,16 @@
             
             = f.email_field :email, autocomplete: "email", placeholder: "you@example.com", required: true
             - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-              = render 'shared/flash', notice: "Currently waiting confirmation for: #{resource.unconfirmed_email}", close: false
-        
+              .bg-yellow-50.p-4.rounded-md.mb-2{class: "dark:bg-black border card-border"}
+                %p.text-sm.text-yellow-800{class: 'dark:text-white'}
+                  Email change pending. Check your inbox for an email to confirm your new email address: 
+
+                  = succeed '.' do
+                    %strong #{resource.unconfirmed_email}
+
+                  = succeed '.' do
+                    = link_to "Cancel email change", cancel_email_change_path, data: {'turbo-method': :post}, class: "link"
+      
         .card-footer.text-right
           = f.button "Save", class: "btn-primary"
 
