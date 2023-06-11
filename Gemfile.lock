@@ -123,10 +123,10 @@ GEM
       xpath (~> 3.2)
     cgi (0.3.6)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     contentful (2.17.0)
       http (> 0.8, < 6.0)
       multi_json (~> 1)
-    connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
     debug (1.7.2)
@@ -141,10 +141,10 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
     discard (1.2.1)
       activerecord (>= 4.2, < 8)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -590,10 +590,9 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 7.0.4, >= 7.0.4.3)
   rails_live_reload
-  redis (~> 4.0)
-  rich_text_renderer
   redcarpet
   redis
+  rich_text_renderer
   rspec-rails
   sassc-rails
   selenium-webdriver

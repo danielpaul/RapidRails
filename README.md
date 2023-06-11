@@ -85,6 +85,7 @@ Testing:
 - [Postmark](https://postmarkapp.com/) - for transactional emails. Verify domain for sending emails.
 - [Forest Admin](https://www.forestadmin.com/) - for admin panel.
 - [AWS S3](https://aws.amazon.com/s3/) - for file uploads. Setup a S3 bucket and update credentials.
+- [Contentful](https://www.contentful.com/) - for CMS. Update credentials. And import the BlogPost content model. Instructions below on conteful. 
 
 # Things to Update
 
@@ -92,6 +93,18 @@ Checklist for things to update before you launch your app:
 
 - [ ] Update Privacy Policy and Terms and Conditions
 - [ ] Update `AnonymizationService` to anonymize user data and relating records where personal information is stored when user requests to delete their account. This is important to comply with GDPR & other regulations. User data is scrambled but the record is kept for audit trail. Alternatively just delete the record if you want to completely get rid of the data immediately. Update the destroy method on RegistrationsController.
+
+
+# Contenful
+We use Contentful (free plan) to manage blog posts. You can use Contentful for other content types as well and the structure is setup with webhooks and caching. Everything ready to go. 
+
+To get setup:
+1. Setup a new Contentful space.
+2. Install the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/).
+3. Import our sample model structure to the space. `contentful space import --space-id <space_id> --content-file lib/templates/contentful.json`
+4. Create a Contentful API Key & udpate our credentails file.
+5. Add some blog posts in Contentful & enjoy!
+
 
 # Deploying to Heroku
 
