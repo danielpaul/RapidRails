@@ -4,15 +4,16 @@
 
 # System Requirements
 
-* Ruby 3.2.2
-* Node.js v18
-* Bundler - `gem install bundler`
+- Ruby 3.2.2
+- Node.js v18
+- Bundler - `gem install bundler`
 
 Homebrew dependencies:
-* Redis - For ActionCable, Sidekiq, caching, etc.
-* PostgreSQL - For database
-* Overmind - For running Procfile processes
-* Libvips or ImageMagick - For ActiveStorage image processing
+
+- Redis - For ActionCable, Sidekiq, caching, etc.
+- PostgreSQL - For database
+- Overmind - For running Procfile processes
+- Libvips or ImageMagick - For ActiveStorage image processing
 
 All Homebrew dependencies are listed in `Brewfile`, so you can install them all at once like this:
 
