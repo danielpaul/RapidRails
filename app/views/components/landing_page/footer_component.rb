@@ -31,7 +31,7 @@ class LandingPage::FooterComponent < Phlex::HTML
         heading: "Company",
         items: [
           {label: "About", path: "#"},
-          {label: "Blog", path: "#"},
+          {label: "Blog", path: blog_index_path},
           {label: "Jobs", path: "#"},
           {label: "Press", path: "#"},
           {label: "Partners", path: "#"}
