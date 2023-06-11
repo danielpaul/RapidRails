@@ -103,6 +103,11 @@ class User < ApplicationRecord
       user.save!
     end
 
+    # if the user profile picture exists, user has not uploaded another profile_picture, save it
+    if user && !user.profile_picture.attached? && data["image"].present?
+      user.profile_picture.attach(io: URI.open(data["image"]), filename: "google_profile_picture.png")
+    end
+
     user
   end
 
