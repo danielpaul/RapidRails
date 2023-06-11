@@ -2,11 +2,38 @@
 [![CodeQL](https://github.com/danielpaul/rails-starter/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/danielpaul/rails-starter/actions/workflows/github-code-scanning/codeql)
 [![DeepSource](https://app.deepsource.com/gh/danielpaul/rails-starter.svg/?label=active+issues&show_trend=true&token=EPgQdBy2pEYTcBb-PA1yZnFc)](https://app.deepsource.com/gh/danielpaul/rails-starter/?ref=repository-badge)
 
-# Getting Started
+# System Requirements
+
+* Ruby 3.2.2
+* Node.js v18
+* Bundler - `gem install bundler`
+
+Homebrew dependencies:
+* Redis - For ActionCable, Sidekiq, caching, etc.
+* PostgreSQL - For database
+* Overmind - For running Procfile processes
+* Libvips or ImageMagick - For ActiveStorage image processing
+
+All Homebrew dependencies are listed in `Brewfile`, so you can install them all at once like this:
+
+```bash
+brew bundle install --no-upgrade
+```
+
+Then you can start the database servers:
+
+```bash
+brew services start postgresql
+brew services start redis
+```
+
+# Rails Getting Started
 
 - [ ] Update `config/initializers/0_constants.rb` with all the variables
 - [ ] Rename database name in `config/database.yml`
-- [ ] run `rails db:create db:migrate db:seed`
+
+- [ ] run `bin/setup` to setup
+
 - [ ] Refresh `master.key` and `credentials.yml.enc` with `rails credentials:edit` - ensure to update the `secret_key_base` to encrypt with your own key. Copy over the `credentials.sample.yml` contents.
 - [ ] Copy `.env.sample` to `.env` and update the variables
 
