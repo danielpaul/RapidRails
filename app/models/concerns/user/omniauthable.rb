@@ -11,9 +11,9 @@ module User::Omniauthable
 
       user_verified_email = (data['email_verified'] == true)
 
-      # if user is not found and the user has not confirmed their email address, confirm
-      # the user account and reset password - we don't want another user who might have created
-      # the account and left it to be able to get in with the password that they set
+      # ifthe user has not confirmed their email address, confirm if verified
+      # and reset password - we don't want another user who might have created
+      # the account and left it unconfirmed to be able to get in with the password that they set
       if user && !user.confirmed? && user_verified_email
         user.confirm
 
@@ -23,8 +23,7 @@ module User::Omniauthable
         user.save!
       end
 
-      # if the user account is not found, create a new user account and confirm it
-      # confirmed because the user's email is Google account
+      # if the user account is not found, create a new user account and confirm it if verified
       if user.nil?
         user = User.new(
           full_name: data["name"],
