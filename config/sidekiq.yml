@@ -12,4 +12,4 @@
   - [critical, 100]
   - [default, 50]
   - [mailers, 25]
-  - [low, 1]
+  - [low_priority, 1]

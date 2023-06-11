@@ -41,6 +41,12 @@ class User < ApplicationRecord
 
   validates :full_name, presence: true, length: {maximum: 100}
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
+  validates :profile_picture, attached: true, 
+    content_type: {
+      in: ['image/png', 'image/jpg', 'image/jpeg'],
+      message: 'must be a png, jpg, or jpeg image file'
+    }, 
+    size: {less_than: 10.megabytes}
 
   def first_name
     full_name_parts.first
@@ -55,9 +61,9 @@ class User < ApplicationRecord
   end
 
   def avatar_url
-    if profile_picture.attached?
+    if profile_picture.attached? && profile_picture.variable?
       # Use ActiveStorage's variant to resize image to 100x100
-      return profile_picture.variant(resize: "100x100").processed
+      return profile_picture.variant(resize_to_fill: [500, 500, gravity: 'north']).processed
     end
 
 

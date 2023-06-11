@@ -38,5 +38,8 @@ module RapidRails
     # Mailer
     config.action_mailer.default_url_options = {host: ENV.fetch("HOST")}
     config.action_mailer.asset_host = ENV["ASSET_HOST"] || ENV.fetch("HOST")
+
+    # Active Storage
+    config.active_storage.queue = :low_priority
   end
 end

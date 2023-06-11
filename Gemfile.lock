@@ -48,6 +48,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (1.0.4)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activejob (7.0.5)
       activesupport (= 7.0.5)
       globalid (>= 0.3.6)
@@ -487,6 +492,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack-page_caching
+  active_storage_validations
   annotate
   aws-sdk-s3
   better_errors
@@ -506,7 +512,7 @@ DEPENDENCIES
   heroicon
   high_voltage
   html2haml
-  image_processing (~> 1.2)
+  image_processing
   importmap-rails
   jbuilder
   jwt

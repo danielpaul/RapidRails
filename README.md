@@ -51,6 +51,7 @@ Testing:
 - [Sentry](https://sentry.io/welcome/) - for error tracking - Rails & JS frontend
 - [Postmark](https://postmarkapp.com/) - for transactional emails
 - [Forest Admin](https://www.forestadmin.com/) - for admin panel
+- [AWS S3](https://aws.amazon.com/s3/) - for file uploads
 
 
 # Deploying to Heroku
@@ -58,6 +59,9 @@ The usual steps to deploy to Heroku plus the following:
 - [ ] Redis addon
 - [ ] Heroku Scheduler addon
 - [ ] Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
+
+# Rake Tasks
+- [ ] `rake active_storage:purge_unattached_blobs` to purge unattached file that are older than 2 days in active storage. - Run once a day. 
 
 
 ## TODO
