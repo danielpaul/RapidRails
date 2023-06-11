@@ -37,8 +37,8 @@ class ContentfulService
 
   def client
     @client ||= Contentful::Client.new(
-      space: Rails.credentials.dig(Rails.env.to_sym, :contentful, :space_id),
-      access_token: Rails.credentials.dig(Rails.env.to_sym, :contentful, :delivery_access_token),
+      space: Rails.application.credentials.dig(Rails.env.to_sym, :contentful, :space_id),
+      access_token: Rails.application.credentials.dig(Rails.env.to_sym, :contentful, :delivery_access_token),
       dynamic_entries: :auto,
       raise_errors: true
     )

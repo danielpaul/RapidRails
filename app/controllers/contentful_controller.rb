@@ -1,7 +1,8 @@
 class ContentfulController < ApplicationController
-  http_basic_authenticate_with 
-    name: Rails.credentials.dig(Rails.env.to_sym, :contentful, :space_id),
-    password: Rails.credentials.dig(Rails.env.to_sym, :contentful, :webhook_password)
+  http_basic_authenticate_with(
+    name: Rails.application.credentials.dig(Rails.env.to_sym, :contentful, :space_id),
+    password: Rails.application.credentials.dig(Rails.env.to_sym, :contentful, :webhook_password)
+  )
 
   skip_before_action :verify_authenticity_token, only: :webhook
 
