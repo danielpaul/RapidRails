@@ -86,6 +86,13 @@ Testing:
 - [Forest Admin](https://www.forestadmin.com/) - for admin panel.
 - [AWS S3](https://aws.amazon.com/s3/) - for file uploads. Setup a S3 bucket and update credentials.
 
+# Things to Update
+
+Checklist for things to update before you launch your app:
+
+- [ ] Update Privacy Policy and Terms and Conditions
+- [ ] Update `AnonymizationService` to anonymize user data and relating records where personal information is stored when user requests to delete their account. This is important to comply with GDPR & other regulations. User data is scrambled but the record is kept for audit trail. Alternatively just delete the record if you want to completely get rid of the data immediately. Update the destroy method on RegistrationsController.
+
 # Deploying to Heroku
 
 ### Automatic Deploy
@@ -132,6 +139,7 @@ Other setup:
 # Rake Tasks
 
 - [ ] `rake active_storage:purge_unattached_blobs` to purge unattached file that are older than 2 days in active storage. - Run once a day.
+- [ ] `rake anonymize:users` to anonymize users data. - Run once a day. Important to delete user's data in our database. Give's time for them to change their mind before we delete their data.
 
 ## TODO
 

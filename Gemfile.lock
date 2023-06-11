@@ -138,6 +138,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
+    discard (1.2.1)
+      activerecord (>= 4.2, < 8)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -534,6 +536,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  discard
   dotenv-rails
   factory_bot_rails
   faker

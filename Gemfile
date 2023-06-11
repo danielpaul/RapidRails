@@ -67,6 +67,7 @@ gem 'pundit'
 # Backend Things
 gem 'hashid-rails'
 gem 'paper_trail'
+gem 'discard'
 
 # API
 gem 'blueprinter'

@@ -16,6 +16,13 @@ class RegistrationsController < Devise::RegistrationsController
     redirect_to after_update_path_for(resource)
   end
 
+  def destroy
+    resource.discard
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    set_flash_message! :notice, :destroyed
+    respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name), status: Devise.responder.redirect_status }
+  end
+
   protected
 
   def update_resource(resource, params)
