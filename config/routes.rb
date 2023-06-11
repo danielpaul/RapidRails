@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   get "pages/*id" => "pages#show", :as => :page, :format => false
 
   # ---------- [ Blog ] ---------- #
-  resources :blog, only: %i[index show], path: "blog"
-  post "/contentful/webhook", to: "contentful#webhook"
+  if ENABLE_BLOG == true
+    resources :blog, only: %i[index show], path: "blog"
+    post "/contentful/webhook", to: "contentful#webhook"
+  end
 
   # ---------- [ Devise ] ---------- #
   devise_for :users, controllers: {
