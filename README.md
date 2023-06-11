@@ -88,38 +88,44 @@ Testing:
 # Deploying to Heroku
 
 ### Automatic Deploy
+
 Deploy with an app.json file that helps Heroku pre-configure the application.
-  
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/danielpaul/RapidRails)
 
-
 ### Manual Deploy
+
 Install [Heroku CLI](https://toolbelt.heroku.com/) and login to Heroku account (`heroku login`).
 
 The usual steps (create a Heorku app, deploy the code) plus the following:
 
 Install addons:
+
 - [ ] Heroku Postgres addon
 - [ ] Redis addon
 - [ ] Heroku Scheduler addon
 
 Set config vars:
+
 - [ ] Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
 - [ ] Set `RAILS_ENV` config var to `production`
 - [ ] Set `JEMALLOC_ENABLED` config var to `true`
 
 Setup Buildpacks:
+
 - [ ] `heroku buildpacks:set heroku/ruby -a <app_name>` (will take last priority)
 - [ ] `heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt.git -a <app_name>`
 - [ ] `heroku buildpacks:add --index 2 https://github.com/brandoncc/heroku-buildpack-vips -a <app_name>`
 - [ ] `heroku buildpacks:add --index 3 https://github.com/gaffneyc/heroku-buildpack-jemalloc.git -a <app_name>`
 
-
 ### Post Deploy
+
 Run migrations:
+
 - [ ] `heroku run rake db:migrate`
 
 Other setup:
+
 - [ ] Setup Rake tasks below on the scheduler addon
 
 # Rake Tasks
