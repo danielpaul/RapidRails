@@ -1,15 +1,16 @@
 class AnonymizationService
   def self.anonymize_user(user_id)
-    user = User.find(user_id)
+    user = User.where(id: user_id).first
 
     return if user.nil? || user.anonymized_at.present?
 
-    user.assign_attributes(
+    # does not run validations
+    user.update_columns(
       full_name: "Deleted User",
 
       email: generate_anonymized_email(user.id),
       unconfirmed_email: nil,
-      password: Devise.friendly_token[0, 20],
+      encrypted_password: Devise::Encryptor.digest(User, SecureRandom.hex(32)),
 
       current_sign_in_ip: nil,
       last_sign_in_ip: nil,
@@ -19,8 +20,6 @@ class AnonymizationService
 
       anonymized_at: Time.current
     )
-
-    user.save(validate: false)
   end
 
   private
