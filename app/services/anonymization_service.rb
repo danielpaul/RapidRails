@@ -28,12 +28,12 @@ class AnonymizationService
   def self.generate_anonymized_email(prefix, domain = "deleted.example.com")
     email = "#{prefix}@#{domain}"
     counter = 1
-  
+
     while User.exists?(email: email)
       email = "#{prefix}+#{counter}@#{domain}"
       counter += 1
     end
-  
+
     email
-  end  
+  end
 end
