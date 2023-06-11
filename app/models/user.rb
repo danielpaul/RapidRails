@@ -95,7 +95,6 @@ class User < ApplicationRecord
       user = User.new(
         full_name: data["name"],
         email: data["email"],
-        profile_picture: URI.parse(data["image"]) if data["image"].present?,
 
         password: Devise.friendly_token[0, 20],
         confirmed_at: Time.now.utc
