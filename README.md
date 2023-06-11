@@ -158,8 +158,12 @@ Other setup:
 ## TODO
 
 - rename codebase and move repo to new name
+- onboarding flow
 
 - front-end UI
+- dark mode improvements
+- animation on button submission with disable_with
+- sidebar on dashbard imporvement
 
   - typography [x]
   - colors [x]
