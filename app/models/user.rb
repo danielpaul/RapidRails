@@ -105,7 +105,10 @@ class User < ApplicationRecord
 
     # if the user profile picture exists, user has not uploaded another profile_picture, save it
     if user && !user.profile_picture.attached? && data["image"].present?
-      user.profile_picture.attach(io: URI(data["image"]).open, filename: "google_profile_picture.png")
+      # sidekiq job to download the image and attach it to the user
+      # log the user in ASAP without waiting for slow image request and attachment process
+      # to complete. The user will see the default avatar until the image is attached.
+      AttachProfilePictureJob.perform_later(user.id, data["image"])
     end
 
     user
