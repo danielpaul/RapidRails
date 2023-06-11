@@ -80,7 +80,7 @@ Testing:
 
 # External Services
 
-- [Google OAuth2](https://code.google.com/apis/console/) - connecting with Google. Update Authorized redirect URIs and update credentials in our app.
+- [Google OAuth2](https://code.google.com/apis/console/) - connecting with Google. Update Authorized redirect URIs and update credentials in our app. Set callback URL to `http://localhost:3000/users/auth/google_oauth2/callback` for development & similar for production with your domain.
 - [Sentry](https://sentry.io/welcome/) - for error tracking. Setup two projects and update credentials - for Rails & JS frontend.
 - [Postmark](https://postmarkapp.com/) - for transactional emails. Verify domain for sending emails.
 - [Forest Admin](https://www.forestadmin.com/) - for admin panel.
