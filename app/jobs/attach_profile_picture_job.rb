@@ -1,5 +1,5 @@
 class AttachProfilePictureJob < ApplicationJob
-  Sidekiq_options queue: 'low_priority', retry: 3
+  Sidekiq_options queue: "low_priority", retry: 3
 
   def perform(user_id, image_url)
     begin
