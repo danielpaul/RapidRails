@@ -536,7 +536,7 @@ DEPENDENCIES
   capybara
   debug
   devise
-  discard (~> 1.2)
+  discard
   dotenv-rails
   factory_bot_rails
   faker
