@@ -1,3 +1,6 @@
+:ruby 
+  title "Edit Account"
+  
 %h1.h1 Your Account
 
 .py-10
@@ -22,7 +25,6 @@
                 Currently waiting confirmation for: #{resource.unconfirmed_email}
         
         .card-footer.text-right
-          = button_to "Delete Account", registration_path(resource_name), {data: { turbo_confirm: "Are you sure?" }, class: 'text-danger text-sm mr-6', method: :delete}
           = f.button "Save", class: "btn-primary"
 
 .py-10
@@ -46,3 +48,14 @@
 
         .card-footer.text-right
           = f.button "Update password", class: "btn-primary"
+
+.py-10
+  .grid.grid-cols-1.gap-x-8.gap-y-8.md:grid-cols-3
+    %div
+      %h3.h3 Delete Account
+      %p.mt-1.p Danger zone! Once you delete you account, there is no going back.
+
+    .card.md:col-span-2
+      .card-body
+        .space-y-6
+          = button_to "Delete Account", registration_path(resource_name), {data: { turbo_confirm: "Are you sure?" }, class: 'text-danger text-sm mr-6', method: :delete}

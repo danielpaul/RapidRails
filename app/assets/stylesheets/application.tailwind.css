@@ -25,6 +25,10 @@
     @apply text-xl font-bold tracking-tight text-gray-900 dark:text-white;
   }
 
+  .text-huge {
+    @apply h1 text-3xl sm:text-5xl;
+  }
+
   .p {
     @apply text-base text-gray-700 dark:text-gray-300 leading-6;
   }
@@ -61,6 +65,10 @@
 
   a.link-secondary {
     @apply hover:underline hover:text-primary-500;
+  }
+
+  .porse-section {
+    @apply prose-sm prose prose-slate prose-a:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-500 hover:prose-a:underline hover:prose-a:underline-offset-2;
   }
 
   /* Cards */

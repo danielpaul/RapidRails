@@ -21,6 +21,8 @@
             %path{:d => "M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
         / Separator
         .hidden.lg:block.lg:h-6.lg:w-px.lg:bg-gray-200.dark:lg:bg-gray-400{"aria-hidden" => "true"}
+
+        = render DarkModeButtonComponent.new
         
         / Profile dropdown
         .relative{"x-data": "{ dropdownOpen: false }"}
@@ -28,14 +30,22 @@
             %span.sr-only Open user menu
             = image_tag current_user.avatar_url, class: "h-8 w-8 rounded-full bg-gray-50", alt: ""
             %span.hidden.lg:flex.lg:items-center
-              %span.ml-4.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{"aria-hidden" => "true"} #{current_user.full_name}
+              %span.ml-4.text-sm.font-semibold.leading-6.text-gray-900.dark:text-white{"aria-hidden" => "true"} #{current_user.first_name.capitalize.truncate(20)}
               %svg.ml-2.h-5.w-5.text-gray-400{"aria-hidden" => "true", :fill => "currentColor", :viewbox => "0 0 20 20"}
                 %path{"clip-rule" => "evenodd", :d => "M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z", "fill-rule" => "evenodd"}
           /
             Dropdown menu, show/hide based on menu state.
-          .absolute.right-0.z-10.w-32.origin-top-right.rounded-md.bg-card.dark:bg-card-dark.py-2.shadow-lg.ring-1.focus:outline-none.text-gray-900.dark:text-white{"aria-labelledby" => "user-menu-button", "aria-orientation" => "vertical", :class => "mt-2.5 ring-gray-900/5", :role => "menu", :tabindex => "-1", "x-show": "dropdownOpen", "@click.away": "dropdownOpen = false", "x-transition:enter": "ease-out duration-100", "x-transition:enter-start": "transform opacity-0 scale-95", "x-transition:enter-end": "transform opacity-100 scale-100", "x-transition:leave": "transition ease-in duration-75", "x-transition:leave-start": "transform opacity-100 scale-100", "x-transition:leave-end": "transform opacity-0 scale-95", style: "display: none"}
-            -# %a#user-menu-item-0.block.px-3.py-1.text-sm.leading-6.text-gray-900{:href => "#", :role => "menuitem", :tabindex => "-1"} Your profile
-            = link_to "Profile", edit_user_registration_path, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+          .absolute.right-0.z-10.w-64.origin-top-right.rounded-md.bg-card.dark:bg-card-dark.py-2.shadow-lg.ring-1.focus:outline-none.text-gray-900.dark:text-white{"aria-labelledby" => "user-menu-button", "aria-orientation" => "vertical", :class => "mt-2.5 ring-gray-900/5", :role => "menu", :tabindex => "-1", "x-show": "dropdownOpen", "@click.away": "dropdownOpen = false", "x-transition:enter": "ease-out duration-100", "x-transition:enter-start": "transform opacity-0 scale-95", "x-transition:enter-end": "transform opacity-100 scale-100", "x-transition:leave": "transition ease-in duration-75", "x-transition:leave-start": "transform opacity-100 scale-100", "x-transition:leave-end": "transform opacity-0 scale-95", style: "display: none"}
+            .py-2.px-3.mb-1.border-b.border-gray-200
+              .text-xs.text-gray-500 Signed in as
+              .text-sm.font-semibold.leading-6.text-gray-900.dark:text-white.truncate{"aria-hidden" => "true"} #{current_user.email}
+            = link_to "Changelog", '#', class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+            = link_to "Support", '#', class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+            = link_to "License", '#', class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+            .border-b.border-gray-200.mt-1.mb-1
+            = link_to "Upgrade to Team License", '#', class: "block px-3 py-2 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
+            .border-b.border-gray-200.mt-1.mb-1
+            = link_to "Account Settings", edit_user_registration_path, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
             = link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-3 py-1 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-body-dark"
 
 - if flash.any?
