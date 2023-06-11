@@ -132,6 +132,7 @@ Other setup:
 # Rake Tasks
 
 - [ ] `rake active_storage:purge_unattached_blobs` to purge unattached file that are older than 2 days in active storage. - Run once a day.
+- [ ] `rake anonymize:users` to anonymize users data. - Run once a day. Important to delete user's data in our database. Give's time for them to change their mind before we delete their data.
 
 ## TODO
 
