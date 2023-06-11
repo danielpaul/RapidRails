@@ -10,16 +10,16 @@ class AttachProfilePictureJob < ApplicationJob
     end
 
     user = User.find(user_id)
-    
+
     return if image.nil? || user.nil?
 
     # Don't attach the image if the user already has a profile picture
     return if user.profile_picture.attached?
 
     user.profile_picture
-        .attach(
-          io: image,
-          filename: "google_profile_picture.png"
-        )
+      .attach(
+        io: image,
+        filename: "google_profile_picture.png"
+      )
   end
 end
