@@ -32,10 +32,12 @@ class User < ApplicationRecord
   include Hashid::Rails
   has_paper_trail
 
+  include User::Omniauthable
+
   has_one_attached :profile_picture
 
   # Include default devise modules. Others available are:
-  # :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable,
     :confirmable, :trackable,
@@ -72,46 +74,6 @@ class User < ApplicationRecord
     # Add hash to get unique color variant for each user. Otherwise all DP will be same.
     hash = Digest::MD5.hexdigest(email.downcase)
     "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
-  end
-
-  def self.from_omniauth(data)
-    # Return or create user from google_oauth data and confirm userif required
-    # we use email as the unique identifier
-
-    # find user record that matches the email case-insensitive
-    user = User.where("lower(email) = ?", data["email"].downcase).first
-
-    # if user is not found and the user has not confirmed their email address, confirm
-    # the user account and reset password - we don't want another user who might have created
-    # the account and left it to be able to get in with the password that they set
-    if user && !user.confirmed?
-      user.confirm
-      user.reset_password
-    end
-
-    # if the user account is not found, create a new user account and confirm it
-    # save the user profile picture if it exists
-    if user.nil?
-      user = User.new(
-        full_name: data["name"],
-        email: data["email"],
-
-        password: Devise.friendly_token[0, 20],
-        confirmed_at: Time.now.utc
-      )
-
-      user.save!
-    end
-
-    # if the user profile picture exists, user has not uploaded another profile_picture, save it
-    if user && !user.profile_picture.attached? && data["image"].present?
-      # sidekiq job to download the image and attach it to the user
-      # log the user in ASAP without waiting for slow image request and attachment process
-      # to complete. The user will see the default avatar until the image is attached.
-      AttachProfilePictureJob.perform_later(user.id, data["image"])
-    end
-
-    user
   end
 
   private
