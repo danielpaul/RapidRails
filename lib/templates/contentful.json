@@ -163,9 +163,7 @@
           "required": true,
           "validations": [
             {
-              "linkMimetypeGroup": [
-                "image"
-              ]
+              "linkMimetypeGroup": ["image"]
             }
           ],
           "disabled": false,
@@ -410,9 +408,7 @@
       "policies": [
         {
           "effect": "allow",
-          "actions": [
-            "create"
-          ],
+          "actions": ["create"],
           "constraint": {
             "and": [
               {
@@ -428,9 +424,7 @@
         },
         {
           "effect": "allow",
-          "actions": [
-            "read"
-          ],
+          "actions": ["read"],
           "constraint": {
             "and": [
               {
@@ -446,9 +440,7 @@
         },
         {
           "effect": "allow",
-          "actions": [
-            "update"
-          ],
+          "actions": ["update"],
           "constraint": {
             "and": [
               {
@@ -464,9 +456,7 @@
         },
         {
           "effect": "allow",
-          "actions": [
-            "create"
-          ],
+          "actions": ["create"],
           "constraint": {
             "and": [
               {
@@ -482,9 +472,7 @@
         },
         {
           "effect": "allow",
-          "actions": [
-            "read"
-          ],
+          "actions": ["read"],
           "constraint": {
             "and": [
               {
@@ -500,9 +488,7 @@
         },
         {
           "effect": "allow",
-          "actions": [
-            "update"
-          ],
+          "actions": ["update"],
           "constraint": {
             "and": [
               {
@@ -518,9 +504,7 @@
         }
       ],
       "permissions": {
-        "ContentModel": [
-          "read"
-        ],
+        "ContentModel": ["read"],
         "Settings": [],
         "ContentDelivery": [],
         "Environments": [],
@@ -594,9 +578,7 @@
         }
       ],
       "permissions": {
-        "ContentModel": [
-          "read"
-        ],
+        "ContentModel": ["read"],
         "Settings": [],
         "ContentDelivery": [],
         "Environments": [],
@@ -638,9 +620,7 @@
       "policies": [
         {
           "effect": "allow",
-          "actions": [
-            "read"
-          ],
+          "actions": ["read"],
           "constraint": {
             "and": [
               {
@@ -656,9 +636,7 @@
         },
         {
           "effect": "allow",
-          "actions": [
-            "read"
-          ],
+          "actions": ["read"],
           "constraint": {
             "and": [
               {
@@ -674,9 +652,7 @@
         },
         {
           "effect": "allow",
-          "actions": [
-            "update"
-          ],
+          "actions": ["update"],
           "constraint": {
             "and": [
               {
@@ -699,9 +675,7 @@
         },
         {
           "effect": "allow",
-          "actions": [
-            "update"
-          ],
+          "actions": ["update"],
           "constraint": {
             "and": [
               {
@@ -724,9 +698,7 @@
         }
       ],
       "permissions": {
-        "ContentModel": [
-          "read"
-        ],
+        "ContentModel": ["read"],
         "Settings": [],
         "ContentDelivery": [],
         "Environments": [],
