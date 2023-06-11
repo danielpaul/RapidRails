@@ -9,7 +9,7 @@ module User::Omniauthable
       # find user record that matches the email case-insensitive
       user = User.where("lower(email) = ?", data["email"].downcase).first
 
-      user_verified_email = (data['email_verified'] == true)
+      user_verified_email = (data["email_verified"] == true)
 
       # ifthe user has not confirmed their email address, confirm if verified
       # and reset password - we don't want another user who might have created
@@ -28,7 +28,7 @@ module User::Omniauthable
         user = User.new(
           full_name: data["name"],
           email: data["email"],
-          password: Devise.friendly_token[0, 20], # random password
+          password: Devise.friendly_token[0, 20] # random password
         )
 
         user.confirmed_at = Time.now.utc if user_verified_email
