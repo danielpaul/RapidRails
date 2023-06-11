@@ -1,5 +1,4 @@
 module ContentfulHelper
-
   def contentful_service
     @contentful_service ||= ContentfulService.new
   end
@@ -15,5 +14,4 @@ module ContentfulHelper
       "embedded-asset-block" => RichText::Image
     ).render(rich_text).html_safe
   end
-
 end

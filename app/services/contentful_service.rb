@@ -33,7 +33,6 @@ class ContentfulService
     cache_key
   end
 
-
   private
 
   def client
