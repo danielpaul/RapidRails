@@ -42,7 +42,7 @@ class User < ApplicationRecord
 
   validates :full_name, presence: true, length: {maximum: 100}
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
-  validates :profile_picture, attached: true,
+  validates :profile_picture, attached: false,
     content_type: {
       in: ["image/png", "image/jpg", "image/jpeg"],
       message: "must be a png, jpg, or jpeg image file"
