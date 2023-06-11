@@ -28,6 +28,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  include Rails.application.routes.url_helpers
   include Hashid::Rails
   has_paper_trail
 
@@ -63,7 +64,7 @@ class User < ApplicationRecord
   def avatar_url
     if profile_picture.attached? && profile_picture.variable?
       # Use ActiveStorage's variant to resize image to 100x100
-      return profile_picture.variant(resize_to_fill: [500, 500, gravity: "north"]).processed
+      return profile_picture.variant(resize_to_fill: [500, 500]).processed
     end
 
     # Don't share real names. Just initials.
