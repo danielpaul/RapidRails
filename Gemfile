@@ -58,9 +58,6 @@ gem 'phlex-rails'
 gem 'high_voltage'
 gem 'redcarpet'
 
-# Caching
-gem "actionpack-page_caching"
-
 # Authentication & Authorization
 gem 'devise'
 gem 'pundit'

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class='h-full' lang='en'>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1' name='viewport'>
+<title>Rapid Rails</title>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="Ppe_zIU9vEuQgxHB1Qdyd6eaXoh8OjW00y5hnuuSSCq3bdtRQOdZaAUZc6OGA2764XfAaBFKupuzo3sOHMz2OQ" />
+
+<link rel="stylesheet" href="/assets/tailwind-212e1e1e4374b9e01ed8f8d42aeef654fd1aad977bc2e3507f4bf7a4b2650044.css" data-turbo-track="reload" />
+<link rel="stylesheet" href="/assets/inter-font-8c3e82affb176f4bca9616b838d906343d1251adc8408efe02cf2b1e4fcf2bc4.css" data-turbo-track="reload" />
+<link rel="stylesheet" href="/assets/application-875f401501fbc710575881100b800c53f6f2664d124b80e759f3aee6d6782490.css" data-turbo-track="reload" />
+<script type="importmap" data-turbo-track="reload">{
+  "imports": {
+    "application": "/assets/application-6271bf15b41e750285a895e94178794ee065d76d48d1231f6f200ec09e5cd5e9.js",
+    "@hotwired/turbo-rails": "/assets/turbo.min-f309baafa3ae5ad6ccee3e7362118b87678d792db8e8ab466c4fa284dd3a4700.js",
+    "@hotwired/stimulus": "/assets/stimulus.min-d03cf1dff41d6c5698ec2c5d6a501615a7a33754dbeef8d1edd31c928d17c652.js",
+    "@hotwired/stimulus-loading": "/assets/stimulus-loading-1fc59770fb1654500044afd3f5f6d7d00800e5be36746d55b94a2963a7a228aa.js",
+    "alpinejs": "https://ga.jspm.io/npm:alpinejs@3.12.0/dist/module.esm.js",
+    "alpine-turbo-drive-adapter": "https://ga.jspm.io/npm:alpine-turbo-drive-adapter@2.0.0/dist/alpine-turbo-drive-adapter.esm.js",
+    "controllers/application": "/assets/controllers/application-1d683f41d4d296a53045dcbea61c280504a22ace3f29f543398a9831f0f2c8a2.js",
+    "controllers/auto_save_controller": "/assets/controllers/auto_save_controller-207e15667d1157af7ecfd8d3357938f66f90cb370c9069f00417f1fa7642a9c9.js",
+    "controllers/dark_mode_controller": "/assets/controllers/dark_mode_controller-d1b1648e3217c355e75a9ce69da9b5fcf56dd3b9868c9b56c204290f571922b0.js",
+    "controllers/hello_controller": "/assets/controllers/hello_controller-6ce01ae12a6b834e7d68a4a398c638683df63223f93d10eaa07d31cb8ce5b4d9.js",
+    "controllers": "/assets/controllers/index-44fd863acb73f17d1baf7c745aabb69a3b58a75305b6361d2839b2a4229aa1a5.js"
+  }
+}</script>
+<link rel="modulepreload" href="/assets/application-6271bf15b41e750285a895e94178794ee065d76d48d1231f6f200ec09e5cd5e9.js">
+<link rel="modulepreload" href="/assets/turbo.min-f309baafa3ae5ad6ccee3e7362118b87678d792db8e8ab466c4fa284dd3a4700.js">
+<link rel="modulepreload" href="/assets/stimulus.min-d03cf1dff41d6c5698ec2c5d6a501615a7a33754dbeef8d1edd31c928d17c652.js">
+<link rel="modulepreload" href="/assets/stimulus-loading-1fc59770fb1654500044afd3f5f6d7d00800e5be36746d55b94a2963a7a228aa.js">
+<script src="/assets/es-module-shims.min-4ca9b3dd5e434131e3bb4b0c1d7dff3bfd4035672a5086deec6f73979a49be73.js" async="async" data-turbo-track="reload"></script>
+<script type="module">import "application"</script>
+
+</head>
+<body>
+<header class="sticky top-0 z-40 w-full flex-none transition-color duration-500 lg:z-20 bg-transparent" x-data="{ dropdownOpen: false, atTop: true }" :class="{ &#39;bg-transparent&#39;: atTop, &#39;shadow-sm backdrop-blur bg-white dark:bg-body-dark/75 supports-backdrop-blur:bg-white/95 dark:supports-backdrop-blur:bg-body-dark/95 border-b lg:border-slate-900/10 dark:border-none&#39;: !atTop}" @scroll.window="atTop = (window.pageYOffset &lt; 50)"><nav aria-label="Global" class="lg:px-8 mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6"><div class="flex md:flex-1"><a href="/"><img class="h-8 block dark:hidden" alt="Rapid Rails" src="/assets/logo-d58762b0652c8154d293a920719af34446003f0ea4c2b2c3c0618fa3058ef9fd.svg" />
+<img class="h-8 hidden dark:block" alt="Rapid Rails" src="/assets/logo-dark-1fb1071ba35187c14e08fb699b4c098b65012852f5c088f083bbf8b447667c4c.svg" />
+</a></div><div class="hidden lg:flex lg:gap-x-12"><a class="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-primary-500" href="#">Product</a><a class="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-primary-500" href="#">Features</a><a class="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-primary-500" href="#">Marketplace</a><a class="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-primary-500" href="#">Company</a></div><div class="flex flex-1 items-center justify-end gap-x-6"><a class="link hidden lg:flex text-sm font-medium" href="/users/sign_in">Sign In</a><a class="btn-primary justify-end " href="/users/sign_up">Sign Up</a></div><div class="flex lg:hidden"><button class="inline-flex items-center justify-center rounded-md text-gray-700 dark:text-gray-300 -m-2.5 p-2.5" type="button" @click="dropdownOpen = !dropdownOpen"><span class="sr-only">Open main menu</span><svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div></nav><div class="lg:hidden" style="display:none" aria-modal="true" role="dialog" x-show="dropdownOpen"><div class="fixed inset-0 z-20 backdrop-blur-md bg-white/30" @click="dropdownOpen = false"></div><div class="fixed inset-y-0 right-0 z-20 w-full overflow-y-auto bg-white dark:bg-body-dark px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"><div class="flex items-center gap-x-6"><img class="h-8 block dark:hidden" alt="Rapid Rails" src="/assets/logo-d58762b0652c8154d293a920719af34446003f0ea4c2b2c3c0618fa3058ef9fd.svg" />
+<img class="h-8 hidden dark:block" alt="Rapid Rails" src="/assets/logo-dark-1fb1071ba35187c14e08fb699b4c098b65012852f5c088f083bbf8b447667c4c.svg" />
+<a class="btn-primary justify-end ml-auto" href="/users/sign_up">Sign Up</a><button class="rounded-md text-gray-700 dark:text-gray-300 -m-2.5 p-2.5" type="button" @click="dropdownOpen = !dropdownOpen"><span class="sr-only">Close menu</span><svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div><div class="mt-6 flow-root"><div class="divide-gray-500/10 -my-6 divide-y"><div class="space-y-2 py-6"><a class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-card-dark hover:text-primary-500" href="#">Product</a><a class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-card-dark hover:text-primary-500" href="#">Features</a><a class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-card-dark hover:text-primary-500" href="#">Marketplace</a><a class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-card-dark hover:text-primary-500" href="#">Company</a></div><div class="py-6"><a class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-card-dark hover:text-primary-500 py-2.5" href="/users/sign_in">Sign In</a></div></div></div></div></div></header>
+About...
+
+<!-- Global notification live region, render this permanently at the end of the document -->
+<div aria-live="assertive" class="pointer-events-none fixed inset-0 flex px-4 py-6 items-start sm:p-6 z-40">
+  <div class="flex w-full flex-col items-end space-y-4 mt-0">
+    <!--
+      Notification panel, dynamically insert this into the live region when it needs to be displayed
+
+      Entering: "transform ease-out duration-300 transition"
+        From: "translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
+        To: "translate-y-0 opacity-100 sm:translate-x-0"
+      Leaving: "transition ease-in duration-100"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+  </div>
+</div>
+
+
+<footer class="bg-card dark:bg-card-dark border-t card-border" aria-labelledby="footer-heading"><h2 id="footer-heading" class="sr-only">Footer</h2><div class="mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-32"><div class="xl:grid xl:grid-cols-3 xl:gap-8"><div class="grid grid-cols-2 gap-8 xl:col-span-2"><div class="md:grid md:grid-cols-2 md:gap-8"><div><h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-white ">Solutions</h3><ul role="list" class="mt-6 space-y-4"><li><a href="#" class="text-sm link-secondary">Marketing</a></li><li><a href="#" class="text-sm link-secondary">Analytics</a></li><li><a href="#" class="text-sm link-secondary">Commerce</a></li><li><a href="#" class="text-sm link-secondary">Insights</a></li></ul></div><div class="mt-10 md:mt-0"><h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-white ">Support</h3><ul role="list" class="mt-6 space-y-4"><li><a href="#" class="text-sm link-secondary">Pricing</a></li><li><a href="#" class="text-sm link-secondary">Documentation</a></li><li><a href="#" class="text-sm link-secondary">Guides</a></li><li><a href="#" class="text-sm link-secondary">API Status</a></li></ul></div></div><div class="md:grid md:grid-cols-2 md:gap-8"><div><h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-white ">Company</h3><ul role="list" class="mt-6 space-y-4"><li><a href="#" class="text-sm link-secondary">About</a></li><li><a href="#" class="text-sm link-secondary">Blog</a></li><li><a href="#" class="text-sm link-secondary">Jobs</a></li><li><a href="#" class="text-sm link-secondary">Press</a></li><li><a href="#" class="text-sm link-secondary">Partners</a></li></ul></div><div class="mt-10 md:mt-0"><h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-white ">Legal</h3><ul role="list" class="mt-6 space-y-4"><li><a href="#" class="text-sm link-secondary">Claim</a></li><li><a href="#" class="text-sm link-secondary">Privacy</a></li><li><a href="#" class="text-sm link-secondary">Terms</a></li></ul></div></div></div><div class="mt-10 xl:mt-0"><h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-white ">Subscribe to our newsletter</h3><p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">The latest news, articles, and resources, sent to your inbox weekly.</p><form class="mt-6 sm:flex sm:max-w-md"><label for="email-address" class="sr-only">Email address</label><input type="email" name="email-address" id="email-address" autocomplete="email" required class="text-input" placeholder="Enter your email"><div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0"><button type="submit" class="flex w-full items-center justify-center btn-primary">Subscribe</button></div></form></div></div><div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24"><p class="mt-8 text-xs leading-5 text-gray-500 dark:text-gray-400 md:order-1 md:mt-0">© 2023 Daniel Paul. All rights reserved.</p><div class="md:order-2"><div @click="darkModeMenu = !darkModeMenu" x-data="{ darkModeMenu: false }" data-controller="dark-mode"><a href="#" class="text-gray-400 hover:text-gray-500 dark:hidden" data-action="click-&gt;dark-mode#darkMode:prevent"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-6 w-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"></path>
+</svg>
+</a><a href="#" class="text-gray-400 hover:text-gray-500 hidden dark:block" data-action="click-&gt;dark-mode#lightMode:prevent"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-6 w-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path>
+</svg>
+</a></div></div></div></div></footer>
+</body>
+</html>
