@@ -38,6 +38,8 @@ brew services start redis
 - [ ] Refresh `master.key` and `credentials.yml.enc` with `rails credentials:edit` - ensure to update the `secret_key_base` to encrypt with your own key. Copy over the `credentials.sample.yml` contents.
 - [ ] Copy `.env.sample` to `.env` and update the variables
 
+- [ ] Setup the `RAILS_MASTER_KEY` credentials as secret on GitHub for CI to work. `Settings > Secrets > New repository secret`
+
 # Running the app for development
 
 - `bin/dev` to run the app locally
