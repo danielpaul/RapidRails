@@ -1,16 +1,30 @@
+- content_for :page_title, 'Blog'
+
 .container.pb-7
   .row.justify-content-center
     .col-lg-8
+
       #blog-title.text-center.my-6
+        %h1.h1
+          Blog
+        %p.text-secondary Tips for healthy eating, weight loss, fitness & more!
 
       - @posts.each_with_index do |post, index|
-        .card
-          .card-body
-            %h2.display-5.mb-2= post.entry_title
+        - link = blog_path(post.slug)
 
-            Continue reading
-            %i.fe.fe-arrow-right.ms-1
-    
+        .card
+          = link_to link do
+            = image_tag post.featured_image.url, class: 'card-img-top'
+          .card-body
+            %h2.display-5.mb-2 #{link_to post.title, link}
+            %small.text-muted #{post.published_at.to_time.strftime('%B %d, %Y')}
+
+            %p.mt-3.text-secondary #{post.excerpt}
+
+            = link_to link do
+              Continue reading
+              %i.fe.fe-arrow-right.ms-1
+      
       
       - unless @posts.total == @posts.count
         #pagination.row.mt-6

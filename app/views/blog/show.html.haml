@@ -1,0 +1,33 @@
+:ruby
+  content_for :page_title, "#{@post.title}"
+  content_for :page_description, @post.excerpt
+
+  featured_image = @post.featured_image.url
+  content_for :page_image, featured_image
+
+  link = blog_path(@post.slug)
+
+.container.pb-7
+  .row.justify-content-center
+    .col-lg-8
+
+      #blog-title.my-5
+        %nav
+          %ol.breadcrumb
+            %li.breadcrumb-item
+              = link_to 'Blog', blog_index_path
+            %li.breadcrumb-item.active.text-secondary #{@post.title}
+
+
+      .card
+        = image_tag featured_image, class: 'card-img-top'
+        
+        .card-body
+
+          .my-4
+            %h1.display-5.mb-3 #{link_to @post.title, link}
+            %small.text-muted #{@post.published_at.to_time.strftime('%B %d, %Y')}
+
+          %hr
+
+          = render_rich_text(@post.content)
