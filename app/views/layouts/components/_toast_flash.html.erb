@@ -14,6 +14,7 @@
         To: "opacity-0"
     -->
     <% flash[:toast]&.each_with_index do |toast, index| %>
+      <% toast = toast.with_indifferent_access %>
       <% next unless toast[:heading] %>
       <% show_in = 100 * (index + 1) %>
       <% hide_in = 5000 - (150 * (index + 1)) %>
@@ -34,9 +35,9 @@
         <div class="p-4">
           <div class="flex items-start">
             <div class="flex-shrink-0">
-              <% if toast[:type] == :success %>
+              <% if toast[:type] == 'success' %>
                 <%= heroicon 'check-circle', variant: 'solid', options: {class: 'h-5 w-5 text-green-400'} %>
-              <% elsif toast[:type] == :error %>
+              <% elsif toast[:type] == 'error' %>
                 <%= heroicon 'x-circle', variant: 'solid', options: {class: 'h-5 w-5 text-red-400'} %>
               <% else %>
                 <%= heroicon 'exclamation-circle', variant: 'solid', options: {class: 'h-5 w-5 text-yellow-400'} %>

@@ -2,7 +2,7 @@
 
 class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   class_attribute :text_field_helpers,
-    default: field_helpers - %i[label check_box radio_button fields_for fields hidden_field file_field]
+    default: field_helpers - %i[label check_box radio_button fields_for fields hidden_field]
   #  leans on the FormBuilder class_attribute `field_helpers`
   #  you'll want to add a method for each of the specific helpers listed here if you want to style them
 
@@ -63,7 +63,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   def hint(hint_text)
     return unless hint_text.present?
 
-    @template.content_tag("p", hint_text, {class: "text-sm text-neutral-600 mt-1"})
+    @template.content_tag("p", hint_text, {class: "text-sm text-neutral-500 mt-1"})
   end
 
   def labels(object_method, label_options, field_options)
@@ -89,7 +89,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   def error_label(object_method, options)
     return unless errors_for(object_method).present?
 
-    error_message = @object.errors[object_method].collect(&:titleize).join(", ")
+    error_message = @object.errors[object_method].join(", ")
     tailwind_label(object_method, {text: error_message, class: " mt-2 text-sm text-red-600"}, options)
   end
 

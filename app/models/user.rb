@@ -32,17 +32,30 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  include Rails.application.routes.url_helpers
   include Hashid::Rails
   include Discard::Model
   has_paper_trail
 
+  include User::Omniauthable
+
+  has_one_attached :profile_picture
+
   # Include default devise modules. Others available are:
-  # :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable,
-    :confirmable, :trackable
+    :confirmable, :trackable,
+    :omniauthable, omniauth_providers: [:google_oauth2]
 
   validates :full_name, presence: true, length: {maximum: 100}
+  validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
+  validates :profile_picture,
+    content_type: {
+      in: ["image/png", "image/jpg", "image/jpeg"],
+      message: "must be a png, jpg, or jpeg image file"
+    },
+    size: {less_than: 10.megabytes}
 
   def first_name
     full_name_parts.first
@@ -61,6 +74,11 @@ class User < ApplicationRecord
   end
 
   def avatar_url
+    if profile_picture.attached? && profile_picture.variable?
+      # Use ActiveStorage's variant to resize image to 100x100
+      return profile_picture.variant(resize_to_fill: [500, 500]).processed
+    end
+
     # Don't share real names. Just initials.
     # Add hash to get unique color variant for each user. Otherwise all DP will be same.
     hash = Digest::MD5.hexdigest(email.downcase)
