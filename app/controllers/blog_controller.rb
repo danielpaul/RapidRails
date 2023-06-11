@@ -1,7 +1,7 @@
 class BlogController < ApplicationController
   include ContentfulHelper
 
-  layout 'application_landing_page'
+  layout "application_landing_page"
 
   def index
     @page = (params[:page] || 1).to_i
