@@ -55,14 +55,16 @@ class User < ApplicationRecord
   end
 
   def avatar_url
+    if profile_picture.attached?
+      # Use ActiveStorage's variant to resize image to 100x100
+      return profile_picture.variant(resize: "100x100").processed
+    end
+
+
     # Don't share real names. Just initials.
     # Add hash to get unique color variant for each user. Otherwise all DP will be same.
-    if profile_picture.attached?
-      profile_picture
-    else
-      hash = Digest::MD5.hexdigest(email.downcase)
-      "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
-    end
+    hash = Digest::MD5.hexdigest(email.downcase)
+    "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
   end
 
   private
