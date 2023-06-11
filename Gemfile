@@ -64,6 +64,10 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'pundit'
 
+# CMS
+gem 'contentful'
+gem 'rich_text_renderer'
+
 # Backend Things
 gem 'hashid-rails'
 gem 'paper_trail'

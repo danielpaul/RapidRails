@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   root to: "pages#show", id: "home"
   get "pages/*id" => "pages#show", :as => :page, :format => false
 
+  # ---------- [ Blog ] ---------- #
+  if ENABLE_BLOG == true
+    resources :blog, only: %i[index show], path: "blog"
+    post "/contentful/webhook", to: "contentful#webhook"
+  end
+
   # ---------- [ Devise ] ---------- #
   devise_for :users, controllers: {
     registrations: "registrations",
