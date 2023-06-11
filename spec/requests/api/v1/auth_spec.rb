@@ -237,7 +237,7 @@ RSpec.describe "Auth Controller", type: :request do
           params: {password: "1234"},
           headers: {"X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}"}
 
-        expected_error("Password is too short (minimum is 6 characters)", 422)
+        expected_error("Password is too short (minimum is 8 characters)", 422)
       end
     end
 

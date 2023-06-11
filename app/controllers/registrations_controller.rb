@@ -4,6 +4,18 @@ class RegistrationsController < Devise::RegistrationsController
     redirect_to root_path if @email.nil?
   end
 
+  def cancel_email_change!
+    authenticate_scope!
+
+    if resource.pending_reconfirmation?
+      resource.confirmation_token = nil
+      resource.unconfirmed_email = nil
+      resource.save(validate: false)
+    end
+
+    redirect_to after_update_path_for(resource)
+  end
+
   protected
 
   def update_resource(resource, params)
@@ -19,12 +31,26 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def after_update_path_for(_resource)
-    flash[:notice] = "Account succesfully updated."
-    edit_user_registration_path
+  def after_update_path_for(resource)
+    edit_registration_path(resource)
   end
 
   def after_inactive_sign_up_path_for(resource)
     confirm_email_path(email: resource.email)
+  end
+
+  private
+
+  def set_flash_message_for_update(resource, prev_unconfirmed_email)
+    return unless is_flashing_format?
+
+    if sign_in_after_change_password?
+      flash_message(
+        :success,
+        t("devise.registrations.updated")
+      )
+    else
+      super
+    end
   end
 end

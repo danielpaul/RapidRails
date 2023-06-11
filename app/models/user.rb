@@ -32,13 +32,16 @@ class User < ApplicationRecord
   include Hashid::Rails
   has_paper_trail
 
+  include User::Omniauthable
+
   has_one_attached :profile_picture
 
   # Include default devise modules. Others available are:
-  # :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable,
-    :confirmable, :trackable
+    :confirmable, :trackable,
+    :omniauthable, omniauth_providers: [:google_oauth2]
 
   validates :full_name, presence: true, length: {maximum: 100}
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true

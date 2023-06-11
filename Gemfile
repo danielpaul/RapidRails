@@ -60,6 +60,8 @@ gem 'redcarpet'
 
 # Authentication & Authorization
 gem 'devise'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 gem 'pundit'
 
 # Backend Things
