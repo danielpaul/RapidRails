@@ -66,7 +66,6 @@ class User < ApplicationRecord
       return profile_picture.variant(resize_to_fill: [500, 500, gravity: 'north']).processed
     end
 
-
     # Don't share real names. Just initials.
     # Add hash to get unique color variant for each user. Otherwise all DP will be same.
     hash = Digest::MD5.hexdigest(email.downcase)
