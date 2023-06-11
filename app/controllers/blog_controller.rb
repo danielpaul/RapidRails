@@ -15,7 +15,7 @@ class BlogController < ApplicationController
     render_404 if @post.nil?
 
     set_meta_tags title: @post.title,
-                  description: @post.excerpt
+      description: @post.excerpt
   end
 
   private
