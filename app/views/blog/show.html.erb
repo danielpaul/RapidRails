@@ -1,0 +1,38 @@
+<div class="mb-40">
+  <div class="max-w-8xl mx-auto">
+    <div class="flex px-4 pt-8 pb-10 lg:px-8">
+      <%= link_to blog_index_path, class: 'link text-sm font-medium' do %>
+        &larr; Go back
+      <% end %>
+    </div>
+  </div>
+  <div class="px-4 sm:px-6 md:px-8">
+    <div class="max-w-2xl mx-auto">
+      <main>
+        <article class="relative pt-10">
+          <h1 class="h1"><%= @post.title %></h1>
+          <div class="text-sm leading-6">
+            <dl>
+              <dt class="sr-only">Date</dt>
+              <dd class="absolute top-0 inset-x-0 text-slate-700 dark:text-slate-400">
+                <time datetime="<%= @post.published_at.iso8601 %>">
+                  <%= @post.published_at.to_time.strftime('%A, %B %d, %Y') %>
+                </time>
+              </dd>
+            </dl>
+          </div>
+
+          <% if @post.featured_image %>
+            <div class="mt-6">
+              <%= image_tag @post.featured_image.url, class: 'w-full object-cover rounded-2xl' %>
+            </div>
+          <% end %>
+
+          <div class="mt-12 porse-section">
+            <%= render_rich_text @post.content %>
+          </div>
+        </article>
+      </main>
+    </div>
+  </div>
+</div>

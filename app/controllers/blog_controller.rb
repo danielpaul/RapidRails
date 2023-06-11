@@ -13,6 +13,9 @@ class BlogController < ApplicationController
   def show
     @post = contentful_service.post(params[:id])
     render_404 if @post.nil?
+
+    set_meta_tags title: @post.title,
+                  description: @post.excerpt
   end
 
   private
