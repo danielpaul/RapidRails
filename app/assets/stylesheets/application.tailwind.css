@@ -67,6 +67,10 @@
     @apply hover:underline hover:text-primary-500;
   }
 
+  .porse-section {
+    @apply prose-sm prose prose-slate prose-a:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-500 hover:prose-a:underline hover:prose-a:underline-offset-2;
+  }
+
   /* Cards */
 
   .card-border {
@@ -96,8 +100,16 @@
 
   /* Forms */
 
+  .file-input {
+    @apply file:bg-transparent file:text-gray-900 file:dark:text-white file:shadow-sm file:ring-1 file:ring-gray-300 file:dark:ring-neutral-600 file:hover:bg-gray-50 file:dark:hover:bg-neutral-900
+    file:mr-4 file:my-1 file:py-0 file:px-3
+    file:border-0 
+    file:cursor-pointer
+    file:rounded-[0.3rem];
+  }
+
   .text-input {
-    @apply block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-neutral-600 placeholder:text-neutral-500 dark:text-neutral-50 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 text-slate-800 bg-card dark:bg-card-dark;
+    @apply block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-neutral-600 placeholder:text-neutral-500 dark:text-neutral-50 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 text-slate-800 bg-card dark:bg-card-dark file-input;
   }
 
   .select-input {
