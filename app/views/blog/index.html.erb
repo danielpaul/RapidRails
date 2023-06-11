@@ -1,0 +1,63 @@
+<% title 'Blog' %>
+
+<main class="max-w-[52rem] mx-auto px-4 pb-28">
+  <header class="py-16 sm:text-center">
+    <h1 class="h1 mb-3">Blog</h1>
+    <p class="text-lg text-slate-700 dark:text-slate-400">
+      All the latest news, straight from the team.
+    </p>
+  </header>
+
+  <div class="sm:pb-12">
+    <div class="space-y-6">
+      <% @posts.each do |post| %>
+        <article>
+          <%= link_to blog_path(post.slug), class: 'card block hover:shadow-lg transition-shadow' do %>
+            <% if post.featured_image %>
+              <%= image_tag post.featured_image.url, class: 'h-48 sm:h-80 w-full object-cover' %>
+            <% end %>
+
+            <div class="card-body">
+              <dl>
+                <dt class="sr-only">Date</dt>
+                <dd class="whitespace-nowrap text-sm leading-6 dark:text-slate-400">
+                  <time datetime="<%= post.published_at %>">
+                    <%= post.published_at.strftime('%B %d, %Y') %>
+                  </time>
+                </dd>
+              </dl>
+
+              <h3 class="h3 mt-3">
+                <%= post.title %>
+              </h3>
+
+              <div class="mt-2 mb-4 porse-section line-clamp-2">
+                <%= post.excerpt %>
+              </div>
+
+              <span class="text-primary font-medium">
+                Read more &rarr;
+              </span>
+            </div>
+          <% end %>
+        </article>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="flex justify-between items-center text-sm">
+    <% if @page > 1 %>
+      <%= link_to blog_index_path(page: @page - 1), class: "text-primary" do %>
+        &larr; Previous Page
+      <% end %>
+    <% end %>
+
+    <% if @posts.total > (@posts.limit * @page) %>
+      <%= link_to blog_index_path(page: @page + 1), class: "text-primary" do %>
+        Next Page &rarr;
+      <% end %>
+    <% end %>
+  </div>
+
+</main>
