@@ -23,8 +23,8 @@ FileUtils.chdir APP_ROOT do
   system("bundle check") || system!("bundle install")
 
   puts "\n== Copying sample files =="
-  unless File.exist?(".env.sample")
-    FileUtils.cp ".env.sample", ".env"
+  if File.exist?(".env.template")
+    FileUtils.cp ".env.template", ".env"
   end
 
   puts "\n== Preparing database =="
