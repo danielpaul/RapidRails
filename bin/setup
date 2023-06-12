@@ -4,8 +4,21 @@ require "fileutils"
 # path to your application root.
 APP_ROOT = File.expand_path("..", __dir__)
 
+# user setup variables
+new_project = nil
+
 def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+def ask(question)
+  puts question
+  STDIN.gets.chomp
+end
+
+def ask_if_new_project
+  return unless new_project.nil?
+  new_project = (ask("Is this a new project? (y/N)").downcase == "y")
 end
 
 FileUtils.chdir APP_ROOT do
@@ -21,20 +34,6 @@ FileUtils.chdir APP_ROOT do
     puts "Homebrew not installed. Skipping system dependencies installation."
   end
 
-  # Update Database name in config/database.yml
-  puts "\n== Creating config/database.yml =="
-  if File.exist?("config/database.yml")
-    # skip since the file must be setup already
-    puts "config/database.yml exists. Skipping database.yml update."
-  else
-    # ask the user for the database name
-    # create config.yml from template and update the database name
-    puts "Enter the database name:"
-    database_name = STDIN.gets.chomp
-    File.write("config/database.yml", File.read("config/database.yml.template").gsub("rapid_rails", database_name))
-    puts "config/database.yml file created."
-  end
-
   puts "\n== Installing Rails dependencies =="
   system! "gem install bundler --conservative"
   system("bundle check") || system!("bundle install")
@@ -44,9 +43,9 @@ FileUtils.chdir APP_ROOT do
     if File.exist?("config/master.key")
       puts "Encrypted credentials file and master.key exists. Skipping new credentials setup."
     else
-      
-      puts "Is this a new project? (y/N)"
-      if STDIN.gets.chomp.downcase == "y"
+      ask_if_new_project
+
+      if new_project
         # delete the existing encrypted credentials file & setup a new master.key
         FileUtils.rm "config/credentials.yml.enc"
         system! "bin/rails credentials:edit"
@@ -71,6 +70,25 @@ FileUtils.chdir APP_ROOT do
   else
     FileUtils.cp ".env.template", ".env"
     puts ".env file created."
+  end
+
+  # Update Database name in config/database.yml
+  puts "\n== Creating config/database.yml =="
+  ask_if_new_project
+
+  if new_project
+    FileUtils.rm "config/database.yml" if File.exist?("config/database.yml")
+  end
+
+  if File.exist?("config/database.yml")
+    puts "config/database.yml file exists. Skipping database.yml file setup."
+  else
+    # ask the user for the database name
+    # create config.yml from template and update the database name
+    puts "Enter the database name:"
+    database_name = STDIN.gets.chomp
+    File.write("config/database.yml", File.read("config/database.yml.template").gsub("rapid_rails", database_name))
+    puts "config/database.yml file created."
   end
 
   puts "\n== Preparing database =="
