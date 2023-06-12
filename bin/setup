@@ -156,6 +156,8 @@ FileUtils.chdir APP_ROOT do
   system! "bin/rails db:prepare"
   display_message :success, "Database setup complete."
 
+
+  # ======================== Other stuff ======================== #
   display_message :info, "Removing old logs and tempfiles..."
   system! "bin/rails log:clear tmp:clear"
   display_message :success, "Old logs and tempfiles removed."
