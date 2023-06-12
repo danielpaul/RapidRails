@@ -5,50 +5,108 @@ require "fileutils"
 APP_ROOT = File.expand_path("..", __dir__)
 
 # user setup variables
-new_project = nil
+$new_project = nil
+$final_checklist = []
 
 def system!(*args)
-  system(*args) || abort("\n== Command #{args} failed ==")
+  system(*args) || abort("\n" + display_message(:error, "Command #{args} failed"))
+end
+
+def color_text(color, text)
+  case color
+  when :red
+    color = 91
+  when :green
+    color = 92
+  when :yellow
+    color = 93
+  when :blue
+    color = 94
+  else
+    color = 0
+  end
+
+  "\e[#{color};1m#{text}\e[0m"
+end
+
+def display_message(type, text)
+  icon, color = case type
+                when :success
+                  ["✔", :green]
+                when :warning
+                  ["⚠", :yellow]
+                when :error
+                  ["✖", :red]
+                else
+                  ["ℹ", :blue]
+                end
+  
+  render_text = color_text(color, icon) + " #{text}"
+
+  if [:success, :warning, :error].include?(type)
+    $final_checklist << render_text
+  end
+    
+  puts "\n"
+  puts render_text
 end
 
 def ask(question)
-  puts question
+  puts "\n"
+  puts color_text(:blue, question)
   STDIN.gets.chomp
 end
 
 def ask_if_new_project
-  return unless new_project.nil?
-  new_project = (ask("Is this a new project? (y/N)").downcase == "y")
+  $new_project = (ask("Is this a new project? (y/N)").downcase == "y")
+end
+
+def is_new_project?
+  if $new_project.nil?
+    ask_if_new_project
+  end
+
+  $new_project == true
 end
 
 FileUtils.chdir APP_ROOT do
+
   # This script is a way to set up or update your development environment automatically.
   # This script is idempotent, so that you can run it at any time and get an expectable outcome.
   # Add necessary setup steps to this file.
 
-  puts "\n== Installing system dependencies =="
+  puts color_text(:blue, "\n===== Rapid engines are warming up... strap in! =====")
+  puts 
+
+  # ======================== Install system dependencies ======================== #
+  display_message(:info, "Installing system dependencies...")
+
   # Install system dependencies if Homebrew is installed
   if system('[[ (-x "$(command -v brew)") ]]')
     system("brew bundle check --no-lock --no-upgrade") || system!("brew bundle --no-upgrade --no-lock")
+    display_message(:success, "System dependencies")
   else
-    puts "Homebrew not installed. Skipping system dependencies installation."
+    display_message(:warning, "Homebrew not installed. Skipped system dependencies installation.")
   end
 
-  puts "\n== Installing Rails dependencies =="
-  system! "gem install bundler --conservative"
+  # ======================== Install Ruby dependencies ======================== #
+  display_message(:info, "Installing Ruby dependencies...")
   system("bundle check") || system!("bundle install")
+  display_message(:success, "Ruby dependencies")
 
-  puts "\n== Preparing Rails credentials file =="
+
+  # ======================== Setup Rails Credentials & ENV variables ======================== #
+  display_message(:info, "Preparing Rails credentials file...")
+
   if File.exist?("config/credentials.yml.enc")
     if File.exist?("config/master.key")
-      puts "Encrypted credentials file and master.key exists. Skipping new credentials setup."
+      display_message :warning, "Encrypted credentials file and master.key exists. Skipped new credentials setup."
     else
-      ask_if_new_project
-
-      if new_project
+      if is_new_project?
         # delete the existing encrypted credentials file & setup a new master.key
         FileUtils.rm "config/credentials.yml.enc"
         system! "bin/rails credentials:edit"
+        
         puts "Removed existing encrypted credentials file and created a new one with a new master.key file."
         puts "-> You need to manually copy the contents of config/credentials.sample.yml to the decrypted credentials file and populate the values needed."
       else
@@ -56,49 +114,71 @@ FileUtils.chdir APP_ROOT do
         puts "Enter the existing master key:"
         master_key = STDIN.gets.chomp
         File.write("config/master.key", master_key)
-        puts "master.key file created."
+
+        display_message :success, "master.key file created."
       end
 
     end
   else
-    puts "No encrypted credentials file found. Skipping credentials file setup."
+    display_message :warning, "No encrypted credentials file found. Skipped credentials file setup."
   end
 
-  puts "\n== Creating .env file =="
+  display_message :info, "Preparing .env file..."
+  
   if File.exist?(".env")
-    puts ".env file exists. Skipping .env file creation."
+    display_message :warning, ".env file exists. Skipped .env file creation."
   else
     FileUtils.cp ".env.template", ".env"
-    puts ".env file created."
+    display_message :success, ".env file created."
   end
 
+  # ======================== Setup Database ======================== #
   # Update Database name in config/database.yml
-  puts "\n== Creating config/database.yml =="
-  ask_if_new_project
+  display_message :info, "Preparing database.yml file..."
 
-  if new_project
+  if is_new_project?
     FileUtils.rm "config/database.yml" if File.exist?("config/database.yml")
   end
 
   if File.exist?("config/database.yml")
-    puts "config/database.yml file exists. Skipping database.yml file setup."
+    display_message :warning, "config/database.yml file exists. Skipped database.yml file setup."
   else
     # ask the user for the database name
     # create config.yml from template and update the database name
     puts "Enter the database name:"
     database_name = STDIN.gets.chomp
     File.write("config/database.yml", File.read("config/database.yml.template").gsub("rapid_rails", database_name))
-    puts "config/database.yml file created."
+
+    display_message :success, "config/database.yml file created."
   end
 
-  puts "\n== Preparing database =="
+  display_message :info, "Preparing database..."
   system! "bin/rails db:prepare"
+  display_message :success, "Database setup complete."
 
-  puts "\n== Removing old logs and tempfiles =="
+  display_message :info, "Removing old logs and tempfiles..."
   system! "bin/rails log:clear tmp:clear"
+  display_message :success, "Old logs and tempfiles removed."
 
-  puts "\n== Restarting application server =="
+  display_message :info, "Restarting application server..."
   system! "bin/rails restart"
+  display_message :success, "Application server restarted."
 
-  puts "\n== Setup complete! =="
+
+  puts "\n\n\n"
+  art = <<-MULTI_LINE_STRING
+██████╗░░█████╗░██████╗░██╗██████╗░██████╗░░█████╗░██╗██╗░░░░░░██████╗
+██╔══██╗██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██╔══██╗██║██║░░░░░██╔════╝
+██████╔╝███████║██████╔╝██║██║░░██║██████╔╝███████║██║██║░░░░░╚█████╗░
+██╔══██╗██╔══██║██╔═══╝░██║██║░░██║██╔══██╗██╔══██║██║██║░░░░░░╚═══██╗
+██║░░██║██║░░██║██║░░░░░██║██████╔╝██║░░██║██║░░██║██║███████╗██████╔╝
+╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝╚══════╝╚═════╝░              
+MULTI_LINE_STRING
+
+  puts color_text(:blue, art)
+  puts "\n"
+  puts color_text(:green, "\n=============== You're ready to go! ===============")
+  puts
+  puts $final_checklist
+  puts 
 end
