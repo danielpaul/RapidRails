@@ -30,12 +30,11 @@ brew services start redis
 
 # Rails Getting Started
 
-- [ ] Update `config/initializers/0_constants.rb` with all the variables
-- [ ] Rename database name in `config/database.yml`
-
 - [ ] run `bin/setup` to setup. This should do a couple of things to get the app ready for development. You can also setup manually by running each command from the `bin/setup` file.
 
 - [ ] Setup the `RAILS_MASTER_KEY` credentials as secret on GitHub for CI to work. `Settings > Secrets > New repository secret`
+
+- [ ] Customize values in `config/initializers/0_constants.rb`
 
 # Running the app for development
 

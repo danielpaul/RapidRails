@@ -13,12 +13,29 @@ FileUtils.chdir APP_ROOT do
   # This script is idempotent, so that you can run it at any time and get an expectable outcome.
   # Add necessary setup steps to this file.
 
+  puts "\n== Installing system dependencies =="
   # Install system dependencies if Homebrew is installed
   if system('[[ (-x "$(command -v brew)") ]]')
     system("brew bundle check --no-lock --no-upgrade") || system!("brew bundle --no-upgrade --no-lock")
+  else
+    puts "Homebrew not installed. Skipping system dependencies installation."
   end
 
-  puts "== Installing dependencies =="
+  # Update Database name in config/database.yml
+  puts "\n== Creating config/database.yml =="
+  if File.exist?("config/database.yml")
+    # skip since the file must be setup already
+    puts "config/database.yml exists. Skipping database.yml update."
+  else
+    # ask the user for the database name
+    # create config.yml from template and update the database name
+    puts "Enter the database name:"
+    database_name = STDIN.gets.chomp
+    File.write("config/database.yml", File.read("config/database.yml.template").gsub("rapid_rails", database_name))
+    puts "config/database.yml file created."
+  end
+
+  puts "\n== Installing Rails dependencies =="
   system! "gem install bundler --conservative"
   system("bundle check") || system!("bundle install")
 
@@ -48,9 +65,12 @@ FileUtils.chdir APP_ROOT do
     puts "No encrypted credentials file found. Skipping credentials file setup."
   end
 
-  puts "\n== Copying sample files =="
-  unless File.exist?(".env")
+  puts "\n== Creating .env file =="
+  if File.exist?(".env")
+    puts ".env file exists. Skipping .env file creation."
+  else
     FileUtils.cp ".env.template", ".env"
+    puts ".env file created."
   end
 
   puts "\n== Preparing database =="
