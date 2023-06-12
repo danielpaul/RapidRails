@@ -33,10 +33,9 @@ brew services start redis
 - [ ] Update `config/initializers/0_constants.rb` with all the variables
 - [ ] Rename database name in `config/database.yml`
 
-- [ ] run `bin/setup` to setup
+- [ ] Delete the `config/credentials.yml.enc` file and run the command `EDITOR="code --wait" bin/rails credentials:edit` to create a new one. Copy over the `credentials.template.yml` contents but keeping the new `secret_key_base` value.
 
-- [ ] Refresh `master.key` and `credentials.yml.enc` with `rails credentials:edit` - ensure to update the `secret_key_base` to encrypt with your own key. Copy over the `credentials.sample.yml` contents.
-- [ ] Copy `.env.sample` to `.env` and update the variables
+- [ ] run `bin/setup` to setup. This should setup the database and also copy over `.env.template` to `.env` and update the variables if needed. This is our local env variables that is not checked in.
 
 - [ ] Setup the `RAILS_MASTER_KEY` credentials as secret on GitHub for CI to work. `Settings > Secrets > New repository secret`
 
