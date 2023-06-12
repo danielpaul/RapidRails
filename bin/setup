@@ -23,7 +23,7 @@ FileUtils.chdir APP_ROOT do
   system("bundle check") || system!("bundle install")
 
   puts "\n== Copying sample files =="
-  if File.exist?(".env.template")
+  unless File.exist?(".env")
     FileUtils.cp ".env.template", ".env"
   end
 
