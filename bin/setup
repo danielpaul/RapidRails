@@ -145,7 +145,7 @@ FileUtils.chdir APP_ROOT do
       puts "Removed existing encrypted credentials file."
     end
 
-    system! "bin/rails credentials:edit"
+    system! "EDITOR='echo' bin/rails credentials:edit"
     display_message :success, "Created new encrypted credentials & master.key file."
   end
 
