@@ -117,7 +117,6 @@ FileUtils.chdir APP_ROOT do
         system! "bin/rails credentials:edit"
         
         puts "Removed existing encrypted credentials file and created a new one with a new master.key file."
-        puts "-> You need to manually copy the contents of config/credentials.sample.yml to the decrypted credentials file and populate the values needed."
       else
         # ask for the existing master key & create master.key file with the value
         puts "Enter the existing master key:"
