@@ -44,7 +44,7 @@ class ContentfulController < ApplicationController
     webhook_secret_token = Rails.application.credentials.dig(Rails.env.to_sym, :contentful, :webhook_secret_token)
 
     # This is the secret key that Contentful will send in the header
-    contentful_webhook_secret_token = request.headers['X-Contentful-Webhook-Name']
+    contentful_webhook_secret_token = request.headers['Authorization:Bearer']
 
     # If the secret key does not match, we will return a 404
     render_404! if webhook_secret_token != contentful_webhook_secret_token
