@@ -84,7 +84,7 @@ FileUtils.chdir APP_ROOT do
   # Install system dependencies if Homebrew is installed
   if system('[[ (-x "$(command -v brew)") ]]')
     system("brew bundle check --no-lock --no-upgrade") || system!("brew bundle --no-upgrade --no-lock")
-    display_message(:success, "System dependencies")
+    display_message(:success, "System dependencies.")
   else
     display_message(:warning, "Homebrew not installed. Skipped system dependencies installation.")
   end
@@ -92,7 +92,7 @@ FileUtils.chdir APP_ROOT do
   # ======================== Install Ruby dependencies ======================== #
   display_message(:info, "Installing Ruby dependencies...")
   system("bundle check") || system!("bundle install")
-  display_message(:success, "Ruby dependencies")
+  display_message(:success, "Ruby dependencies.")
 
 
   # ======================== Setup Rails Credentials & ENV variables ======================== #
@@ -107,28 +107,46 @@ FileUtils.chdir APP_ROOT do
 
   display_message :info, "Preparing Rails credentials file..."
 
-  if File.exist?("config/credentials.yml.enc")
-    if File.exist?("config/master.key")
-      display_message :warning, "Encrypted credentials file and master.key exists. Skipped new credentials setup."
-    else
-      if is_new_project?
-        # delete the existing encrypted credentials file & setup a new master.key
-        FileUtils.rm "config/credentials.yml.enc"
-        system! "bin/rails credentials:edit"
-        
-        puts "Removed existing encrypted credentials file and created a new one with a new master.key file."
-      else
-        # ask for the existing master key & create master.key file with the value
-        puts "Enter the existing master key:"
-        master_key = STDIN.gets.chomp
-        File.write("config/master.key", master_key)
+  # credentails exist, master key exists -> skip 
+  # credentials exist, master key does not exist -> new project? -> create or skip based on answer
+  # credentials do not exist, master key exists -> create
+  # credentials do not exist, master key does not exist -> create
 
-        display_message :success, "master.key file created."
-      end
+  create_new_credentials_file = false
+
+  if File.exist?("config/credentials.yml.enc") && File.exist?("config/master.key")
+    display_message :warning, "Encrypted credentials file and master.key exists."
+  elsif File.exist?("config/credentials.yml.enc") && !File.exist?("config/master.key")
+
+    if is_new_project?
+      create_new_credentials_file = true
+    else
+
+      # ask for the existing master key & create master.key file with the value
+      puts "Enter the existing master key:"
+      master_key = STDIN.gets.chomp
+      File.write("config/master.key", master_key)
+
+      display_message :success, "master.key file created."
 
     end
   else
-    display_message :warning, "No encrypted credentials file found. Skipped credentials file setup."
+    create_new_credentials_file = true
+  end
+
+  if create_new_credentials_file
+    if File.exist?("config/master.key")
+      FileUtils.rm "config/master.key"
+      puts "Removed existing master.key file."
+    end
+
+    if File.exist?("config/credentials.yml.enc")
+      FileUtils.rm "config/credentials.yml.enc"
+      puts "Removed existing encrypted credentials file."
+    end
+
+    system! "bin/rails credentials:edit"
+    display_message :success, "Created new encrypted credentials & master.key file."
   end
 
   # ======================== Setup Database ======================== #
@@ -153,7 +171,7 @@ FileUtils.chdir APP_ROOT do
 
   display_message :info, "Preparing database..."
   system! "bin/rails db:prepare"
-  display_message :success, "Database setup complete."
+  display_message :success, "Database setup."
 
 
   # ======================== Other stuff ======================== #
