@@ -96,7 +96,16 @@ FileUtils.chdir APP_ROOT do
 
 
   # ======================== Setup Rails Credentials & ENV variables ======================== #
-  display_message(:info, "Preparing Rails credentials file...")
+  display_message :info, "Preparing .env file..."
+  
+  if File.exist?(".env")
+    display_message :warning, ".env file exists. Skipped .env file creation."
+  else
+    FileUtils.cp ".env.template", ".env"
+    display_message :success, ".env file created."
+  end
+
+  display_message :info, "Preparing Rails credentials file..."
 
   if File.exist?("config/credentials.yml.enc")
     if File.exist?("config/master.key")
@@ -121,15 +130,6 @@ FileUtils.chdir APP_ROOT do
     end
   else
     display_message :warning, "No encrypted credentials file found. Skipped credentials file setup."
-  end
-
-  display_message :info, "Preparing .env file..."
-  
-  if File.exist?(".env")
-    display_message :warning, ".env file exists. Skipped .env file creation."
-  else
-    FileUtils.cp ".env.template", ".env"
-    display_message :success, ".env file created."
   end
 
   # ======================== Setup Database ======================== #
