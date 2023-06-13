@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require_relative "../lib/generators/credentials_generator"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -23,6 +24,10 @@ module RapidRails
       g.helper false
       g.jbuilder false
     end
+
+    # RapidRails generators
+    config.autoload_paths << "#{root}/lib/generators"
+
 
     # Phlex
     config.autoload_paths << "#{root}/app/views"
