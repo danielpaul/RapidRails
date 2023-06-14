@@ -41,7 +41,7 @@ module User::Omniauthable
         # sidekiq job to download the image and attach it to the user
         # log the user in ASAP without waiting for slow image request and attachment process
         # to complete. The user will see the default avatar until the image is attached.
-        AttachProfilePictureJob.perform_later(user.id, data["image"])
+        AttachProfilePictureWorker.perform_async(user.id, data["image"])
       end
 
       user

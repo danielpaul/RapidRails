@@ -7,7 +7,7 @@ namespace :anonymize do
                 .select(:id)
 
     users.find_each do |user|
-      AnonymizationWorker.perform_async(user.id)
+      UserAnonymizationWorker.perform_async(user.id)
     end
 
     puts "Anonymization queued for #{users.count} users."

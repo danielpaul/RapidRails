@@ -1,4 +1,4 @@
-class AttachProfilePictureJob < ApplicationJob
+class AttachProfilePictureWorker < ApplicationWorker
   sidekiq_options queue: "low_priority", retry: 3
 
   def perform(user_id, image_url)
