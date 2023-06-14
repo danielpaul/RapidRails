@@ -33,15 +33,15 @@
 #
 RSpec.describe User, type: :model do
   subject(:user) { FactoryBot.build(:user) }
-  let(:omniauth_data) { 
+  let(:omniauth_data) {
     {
-      'email' => "me@gmail.com",
-      'email_verified' => true,
-      'first_name' => "Daniel",
-      'image' => "https://lh3.googleusercontent.com/a/AAcHTtfUNo3s4sQy7rF3dP05MXJvjqugGNhUKvXEQy-zUX8=s96-c",
-      'last_name' => "Paul",
-      'name' => "Daniel Paul",
-      'unverified_email' => "me@gmail.com"
+      "email" => "me@gmail.com",
+      "email_verified" => true,
+      "first_name" => "Daniel",
+      "image" => "https://lh3.googleusercontent.com/a/AAcHTtfUNo3s4sQy7rF3dP05MXJvjqugGNhUKvXEQy-zUX8=s96-c",
+      "last_name" => "Paul",
+      "name" => "Daniel Paul",
+      "unverified_email" => "me@gmail.com"
     }
   }
 
@@ -87,10 +87,10 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#User.from_omniauth - Google OmniAuth tests' do
-    context 'when new email but unverified on google' do
+  describe "#User.from_omniauth - Google OmniAuth tests" do
+    context "when new email but unverified on google" do
       it "creates a new but unconfirmed user record" do
-        omniauth_data['email_verified'] = false
+        omniauth_data["email_verified"] = false
         user = User.from_omniauth(omniauth_data)
 
         assert user.persisted?
@@ -99,7 +99,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'when new email but verified on google' do
+    context "when new email but verified on google" do
       it "creates a new confirmed user record" do
         user = User.from_omniauth(omniauth_data)
 
@@ -109,30 +109,30 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'when invalid email on google' do
+    context "when invalid email on google" do
       it "does not create user record if verified or unverified" do
-        omniauth_data['email'] = 'invalid email'
+        omniauth_data["email"] = "invalid email"
 
-        expect { 
+        expect {
           @user = User.from_omniauth(omniauth_data)
-        }.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Email is invalid')
+        }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Email is invalid")
 
-        omniauth_data['email_verified'] = false
-        expect { 
+        omniauth_data["email_verified"] = false
+        expect {
           @user2 = User.from_omniauth(omniauth_data)
-        }.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Email is invalid')
+        }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Email is invalid")
       end
     end
 
-    describe 'Existing users logging in with omniauth' do
+    describe "Existing users logging in with omniauth" do
       before :each do
-        @user = create(:user, email: 'me@gmail.com')
+        @user = create(:user, email: "me@gmail.com")
       end
 
-      context 'when unconfirmed' do
+      context "when unconfirmed" do
         it "does not confirm existing user if unverified on google" do
-          omniauth_data['email_verified'] = false
-          
+          omniauth_data["email_verified"] = false
+
           old_confirm_at = @user.confirmed_at
           google_user = User.from_omniauth(omniauth_data)
 
@@ -141,7 +141,7 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context 'when unconfirmed' do
+      context "when unconfirmed" do
         it "confirms existing user if verified on google" do
           refute @user.confirmed?
           google_user = User.from_omniauth(omniauth_data)
@@ -150,7 +150,7 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context 'when confirmed' do
+      context "when confirmed" do
         it "does nothing if unverified on google" do
           @user.update confirmed_at: 1.year.ago
           assert @user.confirmed?
@@ -160,7 +160,7 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context 'when confirmed' do
+      context "when confirmed" do
         it "does nothing even if verified on google" do
           @user.update confirmed_at: 1.year.ago
           assert @user.confirmed?
@@ -170,8 +170,8 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context 'when signing in with a discarded account' do
-        it 'does not save record' do
+      context "when signing in with a discarded account" do
+        it "does not save record" do
           @user.discard
           google_user = User.from_omniauth(omniauth_data)
 
@@ -179,8 +179,8 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context 'when user has no profile picture' do
-        it 'attaches profile picture from google account' do
+      context "when user has no profile picture" do
+        it "attaches profile picture from google account" do
           expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 0
           expect {
             User.from_omniauth(omniauth_data)
