@@ -1,5 +1,5 @@
-.lg:pl-72
-  .sticky.top-0.z-40.flex.h-16.shrink-0.items-center.gap-x-4.border-b.border-t.card-border.bg-card.dark:bg-card-dark.px-4.sm:gap-x-6.sm:px-6.lg:px-8
+#top-bar.pb-14
+  .border-b.card-border.shrink-0{class: 'fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between gap-12 px-4 transition-all sm:px-6 lg:left-72 lg:z-30 lg:px-8 backdrop-blur-sm dark:backdrop-blur lg:left-72 bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]', style: "--bg-opacity-light: 0.9; --bg-opacity-dark: 0.8;"}
     %button.text-neutral-700.dark:text-slate-400.lg:hidden{:class => "-m-2.5 p-2.5", :type => "button", "@click": "sidebarOpen = !sidebarOpen"}
       %span.sr-only Open sidebar
       %svg.h-6.w-6{"aria-hidden" => "true", :fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24"}
@@ -19,10 +19,12 @@
           %span.sr-only View notifications
           %svg.h-6.w-6{"aria-hidden" => "true", :fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24"}
             %path{:d => "M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+        
         / Separator
-        .hidden.lg:block.lg:h-6.lg:w-px.lg:bg-neutral-200.dark:lg:bg-neutral-400{"aria-hidden" => "true"}
+        %div{class: 'hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15'}
 
-        = render DarkModeButtonComponent.new
+        %div{class: 'flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5'}
+          = render DarkModeButtonComponent.new
         
         / Profile dropdown
         .relative{"x-data": "{ dropdownOpen: false }"}
@@ -35,7 +37,7 @@
                 %path{"clip-rule" => "evenodd", :d => "M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z", "fill-rule" => "evenodd"}
           /
             Dropdown menu, show/hide based on menu state.
-          .absolute.right-0.z-10.w-64.origin-top-right.card.shadow-lg{"aria-labelledby" => "user-menu-button", "aria-orientation" => "vertical", :class => "mt-2.5 ring-neutral-900/5", :role => "menu", :tabindex => "-1", "x-show": "dropdownOpen", "@click.away": "dropdownOpen = false", "x-transition:enter": "ease-out duration-100", "x-transition:enter-start": "transform opacity-0 scale-95", "x-transition:enter-end": "transform opacity-100 scale-100", "x-transition:leave": "transition ease-in duration-75", "x-transition:leave-start": "transform opacity-100 scale-100", "x-transition:leave-end": "transform opacity-0 scale-95", style: "display: none"}
+          .absolute.right-0.z-10.w-64.origin-top-right.card.shadow-lg{"aria-labelledby" => "user-menu-button", "aria-orientation" => "vertical", :class => "mt-4 ring-neutral-900/5", :role => "menu", :tabindex => "-1", "x-show": "dropdownOpen", "@click.away": "dropdownOpen = false", "x-transition:enter": "ease-out duration-100", "x-transition:enter-start": "transform opacity-0 scale-95", "x-transition:enter-end": "transform opacity-100 scale-100", "x-transition:leave": "transition ease-in duration-75", "x-transition:leave-start": "transform opacity-100 scale-100", "x-transition:leave-end": "transform opacity-0 scale-95", style: "display: none"}
             .py-2.px-3.mb-1.border-b.card-border
               .text-xs.text-neutral-500 Signed in as
               .text-sm.font-semibold.leading-6.text-neutral-900.dark:text-white.truncate{"aria-hidden" => "true"} #{current_user.email}

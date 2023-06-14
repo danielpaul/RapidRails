@@ -17,7 +17,7 @@ class DarkModeButtonComponent < Phlex::HTML
         unsafe_raw heroicon(
           "sun",
           options: {
-            class: "h-6 w-6"
+            class: "h-5 w-5"
           }
         )
       end
@@ -30,7 +30,7 @@ class DarkModeButtonComponent < Phlex::HTML
         unsafe_raw heroicon(
           "moon",
           options: {
-            class: "h-6 w-6"
+            class: "h-5 w-5"
           }
         )
       end

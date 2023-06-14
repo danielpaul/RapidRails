@@ -23,8 +23,8 @@ module.exports = {
         },
 
         body: {
-          DEFAULT: '#f5f5f7',
-          dark: '#000000'
+          DEFAULT: '#fafafa',
+          dark: '#010409'
         },
 
         card: {
