@@ -109,7 +109,17 @@
   }
 
   .text-input {
-    @apply block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-neutral-600 placeholder:text-neutral-500 dark:text-neutral-50 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 text-slate-800 bg-card dark:bg-card-dark file-input;
+    @apply block w-full rounded-md 
+    border-0 
+    py-1.5 px-3 
+    shadow-sm 
+    ring-1 ring-inset ring-gray-300 dark:ring-neutral-600 
+    placeholder:text-neutral-500 
+    text-slate-800 dark:text-neutral-50 
+    focus:ring-2 focus:ring-inset focus:ring-primary 
+    sm:text-sm sm:leading-6 
+    bg-card dark:bg-card-dark 
+    file-input;
   }
 
   .select-input {

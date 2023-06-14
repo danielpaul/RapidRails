@@ -12,4 +12,7 @@
       %div{class: "mt-2 sm:mx-auto sm:w-full sm:max-w-md"}
         = yield
 
+      .mx-auto.mt-12
+        = render DarkModeButtonComponent.new
+
     = render 'layouts/components/footer_scripts'
