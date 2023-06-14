@@ -29,7 +29,7 @@ module.exports = {
 
         card: {
           DEFAULT: '#ffffff',
-          dark: '#1c1c1e'
+          dark: '#18171c'
         }
       },
       fontSize: {
