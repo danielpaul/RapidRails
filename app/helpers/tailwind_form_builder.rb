@@ -89,7 +89,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
       [nil, {}]
     end
 
-    label_classes = label_opts[:class] || "block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+    label_classes = label_opts[:class] || "block text-sm font-medium leading-6 text-neutral-900 dark:text-white"
     label_classes += " text-yellow-800 dark:text-yellow-400" if field_options[:disabled]
     label(object_method, text, {
       class: label_classes
