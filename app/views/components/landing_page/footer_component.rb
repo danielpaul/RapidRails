@@ -60,7 +60,7 @@ class LandingPage::FooterComponent < Phlex::HTML
                   div(class: (index != 0) ? "mt-10 md:mt-0" : nil) do
                     h3(
                       class:
-                        "text-sm font-semibold leading-6 text-gray-900 dark:text-white "
+                        "text-sm font-semibold leading-6 text-neutral-900 dark:text-white "
                     ) { item[:heading] }
                     ul(role: "list", class: "mt-6 space-y-4") do
                       item[:items].each do |subitem|
@@ -68,7 +68,7 @@ class LandingPage::FooterComponent < Phlex::HTML
                           a(
                             href: subitem[:path],
                             class:
-                              "text-sm link-secondary"
+                              "text-sm link-hover"
                           ) { subitem[:label] }
                         end
                       end
@@ -82,9 +82,9 @@ class LandingPage::FooterComponent < Phlex::HTML
           div(class: "mt-10 xl:mt-0") do
             h3(
               class:
-                "text-sm font-semibold leading-6 text-gray-900 dark:text-white "
+                "text-sm font-semibold leading-6 text-neutral-900 dark:text-white "
             ) { "Subscribe to our newsletter" }
-            p(class: "mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300") do
+            p(class: "mt-2 text-sm leading-6") do
               "The latest news, articles, and resources, sent to your inbox weekly."
             end
             form(class: "mt-6 sm:flex sm:max-w-md") do
@@ -115,7 +115,7 @@ class LandingPage::FooterComponent < Phlex::HTML
         ) do
           p(
             class:
-              "text-xs leading-5 text-gray-500 dark:text-gray-400 order-1 md:mt-0"
+              "text-xs leading-5 text-neutral-500 dark:text-neutral-400 order-1 md:mt-0"
           ) do
             plain "© #{Date.today.year} #{COMPANY_NAME}. All rights reserved."
           end

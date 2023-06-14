@@ -8,6 +8,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
 
   TEXT_FIELD_STYLE = "text-input".freeze
   SELECT_FIELD_STYLE = "select-input".freeze
+  CHECKBOX_FIELD_STYLE = "checkbox-input".freeze
   SUBMIT_BUTTON_STYLE = "".freeze
 
   text_field_helpers.each do |field_method|
@@ -37,6 +38,15 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     field = super(method, choices, opts, html_options.merge({class: classes}), &block)
 
     labels + field
+  end
+
+  def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
+    custom_opts, opts = partition_custom_opts(options)
+    classes = apply_style_classes(CHECKBOX_FIELD_STYLE, custom_opts, method)
+
+    field = super(method, {class: classes}.merge(opts))
+
+    field
   end
 
   private
@@ -79,7 +89,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
       [nil, {}]
     end
 
-    label_classes = label_opts[:class] || "block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+    label_classes = label_opts[:class] || "block text-sm font-medium leading-6 text-neutral-900 dark:text-white"
     label_classes += " text-yellow-800 dark:text-yellow-400" if field_options[:disabled]
     label(object_method, text, {
       class: label_classes

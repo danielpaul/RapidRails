@@ -74,7 +74,7 @@ class AppSidebarMenuComponent < ApplicationComponent
         menu_items.each do |menu_item|
           li class: menu_item[:classes] do
             if menu_item[:title]
-              div class: "text-xs font-semibold leading-6 text-gray-400" do
+              div class: "text-xs font-semibold leading-6 text-neutral-400" do
                 menu_item[:title]
               end
             end
@@ -82,11 +82,11 @@ class AppSidebarMenuComponent < ApplicationComponent
             if menu_item[:items] && menu_item[:items].any?
               ul class: "-mx-2 space-y-1 #{menu_item[:item_menu_classes]}", role: "list" do
                 menu_item[:items].each do |item|
-                  li_classes = "text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-50 dark:hover:bg-card-dark group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                  icon_classes = "h-6 w-6 shrink-0 text-gray-400 dark:text-gray-300 group-hover:text-primary"
+                  li_classes = "text-neutral-700 dark:text-neutral-300 hover:text-primary hover:bg-neutral-50 dark:hover:bg-card-dark group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                  icon_classes = "h-6 w-6 shrink-0 text-neutral-400 dark:text-neutral-300 group-hover:text-primary"
 
                   if item[:active]
-                    li_classes += " bg-gray-50 dark:bg-card-dark text-primary"
+                    li_classes += " bg-neutral-50 dark:bg-card-dark text-primary"
                     icon_classes += " text-primary"
                   end
 
@@ -98,7 +98,7 @@ class AppSidebarMenuComponent < ApplicationComponent
                       if item[:icon]
                         unsafe_raw heroicon(item[:icon], options: {class: icon_classes})
                       else
-                        span class: "flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border font-medium bg-white text-gray-400 border-gray-200 group-hover:border-primary group-hover:text-primary text-[0.625rem]" do
+                        span class: "flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border font-medium bg-white text-neutral-400 border-neutral-200 group-hover:border-primary group-hover:text-primary text-[0.625rem]" do
                           item[:title][0]
                         end
                       end
