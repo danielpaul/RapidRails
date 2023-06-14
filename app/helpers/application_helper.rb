@@ -1,6 +1,15 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def theme_class
+    theme = cookies[:theme]
+    if theme == "dark"
+      "dark"
+    else
+      "light"
+    end
+  end
+
   # Method used for turbo frame dom with hashid instead of record id
   def dom_hashid(record, prefix = nil)
     if (record_id = record.hashid)
