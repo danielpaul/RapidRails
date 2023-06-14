@@ -54,7 +54,7 @@
   .btn-white {
     @apply btn text-gray-900 dark:text-white 
     shadow-sm 
-    ring-1 ring-inset ring-gray-300 dark:ring-[#38383d]
+    ring-1 ring-inset ring-gray-300 dark:ring-neutral-750
     bg-card dark:bg-[#27262b]
     hover:bg-gray-50 dark:hover:bg-neutral-900;
   }
@@ -79,11 +79,11 @@
 
   .card-border {
     /* duplicated as ring on the .card. It does not use this border. */
-    @apply border-neutral-300/50 dark:border-neutral-700;
+    @apply border-neutral-300/50 dark:border-neutral-750;
   }
 
   .card {
-    @apply bg-card dark:bg-card-dark ring-1 ring-neutral-300/50 dark:ring-neutral-800 rounded-lg shadow-sm my-auto overflow-hidden;
+    @apply bg-card dark:bg-card-dark ring-1 ring-neutral-300/50 dark:ring-neutral-750 rounded-lg shadow-sm my-auto overflow-hidden;
   }
 
   .card-body {
@@ -105,7 +105,7 @@
   /* Forms */
 
   .file-input {
-    @apply file:bg-transparent file:text-gray-900 file:dark:text-white file:shadow-sm file:ring-1 file:ring-gray-300 file:dark:ring-neutral-600 file:hover:bg-gray-50 file:dark:hover:bg-neutral-900
+    @apply file:bg-transparent file:text-gray-900 file:dark:text-white file:shadow-sm file:ring-1 file:ring-gray-300 file:dark:ring-neutral-750 file:hover:bg-gray-50 file:dark:hover:bg-neutral-900
     file:mr-4 file:my-1 file:py-0 file:px-3
     file:border-0 
     file:cursor-pointer
@@ -113,7 +113,7 @@
   }
 
   .input-border {
-    @apply border-gray-300 dark:border-[#38383d];
+    @apply border-gray-300 dark:border-neutral-750;
   }
 
   .input-base {
@@ -123,7 +123,7 @@
     border-0 
     py-1.5 px-3 
     shadow-sm
-    ring-1 ring-inset ring-gray-300 dark:ring-[#38383d]
+    ring-1 ring-inset ring-gray-300 dark:ring-neutral-750
     placeholder:text-neutral-500 
     text-slate-800 dark:text-neutral-50 
     focus:ring-2 focus:ring-inset focus:ring-primary dark:focus:ring-primary-500
