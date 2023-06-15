@@ -45,6 +45,18 @@
     @apply text-xl font-bold tracking-tight text-heading;
   }
 
+  .h4 {
+    @apply text-base font-bold tracking-tight text-heading;
+  }
+
+  .h5 {
+    @apply text-sm font-bold tracking-tight text-heading;
+  }
+
+  .h6 {
+    @apply text-xs font-bold tracking-tight text-heading;
+  }
+
   .text-huge {
     @apply h1 text-3xl sm:text-5xl;
   }
@@ -208,13 +220,10 @@
   }
 
   .select-input {
-    @apply block bg-neutral-200 text-neutral-700 
-    py-2 px-4 
-    rounded leading-tight 
-    focus:outline-none focus:bg-white;
+    @apply text-input;
   }
 
-  .checkbox-input {
+  .check-box-input {
     @apply h-4 w-4 rounded-md
     input-base
     checked:bg-primary-500 checked:border-transparent checked:ring-transparent
@@ -222,7 +231,11 @@
     p-2;
   }
 
-  .checkbox-label {
+  .radio-button-input {
+    @apply check-box-input rounded-full;
+  }
+
+  .check-box-label, .radio-button-label {
     @apply ml-2 block text-sm;
   }
 

@@ -1,54 +1,99 @@
-%div.mb-6
-  %h3.text-base.font-semibold.leading-6.text-neutral-900 Last 60 days
-  %dl.mt-5.grid.grid-cols-1.gap-5.sm:grid-cols-3
-    .overflow-hidden.card.px-4.py-5.sm:p-6
-      %dt.truncate.text-sm.font-medium.text-neutral-500 Total Users
-      %dd.mt-1.text-3xl.font-semibold.tracking-tight.text-neutral-900 77,123
-    .overflow-hidden.card.px-4.py-5.sm:p-6
-      %dt.truncate.text-sm.font-medium.text-neutral-500 Open Rate
-      %dd.mt-1.text-3xl.font-semibold.tracking-tight.text-neutral-900 48.16%
-    .overflow-hidden.card.px-4.py-5.sm:p-6
-      %dt.truncate.text-sm.font-medium.text-neutral-500 Click Rate
-      %dd.mt-1.text-3xl.font-semibold.tracking-tight.text-neutral-900 14.77%
+%div{class: 'w-4/6 mx-auto'}
 
-.div
 
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus non eros id varius. Vestibulum at ligula eu leo commodo interdum. Pellentesque sit amet blandit ipsum, ultricies vehicula ante. Nullam ipsum mauris, ultrices id magna non, imperdiet auctor libero. Donec pretium efficitur ultricies. Nullam eu sollicitudin nunc. Maecenas pulvinar mollis condimentum. Ut vehicula euismod est aliquet luctus. Sed ac pellentesque mauris. Ut in ligula sed lorem porta vestibulum.
+  %section#alerts.mb-12
+    %h1.h1.mb-3 Alerts
+    %p.mb-6.text-md Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+    
+    .card
+      .card-body
+        hello
+      .card-footer
+        Code goes in here
 
-Nullam mattis dui quis orci convallis, quis mattis risus auctor. Fusce molestie purus ante, at auctor turpis fringilla ut. Sed gravida nibh ut suscipit pulvinar. Suspendisse a pellentesque mauris. Vestibulum gravida id odio ac hendrerit. Proin hendrerit dui a odio eleifend, placerat efficitur tellus varius. Vestibulum metus lectus, venenatis sed orci ullamcorper, mattis fringilla velit. Nunc eget elit finibus, fringilla tellus id, rutrum leo. Quisque faucibus quam sit amet faucibus tincidunt. Aliquam interdum erat nisl, vitae venenatis ligula molestie sit amet. Mauris pharetra gravida varius. Cras volutpat ante in tellus aliquam malesuada ac ut libero.
+  
+  %section#typography.mb-12
+    %h1.h1.mb-3 Typography
+    %p.mb-6.text-md Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
 
-Nullam commodo semper porttitor. Duis convallis tristique justo, quis congue tortor. Vivamus nibh ligula, interdum quis ultricies et, varius a arcu. Suspendisse potenti. Cras erat eros, scelerisque id libero sed, cursus faucibus augue. Aenean eget nunc blandit, fermentum augue vitae, suscipit erat. Aliquam rutrum ultricies placerat. Sed nisi velit, volutpat vitae egestas sit amet, pharetra in sem. Proin volutpat ante nec posuere eleifend. Ut sit amet tellus quis neque ultrices faucibus non eu nisl. Fusce id pharetra diam. Aenean ut urna in arcu eleifend cursus nec et tortor. Proin venenatis nisl quis odio porttitor, id dapibus est interdum. Ut ut volutpat quam. Nunc sit amet consectetur ante, a consectetur metus.
+    .card
+      .card-body
+        %h1.text-huge.mb-3 Huge Heading
 
-Nam vulputate vel lacus blandit viverra. Maecenas sit amet nulla eu libero varius accumsan. Ut pretium hendrerit purus, nec auctor ligula sollicitudin ac. Nulla et purus nibh. Quisque convallis ex massa, suscipit semper magna ultrices sed. Nullam eu lectus eget velit facilisis molestie. Vestibulum euismod suscipit molestie. Fusce suscipit nulla eget nisl rhoncus, ut consequat felis euismod. Suspendisse auctor accumsan odio, dignissim efficitur nibh molestie in. Sed eget metus finibus, sodales ipsum at, mattis mauris. Nulla rutrum auctor ipsum, sit amet condimentum metus malesuada eu. Donec sapien velit, laoreet et ante vel, egestas congue ex. Quisque eu metus nec diam cursus euismod vel ut velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        %h1.h1.mb-3 h1. RapidRails Heading
+        %h2.h2.mb-3 h2. RapidRails Heading
+        %h3.h3.mb-3 h3. RapidRails Heading
+        %h4.h4.mb-3 h4. RapidRails Heading
+        %h5.h5.mb-3 h5. RapidRails Heading
+        %h6.h6.mb-6 h6. RapidRails Heading
+        
+        %p.mb-3 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        %p.text-muted.mb-3 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
 
-Etiam aliquet lobortis sapien eu dignissim. Morbi dolor est, viverra nec tincidunt sit amet, tempus eu quam. Nulla ac fringilla elit, quis vehicula arcu. Maecenas congue lacus varius nunc aliquet, non dapibus est volutpat. Proin tempus erat eget tortor viverra condimentum. Donec consectetur erat augue, eu consequat tellus accumsan gravida. Sed lectus risus, imperdiet ac justo vitae, dapibus egestas nibh. Curabitur neque magna, maximus et maximus sit amet, tincidunt vel lectus. Vivamus euismod velit nec mauris pretium sollicitudin. Curabitur libero est, posuere vel mauris id, tincidunt ullamcorper nisl. Nulla facilisi. Integer euismod ex orci, ac vehicula nulla hendrerit ornare. Integer iaculis, ipsum eu venenatis malesuada, ipsum sem sodales risus, a aliquam lorem erat blandit libero. Aenean placerat sem ac volutpat facilisis. Fusce ullamcorper laoreet viverra.
+        = link_to "Link example", '#', class: "link"
 
-Praesent accumsan, sapien non convallis molestie, enim ante maximus nisl, condimentum accumsan nisl lacus laoreet velit. Sed diam risus, elementum sed lacus in, tristique scelerisque quam. Cras feugiat porta ipsum, vel bibendum libero venenatis id. Etiam interdum porttitor pellentesque. Phasellus non tristique erat. Donec condimentum feugiat vestibulum. Duis convallis, risus at finibus mattis, massa urna porttitor dolor, et posuere nunc felis eu urna. Fusce nec turpis vitae quam vulputate interdum nec id ante. Proin dignissim ligula tellus, eget suscipit est malesuada ut.
+  %section#buttons.mb-12
+    %h1.h1.mb-3 Buttons & Links
+    %p.mb-6.text-md Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
 
-Curabitur porttitor, lorem ac dictum pretium, odio nulla accumsan diam, at efficitur libero nisl eu ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis nisl purus. Mauris a ultrices nisl, a euismod diam. Donec nec orci sapien. Nullam mollis pellentesque pulvinar. Phasellus sit amet lorem quam. Pellentesque consequat commodo ante eget molestie. Curabitur vel varius nulla. Donec ornare scelerisque commodo. Suspendisse leo ante, ullamcorper efficitur tellus vitae, gravida fringilla ex.
+    .card
+      .card-body
+        = link_to "Button Primary", '#', class: "btn btn-primary"
+        = link_to "Button Secondary", '#', class: "btn btn-secondary"
+        = link_to "Button White", '#', class: "btn btn-white"
+        
+        .mb-6 
 
-Donec sed erat eget quam condimentum laoreet. Morbi elementum, ex sed suscipit vestibulum, tellus turpis volutpat nibh, sit amet mattis lorem sapien non magna. Nulla ut risus orci. Vestibulum fringilla nisl eu ipsum dapibus interdum. Donec porta neque eu vestibulum volutpat. Nulla euismod nibh nec mi dictum cursus. Praesent sit amet sollicitudin eros.
+        = link_to "Link", '#', class: "link"
+        = link_to "Link hover", '#', class: "link-hover ml-6"
 
-Sed semper rutrum orci, quis molestie ligula porttitor in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In sed euismod odio. Etiam pharetra ultrices tellus vitae commodo. Etiam blandit nulla sed fermentum ultrices. Aenean blandit magna risus, a consequat dolor posuere id. Proin id ex leo. Nunc enim libero, gravida non sollicitudin ut, pretium id nunc. Mauris vulputate tempus diam vel faucibus. Donec malesuada diam urna, nec eleifend risus laoreet quis. Maecenas quis pharetra quam, vel finibus purus. Praesent tincidunt laoreet pharetra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin dapibus sed purus non malesuada. Ut tempor volutpat volutpat. Duis fringilla felis lectus, mattis vulputate leo volutpat sit amet.
+  %section#forms.mb-12
+    %h1.h1.mb-3 Forms
+    %p.mb-6.text-md Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
 
-Sed quis blandit orci. Quisque id velit in arcu vehicula imperdiet at vel lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam justo elit, luctus in convallis eget, finibus sit amet lectus. Nullam sit amet velit vitae tellus venenatis porta. Aenean vestibulum lacus eu semper placerat. Nam at leo et metus porta sagittis. Aliquam dignissim libero ut bibendum elementum. Vivamus ac lorem a dui pellentesque rutrum sed eget erat. Nulla nunc nulla, varius sit amet metus quis, consectetur semper arcu. Phasellus quis malesuada ex. Quisque sed ultrices dui. Nullam mollis, lacus sit amet porta iaculis, ligula arcu egestas enim, ac rutrum felis orci sed lectus. Curabitur cursus, est sed faucibus placerat, turpis tellus suscipit metus, sit amet iaculis libero diam vel augue. Vivamus rhoncus dictum nisl, et mattis ante posuere eu.
+    .card
+      = form_for :something, method: :post, builder: TailwindFormBuilder do |f|
+        .card-header
+          %h4.h4 Sample Form
+        .card-body.space-y-6
+          -# example of all kind of fields
+          = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Email Field", required: true, hint: "This is a hint"
+          = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true
+          = f.text_field :text, placeholder: "Your text", required: true
+          = f.text_area :text_area, placeholder: "Your text area", required: true
 
-Sed tincidunt, elit a auctor sodales, magna purus pellentesque nulla, id bibendum mi lectus vitae dolor. Nulla facilisi. Vivamus mollis suscipit auctor. Proin eget libero consectetur turpis volutpat ornare. Curabitur nec ipsum ullamcorper, finibus turpis et, pellentesque arcu. Fusce nec eros convallis, laoreet mi sit amet, vehicula risus. Donec ut enim orci.
+          = f.select :select, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {}, {class: 'select'}
 
-Suspendisse metus leo, pellentesque id interdum sed, tristique sed ex. Aenean in ligula gravida, lobortis tortor eu, bibendum turpis. Etiam non lacinia nisl. Etiam et nunc quis augue tempor rhoncus. Maecenas sit amet lectus quis ante pulvinar feugiat vel eu metus. Etiam pretium metus id massa iaculis hendrerit quis non sapien. Suspendisse potenti. Maecenas sit amet massa dictum, efficitur ex et, sagittis neque. Cras sed varius orci. Proin et ex eu felis semper dictum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut iaculis ex auctor ex varius euismod. Nunc suscipit libero purus, ac commodo lorem tristique a.
+          = f.check_box :check_box, label: "Check me out"
 
-Morbi vehicula a mauris et bibendum. Aliquam eu metus in est porta finibus. Aenean dui orci, tristique a lorem sit amet, dapibus dapibus elit. Integer euismod quis est vel porttitor. Maecenas a justo sed mauris faucibus sollicitudin. Quisque ullamcorper lacus in elit aliquam gravida. Curabitur sit amet arcu lacinia, ultricies turpis quis, rutrum velit. Suspendisse aliquam molestie facilisis. Phasellus eget est sed justo lobortis dignissim eget dignissim arcu. Integer id commodo risus, ut egestas ante. Vivamus egestas dolor ut metus scelerisque, condimentum sodales nibh ultricies.
 
-Aenean quis metus lorem. Vestibulum nunc tortor, aliquet ut libero sit amet, lacinia dictum quam. Donec lobortis efficitur leo sit amet euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut pulvinar nulla in libero accumsan, at varius nulla auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque sodales bibendum tortor a porttitor. Ut ut faucibus arcu. Integer sagittis non nunc et pellentesque. Sed quis tempor lacus. Curabitur ut tellus mauris. Morbi non dolor porta, lobortis urna et, volutpat quam. Aliquam erat volutpat. Donec quis diam auctor, congue eros id, scelerisque ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi ex lacus, facilisis ac ultrices scelerisque, aliquet quis nisl.
+          .flex.items-center
+            .flex-1
+              = f.radio_button :radio_button, 1, label: "Apple"
 
-Aenean eu diam porta, eleifend massa nec, hendrerit ex. Sed sodales tristique elit eget maximus. Cras a nulla sit amet mi sodales laoreet in vitae mauris. Morbi quis lorem ut metus sollicitudin tristique id id leo. Praesent ac lectus ac orci consequat sollicitudin. Maecenas non diam tincidunt, placerat erat vitae, placerat leo. Proin orci magna, porttitor sit amet dictum et, interdum vel diam. Donec urna justo, bibendum sit amet hendrerit aliquet, vehicula quis enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque sit amet ultricies diam, ut sodales diam. Nullam non nulla commodo, venenatis lacus at, imperdiet nunc. Vestibulum rutrum dui tellus, sit amet consequat nisi vehicula eu. Cras imperdiet et tortor et placerat. Sed id neque libero. Sed dignissim, sem eget tempor rutrum, metus elit mattis nunc, faucibus vulputate urna sapien et libero. Etiam imperdiet turpis ut urna ullamcorper interdum.
+            .flex-1
+              = f.radio_button :radio_button, 2, label: "Banana"
+            
+            .flex-1
+              = f.radio_button :radio_button, 3, label: "Orange"
 
-In placerat et nulla eu congue. Nunc eu tellus felis. Praesent vitae nibh tempus, viverra purus ut, sagittis mi. Vivamus rhoncus mollis auctor. Nullam tempus eros eget felis congue pharetra. Praesent porta pulvinar lacus, quis egestas felis. Etiam ornare ipsum vitae lorem faucibus gravida. Donec vitae molestie tortor. Integer aliquet, arcu vitae eleifend pulvinar, sapien metus laoreet diam, vel lobortis velit ligula id purus. Proin tempus tincidunt augue quis ultricies. Proin interdum augue in dolor luctus hendrerit. Suspendisse potenti. Fusce ultricies ante congue, gravida ipsum tincidunt, molestie lorem. Aenean sollicitudin massa eget purus euismod, quis efficitur orci ultricies.
 
-Nunc gravida erat eget tempus cursus. Sed laoreet rutrum lobortis. Curabitur commodo bibendum efficitur. Ut tempor lectus quis dolor lacinia, vel tincidunt nunc accumsan. Vestibulum aliquam ut justo ac condimentum. Nunc ut gravida nibh. Nam in ligula nec diam eleifend placerat at sit amet elit. Aliquam consectetur purus ac nisi varius, quis suscipit nunc lobortis. Nam nec lorem ac massa bibendum tincidunt id at dolor.
+          = f.file_field :file_field, accept: 'image/png,image/jpeg,image/gif', required: true
 
-Aenean facilisis lectus ut nisl consequat, id dictum lacus placerat. Mauris placerat, sapien a gravida volutpat, enim ligula tempor est, non placerat sapien tortor quis turpis. Sed rhoncus justo sed facilisis malesuada. Donec id velit non nisi sodales placerat. Pellentesque dictum dolor sed sapien mattis ornare. Vivamus sed vulputate sem. Praesent vestibulum non risus eget commodo. Vivamus convallis convallis diam, vitae commodo nibh aliquet vel. Etiam auctor orci ut pulvinar sollicitudin. Phasellus luctus aliquet scelerisque. Fusce luctus tincidunt gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam erat volutpat.
+          .flex.space-x-4
+            .flex-1
+              = f.date_field :date_field
+            .flex-1
+              = f.time_field :time_field
+            .flex-1
+              = f.datetime_field :datetime_field
 
-Donec pharetra sollicitudin leo sit amet sollicitudin. Curabitur cursus lacinia justo eget viverra. Ut vel mauris tincidunt, placerat justo quis, vulputate mauris. Duis a tincidunt orci. Aliquam tristique mollis urna, sed lacinia risus pharetra in. Integer ut accumsan enim, a viverra ante. Pellentesque suscipit arcu vitae sem elementum, quis convallis enim maximus. Vestibulum et odio ut sapien aliquam condimentum vel ac est. Cras hendrerit dictum neque vitae vestibulum. Vivamus tincidunt fringilla urna, vel posuere risus bibendum nec. Aenean aliquam rhoncus sapien, sit amet laoreet felis bibendum sed. Phasellus id mi sed eros egestas pulvinar. Vivamus feugiat enim eget velit bibendum, sed iaculis diam lacinia. Aliquam quis arcu nec ex congue consequat vel vel lacus. Aliquam pulvinar luctus massa, ac gravida lectus rhoncus quis. Nulla commodo arcu in arcu sodales, a ultricies enim imperdiet.
+          = f.number_field :number_field
+          = f.url_field :url_field
 
-Sed pretium, diam sed rutrum ultrices, ex urna semper lectus, sit amet consectetur dui arcu non turpis. Nulla facilisi. Morbi et laoreet ligula. Nullam gravida eros in purus fermentum vehicula. Etiam sollicitudin, nulla quis euismod faucibus, elit nisi placerat lacus, vel malesuada odio libero a augue. Curabitur tincidunt euismod massa. Nunc varius blandit nisi vitae laoreet. Quisque sed lacus nisl. Sed ligula ex, elementum fermentum eleifend vel, semper nec magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam in blandit eros. Cras in mollis sem. Duis nunc lacus, ornare eu diam et, convallis elementum velit. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+          = f.color_field :color_field
+
+        .card-footer.text-right
+          = f.submit "Submit", class: "btn btn-primary", data: {disable_with: "Submitting..."}
+
+
