@@ -70,13 +70,13 @@ class AppSidebarMenuComponent < ApplicationComponent
 
   def template
     nav class: "flex flex-1 flex-col" do
-      ul class: "flex flex-1 flex-col gap-y-7", role: "list" do
+      ul class: "flex flex-1 flex-col gap-y-4", role: "list" do
         menu_items.each do |menu_item|
           li class: menu_item[:classes] do
             if menu_item[:title]
               hr
-              div class: "text-xs font-semibold text-neutral-400 my-6" do
-                menu_item[:title]
+              div class: "text-xs font-semibold text-neutral-400 my-9" do
+                menu_item[:title].upcase
               end
             end
 

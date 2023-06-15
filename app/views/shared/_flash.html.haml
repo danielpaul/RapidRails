@@ -10,31 +10,19 @@
   close = true if close.nil?
 
 - if success
-  .bg-green-50.p-4.rounded-md.mb-2{class: "dark:bg-black border card-border"}
-    .flex
-      .flex-shrink-0
-        = heroicon 'check-circle', variant: 'solid', options: {class: 'h-5 w-5 text-green-400'}
-      .ml-3
-        %h3.text-sm.font-medium.text-green-800{class: 'dark:text-white'}
-          = sanitize success
+  .alert-success
+    = heroicon 'check-circle', variant: 'solid', options: {class: 'icon'}
+    %div= sanitize success
 
 
-- if notice
-  .bg-yellow-50.p-4.rounded-md.mb-2{class: "dark:bg-black border card-border"}
-    .flex
-      .flex-shrink-0
-        = heroicon 'exclamation-circle', variant: 'solid', options: {class: 'h-5 w-5 text-yellow-400'}
-      .ml-3
-        %h3.text-sm.font-medium.text-yellow-800{class: 'dark:text-white'}
-          = sanitize notice
+- if notice  
+  .alert-warning
+    = heroicon 'exclamation-circle', variant: 'solid', options: {class: 'icon'}
+    %div= sanitize notice
 
 
 - [alert, error].each do |type|
   - next unless type
-  .bg-red-50.text-red-800.p-4.rounded-md.mb-2{class: "dark:bg-black border card-border dark:text-white"}
-    .flex
-      .flex-shrink-0
-        = heroicon 'x-circle', variant: 'solid', options: {class: 'h-5 w-5 text-red-400'}
-      .ml-3
-        %h3.text-sm.font-medium
-          = sanitize type
+  .alert-danger
+    = heroicon 'x-circle', variant: 'solid', options: {class: 'icon'}
+    %div= sanitize type

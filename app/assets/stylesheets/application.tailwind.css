@@ -11,18 +11,36 @@
     @apply h-full;
   }
 
+  /* Colors */
+
+  .text-success {
+    @apply text-emerald-500;
+  }
+
+  .text-danger {
+    @apply text-red-500;
+  }
+
+  .text-muted {
+    @apply text-neutral-500 dark:text-neutral-400;
+  }
+
+  .text-heading {
+    @apply text-neutral-900 dark:text-white;
+  }
+
   /* Typography */
 
   .h1 {
-    @apply text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white;
+    @apply text-2xl md:text-3xl font-bold tracking-tight text-heading;
   }
 
   .h2 {
-    @apply text-2xl font-bold tracking-tight text-neutral-900 dark:text-white;
+    @apply text-2xl font-bold tracking-tight text-heading;
   }
 
   .h3 {
-    @apply text-xl font-bold tracking-tight text-neutral-900 dark:text-white;
+    @apply text-xl font-bold tracking-tight text-heading;
   }
 
   .text-huge {
@@ -33,12 +51,8 @@
     @apply text-base text-neutral-700 dark:text-neutral-300 leading-6;
   }
 
-  .text-danger {
-    @apply text-red-500;
-  }
-
-  .text-muted {
-    @apply text-neutral-500 dark:text-neutral-400;
+  hr {
+    @apply h-px my-8 bg-neutral-300/50 border-0 dark:bg-neutral-750;
   }
 
   /* Links & Buttons */
@@ -78,6 +92,57 @@
   .porse-section {
     @apply prose prose-slate dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-500 hover:prose-a:underline hover:prose-a:underline-offset-2;
   }
+
+  
+  /* Alerts */
+
+  .alert {
+    @apply my-6 p-4 flex gap-2.5 rounded-md 
+    border
+    leading-6
+    text-sm font-medium;
+  }
+
+  .alert-icon {
+    @apply mt-1 h-5 w-5 flex-none;
+  }
+
+  .alert-success {
+    @apply alert
+    border-emerald-500/20 dark:border-emerald-500/30 
+    bg-emerald-50/50 dark:bg-emerald-500/5
+    text-emerald-900 dark:text-emerald-200;
+  }
+
+  .alert-success .icon {
+    @apply alert-icon fill-emerald-500 dark:fill-emerald-200;
+  }
+
+  /* ring-1 ring-inset ring-amber-300 bg-amber-400/10 text-amber-500 dark:ring-amber-400/30 dark:bg-amber-400/10 dark:text-amber-400 */
+
+  .alert-warning {
+    @apply alert
+    border-amber-500/20 dark:border-amber-500/30
+    bg-amber-400/10 dark:bg-amber-400/10
+    text-amber-900 dark:text-amber-200;
+  }
+
+  .alert-warning .icon {
+    @apply alert-icon fill-amber-500 dark:fill-amber-200;
+  }
+
+  /* rose */
+  .alert-danger {
+    @apply alert
+    border-rose-500/20 dark:border-rose-500/30
+    bg-rose-50 dark:bg-rose-400/10
+    text-red-900 dark:text-rose-400;
+  }
+
+  .alert-danger .icon {
+    @apply alert-icon fill-rose-500 dark:fill-rose-400;
+  }
+
 
   /* Cards */
 
