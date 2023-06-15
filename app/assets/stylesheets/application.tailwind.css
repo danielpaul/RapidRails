@@ -76,11 +76,18 @@
   /* Links & Buttons */
 
   .btn {
-    @apply rounded-md py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 transition-all duration-300;
+    @apply rounded-md py-2 px-4 text-sm font-semibold 
+    focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 
+    transition-all duration-300
+    disabled:cursor-not-allowed;
   }
 
   .btn-primary {
-    @apply btn bg-primary text-white hover:bg-primary-500 hover:text-slate-100 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600;
+    @apply btn bg-primary hover:bg-primary-500 
+    text-white hover:text-slate-100 
+    active:bg-primary-600
+    focus-visible:outline-blue-600
+    disabled:bg-primary/50;
   }
 
   .btn-secondary {
@@ -88,7 +95,8 @@
     shadow-sm 
     ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750
     bg-card dark:bg-[#27262b]
-    hover:bg-neutral-100 dark:hover:bg-neutral-900;
+    hover:bg-neutral-100 dark:hover:bg-neutral-900
+    disabled:bg-neutral-200 dark:disabled:bg-transparent;
   }
 
   a {

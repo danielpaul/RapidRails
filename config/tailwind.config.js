@@ -19,7 +19,8 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: '#007aff',
-          500: '#0077ed'
+          500: '#0077ed',
+          600: '#006edb'
         },
 
         body: {
