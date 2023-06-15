@@ -105,12 +105,11 @@
   .alert {
     @apply my-6 p-4 flex gap-2.5 rounded-md 
     border
-    leading-6
     text-sm font-medium;
   }
 
   .alert-icon {
-    @apply mt-1 h-5 w-5 flex-none;
+    @apply h-5 w-5 flex-none;
   }
 
   .alert-success {
@@ -226,6 +225,7 @@
   .checkbox-label {
     @apply ml-2 block text-sm;
   }
+
 
   /* Devise Page Overwrites */
 

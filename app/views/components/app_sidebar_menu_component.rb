@@ -16,7 +16,21 @@ class AppSidebarMenuComponent < ApplicationComponent
             title: "Dashboard",
             icon: "academic-cap",
             path: root_path,
-            active: true
+            active: false
+          },
+          {
+            title: "Notifications",
+            icon: "bell",
+            path: "#",
+            active: false,
+            badge: 22
+          },
+          {
+            title: "Components",
+            icon: "squares-2x2",
+            path: root_path,
+            active: true,
+            badge: "10+"
           },
           {
             title: "Team",
@@ -28,7 +42,8 @@ class AppSidebarMenuComponent < ApplicationComponent
             title: "Projects",
             icon: "folder",
             path: "#",
-            active: false
+            active: false,
+            badge: 3
           }
         ]
       },
@@ -87,10 +102,10 @@ class AppSidebarMenuComponent < ApplicationComponent
                   icon_classes = "h-5 w-5 shrink-0"
 
                   if item[:active]
-                    a_classes += " dark:bg-card-dark text-black dark:text-white border-l-4 border-primary"
+                    a_classes += " text-black dark:text-white border-l-4 border-primary"
                     icon_classes += " "
                   else
-                    a_classes += " text-neutral-500 dark:text-neutral-300"
+                    a_classes += " text-neutral-500 dark:text-neutral-400"
                     icon_classes += " "
                   end
 
@@ -102,12 +117,17 @@ class AppSidebarMenuComponent < ApplicationComponent
                       if item[:icon]
                         unsafe_raw heroicon(item[:icon], options: {class: icon_classes})
                       else
-                        span class: "flex h-5 w-5 shrink-0 items-center justify-center rounded-lg border font-medium border-neutral-600 dark:border-white text-[0.625rem]" do
+                        span class: "flex h-5 w-5 shrink-0 items-center justify-center rounded-lg border card-border font-medium text-[0.625rem]" do
                           item[:title][0]
                         end
                       end
                       span class: "truncate" do
                         item[:title]
+                      end
+                      if item[:badge]
+                        span class: "ml-auto w-9 min-w-max whitespace-nowrap rounded-full py-0 text-center text-xs leading-5 bg-zinc-900/5 dark:bg-white/5 text-neutral-500 dark:text-neutral-400" do
+                          item[:badge]
+                        end
                       end
                     end
                   end
