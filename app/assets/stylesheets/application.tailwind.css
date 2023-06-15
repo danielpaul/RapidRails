@@ -124,8 +124,6 @@
     @apply alert-icon fill-emerald-500 dark:fill-emerald-200;
   }
 
-  /* ring-1 ring-inset ring-amber-300 bg-amber-400/10 text-amber-500 dark:ring-amber-400/30 dark:bg-amber-400/10 dark:text-amber-400 */
-
   .alert-warning {
     @apply alert
     border-amber-500/20 dark:border-amber-500/30
@@ -137,7 +135,6 @@
     @apply alert-icon fill-amber-500 dark:fill-amber-200;
   }
 
-  /* rose */
   .alert-danger {
     @apply alert
     border-rose-500/20 dark:border-rose-500/30
