@@ -4,7 +4,7 @@
   %section#alerts.mb-12
     %h1.h1.mb-3 Alerts
     %p.mb-6.text-md Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
-    
+
     .card
       .card-body
         hello
@@ -80,18 +80,6 @@
 
           = f.file_field :file_field, accept: 'image/png,image/jpeg,image/gif', required: true
 
-          .flex.space-x-4
-            .flex-1
-              = f.date_field :date_field
-            .flex-1
-              = f.time_field :time_field
-            .flex-1
-              = f.datetime_field :datetime_field
-
-          = f.number_field :number_field
-          = f.url_field :url_field
-
-          = f.color_field :color_field
 
         .card-footer.text-right
           = f.submit "Submit", class: "btn btn-primary", data: {disable_with: "Submitting..."}

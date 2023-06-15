@@ -98,7 +98,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     if [:check_box, :radio_button].include?(object_method)
       label
     else
-      @template.content_tag("div", label, {class: "flex flex-col items-start mb-2"})
+      @template.content_tag("div", label, {class: "mb-2"})
     end
   end
 
