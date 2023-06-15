@@ -109,8 +109,15 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
       [nil, {}]
     end
 
-    label_classes = label_opts[:class] || "block text-sm font-medium leading-6 text-neutral-900 dark:text-white"
-    label_classes += " text-yellow-800 dark:text-yellow-400" if field_options[:disabled]
+    label_classes = label_opts[:class] || "block text-sm font-medium leading-6"
+    if field_options[:disabled] && [:check_box, :radio_button].include?(object_method)
+      # only disbaled check_box and radio_button have this class. 
+      # others are disabled in the input level and not the labels.
+      label_classes += " text-neutral-400 dark:text-neutral-500"
+    else
+      label_classes += " text-neutral-900 dark:text-white"
+    end
+
     label(object_method, text, {
       class: label_classes
     }.merge(label_opts.except(:class)))

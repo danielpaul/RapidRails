@@ -197,15 +197,16 @@
 
   .input-base {
     @apply bg-card dark:bg-[#27262b]
-    hover:bg-neutral-100 dark:hover:bg-neutral-900
-    focus:bg-neutral-100 dark:focus:bg-neutral-900
+    hover:bg-neutral-50 dark:hover:bg-neutral-900
+    focus:bg-neutral-50 dark:focus:bg-neutral-900
     border-0 
     py-1.5 px-3 
     shadow-sm
     ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750
     placeholder:text-neutral-500 
     text-slate-800 dark:text-neutral-50 
-    sm:text-sm sm:leading-6;
+    sm:text-sm sm:leading-6
+    disabled:bg-neutral-100 dark:disabled:bg-black disabled:cursor-not-allowed;
   }
 
   .text-input {
@@ -225,6 +226,7 @@
     checked:bg-primary-500 checked:border-transparent checked:ring-transparent
     checked:focus:bg-primary-500 checked:focus:border-transparent checked:focus:ring-transparent
     text-primary
+    hover:cursor-pointer
     p-2;
   }
 
@@ -233,7 +235,7 @@
   }
 
   .check-box-label, .radio-button-label {
-    @apply ml-2 block text-sm;
+    @apply ml-2 block text-sm text-neutral-900 dark:text-white hover:cursor-pointer;
   }
 
 

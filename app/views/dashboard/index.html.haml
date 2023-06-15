@@ -58,7 +58,7 @@
           -# example of all kind of fields
           = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Email Field", required: true, hint: "This is a hint"
           = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true
-          = f.text_field :text, placeholder: "Your text", required: true
+          = f.text_field :text, placeholder: "Your text", required: true, disabled: true
           = f.text_area :text_area, placeholder: "Your text area", required: true
 
           = f.select :select, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {}, {class: 'select'}
@@ -71,7 +71,7 @@
               = f.radio_button :radio_button, 1, label: "Apple"
 
             .flex-1
-              = f.radio_button :radio_button, 2, label: "Banana"
+              = f.radio_button :radio_button, 2, label: "Banana", disabled: true
             
             .flex-1
               = f.radio_button :radio_button, 3, label: "Orange"
