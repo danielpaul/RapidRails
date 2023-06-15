@@ -225,7 +225,9 @@
     input-base
     checked:bg-primary-500 checked:border-transparent checked:ring-transparent
     checked:focus:bg-primary-500 checked:focus:border-transparent checked:focus:ring-transparent
+    dark:checked:hover:bg-primary-500
     text-primary
+    focus:ring-offset-0
     group-hover:cursor-pointer
     p-2;
   }
