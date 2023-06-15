@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+
+@layer base {
+
   body {
     @apply antialiased text-neutral-500 dark:text-neutral-400 bg-body dark:bg-body-dark;
   }
@@ -54,6 +56,10 @@
   hr {
     @apply h-px my-8 bg-neutral-300/50 border-0 dark:bg-neutral-750;
   }
+
+}
+
+@layer components {
 
   /* Links & Buttons */
 
