@@ -206,7 +206,7 @@
     placeholder:text-neutral-500 
     text-slate-800 dark:text-neutral-50 
     sm:text-sm sm:leading-6
-    disabled:bg-neutral-200 dark:disabled:bg-black disabled:cursor-not-allowed;
+    disabled:bg-neutral-200 dark:disabled:bg-transparent disabled:cursor-not-allowed;
   }
 
   .text-input {

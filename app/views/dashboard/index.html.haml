@@ -69,7 +69,7 @@
             .flex-1
               = f.check_box :check_box_1, label: "Check me out", required: true
             .flex-1
-              = f.check_box :check_box_2, label: "and me!", required: true
+              = f.check_box :check_box_2, label: "and me!", required: true, error: true
             .flex-1
               = f.check_box :check_box_3, label: "but not me...", disabled: true
 
@@ -81,7 +81,7 @@
               = f.radio_button :radio_button_test, 2, label: "Banana", disabled: true
             
             .flex-1
-              = f.radio_button :radio_button_test, 3, label: "Orange"
+              = f.radio_button :radio_button_test, 3, label: "Orange", error: true
 
 
           = f.file_field :file_field, accept: 'image/png,image/jpeg,image/gif', required: true, hint: "Only image files are allowed."

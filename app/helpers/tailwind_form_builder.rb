@@ -97,7 +97,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     label = tailwind_label(field_method, object_method, options)
 
     if [:check_box, :radio_button].include?(field_method)
-      label
+      error_label(field_method, object_method, options) || label
     else
       @template.content_tag("div", label, {class: "mb-2"})
     end
@@ -121,19 +121,25 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   def error_label(field_method, object_method, options)
     return if errors_for(object_method, options).blank?
 
+    error_text, error_class = if [:check_box, :radio_button].include?(field_method)
+      [options[:label], options[:class]]
+    else
+      [errors_for(object_method, options), "block mt-2 text-sm"]
+    end
+
     tailwind_label(
       field_method,
       object_method,
       options.merge({
-        label: errors_for(object_method, options),
-        class: "block mt-2 text-sm text-red-600"
+        label: error_text,
+        class: error_class + " text-red-600 dark:text-rose-400"
       })
     )
   end
 
   def border_color_classes(object_method, options)
     if errors_for(object_method, options).present?
-      "text-red-900 ring-red-500 placeholder:text-red-300 focus:ring-red-500"
+      "text-red-900 ring-red-500 placeholder:text-red-400 focus:ring-red-500 dark:ring-rose-500/30 dark:bg-rose-400/10 dark:text-rose-400 dark:placeholder:text-red-200"
     else
       "focus:border-primary-500"
     end
