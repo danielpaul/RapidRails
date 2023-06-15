@@ -56,20 +56,22 @@
           %h4.h4 Sample Form
         .card-body.space-y-6
           -# example of all kind of fields
-          = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Email Field", required: true, hint: "This is a hint", error: "This is an error"
-          = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true
+          = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Email Field", required: true, hint: "This is a hint. Give helpful information here."
+          = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true, error: "This is an error message. Manually set or with model validation."
           = f.text_field :text, placeholder: "Your text", required: true, disabled: true
-          = f.text_area :text_area, placeholder: "Your text area", required: true
+          = f.text_area :text_area, placeholder: "Your text area", required: true, hint: "This is a hint. Give helpful information here."
 
-          = f.select :select, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {}, {class: 'select'}
+          = f.select :select, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {hint: "This is a hint. Give helpful information here.", prompt: "Select something..."}, {required: true}
 
-          = f.select :select_2, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {}, class: 'select', disabled: true
+          = f.select :select_2, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {}, {disabled: true}
 
           .flex.items-center
             .flex-1
-              = f.check_box :check_box_1, label: "Check me out"
+              = f.check_box :check_box_1, label: "Check me out", required: true
             .flex-1
-              = f.check_box :check_box_2, label: "You can't check me out", disabled: true
+              = f.check_box :check_box_2, label: "and me!", required: true
+            .flex-1
+              = f.check_box :check_box_3, label: "but not me...", disabled: true
 
           .flex.items-center
             .flex-1
@@ -82,7 +84,7 @@
               = f.radio_button :radio_button_test, 3, label: "Orange"
 
 
-          = f.file_field :file_field, accept: 'image/png,image/jpeg,image/gif', required: true
+          = f.file_field :file_field, accept: 'image/png,image/jpeg,image/gif', required: true, hint: "Only image files are allowed."
 
 
         .card-footer.text-right

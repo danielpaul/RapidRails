@@ -35,7 +35,10 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     labels = labels(:select, method, options)
     field = super(method, choices, options, html_options.merge({class: classes}), &block)
 
-    @template.content_tag('div', labels + field)
+    hint = hint(options[:hint])
+    error_label = error_label(:select, method, options)
+
+    @template.content_tag('div', labels + field + (error_label || hint))
   end
 
   def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
@@ -80,7 +83,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def hint(hint_text)
-    return unless hint_text.present?
+    return if hint_text.blank?
 
     @template.content_tag("p", hint_text, {class: "text-sm text-neutral-500 mt-2"})
   end
@@ -125,7 +128,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
 
   def border_color_classes(object_method, options)
     if errors_for(object_method, options).present?
-      "text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500"
+      "text-red-900 ring-red-500 placeholder:text-red-300 focus:ring-red-500"
     else
       "focus:border-primary-500"
     end
