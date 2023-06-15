@@ -226,7 +226,7 @@
     checked:bg-primary-500 checked:border-transparent checked:ring-transparent
     checked:focus:bg-primary-500 checked:focus:border-transparent checked:focus:ring-transparent
     text-primary
-    hover:cursor-pointer
+    group-hover:cursor-pointer
     p-2;
   }
 
@@ -235,7 +235,7 @@
   }
 
   .check-box-label, .radio-button-label {
-    @apply ml-2 block text-sm text-neutral-900 dark:text-white hover:cursor-pointer;
+    @apply ml-2 block text-sm text-neutral-900 dark:text-white group-hover:cursor-pointer;
   }
 
 

@@ -35,7 +35,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     custom_opts, opts = partition_custom_opts(options)
     classes = apply_style_classes(SELECT_FIELD_STYLE, custom_opts, method)
 
-    labels = labels(method, custom_opts, options)
+    labels = labels(:select, method, custom_opts, options)
     field = super(method, choices, opts, html_options.merge({class: classes}), &block)
 
     @template.content_tag('div', labels + field)
@@ -45,10 +45,10 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     custom_opts, opts = partition_custom_opts(options)
     classes = apply_style_classes(CHECK_BOX_FIELD_STYLE, custom_opts, method)
 
-    labels = labels(method, custom_opts.merge(class: 'check-box-label'), options)
+    labels = labels(:check_box, method, custom_opts.merge(class: 'check-box-label'), options)
     field = super(method, {class: classes}.merge(opts))
 
-    @template.content_tag("div", {class: "flex items-center"}) do
+    @template.content_tag("div", {class: "group flex items-center"}) do
       field + labels
     end
   end
@@ -57,10 +57,10 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     custom_opts, opts = partition_custom_opts(options)
     classes = apply_style_classes(RADIO_BUTTON_FIELD_STYLE, custom_opts, method)
 
-    label = labels(method, custom_opts.merge(class: 'radio-button-label', value: tag_value), options)
+    label = labels(:radio_button, method, custom_opts.merge(class: 'radio-button-label', value: tag_value), options)
     field = super(method, tag_value, {class: classes}.merge(opts))
 
-    @template.content_tag("div", {class: "flex items-center"}) do
+    @template.content_tag("div", {class: "group flex items-center"}) do
       field + label
     end
   end
@@ -77,7 +77,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
       title: errors_for(object_method)&.join(" ")
     }.compact.merge(opts).merge({tailwindified: true}))
 
-    labels = labels(object_method, custom_opts, options)
+    labels = labels(field_method, object_method, custom_opts, options)
 
     hint = hint(options[:hint])
     error_label = error_label(object_method, options)
@@ -92,17 +92,17 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     @template.content_tag("p", hint_text, {class: "text-sm text-neutral-500 mt-2"})
   end
 
-  def labels(object_method, label_options, field_options)
-    label = tailwind_label(object_method, label_options, field_options)
+  def labels(field_method, object_method, label_options, field_options)
+    label = tailwind_label(field_method, object_method, label_options, field_options)
 
-    if [:check_box, :radio_button].include?(object_method)
+    if [:check_box, :radio_button].include?(field_method)
       label
     else
       @template.content_tag("div", label, {class: "mb-2"})
     end
   end
 
-  def tailwind_label(object_method, label_options, field_options)
+  def tailwind_label(field_method, object_method, label_options, field_options)
     text, label_opts = if label_options.present?
       [label_options[:label], label_options.except(:label)]
     else
@@ -110,7 +110,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     end
 
     label_classes = label_opts[:class] || "block text-sm font-medium leading-6"
-    if field_options[:disabled] && [:check_box, :radio_button].include?(object_method)
+    if field_options[:disabled] && [:check_box, :radio_button].include?(field_method)
       # only disbaled check_box and radio_button have this class. 
       # others are disabled in the input level and not the labels.
       label_classes += " text-neutral-400 dark:text-neutral-500"

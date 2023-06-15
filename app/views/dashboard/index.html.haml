@@ -63,18 +63,21 @@
 
           = f.select :select, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {}, {class: 'select'}
 
-          = f.check_box :check_box, label: "Check me out"
-
+          .flex.items-center
+            .flex-1
+              = f.check_box :check_box_1, label: "Check me out"
+            .flex-1
+              = f.check_box :check_box_2, label: "You can't check me out", disabled: true
 
           .flex.items-center
             .flex-1
-              = f.radio_button :radio_button, 1, label: "Apple"
+              = f.radio_button :radio_button_test, 1, label: "Apple"
 
             .flex-1
-              = f.radio_button :radio_button, 2, label: "Banana", disabled: true
+              = f.radio_button :radio_button_test, 2, label: "Banana", disabled: true
             
             .flex-1
-              = f.radio_button :radio_button, 3, label: "Orange"
+              = f.radio_button :radio_button_test, 3, label: "Orange"
 
 
           = f.file_field :file_field, accept: 'image/png,image/jpeg,image/gif', required: true
