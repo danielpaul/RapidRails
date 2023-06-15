@@ -36,6 +36,14 @@ Rails.application.routes.draw do
   # ---------- [ API Routes ] ---------- #
   draw :api if ENABLE_API == true || Rails.env.test?
 
+
+  # ---------- [ Sitemap ] ---------- #
+  if Rails.env.production?
+    # Sitemap - redirect /sitemap.xml.gz to s3
+    get '/sitemap.xml.gz' => redirect("#{SITEMAP_HOST}/sitemaps/sitemap.xml.gz")
+  end
+
+
   # ---------- [ Gems ] ---------- #
   mount ForestLiana::Engine => "/forest"
 

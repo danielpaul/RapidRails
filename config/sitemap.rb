@@ -2,7 +2,9 @@
 SitemapGenerator::Sitemap.default_host = HOST
 
 # only if production
-if Rails.env.production? && Rails.application.credentials.dig(Rails.env.to_sym, :aws, :access_key_id).present?
+if Rails.env.production?
+
+  SITEMAP_HOST = "https://#{Rails.application.credentials.dig(:fog, :directory)}.s3.#{Rails.application.credentials.dig(:fog, :region)}.amazonaws.com"
 
   SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
     aws_access_key_id: Rails.application.credentials.dig(Rails.env.to_sym, :aws, :access_key_id),
@@ -14,8 +16,8 @@ if Rails.env.production? && Rails.application.credentials.dig(Rails.env.to_sym, 
     fog_public: true,
   )
 
-  SitemapGenerator::Sitemap.sitemaps_host = "https://#{Rails.application.credentials.dig(:fog, :directory)}.s3.#{Rails.application.credentials.dig(:fog, :region)}.amazonaws.com/"
-  SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+  SitemapGenerator::Sitemap.sitemaps_host = SITEMAP_HOST
+  SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps'
 end
 
 
