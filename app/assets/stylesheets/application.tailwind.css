@@ -84,10 +84,6 @@
   }
 
   .btn-secondary {
-    @apply btn bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900;
-  }
-
-  .btn-white {
     @apply btn text-neutral-900 dark:text-white 
     shadow-sm 
     ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750
