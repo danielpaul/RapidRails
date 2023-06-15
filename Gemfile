@@ -57,6 +57,7 @@ gem 'pagy'
 gem 'phlex-rails'
 gem 'high_voltage'
 gem 'redcarpet'
+gem 'sitemap_generator'
 
 # Authentication & Authorization
 gem 'devise'

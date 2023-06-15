@@ -92,6 +92,9 @@ Checklist for things to update before you launch your app:
 - [ ] Update Privacy Policy and Terms and Conditions
 - [ ] Update `AnonymizationService` to anonymize user data and relating records where personal information is stored when user requests to delete their account. This is important to comply with GDPR & other regulations. User data is scrambled but the record is kept for audit trail. Alternatively just delete the record if you want to completely get rid of the data immediately. Update the destroy method on RegistrationsController.
 
+- [ ] Add pages to `config/sitemap.rb` file for sitemap generation.
+- [ ] If you don't want some pages to be indexed by search engines, add `noindex` meta tag and update `config/sitemap.rb` file to exclude those pages.
+
 # Contenful
 
 We use Contentful (free plan) to manage blog posts. You can use Contentful for other content types as well and the structure is setup with webhooks and caching. Everything ready to go.
@@ -127,6 +130,7 @@ Install addons:
 Set config vars:
 
 - [ ] Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
+- [ ] Set `HOST` config var to your domain
 - [ ] Set `RAILS_ENV` config var to `production`
 - [ ] Set `JEMALLOC_ENABLED` config var to `true`
 
@@ -145,13 +149,14 @@ Run migrations:
 
 Other setup:
 
-- [ ] Contentful - setup webhook to production server for clearing cache. `https://<HOST>/contentful/webhook`. Setup HTTP auth - username is the space id and the password is set in our credentials file.
+- [ ] Contentful - setup webhook to production server for clearing cache. `https://<HOST>/contentful/webhook` with the secret token (Header as `Authorization:Bearer`) that is set in the credentials file.
 - [ ] Setup Rake tasks below on the scheduler addon
 
 # Rake Tasks
 
 - [ ] `rake active_storage:purge_unattached_blobs` to purge unattached file that are older than 2 days in active storage. - Run once a day.
 - [ ] `rake anonymize:users` to anonymize users data. - Run once a day. Important to delete user's data in our database. Give's time for them to change their mind before we delete their data.
+- [ ] `rake sitemap:refresh` to refresh sitemap. - Run once a day.
 
 ## TODO
 
