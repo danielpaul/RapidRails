@@ -10,7 +10,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   SELECT_FIELD_STYLE = "select-input".freeze
   CHECK_BOX_FIELD_STYLE = "check-box-input".freeze
   RADIO_BUTTON_FIELD_STYLE = "radio-button-input".freeze
-  SUBMIT_BUTTON_STYLE = "".freeze
+  SUBMIT_BUTTON_STYLE = "btn-primary".freeze
 
   text_field_helpers.each do |field_method|
     class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
@@ -25,8 +25,13 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def submit(value = nil, options = {})
-    classes = apply_style_classes(SUBMIT_BUTTON_STYLE, options)
+    classes = options[:class] || SUBMIT_BUTTON_STYLE
     super(value, {class: classes}.merge(options))
+  end
+
+  def button(value = nil, options = {}, &block)
+    classes = options[:class] || SUBMIT_BUTTON_STYLE
+    super(value, {class: classes}.merge(options), &block)
   end
 
   def select(method, choices = nil, options = {}, html_options = {}, &block)
