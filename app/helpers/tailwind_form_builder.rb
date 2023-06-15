@@ -25,28 +25,24 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def submit(value = nil, options = {})
-    custom_opts, opts = partition_custom_opts(options)
-    classes = apply_style_classes(SUBMIT_BUTTON_STYLE, custom_opts)
-
-    super(value, {class: classes}.merge(opts))
+    classes = apply_style_classes(SUBMIT_BUTTON_STYLE, options)
+    super(value, {class: classes}.merge(options))
   end
 
   def select(method, choices = nil, options = {}, html_options = {}, &block)
-    custom_opts, opts = partition_custom_opts(options)
-    classes = apply_style_classes(SELECT_FIELD_STYLE, custom_opts, method)
+    classes = apply_style_classes(SELECT_FIELD_STYLE, options, method)
 
-    labels = labels(:select, method, custom_opts, options)
-    field = super(method, choices, opts, html_options.merge({class: classes}), &block)
+    labels = labels(:select, method, options)
+    field = super(method, choices, options, html_options.merge({class: classes}), &block)
 
     @template.content_tag('div', labels + field)
   end
 
   def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
-    custom_opts, opts = partition_custom_opts(options)
-    classes = apply_style_classes(CHECK_BOX_FIELD_STYLE, custom_opts, method)
+    classes = apply_style_classes(CHECK_BOX_FIELD_STYLE, options, method)
 
-    labels = labels(:check_box, method, custom_opts.merge(class: 'check-box-label'), options)
-    field = super(method, {class: classes}.merge(opts))
+    labels = labels(:check_box, method, options.merge(class: 'check-box-label'))
+    field = super(method, {class: classes}.merge(options))
 
     @template.content_tag("div", {class: "group flex items-center"}) do
       field + labels
@@ -54,11 +50,10 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def radio_button(method, tag_value, options = {})
-    custom_opts, opts = partition_custom_opts(options)
-    classes = apply_style_classes(RADIO_BUTTON_FIELD_STYLE, custom_opts, method)
+    classes = apply_style_classes(RADIO_BUTTON_FIELD_STYLE, options, method)
 
-    label = labels(:radio_button, method, custom_opts.merge(class: 'radio-button-label', value: tag_value), options)
-    field = super(method, tag_value, {class: classes}.merge(opts))
+    label = labels(:radio_button, method, options.merge(class: 'radio-button-label', value: tag_value))
+    field = super(method, tag_value, {class: classes}.merge(options))
 
     @template.content_tag("div", {class: "group flex items-center"}) do
       field + label
@@ -68,19 +63,17 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   private
 
   def text_like_field(field_method, object_method, options = {})
-    custom_opts, opts = partition_custom_opts(options)
-
-    classes = apply_style_classes(TEXT_FIELD_STYLE, custom_opts, object_method)
+    classes = apply_style_classes(TEXT_FIELD_STYLE, options, object_method)
 
     field = send(field_method, object_method, {
       class: classes,
-      title: errors_for(object_method)&.join(" ")
-    }.compact.merge(opts).merge({tailwindified: true}))
+      title: errors_for(object_method, options)
+    }.compact.merge(options).merge({tailwindified: true}))
 
-    labels = labels(field_method, object_method, custom_opts, options)
+    labels = labels(field_method, object_method, options)
 
     hint = hint(options[:hint])
-    error_label = error_label(object_method, options)
+    error_label = error_label(field_method, object_method, options)
 
     # only display error label or hint
     @template.content_tag("div", labels + field + (error_label || hint))
@@ -92,8 +85,8 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     @template.content_tag("p", hint_text, {class: "text-sm text-neutral-500 mt-2"})
   end
 
-  def labels(field_method, object_method, label_options, field_options)
-    label = tailwind_label(field_method, object_method, label_options, field_options)
+  def labels(field_method, object_method, options)
+    label = tailwind_label(field_method, object_method, options)
 
     if [:check_box, :radio_button].include?(field_method)
       label
@@ -102,15 +95,9 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def tailwind_label(field_method, object_method, label_options, field_options)
-    text, label_opts = if label_options.present?
-      [label_options[:label], label_options.except(:label)]
-    else
-      [nil, {}]
-    end
-
-    label_classes = label_opts[:class] || "block text-sm font-medium leading-6"
-    if field_options[:disabled] && [:check_box, :radio_button].include?(field_method)
+  def tailwind_label(field_method, object_method, options)
+    label_classes = options[:class] || "block text-sm font-medium leading-6"
+    if options[:disabled] && [:check_box, :radio_button].include?(field_method)
       # only disbaled check_box and radio_button have this class. 
       # others are disabled in the input level and not the labels.
       label_classes += " text-neutral-400 dark:text-neutral-500"
@@ -118,38 +105,39 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
       label_classes += " text-neutral-900 dark:text-white"
     end
 
-    label(object_method, text, {
+    label(object_method, options[:label], {
       class: label_classes
-    }.merge(label_opts.except(:class)))
+    }.merge(options.except(:class)))
   end
 
-  def error_label(object_method, options)
-    return unless errors_for(object_method).present?
+  def error_label(field_method, object_method, options)
+    return if errors_for(object_method, options).blank?
 
-    error_message = @object.errors[object_method].join(", ")
-    tailwind_label(object_method, {text: error_message, class: " mt-2 text-sm text-red-600"}, options)
+    tailwind_label(
+      field_method,
+      object_method,
+      options.merge({
+        label: errors_for(object_method, options),
+        class: "block mt-2 text-sm text-red-600"
+      })
+    )
   end
 
-  def border_color_classes(object_method)
-    if errors_for(object_method).present?
-      " text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500"
+  def border_color_classes(object_method, options)
+    if errors_for(object_method, options).present?
+      "text-red-900 ring-red-300 placeholder:text-red-300 focus:ring-red-500"
     else
-      " focus:border-primary-500"
+      "focus:border-primary-500"
     end
   end
 
-  def apply_style_classes(classes, custom_opts, object_method = nil)
-    classes + border_color_classes(object_method) + " #{custom_opts[:class]}"
+  def apply_style_classes(classes, options, object_method = nil)
+    "#{classes} #{options[:class]} #{border_color_classes(object_method, options)}"
   end
 
-  CUSTOM_OPTS = %i[label class].freeze
-  def partition_custom_opts(opts)
-    opts.partition { |k, _v| CUSTOM_OPTS.include?(k) }.map(&:to_h)
-  end
+  def errors_for(object_method, options)
+    return if options[:error].blank? && (@object.blank? || object_method.blank? || @object.errors[object_method].empty?)
 
-  def errors_for(object_method)
-    return unless @object.present? && object_method.present?
-
-    @object.errors[object_method]
+    options[:error] || @object.errors[object_method].join(", ")
   end
 end

@@ -56,12 +56,14 @@
           %h4.h4 Sample Form
         .card-body.space-y-6
           -# example of all kind of fields
-          = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Email Field", required: true, hint: "This is a hint"
+          = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Email Field", required: true, hint: "This is a hint", error: "This is an error"
           = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true
           = f.text_field :text, placeholder: "Your text", required: true, disabled: true
           = f.text_area :text_area, placeholder: "Your text area", required: true
 
           = f.select :select, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {}, {class: 'select'}
+
+          = f.select :select_2, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {}, class: 'select', disabled: true
 
           .flex.items-center
             .flex-1
