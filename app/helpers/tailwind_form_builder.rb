@@ -26,12 +26,27 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
 
   def submit(value = nil, options = {})
     classes = options[:class] || SUBMIT_BUTTON_STYLE
-    super(value, {class: classes}.merge(options))
+    super(
+      value,
+      {
+        class: classes
+      }.merge(options).merge(
+        button_data_disable_with(value, options)
+      )
+    )
   end
 
   def button(value = nil, options = {}, &block)
     classes = options[:class] || SUBMIT_BUTTON_STYLE
-    super(value, {class: classes}.merge(options), &block)
+    super(
+      value,
+      {
+        class: classes
+      }.merge(options).merge(
+        button_data_disable_with(value, options)
+      ),
+      &block
+    )
   end
 
   def select(method, choices = nil, options = {}, html_options = {}, &block)
@@ -153,5 +168,23 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     return if options[:error].blank? && (@object.blank? || object_method.blank? || @object.errors[object_method].empty?)
 
     options[:error] || @object.errors[object_method].join(", ")
+  end
+
+  def button_data_disable_with(value, options)
+    return if (options[:data] && options[:data][:turbo_disable_with]) || options[:data_turbo_disable_with]
+
+    # just adds a spinner to the same button text
+    { "data-turbo-submits-with": spinner_svg + value }
+  end
+
+  def spinner_svg
+    html = <<-HTML
+      <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+    HTML
+
+    html.html_safe
   end
 end
