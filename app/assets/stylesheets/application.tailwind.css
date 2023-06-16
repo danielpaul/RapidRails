@@ -225,6 +225,27 @@
     @apply block text-sm font-medium leading-6 text-neutral-900 dark:text-white;
   }
 
+  .radio-check-label {
+    @apply ml-2 block text-sm leading-6 
+    text-neutral-900 dark:text-white group-hover:cursor-pointer;
+  }
+
+  .form-field.disabled .radio-check-label {
+    @apply text-neutral-400 dark:text-neutral-500;
+  }
+
+  .form-field .label.required:after {
+    /* @apply content['*'] text-rose-500; */
+  }
+
+  .error-text {
+    @apply text-red-600 dark:text-rose-400;
+  }
+
+  .error-label {
+    @apply error-text block mt-2 text-sm;
+  }
+
   .form-field .hint {
     @apply text-sm text-neutral-500 mt-2;
   }
@@ -255,15 +276,15 @@
     disabled:bg-neutral-200 dark:disabled:bg-transparent disabled:cursor-not-allowed;
   }
 
+  .form-field.error .text-input {
+    @apply text-red-900 ring-red-500 placeholder:text-red-400 focus:ring-red-500 dark:ring-rose-500/30 dark:bg-rose-400/10 dark:text-rose-400 dark:placeholder:text-red-200;
+  }
+
   .text-input {
     @apply block w-full rounded-md 
     input-base
     focus:ring-2 focus:ring-inset focus:ring-primary dark:focus:ring-primary-500
     file-input;
-  }
-
-  .form-field.error .text-input {
-    @apply ring-1 ring-inset ring-rose-500 dark:ring-rose-400;
   }
 
   .select-input {
@@ -286,17 +307,6 @@
     @apply check-box-input rounded-full;
   }
 
-  .check-box-label, .radio-button-label {
-    @apply ml-2 block text-sm text-neutral-900 dark:text-white group-hover:cursor-pointer;
-  }
-
-  .error-text {
-    @apply text-red-600 dark:text-rose-400;
-  }
-
-  .error-label {
-    @apply error-text block mt-2 text-sm;
-  }
 
 
   /* Devise Page Overwrites */

@@ -6,12 +6,6 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   #  leans on the FormBuilder class_attribute `field_helpers`
   #  you'll want to add a method for each of the specific helpers listed here if you want to style them
 
-  # TEXT_FIELD_STYLE = "text-input".freeze
-  # SELECT_FIELD_STYLE = "select-input".freeze
-  # CHECK_BOX_FIELD_STYLE = "check-box-input".freeze
-  # RADIO_BUTTON_FIELD_STYLE = "radio-button-input".freeze
-  # SUBMIT_BUTTON_STYLE = "btn-primary".freeze
-
   text_field_helpers.each do |field_method|
     class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
         def #{field_method}(method, options = {})
@@ -66,7 +60,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
         method, 
         choices, 
         options, 
-        html_options.merge(class: apply_style_classes('select-input', options, method)), 
+        html_options.merge(class: "select-input #{html_options[:class]}"), 
         &block
       )
     end
@@ -80,7 +74,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
         value_method,
         text_method,
         options,
-        html_options.merge(class: apply_style_classes('select-input', options, method))
+        html_options.merge(class: "select-input #{html_options[:class]}")
       )
     end
   end
@@ -89,7 +83,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     radio_check_form_field(method, options) do
       super(
         method, 
-        options.merge(class: apply_style_classes('check-box-input', options, method)), 
+        options.merge(class: 'check-box-input'), 
         checked_value, 
         unchecked_value
       )
@@ -97,45 +91,24 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def radio_button(method, tag_value, options = {})
-    radio_check_form_field(method, options) do
+    radio_check_form_field(method, options.merge(value: tag_value)) do
       super(
         method,
         tag_value,
-        options.merge(class: apply_style_classes('radio-button-input', options, method))
+        options.merge(class: "radio-button-input #{options[:class]}")
       )
     end
   end
-
-  # def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
-  #   classes = apply_style_classes(CHECK_BOX_FIELD_STYLE, options, method)
-
-  #   labels = labels(:check_box, method, options.merge(class: 'check-box-label'))
-  #   field = super(method, {class: classes}.merge(options))
-
-  #   @template.content_tag("div", {class: "group flex items-center"}) do
-  #     field + labels
-  #   end
-  # end
-
-  # def radio_button(method, tag_value, options = {})
-  #   classes = apply_style_classes(RADIO_BUTTON_FIELD_STYLE, options, method)
-
-  #   label = labels(:radio_button, method, options.merge(class: 'radio-button-label', value: tag_value))
-  #   field = super(method, tag_value, {class: classes}.merge(options))
-
-  #   @template.content_tag("div", {class: "group flex items-center"}) do
-  #     field + label
-  #   end
-  # end
 
   private
 
   def text_like_field(field_method, object_method, options = {})
     form_field(object_method, options) do
-      send(field_method, object_method, {
-        class: apply_style_classes('text-input', options, object_method),
-        title: errors_for(object_method, options)
-      }.compact.merge(options).merge({tailwindified: true}))
+      send(
+        field_method,
+        object_method,
+        options.merge({tailwindified: true, class: "text-input #{options[:class]}"})
+      )
     end
   end
 
@@ -163,7 +136,11 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   def radio_check_form_field(method, options = {}, &block)
     label = @template.content_tag(
       "div",
-      label(method, options[:label], options.merge(class: 'label radio-check-label').except(:label, :error, :hint))
+      label(
+        method, 
+        options[:label], 
+        options.merge(class: 'radio-check-label').except(:label, :error, :hint)
+      )
     )
 
     @template.content_tag("div", {class: wrapper_classes(method, options)}) do
@@ -224,22 +201,6 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   #   )
   # end
 
-
-
-
-
-  def border_color_classes(object_method, options)
-    # TODO: change to tailwind class
-    if errors_for(object_method, options).present?
-      "text-red-900 ring-red-500 placeholder:text-red-400 focus:ring-red-500 dark:ring-rose-500/30 dark:bg-rose-400/10 dark:text-rose-400 dark:placeholder:text-red-200"
-    else
-      "focus:border-primary-500"
-    end
-  end
-
-  def apply_style_classes(classes, options, object_method = nil)
-    "#{classes} #{options[:class]} #{border_color_classes(object_method, options)}"
-  end
 
   def errors_for(object_method, options)
     return if options[:error].blank? && (@object.blank? || object_method.blank? || @object.errors[object_method].empty?)

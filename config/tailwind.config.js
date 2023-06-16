@@ -11,6 +11,7 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}',
     './app/helpers/rapidrails_form_builder.rb'
   ],
+  safelist: [],
   theme: {
     extend: {
       fontFamily: {
