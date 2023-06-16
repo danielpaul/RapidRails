@@ -17,10 +17,16 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
-    resource.discard
-    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-    set_flash_message! :notice, :destroyed
-    respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name), status: Devise.responder.redirect_status }
+    if resource.valid_password?(user_delete_params[:current_password])
+      resource.user_account_feedbacks.create(user: resource, feedback: user_delete_params[:feedback]) if user_delete_params[:feedback]
+      resource.discard
+      Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+      set_flash_message! :notice, :destroyed
+      respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name), status: Devise.responder.redirect_status }
+    else
+      flash.now[:alert] = 'Invalid password entered. Please try again.'
+      redirect_to edit_user_registration_path(resource)
+    end
   end
 
   protected
@@ -59,5 +65,9 @@ class RegistrationsController < Devise::RegistrationsController
     else
       super
     end
+  end
+
+  def user_delete_params
+    params.require(:user).permit(:current_password, :feedback)
   end
 end
