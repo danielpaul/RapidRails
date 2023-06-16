@@ -54,9 +54,9 @@
       = form_for :something, method: :post, builder: RapidRailsFormBuilder do |f|
         .card-header
           %h4.h4 Sample Form
-        .card-body.space-y-6
+        .card-body.space-y-8
           -# example of all kind of fields
-          = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Email Field", required: true, hint: "This is a hint. Give helpful information here.", class: 'custom-class'
+          = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Your Email Field", required: true, hint: "This is a hint. Give helpful information here.", class: 'custom-class'
           = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true, error: "This is an error message. Manually set or with model validation."
           = f.text_field :text, placeholder: "Your text", required: true, disabled: true
           = f.text_area :text_area, placeholder: "Your text area", required: true, hint: "This is a hint. Give helpful information here."

@@ -1,5 +1,3 @@
-# https://blog.testdouble.com/posts/2022-12-05-blending-tailwind-with-rails-forms/
-
 class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   class_attribute :text_field_helpers,
     default: field_helpers - %i[label fields_for fields hidden_field]
@@ -72,7 +70,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     radio_check_form_field(method, options) do
       super(
         method, 
-        options.merge(class: 'check-box-input'), 
+        options.merge(class: "check-box-input #{options[:class]}"), 
         checked_value, 
         unchecked_value
       )
@@ -98,7 +96,10 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
       send(
         field_method,
         object_method,
-        options.merge({tailwindified: true, class: "text-input #{options[:class]}"})
+        options.merge({
+          tailwindified: true, 
+          class: "text-input #{options[:class]}"
+        }).except(:label, :error, :hint)
       )
     end
   end
@@ -115,11 +116,24 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     wrapper_classes.join(" ")
   end
 
+  def label(method, text = nil, options = {}, &block)
+    super(
+      method,
+      text,
+      options.except(:label, :error, :hint).merge(class: "#{options[:class]} #{'required' if options[:required]}"),
+      &block
+    )
+  end
+
   # for most fields
   def form_field(method, options = {}, more_options = {}, &block)
     label = @template.content_tag(
       "div",
-      label(method, options[:label], options.merge(class: 'label').except(:label, :error, :hint)), 
+      label(
+        method,
+        options[:label],
+        options.merge(class: 'label')
+      ), 
       {class: "mb-2"}
     )
 
@@ -145,7 +159,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
       label(
         method, 
         options[:label], 
-        options.merge(class: 'radio-check-label').except(:label, :error, :hint)
+        options.merge(class: 'radio-check-label')
       )
     )
 

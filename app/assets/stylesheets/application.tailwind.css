@@ -147,7 +147,7 @@
   .alert-success .close-btn {
     @apply alert-close-btn 
     text-emerald-500 
-    hover:bg-emerald-100 
+    hover:bg-emerald-100 dark:hover:bg-emerald-500/10
     focus:ring-emerald-600 focus:ring-offset-emerald-50;
   }
 
@@ -165,7 +165,7 @@
   .alert-warning .close-btn {
     @apply alert-close-btn 
     text-amber-500 
-    hover:bg-amber-100 
+    hover:bg-amber-100  dark:hover:bg-amber-400/10
     focus:ring-amber-600 focus:ring-offset-amber-50;
   }
 
@@ -187,7 +187,7 @@
   .alert-danger .close-btn {
     @apply alert-close-btn 
     text-rose-500 
-    hover:bg-rose-100 
+    hover:bg-rose-100 dark:hover:bg-rose-400/10
     focus:ring-rose-600 focus:ring-offset-rose-50;
   }
 
@@ -234,12 +234,12 @@
     @apply text-neutral-400 dark:text-neutral-500;
   }
 
-  .form-field .label.required:after {
-    /* @apply content['*'] text-rose-500; */
-  }
-
   .error-text {
     @apply text-red-600 dark:text-rose-400;
+  }
+
+  .form-field .label.required:after {
+    @apply content-['*'] error-text ml-1;
   }
 
   .error-label {
