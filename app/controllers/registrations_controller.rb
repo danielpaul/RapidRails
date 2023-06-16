@@ -24,7 +24,7 @@ class RegistrationsController < Devise::RegistrationsController
       set_flash_message! :notice, :destroyed
       respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name), status: Devise.responder.redirect_status }
     else
-      flash.now[:alert] = 'Invalid password entered. Please try again.'
+      flash.now[:alert] = "Invalid password entered. Please try again."
       redirect_to edit_user_registration_path(resource)
     end
   end

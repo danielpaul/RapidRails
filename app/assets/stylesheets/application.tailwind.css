@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
-
   body {
     @apply antialiased text-neutral-500 dark:text-neutral-400 bg-body dark:bg-body-dark;
   }
@@ -68,11 +66,9 @@
   hr {
     @apply h-px my-8 bg-neutral-300/50 border-0 dark:bg-neutral-750;
   }
-
 }
 
 @layer components {
-
   /* Links & Buttons */
 
   .btn {
@@ -124,7 +120,6 @@
     @apply prose prose-slate dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-500 hover:prose-a:underline hover:prose-a:underline-offset-2;
   }
 
-  
   /* Alerts */
 
   .alert {
@@ -169,7 +164,6 @@
   .alert-danger .icon {
     @apply alert-icon fill-rose-500 dark:fill-rose-400;
   }
-
 
   /* Cards */
 
@@ -253,10 +247,10 @@
     @apply check-box-input rounded-full;
   }
 
-  .check-box-label, .radio-button-label {
+  .check-box-label,
+  .radio-button-label {
     @apply ml-2 block text-sm text-neutral-900 dark:text-white group-hover:cursor-pointer;
   }
-
 
   /* Devise Page Overwrites */
 
