@@ -38,8 +38,8 @@ module RapidRails
     config.exceptions_app = routes
 
     # Mailer
-    config.action_mailer.default_url_options = {host: HOST}
-    config.action_mailer.asset_host = ENV["ASSET_HOST"] || HOST
+    config.action_mailer.default_url_options = {host: ENV["HOST"] || 'localhost:3000'}
+    config.action_mailer.asset_host = ENV["ASSET_HOST"] || ENV["HOST"] || 'localhost:3000'
 
     # Active Storage
     config.active_storage.queue = :low_priority

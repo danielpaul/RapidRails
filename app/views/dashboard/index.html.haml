@@ -86,6 +86,7 @@
 
           = f.file_field :file_field, accept: 'image/png,image/jpeg,image/gif', required: true, hint: "Only image files are allowed."
 
+          %p While submitting forms with RapidRails, the submit button will be disabled and a loading spinner will be shown. This is to prevent double submissions.
 
         .card-footer.text-right
           = f.button "Submit", data: {'turbo-disable-with': "Submitting..."}

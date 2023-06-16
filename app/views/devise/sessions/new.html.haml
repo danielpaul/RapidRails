@@ -9,7 +9,7 @@
 .mt-8.card.card-body
   = render 'devise/shared/social_login'
   .mt-5
-    = render 'shared/flash'
+    = render FlashMessagesComponent.new(flash)
 
     = form_for(resource, as: resource_name, url: session_path(resource_name), builder: RapidRailsFormBuilder, html: {class: 'space-y-6'}) do |f|
       = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: "Your email address", required: true

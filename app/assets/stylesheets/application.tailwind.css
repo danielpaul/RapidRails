@@ -128,6 +128,11 @@
     @apply h-5 w-5 flex-none;
   }
 
+  .alert-close-btn {
+    @apply inline-flex rounded-md p-1.5
+    focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
   .alert-success {
     @apply alert
     border-emerald-500/20 dark:border-emerald-500/30 
@@ -137,6 +142,13 @@
 
   .alert-success .icon {
     @apply alert-icon fill-emerald-500 dark:fill-emerald-200;
+  }
+
+  .alert-success .close-btn {
+    @apply alert-close-btn 
+    text-emerald-500 
+    hover:bg-emerald-100 
+    focus:ring-emerald-600 focus:ring-offset-emerald-50;
   }
 
   .alert-warning {
@@ -150,6 +162,13 @@
     @apply alert-icon fill-amber-500 dark:fill-amber-200;
   }
 
+  .alert-warning .close-btn {
+    @apply alert-close-btn 
+    text-amber-500 
+    hover:bg-amber-100 
+    focus:ring-amber-600 focus:ring-offset-amber-50;
+  }
+
   .alert-danger {
     @apply alert
     border-rose-500/20 dark:border-rose-500/30
@@ -159,6 +178,13 @@
 
   .alert-danger .icon {
     @apply alert-icon fill-rose-500 dark:fill-rose-400;
+  }
+
+  .alert-danger .close-btn {
+    @apply alert-close-btn 
+    text-rose-500 
+    hover:bg-rose-100 
+    focus:ring-rose-600 focus:ring-offset-rose-50;
   }
 
 
