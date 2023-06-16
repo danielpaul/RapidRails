@@ -121,7 +121,7 @@
   .alert {
     @apply my-6 p-4 flex gap-2.5 rounded-md 
     border
-    text-sm font-medium;
+    text-sm;
   }
 
   .alert-icon {
@@ -173,11 +173,15 @@
     @apply alert
     border-rose-500/20 dark:border-rose-500/30
     bg-rose-50 dark:bg-rose-400/10
-    text-red-900 dark:text-rose-400;
+    text-red-800 dark:text-rose-400;
   }
 
   .alert-danger .icon {
     @apply alert-icon fill-rose-500 dark:fill-rose-400;
+  }
+
+  .alert-danger .body {
+    @apply text-rose-700 dark:text-rose-300;
   }
 
   .alert-danger .close-btn {

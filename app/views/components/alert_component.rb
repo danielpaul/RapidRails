@@ -8,10 +8,17 @@ class AlertComponent < ApplicationComponent
     @dismissable = dismissable
   end
 
-  def template
-    div(class: alert_class, x_data: "{dismissed: false}", x_show: "!dismissed") {
+  def template(&block)
+    div(class: alert_class, x_data: "{dismissed: false}", x_show: "!dismissed", 'data-turbo-cache': "false") {
       unsafe_raw heroicon(icon, variant: "solid", options: {class: "icon"})
-      div { @message }
+      div { 
+        div(class: 'font-medium') { @message }
+
+        if block_given?
+          div(class: 'mt-2 body') { yield }
+        end
+      }
+
       close_button if @dismissable
     }
   end

@@ -11,6 +11,8 @@
   <div class="mt-5">
     <%= render FlashMessagesComponent.new(flash) %>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: RapidRailsFormBuilder, html: {class: 'space-y-6'}, data: { controller: "auto-save", auto_save_target: "form", action: "change->auto-save#saveToLocalStorage submit->auto-save#clearLocalStorage" }) do |f| %>
+      <%= render FormErrorsComponent.new(resource) %>
+
       <%= f.text_field :full_name, autocomplete: 'name', label: { text: "Name" }, placeholder: "John Doe", required: true, autofocus: true %>
       <%= f.email_field :email, autocomplete: 'email', placeholder: "you@example.com", required: true %>
       <%= f.password_field :password, placeholder: "Create a password", autocomplete: "new-password", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
