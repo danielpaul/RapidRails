@@ -1082,7 +1082,7 @@
       "widget": null,
       "validations": []
     }, {
-      "field": "user_id",
+      "field": "user",
       "type": "Number",
       "default_value": null,
       "enums": null,
@@ -1092,8 +1092,9 @@
       "is_required": false,
       "is_sortable": true,
       "is_virtual": false,
-      "reference": null,
+      "reference": "User.id",
       "inverse_of": null,
+      "relationship": "BelongsTo",
       "widget": null,
       "validations": []
     }],
