@@ -43,17 +43,6 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     )
   end
 
-  def wrapper_classes(method, options)
-    wrapper_classes = ["form-field"]
-    wrapper_classes << "disabled" if options[:disabled]
-
-    if errors_for(method, options).present?
-      wrapper_classes << "error"
-    end
-
-    wrapper_classes.join(" ")
-  end
-
   def select(method, choices = nil, options = {}, html_options = {}, &block)
     form_field(method, options, html_options) do
       super(
@@ -102,6 +91,8 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
 
   private
 
+  # For multiple fields that are all based on the input field style
+  # e.g. text_field, email_field, password_field, etc.
   def text_like_field(field_method, object_method, options = {})
     form_field(object_method, options) do
       send(
@@ -112,6 +103,19 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
+  # wrapper with error and disabled classes
+  def wrapper_classes(method, options)
+    wrapper_classes = ["form-field"]
+    wrapper_classes << "disabled" if options[:disabled]
+
+    if errors_for(method, options).present?
+      wrapper_classes << "error"
+    end
+
+    wrapper_classes.join(" ")
+  end
+
+  # for most fields
   def form_field(method, options = {}, more_options = {}, &block)
     label = @template.content_tag(
       "div",
@@ -133,6 +137,8 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
+  # only for radio buttons and check boxes
+  # where the labels are beside it and we don't support error and hint messages
   def radio_check_form_field(method, options = {}, &block)
     label = @template.content_tag(
       "div",
@@ -150,64 +156,16 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  # def hint(hint_text)
-  #   return if hint_text.blank?
-
-  #   # TODO: change to tailwind class
-  #   @template.content_tag("p", hint_text, {class: "text-sm text-neutral-500 mt-2"})
-  # end
-
-  # def labels(field_method, object_method, options)
-  #   label = tailwind_label(field_method, object_method, options)
-
-  #   if [:check_box, :radio_button].include?(field_method)
-  #     error_label(field_method, object_method, options) || label
-  #   else
-  #     @template.content_tag("div", label, {class: "mb-2"})
-  #   end
-  # end
-
-  # def tailwind_label(field_method, object_method, options)
-  #   label_classes = options[:class] || "block text-sm font-medium leading-6"
-  #   if options[:disabled] && [:check_box, :radio_button].include?(field_method)
-  #     # only disbaled check_box and radio_button have this class. 
-  #     # others are disabled in the input level and not the labels.
-  #     label_classes += " text-neutral-400 dark:text-neutral-500"
-  #   else
-  #     label_classes += " text-neutral-900 dark:text-white"
-  #   end
-
-  #   label(object_method, options[:label], {
-  #     class: label_classes
-  #   }.merge(options.except(:class)))
-  # end
-
-  # def error_label(field_method, object_method, options)
-  #   return if errors_for(object_method, options).blank?
-
-  #   error_text, error_class = if [:check_box, :radio_button].include?(field_method)
-  #     [options[:label], options[:class]]
-  #   else
-  #     [errors_for(object_method, options), "block mt-2 text-sm"]
-  #   end
-
-  #   tailwind_label(
-  #     field_method,
-  #     object_method,
-  #     options.merge({
-  #       label: error_text,
-  #       class: error_class + " text-red-600 dark:text-rose-400"
-  #     })
-  #   )
-  # end
-
-
+  # get manual errors and errors from the object
+  # return as error message.
+  # manual error takes precedence.
   def errors_for(object_method, options)
     return if options[:error].blank? && (@object.blank? || object_method.blank? || @object.errors[object_method].empty?)
 
     options[:error] || @object.errors[object_method].join(", ")
   end
 
+  # Automatic disable_with for buttons with spinner animation
   def button_data_disable_with(value, options)
     return if (options[:data] && options[:data][:turbo_disable_with]) || options[:data_turbo_disable_with]
 
