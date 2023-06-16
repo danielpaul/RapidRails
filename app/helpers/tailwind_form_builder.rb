@@ -1,6 +1,6 @@
 # https://blog.testdouble.com/posts/2022-12-05-blending-tailwind-with-rails-forms/
 
-class TailwindFormBuilder < ActionView::Helpers::FormBuilder
+class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   class_attribute :text_field_helpers,
     default: field_helpers - %i[label fields_for fields hidden_field]
   #  leans on the FormBuilder class_attribute `field_helpers`

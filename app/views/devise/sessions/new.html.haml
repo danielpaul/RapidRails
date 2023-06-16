@@ -11,7 +11,7 @@
   .mt-5
     = render 'shared/flash'
 
-    = form_for(resource, as: resource_name, url: session_path(resource_name), builder: TailwindFormBuilder, html: {class: 'space-y-6'}) do |f|
+    = form_for(resource, as: resource_name, url: session_path(resource_name), builder: RapidRailsFormBuilder, html: {class: 'space-y-6'}) do |f|
       = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: "Your email address", required: true
       = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true
       .flex.items-center.justify-between
