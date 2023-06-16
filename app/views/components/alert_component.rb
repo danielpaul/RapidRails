@@ -9,7 +9,7 @@ class AlertComponent < ApplicationComponent
   end
 
   def template
-    div(class: alert_class) {
+    div(class: alert_class, x_data: "{dismissed: false}", x_show: "!dismissed") {
       unsafe_raw heroicon(icon, variant: "solid", options: {class: "icon"})
       div { @message }
       close_button if @dismissable
@@ -43,14 +43,14 @@ class AlertComponent < ApplicationComponent
   end
 
   def close_button
-    div(class: "ml-auto pl-3") do
-      div(class: "-mx-1.5 -my-1.5") do
-        button(type: "button", class: "close-btn") do
+    div(class: "ml-auto pl-3") {
+      div(class: "-mx-1.5 -my-1.5") {
+        button(type: "button", class: "close-btn", '@click': "dismissed = true") {
           span(class: "sr-only") { "Dismiss" }
           unsafe_raw heroicon("x-mark", options: {class: "h-4 w-4"})
-        end
-      end
-    end
+        }
+      }
+    }
   end
 
 end
