@@ -65,6 +65,10 @@
 
           = f.select :select_2, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {}, {disabled: true}
 
+          = f.select :select_3, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {error: "This is an error message. Manually set or with model validation.", hint: "And got a hint here"}, {}
+
+          = f.select :select_4, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {error: "This is an error message. Manually set or with model validation.", hint: "And got a hint here"}, {disabled: true}
+
           .flex.items-center
             .flex-1
               = f.check_box :check_box_1, label: "Check me out", required: true

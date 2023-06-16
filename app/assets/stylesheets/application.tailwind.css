@@ -221,6 +221,14 @@
 
   /* Forms */
 
+  .form-field .label {
+    @apply block text-sm font-medium leading-6 text-neutral-900 dark:text-white;
+  }
+
+  .form-field .hint {
+    @apply text-sm text-neutral-500 mt-2;
+  }
+
   .file-input {
     @apply file:bg-transparent file:text-neutral-900 file:dark:text-white file:shadow-sm file:ring-1 file:ring-neutral-300 file:dark:ring-neutral-750 file:hover:bg-neutral-50 file:dark:hover:bg-neutral-900
     file:mr-4 file:my-1 file:py-0 file:px-3
@@ -254,6 +262,10 @@
     file-input;
   }
 
+  .form-field.error .text-input {
+    @apply ring-1 ring-inset ring-rose-500 dark:ring-rose-400;
+  }
+
   .select-input {
     @apply text-input;
   }
@@ -276,6 +288,14 @@
 
   .check-box-label, .radio-button-label {
     @apply ml-2 block text-sm text-neutral-900 dark:text-white group-hover:cursor-pointer;
+  }
+
+  .error-text {
+    @apply text-red-600 dark:text-rose-400;
+  }
+
+  .error-label {
+    @apply error-text block mt-2 text-sm;
   }
 
 

@@ -9,7 +9,7 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
-    './app/helpers/tailwind_form_builder.rb'
+    './app/helpers/rapidrails_form_builder.rb'
   ],
   theme: {
     extend: {

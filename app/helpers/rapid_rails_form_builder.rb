@@ -6,11 +6,11 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   #  leans on the FormBuilder class_attribute `field_helpers`
   #  you'll want to add a method for each of the specific helpers listed here if you want to style them
 
-  TEXT_FIELD_STYLE = "text-input".freeze
-  SELECT_FIELD_STYLE = "select-input".freeze
-  CHECK_BOX_FIELD_STYLE = "check-box-input".freeze
-  RADIO_BUTTON_FIELD_STYLE = "radio-button-input".freeze
-  SUBMIT_BUTTON_STYLE = "btn-primary".freeze
+  # TEXT_FIELD_STYLE = "text-input".freeze
+  # SELECT_FIELD_STYLE = "select-input".freeze
+  # CHECK_BOX_FIELD_STYLE = "check-box-input".freeze
+  # RADIO_BUTTON_FIELD_STYLE = "radio-button-input".freeze
+  # SUBMIT_BUTTON_STYLE = "btn-primary".freeze
 
   text_field_helpers.each do |field_method|
     class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
@@ -25,7 +25,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def submit(value = nil, options = {})
-    classes = options[:class] || SUBMIT_BUTTON_STYLE
+    classes = options[:class] || 'btn-primary'
     super(
       value,
       {
@@ -37,7 +37,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def button(value = nil, options = {}, &block)
-    classes = options[:class] || SUBMIT_BUTTON_STYLE
+    classes = options[:class] || 'btn-primary'
     super(
       value,
       {
@@ -49,110 +49,187 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     )
   end
 
+  def wrapper_classes(method, options)
+    wrapper_classes = ["form-field"]
+    wrapper_classes << "disabled" if options[:disabled]
+
+    if errors_for(method, options).present?
+      wrapper_classes << "error"
+    end
+
+    wrapper_classes.join(" ")
+  end
+
   def select(method, choices = nil, options = {}, html_options = {}, &block)
-    classes = apply_style_classes(SELECT_FIELD_STYLE, options, method)
+    form_field(method, options, html_options) do
+      super(
+        method, 
+        choices, 
+        options, 
+        html_options.merge(class: apply_style_classes('select-input', options, method)), 
+        &block
+      )
+    end
+  end
 
-    labels = labels(:select, method, options)
-    field = super(method, choices, options, html_options.merge({class: classes}), &block)
-
-    hint = hint(options[:hint])
-    error_label = error_label(:select, method, options)
-
-    @template.content_tag('div', labels + field + (error_label || hint))
+  def collection_select(method, collection, value_method, text_method, options = {}, html_options = {})
+    form_field(method, options, html_options) do
+      super(
+        method,
+        collection,
+        value_method,
+        text_method,
+        options,
+        html_options.merge(class: apply_style_classes('select-input', options, method))
+      )
+    end
   end
 
   def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
-    classes = apply_style_classes(CHECK_BOX_FIELD_STYLE, options, method)
-
-    labels = labels(:check_box, method, options.merge(class: 'check-box-label'))
-    field = super(method, {class: classes}.merge(options))
-
-    @template.content_tag("div", {class: "group flex items-center"}) do
-      field + labels
+    radio_check_form_field(method, options) do
+      super(
+        method, 
+        options.merge(class: apply_style_classes('check-box-input', options, method)), 
+        checked_value, 
+        unchecked_value
+      )
     end
   end
 
   def radio_button(method, tag_value, options = {})
-    classes = apply_style_classes(RADIO_BUTTON_FIELD_STYLE, options, method)
-
-    label = labels(:radio_button, method, options.merge(class: 'radio-button-label', value: tag_value))
-    field = super(method, tag_value, {class: classes}.merge(options))
-
-    @template.content_tag("div", {class: "group flex items-center"}) do
-      field + label
+    radio_check_form_field(method, options) do
+      super(
+        method,
+        tag_value,
+        options.merge(class: apply_style_classes('radio-button-input', options, method))
+      )
     end
   end
+
+  # def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
+  #   classes = apply_style_classes(CHECK_BOX_FIELD_STYLE, options, method)
+
+  #   labels = labels(:check_box, method, options.merge(class: 'check-box-label'))
+  #   field = super(method, {class: classes}.merge(options))
+
+  #   @template.content_tag("div", {class: "group flex items-center"}) do
+  #     field + labels
+  #   end
+  # end
+
+  # def radio_button(method, tag_value, options = {})
+  #   classes = apply_style_classes(RADIO_BUTTON_FIELD_STYLE, options, method)
+
+  #   label = labels(:radio_button, method, options.merge(class: 'radio-button-label', value: tag_value))
+  #   field = super(method, tag_value, {class: classes}.merge(options))
+
+  #   @template.content_tag("div", {class: "group flex items-center"}) do
+  #     field + label
+  #   end
+  # end
 
   private
 
   def text_like_field(field_method, object_method, options = {})
-    classes = apply_style_classes(TEXT_FIELD_STYLE, options, object_method)
-
-    field = send(field_method, object_method, {
-      class: classes,
-      title: errors_for(object_method, options)
-    }.compact.merge(options).merge({tailwindified: true}))
-
-    labels = labels(field_method, object_method, options)
-
-    hint = hint(options[:hint])
-    error_label = error_label(field_method, object_method, options)
-
-    # only display error label or hint
-    @template.content_tag("div", labels + field + (error_label || hint))
-  end
-
-  def hint(hint_text)
-    return if hint_text.blank?
-
-    @template.content_tag("p", hint_text, {class: "text-sm text-neutral-500 mt-2"})
-  end
-
-  def labels(field_method, object_method, options)
-    label = tailwind_label(field_method, object_method, options)
-
-    if [:check_box, :radio_button].include?(field_method)
-      error_label(field_method, object_method, options) || label
-    else
-      @template.content_tag("div", label, {class: "mb-2"})
+    form_field(object_method, options) do
+      send(field_method, object_method, {
+        class: apply_style_classes('text-input', options, object_method),
+        title: errors_for(object_method, options)
+      }.compact.merge(options).merge({tailwindified: true}))
     end
   end
 
-  def tailwind_label(field_method, object_method, options)
-    label_classes = options[:class] || "block text-sm font-medium leading-6"
-    if options[:disabled] && [:check_box, :radio_button].include?(field_method)
-      # only disbaled check_box and radio_button have this class. 
-      # others are disabled in the input level and not the labels.
-      label_classes += " text-neutral-400 dark:text-neutral-500"
-    else
-      label_classes += " text-neutral-900 dark:text-white"
-    end
-
-    label(object_method, options[:label], {
-      class: label_classes
-    }.merge(options.except(:class)))
-  end
-
-  def error_label(field_method, object_method, options)
-    return if errors_for(object_method, options).blank?
-
-    error_text, error_class = if [:check_box, :radio_button].include?(field_method)
-      [options[:label], options[:class]]
-    else
-      [errors_for(object_method, options), "block mt-2 text-sm"]
-    end
-
-    tailwind_label(
-      field_method,
-      object_method,
-      options.merge({
-        label: error_text,
-        class: error_class + " text-red-600 dark:text-rose-400"
-      })
+  def form_field(method, options = {}, more_options = {}, &block)
+    label = @template.content_tag(
+      "div",
+      label(method, options[:label], options.merge(class: 'label').except(:label, :error, :hint)), 
+      {class: "mb-2"}
     )
+
+    errors = errors_for(method, options)
+    if errors.present?
+      errors = label(method, errors, {class: "error-label"})
+    end
+
+    hint = if options[:hint].present?
+      @template.content_tag("p", options[:hint], {class: "hint"})
+    end
+
+    @template.content_tag("div", {class: wrapper_classes(method, options.merge(more_options))}) do
+      label + yield + errors + hint
+    end
   end
+
+  def radio_check_form_field(method, options = {}, &block)
+    label = @template.content_tag(
+      "div",
+      label(method, options[:label], options.merge(class: 'label radio-check-label').except(:label, :error, :hint))
+    )
+
+    @template.content_tag("div", {class: wrapper_classes(method, options)}) do
+      @template.content_tag("div", {class: "group flex items-center"}) do
+        yield + label
+      end
+    end
+  end
+
+  # def hint(hint_text)
+  #   return if hint_text.blank?
+
+  #   # TODO: change to tailwind class
+  #   @template.content_tag("p", hint_text, {class: "text-sm text-neutral-500 mt-2"})
+  # end
+
+  # def labels(field_method, object_method, options)
+  #   label = tailwind_label(field_method, object_method, options)
+
+  #   if [:check_box, :radio_button].include?(field_method)
+  #     error_label(field_method, object_method, options) || label
+  #   else
+  #     @template.content_tag("div", label, {class: "mb-2"})
+  #   end
+  # end
+
+  # def tailwind_label(field_method, object_method, options)
+  #   label_classes = options[:class] || "block text-sm font-medium leading-6"
+  #   if options[:disabled] && [:check_box, :radio_button].include?(field_method)
+  #     # only disbaled check_box and radio_button have this class. 
+  #     # others are disabled in the input level and not the labels.
+  #     label_classes += " text-neutral-400 dark:text-neutral-500"
+  #   else
+  #     label_classes += " text-neutral-900 dark:text-white"
+  #   end
+
+  #   label(object_method, options[:label], {
+  #     class: label_classes
+  #   }.merge(options.except(:class)))
+  # end
+
+  # def error_label(field_method, object_method, options)
+  #   return if errors_for(object_method, options).blank?
+
+  #   error_text, error_class = if [:check_box, :radio_button].include?(field_method)
+  #     [options[:label], options[:class]]
+  #   else
+  #     [errors_for(object_method, options), "block mt-2 text-sm"]
+  #   end
+
+  #   tailwind_label(
+  #     field_method,
+  #     object_method,
+  #     options.merge({
+  #       label: error_text,
+  #       class: error_class + " text-red-600 dark:text-rose-400"
+  #     })
+  #   )
+  # end
+
+
+
+
 
   def border_color_classes(object_method, options)
+    # TODO: change to tailwind class
     if errors_for(object_method, options).present?
       "text-red-900 ring-red-500 placeholder:text-red-400 focus:ring-red-500 dark:ring-rose-500/30 dark:bg-rose-400/10 dark:text-rose-400 dark:placeholder:text-red-200"
     else
