@@ -39,7 +39,10 @@ class User < ApplicationRecord
 
   include User::Omniauthable
 
+  attr_accessor :feedback
+
   has_one_attached :profile_picture
+  has_many :user_account_feedbacks
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
