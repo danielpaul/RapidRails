@@ -66,6 +66,22 @@
       %p.mt-1.p Danger zone! Once you delete you account, there is no going back.
 
     .card.md:col-span-2
-      .card-body
+      .card-body{"x-data" => "{ button: true, open: false }"}
         .space-y-6
-          = button_to "Delete Account", registration_path(resource_name), {data: { turbo_confirm: "Are you sure?" }, class: 'text-danger text-sm mr-6', method: :delete}
+          %div{ "x-show" => "button" }
+            .text-sm.text-neutral-500.mb-2 Delete your account. This action cannot be undone and all your data will be deleted from our system.
+            %button{ class: 'text-danger text-sm mr-6', method: :delete, "x-on:click" => "open = ! open; button = ! button" } Delete Account
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), builder: RapidRailsFormBuilder, html: { method: :delete }) do |f|
+          .text-black{"x-show" => "open"}
+            %p You are about to delete your account! This action can not be undone and all your data will be deleted from our system.
+            %br
+            %p.mb-6
+              We are sorry to see you go #{@user.full_name}, if there was one thing that you could change about our service, what would that be? 
+              This feedback is critical to our continued improvement. Thanks so much!
+
+              .space-y-6
+                = f.password_field :current_password, placeholder: "Your current password", autocomplete: "current-password", required: true
+                = f.text_field :feedback, placeholder: "Please tell us why you are cancelling. Any kind of feedback is appreciated and helpful to us.", autocomplete: 'no'
+
+                .text-right
+                  = f.button 'Delete Account Now', class: 'btn-danger', method: :delete
