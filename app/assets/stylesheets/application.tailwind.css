@@ -121,11 +121,16 @@
   .alert {
     @apply my-6 p-4 flex gap-2.5 rounded-md 
     border
-    text-sm font-medium;
+    text-sm;
   }
 
   .alert-icon {
     @apply h-5 w-5 flex-none;
+  }
+
+  .alert-close-btn {
+    @apply inline-flex rounded-md p-1.5
+    focus:outline-none focus:ring-2 focus:ring-offset-1 mt-1;
   }
 
   .alert-success {
@@ -139,6 +144,13 @@
     @apply alert-icon fill-emerald-500 dark:fill-emerald-200;
   }
 
+  .alert-success .close-btn {
+    @apply alert-close-btn 
+    text-emerald-500 
+    hover:bg-emerald-100 dark:hover:bg-emerald-500/10
+    focus:ring-emerald-600 focus:ring-offset-emerald-50;
+  }
+
   .alert-warning {
     @apply alert
     border-amber-500/20 dark:border-amber-500/30
@@ -150,15 +162,33 @@
     @apply alert-icon fill-amber-500 dark:fill-amber-200;
   }
 
+  .alert-warning .close-btn {
+    @apply alert-close-btn 
+    text-amber-500 
+    hover:bg-amber-100  dark:hover:bg-amber-400/10
+    focus:ring-amber-600 focus:ring-offset-amber-50;
+  }
+
   .alert-danger {
     @apply alert
     border-rose-500/20 dark:border-rose-500/30
     bg-rose-50 dark:bg-rose-400/10
-    text-red-900 dark:text-rose-400;
+    text-red-800 dark:text-rose-400;
   }
 
   .alert-danger .icon {
     @apply alert-icon fill-rose-500 dark:fill-rose-400;
+  }
+
+  .alert-danger .body {
+    @apply text-rose-700 dark:text-rose-300;
+  }
+
+  .alert-danger .close-btn {
+    @apply alert-close-btn 
+    text-rose-500 
+    hover:bg-rose-100 dark:hover:bg-rose-400/10
+    focus:ring-rose-600 focus:ring-offset-rose-50;
   }
 
 
@@ -191,6 +221,35 @@
 
   /* Forms */
 
+  .form-field .label {
+    @apply block text-sm font-medium leading-6 text-neutral-900 dark:text-white;
+  }
+
+  .radio-check-label {
+    @apply ml-2 block text-sm leading-6 
+    text-neutral-900 dark:text-white group-hover:cursor-pointer;
+  }
+
+  .form-field.disabled .radio-check-label {
+    @apply text-neutral-400 dark:text-neutral-500;
+  }
+
+  .error-text {
+    @apply text-red-600 dark:text-rose-400;
+  }
+
+  .form-field .label.required:after {
+    @apply content-['*'] error-text ml-1;
+  }
+
+  .error-label {
+    @apply error-text block mt-2 text-sm;
+  }
+
+  .form-field .hint {
+    @apply text-sm text-neutral-500 mt-2;
+  }
+
   .file-input {
     @apply file:bg-transparent file:text-neutral-900 file:dark:text-white file:shadow-sm file:ring-1 file:ring-neutral-300 file:dark:ring-neutral-750 file:hover:bg-neutral-50 file:dark:hover:bg-neutral-900
     file:mr-4 file:my-1 file:py-0 file:px-3
@@ -215,6 +274,10 @@
     text-slate-800 dark:text-neutral-50 
     sm:text-sm sm:leading-6
     disabled:bg-neutral-200 dark:disabled:bg-transparent disabled:cursor-not-allowed;
+  }
+
+  .form-field.error .text-input {
+    @apply text-red-900 ring-red-500 placeholder:text-red-400 focus:ring-red-500 dark:ring-rose-500/30 dark:bg-rose-400/10 dark:text-rose-400 dark:placeholder:text-red-200;
   }
 
   .text-input {
@@ -244,9 +307,6 @@
     @apply check-box-input rounded-full;
   }
 
-  .check-box-label, .radio-button-label {
-    @apply ml-2 block text-sm text-neutral-900 dark:text-white group-hover:cursor-pointer;
-  }
 
 
   /* Devise Page Overwrites */

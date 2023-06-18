@@ -54,9 +54,9 @@
       = form_for :something, method: :post, builder: RapidRailsFormBuilder do |f|
         .card-header
           %h4.h4 Sample Form
-        .card-body.space-y-6
+        .card-body.space-y-8
           -# example of all kind of fields
-          = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Email Field", required: true, hint: "This is a hint. Give helpful information here."
+          = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Your Email Field", required: true, hint: "This is a hint. Give helpful information here.", class: 'custom-class'
           = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true, error: "This is an error message. Manually set or with model validation."
           = f.text_field :text, placeholder: "Your text", required: true, disabled: true
           = f.text_area :text_area, placeholder: "Your text area", required: true, hint: "This is a hint. Give helpful information here."
@@ -64,6 +64,10 @@
           = f.select :select, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {hint: "This is a hint. Give helpful information here.", prompt: "Select something..."}, {required: true}
 
           = f.select :select_2, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {}, {disabled: true}
+
+          = f.select :select_3, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {error: "This is an error message. Manually set or with model validation.", hint: "And got a hint here"}, {}
+
+          = f.select :select_4, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {error: "This is an error message. Manually set or with model validation.", hint: "And got a hint here"}, {disabled: true}
 
           .flex.items-center
             .flex-1
@@ -86,6 +90,7 @@
 
           = f.file_field :file_field, accept: 'image/png,image/jpeg,image/gif', required: true, hint: "Only image files are allowed."
 
+          %p While submitting forms with RapidRails, the submit button will be disabled and a loading spinner will be shown. This is to prevent double submissions.
 
         .card-footer.text-right
           = f.button "Submit", data: {'turbo-disable-with': "Submitting..."}

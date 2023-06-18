@@ -63,4 +63,4 @@
 - if flash.any?
   .lg:pl-72
     .p-4.sm:p-6.lg:p-8.pb-0.sm:pb-0.lg:pb-0
-      = render "shared/flash", rounded: false
+      = render FlashMessagesComponent.new(flash)
