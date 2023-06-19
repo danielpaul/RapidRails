@@ -89,20 +89,6 @@ class ToastFlashComponent < ApplicationComponent
     def hide_in
       5000 - (150 * (@index + 1))
     end
-
-    def close_button
-      div(class: "ml-4 flex flex-shrink-0") do
-        button(
-          '@click': "show = false",
-          type: "button",
-          class:
-            "inline-flex rounded-md bg-white dark:bg-card-dark text-neutral-400 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-        ) do
-          span(class: "sr-only") { "Close" }
-          unsafe_raw heroicon("x-mark", options: {class: "h-5 w-5"})
-        end
-      end
-    end
   end
 
 end

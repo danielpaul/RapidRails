@@ -129,8 +129,13 @@
   }
 
   .alert-close-btn {
-    @apply inline-flex rounded-md p-1.5
-    focus:outline-none focus:ring-2 focus:ring-offset-1 mt-1;
+    @apply inline-flex rounded-md p-1
+    focus:outline-none focus:ring-2 focus:ring-offset-1 mt-1
+    transition hover:bg-zinc-900/5 dark:hover:bg-white/5;
+  }
+
+  .close-btn {
+    @apply alert-close-btn;
   }
 
   .alert-success {
