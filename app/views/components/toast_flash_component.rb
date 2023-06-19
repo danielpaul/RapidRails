@@ -26,19 +26,107 @@ class ToastFlashComponent < ApplicationComponent
     "items-end mt-10"
   end
 
-  def render_toast(toast, index)
-    show_in = 100 * (index + 1)
-    hide_in = 5000 - (150 * (index + 1))
-  end
-
   class ToastCardComponent < ApplicationComponent
+    include ActionView::Helpers::OutputSafetyHelper
+    include Heroicon::Engine.helpers
+
     def initialize(toast, index)
       @toast = toast
       @index = index
     end
 
     def template
-      plain @toast.inspect
+      div(
+        class: "pointer-events-auto w-full max-w-sm overflow-hidden card shadow-lg",
+        style: "display: none;",
+
+        x_data: "{ show: false }",
+        x_init: "() => { setTimeout(() => { show = true }, #{show_in}); setTimeout(() => { show = false }, #{hide_in}); }",
+        x_show: "show",
+
+        'x-transition:enter': "transform ease-out duration-300 transition",
+        'x-transition:enter-start': "translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2",
+        'x-transition:enter-end': "translate-y-0 opacity-100 sm:translate-x-0",
+        'x-transition:leave': "transition ease-in duration-100",
+        'x-transition:leave-start': "opacity-100",
+        'x-transition:leave-end': "opacity-0"
+      ) {
+        div(class: 'p-4') {
+          div(class: 'flex items-start') {
+            div(class: 'flex-shrink-0') {
+              unsafe_raw heroicon(
+                icon,
+                variant: 'solid',
+                options: {class: "h-5 w-5 #{icon_color}"}
+              ) 
+            }
+
+            div(class: "ml-3 w-0 flex-1") {
+              p(class: "text-sm font-medium text-neutral-900 dark:text-white") {
+                @toast[:heading]
+              }
+
+              if @toast[:body]
+                p(class: "mt-1 text-sm text-neutral-500") {
+                  @toast[:body]
+                }
+              end
+            }
+
+            close_button
+          }
+        }
+      }
+    end
+
+    private
+
+    def notification_type
+      @toast[:type] || "info"
+    end
+
+    def icon
+      case notification_type
+      when "success"
+        "check-circle"
+      when "error"
+        "x-circle"
+      else
+        "exclamation-circle"
+      end
+    end
+
+    def icon_color
+      case notification_type
+      when "success"
+        "text-green-400"
+      when "error"
+        "text-red-400"
+      else
+        "text-yellow-400"
+      end
+    end
+
+    def show_in
+      100 * (@index + 1)
+    end
+
+    def hide_in
+      5000 - (150 * (@index + 1))
+    end
+
+    def close_button
+      div(class: "ml-4 flex flex-shrink-0") do
+        button(
+          '@click': "show = false",
+          type: "button",
+          class:
+            "inline-flex rounded-md bg-white dark:bg-card-dark text-neutral-400 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        ) do
+          span(class: "sr-only") { "Close" }
+          unsafe_raw heroicon("x-mark", options: {class: "h-5 w-5"})
+        end
+      end
     end
   end
 
