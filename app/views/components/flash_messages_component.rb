@@ -1,4 +1,5 @@
 class FlashMessagesComponent < ApplicationComponent
+  include AlertHelper
 
   def initialize(flash)
     @flash = flash
@@ -7,25 +8,7 @@ class FlashMessagesComponent < ApplicationComponent
   def template
     @flash.each do |type, message|
       next if ['success', 'notice', 'alert', 'error'].exclude?(type)
-      render AlertComponent.new(type: parse_flash_type(type), message: message, dismissable: true)
+      render AlertComponent.new(type: alert_type(type), message: message, dismissable: true)
     end
   end
-
-  private
-
-  def parse_flash_type(type)
-    case type
-    when "success"
-      "success"
-    when "notice"
-      "warning"
-    when "alert"
-      "danger"
-    when "error"
-      "danger"
-    else
-      type
-    end
-  end
-
 end

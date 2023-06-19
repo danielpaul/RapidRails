@@ -29,6 +29,7 @@ class ToastFlashComponent < ApplicationComponent
   class ToastCardComponent < ApplicationComponent
     include ActionView::Helpers::OutputSafetyHelper
     include Heroicon::Engine.helpers
+    include AlertHelper
 
     def initialize(toast, index)
       @toast = toast
@@ -55,19 +56,19 @@ class ToastFlashComponent < ApplicationComponent
           div(class: 'flex items-start') {
             div(class: 'flex-shrink-0') {
               unsafe_raw heroicon(
-                icon,
+                alert_icon(alert_type(@toast[:type])),
                 variant: 'solid',
-                options: {class: "h-5 w-5 #{icon_color}"}
+                options: {class: "alert-#{alert_type(@toast[:type])}-icon"}
               ) 
             }
 
             div(class: "ml-3 w-0 flex-1") {
-              p(class: "text-sm font-medium text-neutral-900 dark:text-white") {
+              h4(class: "h4") {
                 @toast[:heading]
               }
 
               if @toast[:body]
-                p(class: "mt-1 text-sm text-neutral-500") {
+                p(class: "mt-1 p") {
                   @toast[:body]
                 }
               end
@@ -80,32 +81,6 @@ class ToastFlashComponent < ApplicationComponent
     end
 
     private
-
-    def notification_type
-      @toast[:type] || "info"
-    end
-
-    def icon
-      case notification_type
-      when "success"
-        "check-circle"
-      when "error"
-        "x-circle"
-      else
-        "exclamation-circle"
-      end
-    end
-
-    def icon_color
-      case notification_type
-      when "success"
-        "text-green-400"
-      when "error"
-        "text-red-400"
-      else
-        "text-yellow-400"
-      end
-    end
 
     def show_in
       100 * (@index + 1)
