@@ -25,14 +25,6 @@
         / Separator
         %div{class: 'md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-neutral-700'}
 
-        
-        %div{class: 'flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5 p-1'}
-          %button.text-neutral-400.hover:text-neutral-500{:type => "button"}
-            %span.sr-only View notifications
-            %svg.h-5.w-5{"aria-hidden" => "true", :fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24"}
-              %path{:d => "M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
-
-
         %div{class: 'flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5 p-1'}
           = render DarkModeButtonComponent.new
         
