@@ -8,10 +8,6 @@ APP_ROOT = File.expand_path("..", __dir__)
 $new_project = nil
 $final_checklist = []
 
-def system!(*args)
-  system(*args) || abort("\n" + display_message(:error, "Command #{args} failed"))
-end
-
 def color_text(color, text)
   case color
   when :red
@@ -49,6 +45,10 @@ def display_message(type, text)
     
   puts "\n"
   puts render_text
+end
+
+def system!(*args)
+  system(*args) || abort("\n" + display_message(:error, "Command #{args} failed"))
 end
 
 def ask(question)
