@@ -119,7 +119,7 @@
   /* Alerts */
 
   .alert {
-    @apply my-6 p-4 flex gap-2.5 rounded-md 
+    @apply mb-6 p-4 flex gap-2.5 rounded-md 
     border
     text-sm;
   }

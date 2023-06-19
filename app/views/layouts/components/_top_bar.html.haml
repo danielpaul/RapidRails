@@ -59,8 +59,3 @@
             .border-b.card-border.mt-1.mb-1
             = link_to "Account Settings", edit_user_registration_path, class: "block px-3 py-1 text-sm leading-6 hover:bg-neutral-50 dark:hover:bg-body-dark"
             = link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-3 py-1 text-sm leading-6 hover:bg-neutral-50 dark:hover:bg-body-dark"
-
-- if flash.any?
-  .lg:pl-72
-    .p-4.sm:p-6.lg:p-8.pb-0.sm:pb-0.lg:pb-0
-      = render FlashMessagesComponent.new(flash)
