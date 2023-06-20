@@ -9,7 +9,13 @@
     = render 'layouts/components/top_bar'
 
     .lg:pl-72
-      %main.py-10.px-4.sm:px-6.lg:px-8
-        = yield
+      .py-10.px-4.sm:px-6.lg:px-8
+
+        %div{class: ('w-4/6 mx-auto' if @width == 'narrow')}
+          - if flash.any?
+            .pb-8
+              = render FlashMessagesComponent.new(flash)
+
+          %main= yield
 
     = render "layouts/components/footer_scripts"
