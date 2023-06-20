@@ -129,6 +129,10 @@ RSpec.describe User, type: :model do
         @user = create(:user, email: "me@gmail.com")
       end
 
+      after :each do
+        ActiveJob::Base.queue_adapter.enqueued_jobs.clear
+      end
+
       context "when unconfirmed" do
         it "does not confirm existing user if unverified on google" do
           omniauth_data["email_verified"] = false
