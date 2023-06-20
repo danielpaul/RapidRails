@@ -200,7 +200,6 @@
     focus:ring-rose-600 focus:ring-offset-rose-50;
   }
 
-
   /* Cards */
 
   .card-border {
@@ -315,7 +314,6 @@
   .radio-button-input {
     @apply check-box-input rounded-full;
   }
-  
 
   /* Devise Page Overwrites */
 
