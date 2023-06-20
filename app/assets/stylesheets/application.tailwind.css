@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+
+@layer base {
+
   body {
     @apply antialiased text-neutral-500 dark:text-neutral-400 bg-body dark:bg-body-dark;
   }
@@ -11,26 +13,10 @@
     @apply h-full;
   }
 
-  /* Typography */
+  /* Colors */
 
-  .h1 {
-    @apply text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white;
-  }
-
-  .h2 {
-    @apply text-2xl font-bold tracking-tight text-neutral-900 dark:text-white;
-  }
-
-  .h3 {
-    @apply text-xl font-bold tracking-tight text-neutral-900 dark:text-white;
-  }
-
-  .text-huge {
-    @apply h1 text-3xl sm:text-5xl;
-  }
-
-  .p {
-    @apply text-base text-neutral-700 dark:text-neutral-300 leading-6;
+  .text-success {
+    @apply text-emerald-500;
   }
 
   .text-danger {
@@ -41,26 +27,76 @@
     @apply text-neutral-500 dark:text-neutral-400;
   }
 
+  .text-heading {
+    @apply text-neutral-900 dark:text-white;
+  }
+
+  /* Typography */
+
+  .h1 {
+    @apply text-2xl md:text-3xl font-bold tracking-tight text-heading;
+  }
+
+  .h2 {
+    @apply text-2xl font-bold tracking-tight text-heading;
+  }
+
+  .h3 {
+    @apply text-xl font-bold tracking-tight text-heading;
+  }
+
+  .h4 {
+    @apply text-base font-bold tracking-tight text-heading;
+  }
+
+  .h5 {
+    @apply text-sm tracking-tight text-heading;
+  }
+
+  .h6 {
+    @apply text-sm tracking-tight text-heading;
+  }
+
+  .text-huge {
+    @apply h1 text-3xl sm:text-5xl;
+  }
+
+  .p {
+    @apply text-base text-neutral-700 dark:text-neutral-300 leading-6;
+  }
+
+  hr {
+    @apply h-px my-8 bg-neutral-300/50 border-0 dark:bg-neutral-750;
+  }
+
+}
+
+@layer components {
+
   /* Links & Buttons */
 
   .btn {
-    @apply rounded-md py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 transition-all duration-300;
+    @apply rounded-md py-2 px-4 text-sm font-semibold 
+    focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 
+    transition-all duration-300
+    disabled:cursor-not-allowed;
   }
 
   .btn-primary {
-    @apply btn bg-primary text-white hover:bg-primary-500 hover:text-slate-100 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600;
+    @apply btn bg-primary hover:bg-primary-500 
+    text-white hover:text-slate-100 
+    active:bg-primary-600
+    focus-visible:outline-blue-600
+    disabled:bg-primary/50;
   }
 
   .btn-secondary {
-    @apply btn bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900;
-  }
-
-  .btn-white {
     @apply btn text-neutral-900 dark:text-white 
     shadow-sm 
     ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750
     bg-card dark:bg-[#27262b]
-    hover:bg-neutral-100 dark:hover:bg-neutral-900;
+    hover:bg-neutral-100 dark:hover:bg-neutral-900
+    disabled:bg-neutral-200 dark:disabled:bg-transparent;
   }
 
   a {
@@ -78,6 +114,88 @@
   .porse-section {
     @apply prose prose-slate dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-500 hover:prose-a:underline hover:prose-a:underline-offset-2;
   }
+
+  
+  /* Alerts */
+
+  .alert {
+    @apply mb-6 p-4 flex gap-2.5 rounded-md 
+    border
+    text-sm;
+  }
+
+  .alert-icon {
+    @apply h-5 w-5 flex-none;
+  }
+
+  .alert-close-btn {
+    @apply inline-flex rounded-md p-1
+    focus:outline-none focus:ring-2 focus:ring-offset-1 mt-1
+    transition hover:bg-zinc-900/5 dark:hover:bg-white/5;
+  }
+
+  .close-btn {
+    @apply alert-close-btn;
+  }
+
+  .alert-success {
+    @apply alert
+    border-emerald-500/20 dark:border-emerald-500/30 
+    bg-emerald-50/50 dark:bg-emerald-500/5
+    text-emerald-900 dark:text-emerald-200;
+  }
+
+  .alert-success-icon {
+    @apply alert-icon fill-emerald-500 dark:fill-emerald-200;
+  }
+
+  .alert-success .close-btn {
+    @apply alert-close-btn 
+    text-emerald-500 
+    hover:bg-emerald-100 dark:hover:bg-emerald-500/10
+    focus:ring-emerald-600 focus:ring-offset-emerald-50;
+  }
+
+  .alert-warning {
+    @apply alert
+    border-amber-500/20 dark:border-amber-500/30
+    bg-amber-400/10 dark:bg-amber-400/10
+    text-amber-900 dark:text-amber-200;
+  }
+
+  .alert-warning-icon {
+    @apply alert-icon fill-amber-500 dark:fill-amber-200;
+  }
+
+  .alert-warning .close-btn {
+    @apply alert-close-btn 
+    text-amber-500 
+    hover:bg-amber-100  dark:hover:bg-amber-400/10
+    focus:ring-amber-600 focus:ring-offset-amber-50;
+  }
+
+  .alert-danger {
+    @apply alert
+    border-rose-500/20 dark:border-rose-500/30
+    bg-rose-50 dark:bg-rose-400/10
+    text-red-800 dark:text-rose-400;
+  }
+
+  .alert-danger-icon {
+    @apply alert-icon fill-rose-500 dark:fill-rose-400;
+  }
+
+  .alert-danger .body {
+    @apply text-rose-700 dark:text-rose-300;
+  }
+
+  .alert-danger .close-btn {
+    @apply alert-close-btn 
+    text-rose-500 
+    hover:bg-rose-100 dark:hover:bg-rose-400/10
+    focus:ring-rose-600 focus:ring-offset-rose-50;
+  }
+
 
   /* Cards */
 
@@ -108,6 +226,35 @@
 
   /* Forms */
 
+  .form-field .label {
+    @apply block text-sm font-medium leading-6 text-neutral-900 dark:text-white;
+  }
+
+  .radio-check-label {
+    @apply ml-2 block text-sm leading-6 
+    text-neutral-900 dark:text-white group-hover:cursor-pointer;
+  }
+
+  .form-field.disabled .radio-check-label {
+    @apply text-neutral-400 dark:text-neutral-500;
+  }
+
+  .error-text {
+    @apply text-red-600 dark:text-rose-400;
+  }
+
+  .form-field .label.required:after {
+    @apply content-['*'] error-text ml-1;
+  }
+
+  .error-label {
+    @apply error-text block mt-2 text-sm;
+  }
+
+  .form-field .hint {
+    @apply text-sm text-neutral-500 mt-2;
+  }
+
   .file-input {
     @apply file:bg-transparent file:text-neutral-900 file:dark:text-white file:shadow-sm file:ring-1 file:ring-neutral-300 file:dark:ring-neutral-750 file:hover:bg-neutral-50 file:dark:hover:bg-neutral-900
     file:mr-4 file:my-1 file:py-0 file:px-3
@@ -122,42 +269,50 @@
 
   .input-base {
     @apply bg-card dark:bg-[#27262b]
-    hover:bg-neutral-100 dark:hover:bg-neutral-900
-    focus:bg-neutral-100 dark:focus:bg-neutral-900
+    hover:bg-neutral-50 dark:hover:bg-neutral-900
+    focus:bg-neutral-50 dark:focus:bg-neutral-900
     border-0 
     py-1.5 px-3 
     shadow-sm
     ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750
     placeholder:text-neutral-500 
     text-slate-800 dark:text-neutral-50 
-    focus:ring-2 focus:ring-inset focus:ring-primary dark:focus:ring-primary-500
-    sm:text-sm sm:leading-6;
+    sm:text-sm sm:leading-6
+    disabled:bg-neutral-200 dark:disabled:bg-transparent disabled:cursor-not-allowed;
+  }
+
+  .form-field.error .text-input {
+    @apply text-red-900 ring-red-500 placeholder:text-red-400 focus:ring-red-500 dark:ring-rose-500/30 dark:bg-rose-400/10 dark:text-rose-400 dark:placeholder:text-red-200;
   }
 
   .text-input {
     @apply block w-full rounded-md 
     input-base
+    focus:ring-2 focus:ring-inset focus:ring-primary dark:focus:ring-primary-500
     file-input;
   }
 
   .select-input {
-    @apply block bg-neutral-200 text-neutral-700 
-    py-2 px-4 
-    rounded leading-tight 
-    focus:outline-none focus:bg-white;
+    @apply text-input;
   }
 
-  .checkbox-input {
+  .check-box-input {
     @apply h-4 w-4 rounded-md
     input-base
     checked:bg-primary-500 checked:border-transparent checked:ring-transparent
-    checked:hover:bg-primary-500 checked:hover:border-transparent checked:hover:ring-transparent
+    checked:focus:bg-primary-500 checked:focus:border-transparent checked:focus:ring-transparent
+    dark:checked:hover:bg-primary-500
+    text-primary
+    focus:ring-offset-0
+    group-hover:cursor-pointer
     p-2;
   }
 
-  .checkbox-label {
-    @apply ml-2 block text-sm;
+  .radio-button-input {
+    @apply check-box-input rounded-full;
   }
+
+
 
   /* Devise Page Overwrites */
 

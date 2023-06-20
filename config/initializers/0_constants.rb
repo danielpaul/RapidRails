@@ -5,7 +5,9 @@ APP_NAME = "Rapid Rails".freeze
 COMPANY_NAME = "Daniel Paul".freeze
 COMPANY_LOCATION = "London, UK".freeze
 
-DEFAULT_FROM_EMAIL_ONLY = "team@#{ENV.fetch("HOST") { "example.com" }}".freeze
+HOST = ENV.fetch("HOST") { "localhost:3000" }.freeze
+
+DEFAULT_FROM_EMAIL_ONLY = "team@#{HOST}".freeze
 DEFAULT_FROM_EMAIL = "#{APP_NAME} <#{DEFAULT_FROM_EMAIL_ONLY}>".freeze
 
 ENABLE_SENTRY = Rails.env.production? || Rails.env.staging?

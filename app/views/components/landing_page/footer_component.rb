@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Footer component for the landing page
-class LandingPage::FooterComponent < Phlex::HTML
+class LandingPage::FooterComponent < ApplicationComponent
   include Phlex::Rails::Helpers::LinkTo
   include Phlex::Rails::Helpers::Routes
   include ActionView::Helpers::OutputSafetyHelper

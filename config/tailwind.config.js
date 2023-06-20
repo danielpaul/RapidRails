@@ -9,7 +9,12 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
-    './app/helpers/tailwind_form_builder.rb'
+    './app/helpers/rapidrails_form_builder.rb'
+  ],
+  safelist: [
+    {
+      pattern: /alert-.*/
+    }
   ],
   theme: {
     extend: {
@@ -19,7 +24,8 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: '#007aff',
-          500: '#0077ed'
+          500: '#0077ed',
+          600: '#006edb'
         },
 
         body: {

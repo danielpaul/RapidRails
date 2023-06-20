@@ -1,4 +1,4 @@
-class DarkModeButtonComponent < Phlex::HTML
+class DarkModeButtonComponent < ApplicationComponent
   include Phlex::Rails::Helpers::LinkTo
   include ActionView::Helpers::OutputSafetyHelper
   include Heroicon::Engine.helpers
