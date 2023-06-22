@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     post :cancel_email_change, to: "registrations#cancel_email_change!", as: "cancel_email_change", path: "users/cancel-email-change"
   end
 
+  # User Onboarding
+  get "/onboarding", to: "onboarding#index", as: "onboarding"
+  patch "/onboarding", to: "onboarding#update"
+
   # ---------- [ Main Routes ] ---------- #
   resources :dashboard, only: :index
 

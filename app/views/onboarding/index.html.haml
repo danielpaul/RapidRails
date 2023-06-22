@@ -1,0 +1,13 @@
+:ruby 
+  title "Welcome"
+
+.text-center
+  %h1.h1.mt-6 Welcome, #{current_user.first_name}!
+
+.mt-8.card.card-body
+  %p We're glad you're here. Let's get you started.
+
+  = form_with(model: current_user, url: onboarding_path, method: :patch, builder: RapidRailsFormBuilder, class: 'mt-5') do |f|
+    .space-y-6
+      = f.text_field :full_name, placeholder: "Your full name", required: true
+      = f.button "Get started", class: "flex w-full justify-center btn-primary"
