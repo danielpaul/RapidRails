@@ -78,7 +78,7 @@
   .btn {
     @apply rounded-md py-2 px-4 text-sm font-semibold 
     focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 
-    transition-all duration-300
+    hover:transition-all hover:duration-300
     disabled:cursor-not-allowed;
   }
 
