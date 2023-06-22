@@ -90,6 +90,8 @@ class User < ApplicationRecord
   private
 
   def full_name_parts
+    return [] if full_name.blank?
+
     full_name.split(" ")
   end
 end
