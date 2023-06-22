@@ -15,10 +15,11 @@ class LandingPage::TopMenuComponent < ApplicationComponent
 
   def template
     header(
-      class: "sticky top-0 z-40 w-full flex-none transition-color duration-500 lg:z-20 bg-transparent",
+      class: "sticky top-0 z-40 w-full flex-none transition-opacity transition-shadow transition-colors duration-500 lg:z-20 bg-transparent",
       x_data: "{ dropdownOpen: false, atTop: true }",
       ":class": "{ 'bg-transparent': atTop, 'shadow-sm backdrop-blur bg-white dark:bg-body-dark/75 supports-backdrop-blur:bg-white/95 dark:supports-backdrop-blur:bg-body-dark/95 border-b lg:border-slate-900/10 dark:border-none': !atTop}",
-      "@scroll.window": "atTop = (window.pageYOffset < 50)"
+      "@scroll.window": "atTop = (window.pageYOffset < 50)",
+      x_init: "atTop = (window.pageYOffset < 50)"
     ) do
       nav aria_label: "Global", class: "lg:px-8 mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6" do
         div class: "flex md:flex-1" do
