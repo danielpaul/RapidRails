@@ -2,26 +2,27 @@
 #
 # Table name: users
 #
-#  id                     :bigint           not null, primary key
-#  anonymized_at          :datetime
-#  confirmation_sent_at   :datetime
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  current_sign_in_at     :datetime
-#  current_sign_in_ip     :string
-#  discarded_at           :datetime
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  full_name              :string           not null
-#  last_sign_in_at        :datetime
-#  last_sign_in_ip        :string
-#  remember_created_at    :datetime
-#  reset_password_sent_at :datetime
-#  reset_password_token   :string
-#  sign_in_count          :integer          default(0), not null
-#  unconfirmed_email      :string
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
+#  id                      :bigint           not null, primary key
+#  anonymized_at           :datetime
+#  confirmation_sent_at    :datetime
+#  confirmation_token      :string
+#  confirmed_at            :datetime
+#  current_sign_in_at      :datetime
+#  current_sign_in_ip      :string
+#  discarded_at            :datetime
+#  email                   :string           default(""), not null
+#  encrypted_password      :string           default(""), not null
+#  full_name               :string           not null
+#  last_sign_in_at         :datetime
+#  last_sign_in_ip         :string
+#  onboarding_completed_at :datetime
+#  remember_created_at     :datetime
+#  reset_password_sent_at  :datetime
+#  reset_password_token    :string
+#  sign_in_count           :integer          default(0), not null
+#  unconfirmed_email       :string
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
 #
 # Indexes
 #
@@ -38,6 +39,7 @@ class User < ApplicationRecord
   has_paper_trail
 
   include User::Omniauthable
+  include User::Onboarding
 
   has_one_attached :profile_picture
 

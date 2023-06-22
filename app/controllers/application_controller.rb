@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   include FlashHelper
 
+  before_action :check_onboarding!, if: -> { user_signed_in? && !devise_controller? }
   before_action :set_paper_trail_whodunnit
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_sentry_user, if: -> { ENABLE_SENTRY && user_signed_in? }
@@ -27,6 +28,12 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def check_onboarding!
+    return if current_user.onboarding_completed?
+
+    redirect_to onboarding_path
+  end
 
   def set_sentry_user
     Sentry.set_user(id: current_user.id)
