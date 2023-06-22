@@ -100,7 +100,7 @@
   }
 
   a {
-    @apply transition-colors duration-300;
+    @apply hover:transition-colors hover:duration-300;
   }
 
   .link-hover {
