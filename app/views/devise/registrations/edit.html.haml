@@ -23,13 +23,12 @@
             
             = f.email_field :email, autocomplete: "email", placeholder: "you@example.com", required: true
             - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-              .bg-yellow-50.p-4.rounded-md.mb-2{class: "dark:bg-black border card-border"}
-                %p.text-sm.text-yellow-800{class: 'dark:text-white'}
-                  Email change pending. Check your inbox for an email to confirm your new email address: 
-
+              = render AlertComponent.new(type: :warning, message: "Email change pending", dismissable: false) do |a|
+                = a.body do
+                  Check your inbox for an email to confirm your new email address: 
                   = succeed '.' do
-                    %strong #{resource.unconfirmed_email}
-
+                    %em.font-medium #{resource.unconfirmed_email}
+                  
                   = succeed '.' do
                     = link_to "Cancel email change", cancel_email_change_path, data: {'turbo-method': :post}, class: "link"
       
@@ -65,24 +64,25 @@
       %h3.h3 Delete Account
       %p.mt-1.p Danger zone! Once you delete you account, there is no going back.
 
-    .card.md:col-span-2
-      .card-body{"x-data" => "{ button: true, open: false }"}
-        .space-y-6
-          %div{ "x-show" => "button" }
-            .text-sm.text-neutral-500.mb-2 Delete your account. This action cannot be undone and all your data will be deleted from our system.
-            %button{ class: 'text-danger text-sm mr-6', method: :delete, "x-on:click" => "open = ! open; button = ! button" } Delete Account
-        = form_for(resource, as: resource_name, url: registration_path(resource_name), builder: RapidRailsFormBuilder, html: { method: :delete }) do |f|
-          %div{"x-show" => "open"}
-            %p You are about to delete your account! This action can not be undone and all your data will be deleted from our system.
-            %br
-            %p.mb-6
-              We are sorry to see you go #{@user.full_name}, if there was one thing that you could change about our service, what would that be? 
-              This feedback is critical to our continued improvement. Thanks so much!
+    .card.md:col-span-2{"x-data" => "{ open: false }"}
+      .card-body{"x-show" => "!open"}
+        %p.p.mb-6 You are about to delete your account! This action cannot be undone and all your data will be deleted from our system. Are you sure you want to proceed?
+        %button{class: 'btn-danger', method: :delete, "@click": "open = true"} Delete Account
 
-              .space-y-6
-                = f.password_field :current_password, placeholder: "Your current password", autocomplete: "current-password", required: true
-                = f.fields_for :user_account_feedbacks, resource.user_account_feedbacks.build do |u|
-                  = u.text_area :feedback, placeholder: "Please tell us why you are cancelling. Any kind of feedback is appreciated and helpful to us.", autocomplete: 'no', rows: 4
+      %div{"x-show" => "open", style: "display: none"}
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), builder: RapidRailsFormBuilder, html: { method: :delete, autocomplete: "off", data: { controller: "auto-save", auto_save_target: "form", action: "change->auto-save#saveToLocalStorage", auto_save_key_prefix_value: current_user.hashid } }) do |f|
+          .card-body.space-y-6
+            = render AlertComponent.new(type: :danger, message: "You are about to delete your account!", dismissable: false) { |a| a.body { "This action can not be undone and all your data will be deleted from our system." } }
 
-                .text-right
-                  = f.button 'Delete Account Now', class: 'btn-danger', method: :delete
+            %p.p
+              We are sorry to see you go #{@user.first_name}! 
+              If there was one thing that you could change about our service, what would that be? 
+              This feedback is critical to our continued improvement.
+            
+            = f.password_field :current_password, placeholder: "Your current password", autocomplete: "off", required: true, id: 'delete_account_password'
+
+            = f.fields_for :user_account_feedbacks, resource.user_account_feedbacks.build do |u|
+              = u.text_area :feedback, placeholder: "Please tell us why you are cancelling. Any kind of feedback is appreciated and helpful to us.", autocomplete: 'no', rows: 4
+
+          .card-footer.text-right
+            = f.button 'Delete Account Now', class: 'btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }

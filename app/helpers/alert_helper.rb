@@ -10,7 +10,8 @@ module AlertHelper
     {
       "success" => "success",
       "alert" => "danger",
-      "error" => "danger"
+      "error" => "danger",
+      "danger" => "danger"
     }.fetch(type.to_s, "warning")
   end
 

@@ -98,12 +98,11 @@
   }
   
   .btn-danger {
-    @apply btn text-danger dark:text-white 
-    shadow-sm
-    ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750
-    bg-card dark:bg-[#27262b]
-    hover:bg-neutral-100 dark:hover:bg-red-50
-    disabled:bg-neutral-200 dark:disabled:bg-transparent;
+    @apply btn-secondary 
+    text-rose-700 dark:text-rose-500
+    hover:bg-red-800 hover:text-white
+    dark:hover:bg-red-700 dark:hover:text-white
+    hover:ring-red-800;
   }
 
   .btn-hover {

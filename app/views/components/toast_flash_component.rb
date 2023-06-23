@@ -63,7 +63,7 @@ class ToastFlashComponent < ApplicationComponent
             }
 
             div(class: "ml-3 w-0 flex-1") {
-              h4(class: "h4") {
+              h5(class: "h5 font-medium") {
                 @toast[:heading]
               }
 
