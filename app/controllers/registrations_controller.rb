@@ -28,7 +28,7 @@ class RegistrationsController < Devise::RegistrationsController
       flash_message(
         :error,
         "Invalid password entered. Please try again.",
-        now: true
+        now: false
       )
       redirect_to edit_user_registration_path
     end
