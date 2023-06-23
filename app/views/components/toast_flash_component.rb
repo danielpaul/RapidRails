@@ -1,20 +1,26 @@
 class ToastFlashComponent < ApplicationComponent
+  register_element :turbo_frame
+
   def initialize(flash)
     @flash = flash
   end
 
   def template
     # Global notification live region, render this permanently at the end of the document
-    div(class: "pointer-events-none fixed inset-0 flex px-4 py-6 items-start sm:p-6 z-20", aria_live: "assertive") {
+    turbo_frame(id: 'flash-toasts', class: "pointer-events-none fixed inset-0 flex px-4 py-6 items-start sm:p-6 z-20", aria_live: "assertive") {
       div(class: "flex w-full flex-col space-y-4 #{position}") {
-        @flash[:toast]&.each_with_index do |toast, index|
-          toast = toast.with_indifferent_access
-          next unless toast[:heading]
-
-          render ToastCardComponent.new(toast, index)
-        end
+        render_flash
       }
     }
+  end
+
+  def render_flash
+    @flash[:toast]&.each_with_index do |toast, index|
+      toast = toast.with_indifferent_access
+      next unless toast[:heading]
+
+      render ToastCardComponent.new(toast, index)
+    end
   end
 
   private

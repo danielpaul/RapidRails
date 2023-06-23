@@ -27,12 +27,26 @@ class RegistrationsController < Devise::RegistrationsController
       set_flash_message! :notice, :destroyed
       respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name), status: Devise.responder.redirect_status }
     else
-      flash_message(
-        :error,
-        "Wrong password.",
-        "The password you entered was incorrect. Please try again."
-      )
-      redirect_to edit_user_registration_path
+
+      flash_title = "Wrong password."
+      flash_body = "The password you entered was incorrect. Please try again."
+
+      respond_to do |format|
+        format.html do
+          flash_message(:error, flash_title, flash_body, now: false)
+          redirect_to edit_user_registration_path
+        end
+
+        format.turbo_stream do
+          flash_message(:error, flash_title, flash_body, now: true)
+
+          render turbo_stream: turbo_stream.update(
+            "flash-toasts",
+            partial: "shared/toast_flash",
+          )
+        end
+      end
+
     end
   end
 
