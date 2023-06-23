@@ -177,7 +177,13 @@ RSpec.describe User, type: :model do
 
       context "when signing in with a discarded account" do
         it "does not save record" do
+          temp_email = @user.email
+
           @user.discard
+
+          # so we can use the same email again for testing
+          @user.update_column(:email, temp_email)
+
           google_user = User.from_omniauth(omniauth_data)
 
           assert google_user.discarded?

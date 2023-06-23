@@ -39,5 +39,6 @@ FactoryBot.define do
     full_name { Faker::Name.name }
     current_sign_in_ip { Faker::Internet.ip_v4_address }
     last_sign_in_ip { Faker::Internet.ip_v4_address }
+    onboarding_completed_at { Time.current }
   end
 end
