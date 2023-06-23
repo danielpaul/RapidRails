@@ -1,3 +1,5 @@
+:ruby
+  title "Dashboard"
 
 %section#alerts.mb-12
   %h1.h1.mb-3 Alerts
@@ -36,8 +38,8 @@
 
   .card
     .card-body
-      = link_to "Button Primary", '#', class: "btn btn-primary"
-      = link_to "Button Secondary", '#', class: "btn btn-secondary"
+      = link_to "Button Primary", '#', class: "btn-primary"
+      = link_to "Button Secondary", '#', class: "btn-secondary"
       
       .mb-6 
 
@@ -88,9 +90,9 @@
 
         = f.file_field :file_field, accept: 'image/png,image/jpeg,image/gif', required: true, hint: "Only image files are allowed."
 
-        %p While submitting forms with RapidRails, the submit button will be disabled and a loading spinner will be shown. This is to prevent double submissions.
+        %p.p While submitting forms with RapidRails, the submit button will be disabled and a loading spinner will be shown. This is to prevent double submissions.
 
       .card-footer.text-right
-        = f.button "Submit", data: {'turbo-disable-with': "Submitting..."}
+        = f.button "Submit"
 
 
