@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LandingPage::TopMenuComponent < ApplicationComponent
+class LandingPage::HeaderComponent < ApplicationComponent
   include Phlex::Rails::Helpers::LinkTo
   include Phlex::Rails::Helpers::Routes
 

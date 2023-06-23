@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AppSidebarMenuComponent < ApplicationComponent
+class App::SidebarMenuComponent < ApplicationComponent
   include Phlex::Rails::Helpers::LinkTo
   include Phlex::Rails::Helpers::Routes
   include ActionView::Helpers::OutputSafetyHelper
