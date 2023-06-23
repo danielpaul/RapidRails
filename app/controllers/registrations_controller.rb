@@ -17,10 +17,43 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
-    resource.discard
-    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-    set_flash_message! :notice, :destroyed
-    respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name), status: Devise.responder.redirect_status }
+    if resource.valid_password?(params[:user][:current_password])
+      # Creates user_account_feedbacks record
+      resource.update(user_delete_params)
+
+      resource.discard
+
+      Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+
+      flash_message(
+        :success,
+        "Your account is deleted.",
+        "We're sorry to see you go! If you change your mind and decide to come back, you're always welcome to create a new account."
+      )
+
+      respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name), status: Devise.responder.redirect_status }
+    else
+
+      flash_title = "Wrong password."
+      flash_body = "The password you entered was incorrect. Please try again."
+
+      respond_to do |format|
+        format.html do
+          flash_message(:error, flash_title, flash_body, now: false)
+          redirect_to edit_user_registration_path
+        end
+
+        format.turbo_stream do
+          flash_message(:error, flash_title, flash_body, now: true)
+
+          render turbo_stream: turbo_stream.append(
+            "flash-toasts",
+            partial: "shared/flash_toast"
+          )
+        end
+      end
+
+    end
   end
 
   protected
@@ -59,5 +92,11 @@ class RegistrationsController < Devise::RegistrationsController
     else
       super
     end
+  end
+
+  def user_delete_params
+    params.require(:user).permit(
+      user_account_feedbacks_attributes: [:feedback]
+    )
   end
 end

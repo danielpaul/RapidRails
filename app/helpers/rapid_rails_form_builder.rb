@@ -17,7 +17,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def submit(value = nil, options = {})
-    classes = options[:class] || 'btn-primary'
+    classes = options[:class] || "btn-primary"
     super(
       value,
       {
@@ -29,7 +29,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def button(value = nil, options = {}, &block)
-    classes = options[:class] || 'btn-primary'
+    classes = options[:class] || "btn-primary"
     super(
       value,
       {
@@ -44,10 +44,10 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   def select(method, choices = nil, options = {}, html_options = {}, &block)
     form_field(method, options, html_options) do
       super(
-        method, 
-        choices, 
-        options, 
-        html_options.merge(class: "select-input #{html_options[:class]}"), 
+        method,
+        choices,
+        options,
+        html_options.merge(class: "select-input #{html_options[:class]}"),
         &block
       )
     end
@@ -69,9 +69,9 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
     radio_check_form_field(method, options) do
       super(
-        method, 
-        options.merge(class: "check-box-input #{options[:class]}"), 
-        checked_value, 
+        method,
+        options.merge(class: "check-box-input #{options[:class]}"),
+        checked_value,
         unchecked_value
       )
     end
@@ -97,7 +97,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
         field_method,
         object_method,
         options.merge({
-          tailwindified: true, 
+          tailwindified: true,
           class: "text-input #{options[:class]}"
         }).except(:label, :error, :hint)
       )
@@ -117,10 +117,19 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def label(method, text = nil, options = {}, &block)
+    new_options = options.except(:label, :error, :hint, :id).merge(
+      class: "#{options[:class]} #{"required" if options[:required]}"
+    )
+
+    if options[:id]
+      new_options[:id] = "#{options[:id]}_label"
+      new_options[:for] = options[:id]
+    end
+
     super(
       method,
       text,
-      options.except(:label, :error, :hint).merge(class: "#{options[:class]} #{'required' if options[:required]}"),
+      new_options,
       &block
     )
   end
@@ -132,8 +141,8 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
       label(
         method,
         options[:label],
-        options.merge(class: 'label')
-      ), 
+        options.merge(class: "label")
+      ),
       {class: "mb-2"}
     )
 
@@ -157,9 +166,9 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     label = @template.content_tag(
       "div",
       label(
-        method, 
-        options[:label], 
-        options.merge(class: 'radio-check-label')
+        method,
+        options[:label],
+        options.merge(class: "radio-check-label")
       )
     )
 
@@ -184,12 +193,12 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     return if (options[:data] && options[:data][:turbo_disable_with]) || options[:data_turbo_disable_with]
 
     # just adds a spinner to the same button text
-    { "data-turbo-submits-with": spinner_svg + value }
+    {"data-turbo-submits-with": spinner_svg + value}
   end
 
   def spinner_svg
     html = <<-HTML
-      <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
       </svg>

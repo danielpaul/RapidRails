@@ -1,4 +1,5 @@
 class AlertComponent < ApplicationComponent
+  include Phlex::DeferredRender
   include ActionView::Helpers::OutputSafetyHelper
   include Heroicon::Engine.helpers
   include AlertHelper
@@ -9,18 +10,18 @@ class AlertComponent < ApplicationComponent
     @dismissable = dismissable
   end
 
-  def template(&block)
-    div(class: "alert-#{@type}", x_data: "{show: true}", x_show: "show", 'data-turbo-cache': "false") {
+  def template
+    div(class: "alert-#{@type}", x_data: "{show: true}", x_show: "show", "data-turbo-cache": "false") {
       unsafe_raw heroicon(
         alert_icon(@type),
         variant: "solid",
         options: {class: "alert-#{@type}-icon"}
       )
-      div { 
-        div(class: 'font-medium') { @message }
+      div {
+        div(class: "font-medium") { @message }
 
-        if block_given?
-          div(class: 'mt-2 body') { yield }
+        if @body
+          div(class: "mt-2 body", &@body)
         end
       }
 
@@ -28,4 +29,7 @@ class AlertComponent < ApplicationComponent
     }
   end
 
+  def body(&block)
+    @body = block
+  end
 end

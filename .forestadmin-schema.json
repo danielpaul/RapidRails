@@ -1000,6 +1000,22 @@
       "widget": null,
       "validations": []
     }, {
+      "field": "user_account_feedbacks",
+      "type": ["Number"],
+      "default_value": null,
+      "enums": null,
+      "integration": null,
+      "is_filterable": false,
+      "is_read_only": false,
+      "is_required": false,
+      "is_sortable": true,
+      "is_virtual": false,
+      "reference": "UserAccountFeedback.id",
+      "inverse_of": "user",
+      "relationship": "HasMany",
+      "widget": null,
+      "validations": []
+    }, {
       "field": "versions",
       "type": ["Number"],
       "default_value": null,
@@ -1042,6 +1058,79 @@
         "change": []
       }
     }]
+  }, {
+    "name": "UserAccountFeedback",
+    "name_old": "user_account_feedbacks",
+    "icon": null,
+    "is_read_only": false,
+    "is_searchable": true,
+    "is_virtual": false,
+    "only_for_relationships": false,
+    "pagination_type": "page",
+    "fields": [{
+      "field": "created_at",
+      "type": "Date",
+      "default_value": null,
+      "enums": null,
+      "integration": null,
+      "is_filterable": true,
+      "is_read_only": false,
+      "is_required": false,
+      "is_sortable": true,
+      "is_virtual": false,
+      "reference": null,
+      "inverse_of": null,
+      "widget": null,
+      "validations": []
+    }, {
+      "field": "feedback",
+      "type": "String",
+      "default_value": null,
+      "enums": null,
+      "integration": null,
+      "is_filterable": true,
+      "is_read_only": false,
+      "is_required": false,
+      "is_sortable": true,
+      "is_virtual": false,
+      "reference": null,
+      "inverse_of": null,
+      "widget": null,
+      "validations": []
+    }, {
+      "field": "id",
+      "type": "Number",
+      "default_value": null,
+      "enums": null,
+      "integration": null,
+      "is_filterable": true,
+      "is_read_only": false,
+      "is_required": false,
+      "is_sortable": true,
+      "is_virtual": false,
+      "reference": null,
+      "inverse_of": null,
+      "widget": null,
+      "validations": []
+    }, {
+      "field": "user",
+      "type": "Number",
+      "default_value": null,
+      "enums": null,
+      "integration": null,
+      "is_filterable": true,
+      "is_read_only": false,
+      "is_required": false,
+      "is_sortable": true,
+      "is_virtual": false,
+      "reference": "User.id",
+      "inverse_of": "user_account_feedbacks",
+      "relationship": "BelongsTo",
+      "widget": null,
+      "validations": []
+    }],
+    "segments": [],
+    "actions": []
   }],
   "meta": {
     "liana": "forest-rails",

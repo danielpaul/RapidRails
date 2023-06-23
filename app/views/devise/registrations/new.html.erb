@@ -15,7 +15,7 @@
 
       <%= f.text_field :full_name, autocomplete: 'name', label: { text: "Name" }, placeholder: "John Doe", required: true, autofocus: true %>
       <%= f.email_field :email, autocomplete: 'email', placeholder: "you@example.com", required: true %>
-      <%= f.password_field :password, placeholder: "Create a password", autocomplete: "new-password", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+      <%= f.password_field :password, placeholder: "Create a password", autocomplete: "new-password", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), minlength: (@minimum_password_length if @minimum_password_length) %>
       <div>
         <%= f.button "Create account", class: "flex w-full justify-center btn-primary", data: {disable_with: "Signing in..."} %>
       </div>

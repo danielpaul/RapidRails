@@ -35,11 +35,11 @@
 class User < ApplicationRecord
   include Rails.application.routes.url_helpers
   include Hashid::Rails
-  include Discard::Model
   has_paper_trail
 
   include User::Omniauthable
   include User::Onboarding
+  include User::Offboarding
 
   has_one_attached :profile_picture
 
@@ -52,6 +52,7 @@ class User < ApplicationRecord
 
   validates :full_name, presence: true, length: {maximum: 100}
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
+
   validates :profile_picture,
     content_type: {
       in: ["image/png", "image/jpg", "image/jpeg"],
@@ -69,10 +70,6 @@ class User < ApplicationRecord
 
   def initials
     full_name_parts.map(&:first).join
-  end
-
-  def active_for_authentication?
-    super && !discarded?
   end
 
   def avatar_url
