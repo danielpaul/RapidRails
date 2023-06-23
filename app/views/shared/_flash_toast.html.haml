@@ -1,0 +1,5 @@
+- flash[:toast]&.each_with_index do |toast, index|
+  - toast = toast.with_indifferent_access
+  - next unless toast[:heading]
+
+  = render FlashToastComponent.new(toast, index)

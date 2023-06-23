@@ -40,9 +40,9 @@ class RegistrationsController < Devise::RegistrationsController
         format.turbo_stream do
           flash_message(:error, flash_title, flash_body, now: true)
 
-          render turbo_stream: turbo_stream.update(
+          render turbo_stream: turbo_stream.append(
             "flash-toasts",
-            partial: "shared/toast_flash",
+            partial: "shared/flash_toast",
           )
         end
       end
