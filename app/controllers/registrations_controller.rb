@@ -42,7 +42,7 @@ class RegistrationsController < Devise::RegistrationsController
 
           render turbo_stream: turbo_stream.append(
             "flash-toasts",
-            partial: "shared/flash_toast",
+            partial: "shared/flash_toast"
           )
         end
       end
