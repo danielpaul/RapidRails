@@ -24,7 +24,13 @@ class RegistrationsController < Devise::RegistrationsController
       resource.discard
 
       Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-      set_flash_message! :notice, :destroyed
+
+      flash_message(
+        :success,
+        'Your account will be deleted.', 
+        "We're sorry to see you go! If you change your mind and decide to come back, you're always welcome to create a new account."
+      )
+
       respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name), status: Devise.responder.redirect_status }
     else
 
