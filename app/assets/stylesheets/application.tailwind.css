@@ -96,7 +96,7 @@
     hover:bg-neutral-100 dark:hover:bg-neutral-900
     disabled:bg-neutral-200 dark:disabled:bg-transparent;
   }
-  
+
   .btn-danger {
     @apply btn-secondary 
     text-rose-700 dark:text-rose-500
