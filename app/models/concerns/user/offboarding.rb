@@ -17,7 +17,7 @@ module User::Offboarding
       if discarded?
         # track error in Sentry so we can investigate & ensure that the user did sign up again.
         Sentry.capture_message("User ##{id} (#{email}) tried to sign in after being deleted.", level: :info)
-  
+
         "Your account is being deleted. Please try again later or use another email."
       else
         super
@@ -34,5 +34,4 @@ module User::Offboarding
   def discarded_account_email_update!
     update_column(:email, discarded_account_email_prefix + email)
   end
-
 end

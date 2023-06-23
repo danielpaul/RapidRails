@@ -27,7 +27,7 @@ class RegistrationsController < Devise::RegistrationsController
 
       flash_message(
         :success,
-        'Your account is deleted.', 
+        "Your account is deleted.",
         "We're sorry to see you go! If you change your mind and decide to come back, you're always welcome to create a new account."
       )
 
