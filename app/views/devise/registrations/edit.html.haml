@@ -64,12 +64,12 @@
       %h3.h3 Delete Account
       %p.mt-1.p Danger zone! Once you delete you account, there is no going back.
 
-    .card.md:col-span-2{"x-data" => "{ open: false }"}
-      .card-body{"x-show" => "!open"}
+    .card.md:col-span-2{"x-data": "{ open: false }"}
+      .card-body{"x-show": "!open"}
         %p.p.mb-6 You are about to delete your account! This action cannot be undone and all your data will be deleted from our system. Are you sure you want to proceed?
         %button{class: 'btn-danger', method: :delete, "@click": "open = true"} Delete Account
 
-      %div{"x-show" => "open", style: "display: none"}
+      %div{"x-show": "open", style: "display: none"}
         = form_for(resource, as: resource_name, url: registration_path(resource_name), builder: RapidRailsFormBuilder, html: { method: :delete, autocomplete: "off", data: { controller: "auto-save", auto_save_target: "form", action: "change->auto-save#saveToLocalStorage", auto_save_key_prefix_value: current_user.hashid } }) do |f|
           .card-body.space-y-6
             = render AlertComponent.new(type: :danger, message: "You are about to delete your account!", dismissable: false) { |a| a.body { "This action can not be undone and all your data will be deleted from our system." } }
