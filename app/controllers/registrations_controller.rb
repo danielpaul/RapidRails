@@ -20,15 +20,17 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.valid_password?(params[:user][:current_password])
       # Creates user_account_feedbacks record
       resource.update(user_delete_params)
+      
       resource.discard
+
       Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
       set_flash_message! :notice, :destroyed
       respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name), status: Devise.responder.redirect_status }
     else
       flash_message(
         :error,
-        "Invalid password entered. Please try again.",
-        now: false
+        "Wrong password.",
+        "The password you entered was incorrect. Please try again."
       )
       redirect_to edit_user_registration_path
     end
