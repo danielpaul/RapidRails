@@ -11,7 +11,7 @@
     .lg:pl-72
       .py-10.px-4.sm:px-6.lg:px-8
 
-        %div{class: ('w-4/6 mx-auto' if @width == 'narrow')}
+        %div{class: ('sm:w-4/6 mx-auto' if @width == 'narrow')}
           - if flash.any?
             .pb-8
               = render FlashMessagesComponent.new(flash)
