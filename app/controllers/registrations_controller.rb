@@ -20,7 +20,7 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.valid_password?(params[:user][:current_password])
       # Creates user_account_feedbacks record
       resource.update(user_delete_params)
-      
+
       resource.discard
 
       Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
