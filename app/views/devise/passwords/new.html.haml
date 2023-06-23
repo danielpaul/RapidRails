@@ -10,10 +10,9 @@
 .mt-8.card
   .card-header
     %p.text-sm
-      Enter the email address associated with your account and we'll send you a link to reset your&nbsp;password.
+      Enter the email address associated with your account and we'll send you a link to reset your password.
   
   .card-body
-    = render "devise/shared/error_messages", resource: resource
     = form_for(resource, as: resource_name, url: password_path(resource_name), builder: RapidRailsFormBuilder, html: {method: :post, class: 'space-y-6 -mt-6'}) do |f|
       = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your email address", autofocus: true
       = f.button "Send password reset email", class: "w-full btn-primary"

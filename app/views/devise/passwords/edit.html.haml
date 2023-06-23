@@ -1,21 +1,20 @@
 :ruby 
   title "Change password"
-%h2 Change your password
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  = f.hidden_field :reset_password_token
-  .field
-    = f.label :password, "New password"
-    %br/
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-      %br/
-    = f.password_field :password, autofocus: true, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation, "Confirm new password"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Change my password"
-= render "devise/shared/links"
+
+.text-center
+  %h1.h1.mt-6 Reset your password
+  %p.mt-2.text-sm
+    Or
+    #{link_to "sign in to your account", new_user_session_path, class: "font-medium link"}
+    
+
+.mt-8.card
+  .card-body
+    = form_for(resource, as: resource_name, url: password_path(resource_name), builder: RapidRailsFormBuilder, html: {method: :put, class: 'space-y-6 -mt-6'}) do |f|
+      = f.hidden_field :reset_password_token
+
+      = render 'devise/passwords/new_password_fields', f: f
+
+      = f.button "Change my password", class: "w-full btn-primary"
+
+  
