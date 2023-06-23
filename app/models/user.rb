@@ -40,10 +40,9 @@ class User < ApplicationRecord
 
   include User::Omniauthable
   include User::Onboarding
+  include User::Offboarding
 
   has_one_attached :profile_picture
-  has_many :user_account_feedbacks
-  accepts_nested_attributes_for :user_account_feedbacks
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
@@ -54,6 +53,7 @@ class User < ApplicationRecord
 
   validates :full_name, presence: true, length: {maximum: 100}
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
+  
   validates :profile_picture,
     content_type: {
       in: ["image/png", "image/jpg", "image/jpeg"],
@@ -71,10 +71,6 @@ class User < ApplicationRecord
 
   def initials
     full_name_parts.map(&:first).join
-  end
-
-  def active_for_authentication?
-    super && !discarded?
   end
 
   def avatar_url
