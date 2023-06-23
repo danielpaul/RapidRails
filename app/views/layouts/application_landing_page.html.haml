@@ -4,7 +4,7 @@
     = render "layouts/components/head"
 
   %body{class: yield(:body_class)}
-    = render LandingPage::TopMenuComponent.new
+    = render LandingPage::HeaderComponent.new
 
     = yield
     
