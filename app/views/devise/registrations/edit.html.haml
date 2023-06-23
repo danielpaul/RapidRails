@@ -82,7 +82,7 @@
             = f.password_field :current_password, placeholder: "Your current password", autocomplete: "off", required: true, id: 'delete_account_password'
 
             = f.fields_for :user_account_feedbacks, resource.user_account_feedbacks.build do |u|
-              = u.text_area :feedback, placeholder: "Please tell us why you are cancelling. Any kind of feedback is appreciated and helpful to us.", autocomplete: 'no', rows: 4
+              = u.text_area :feedback, placeholder: "Please tell us why you are cancelling. Any kind of feedback is appreciated and helpful to us.", rows: 4
 
           .card-footer.text-right
             = f.button 'Delete Account Now', class: 'btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }
