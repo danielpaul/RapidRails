@@ -11,17 +11,17 @@ class AlertComponent < ApplicationComponent
   end
 
   def template
-    div(class: "alert-#{@type}", x_data: "{show: true}", x_show: "show", 'data-turbo-cache': "false") {
+    div(class: "alert-#{@type}", x_data: "{show: true}", x_show: "show", "data-turbo-cache": "false") {
       unsafe_raw heroicon(
         alert_icon(@type),
         variant: "solid",
         options: {class: "alert-#{@type}-icon"}
       )
-      div { 
-        div(class: 'font-medium') { @message }
+      div {
+        div(class: "font-medium") { @message }
 
         if @body
-          div(class: 'mt-2 body', &@body)
+          div(class: "mt-2 body", &@body)
         end
       }
 
@@ -32,5 +32,4 @@ class AlertComponent < ApplicationComponent
   def body(&block)
     @body = block
   end
-
 end
