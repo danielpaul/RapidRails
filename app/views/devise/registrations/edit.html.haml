@@ -72,7 +72,7 @@
             .text-sm.text-neutral-500.mb-2 Delete your account. This action cannot be undone and all your data will be deleted from our system.
             %button{ class: 'text-danger text-sm mr-6', method: :delete, "x-on:click" => "open = ! open; button = ! button" } Delete Account
         = form_for(resource, as: resource_name, url: registration_path(resource_name), builder: RapidRailsFormBuilder, html: { method: :delete }) do |f|
-          .text-black{"x-show" => "open"}
+          %div{"x-show" => "open"}
             %p You are about to delete your account! This action can not be undone and all your data will be deleted from our system.
             %br
             %p.mb-6
