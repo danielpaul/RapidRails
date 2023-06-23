@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   get "/404", to: "errors#not_found"
   get "/500", to: "errors#internal_server"
+  get "/422", to: "errors#unprocessable_entity"
 
   # ---------- [ API Routes ] ---------- #
   draw :api if ENABLE_API == true || Rails.env.test?
