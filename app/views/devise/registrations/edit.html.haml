@@ -81,7 +81,7 @@
 
               .space-y-6
                 = f.password_field :current_password, placeholder: "Your current password", autocomplete: "current-password", required: true
-                = f.text_field :feedback, placeholder: "Please tell us why you are cancelling. Any kind of feedback is appreciated and helpful to us.", autocomplete: 'no'
+                = f.text_area :feedback, placeholder: "Please tell us why you are cancelling. Any kind of feedback is appreciated and helpful to us.", autocomplete: 'no', rows: 4
 
                 .text-right
                   = f.button 'Delete Account Now', class: 'btn-danger', method: :delete
