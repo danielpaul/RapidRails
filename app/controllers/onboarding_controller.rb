@@ -1,5 +1,5 @@
 class OnboardingController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :check_if_enabled!
   layout "application_devise"
   
   def index
@@ -17,6 +17,12 @@ class OnboardingController < ApplicationController
 
   def onboarding_params
     params.require(:user).permit(current_user.onboarding_required_fields)
+  end
+
+  def check_if_enabled!
+    return if ENABLE_ONBOARDING == true
+
+    render_404!
   end
 
 end

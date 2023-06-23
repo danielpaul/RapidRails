@@ -95,6 +95,8 @@ Checklist for things to update before you launch your app:
 - [ ] Add pages to `config/sitemap.rb` file for sitemap generation.
 - [ ] If you don't want some pages to be indexed by search engines, add `noindex` meta tag and update `config/sitemap.rb` file to exclude those pages.
 
+- [ ] Onboarding flow with custom fields that you require user to fill out after sign up. Or disable the onboarding in the constants file.
+
 # Contenful
 
 We use Contentful (free plan) to manage blog posts. You can use Contentful for other content types as well and the structure is setup with webhooks and caching. Everything ready to go.
