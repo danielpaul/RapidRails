@@ -1,6 +1,24 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def default_meta_tags
+    meta_tags = {
+      site: APP_NAME,
+      reverse: true,
+      canonical: request.original_url,
+      icon: [
+        { href: '/favicon.ico' },
+        { href: '/apple-touch-icon.png', rel: 'apple-touch-icon' },
+      ]
+    }
+
+    if !Rails.env.production?
+      meta_tags[:noindex] = true
+    end
+
+    meta_tags 
+  end
+
   def theme_class
     theme = cookies[:theme]
     if theme == "dark"

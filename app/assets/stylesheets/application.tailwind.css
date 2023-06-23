@@ -4,7 +4,9 @@
 
 @layer base {
   body {
-    @apply antialiased text-neutral-500 dark:text-neutral-400 bg-body dark:bg-body-dark;
+    @apply antialiased 
+    text-neutral-500 dark:text-neutral-400 
+    bg-body dark:bg-body-dark;
   }
 
   body.devise {
@@ -94,7 +96,7 @@
     hover:bg-neutral-100 dark:hover:bg-neutral-900
     disabled:bg-neutral-200 dark:disabled:bg-transparent;
   }
-
+  
   .btn-danger {
     @apply btn text-danger dark:text-white 
     shadow-sm
@@ -102,6 +104,12 @@
     bg-card dark:bg-[#27262b]
     hover:bg-neutral-100 dark:hover:bg-red-50
     disabled:bg-neutral-200 dark:disabled:bg-transparent;
+  }
+
+  .btn-hover {
+    @apply hover:text-black dark:hover:text-white
+    transition 
+    hover:bg-zinc-900/5 dark:hover:bg-white/5;
   }
 
   a {
@@ -117,7 +125,10 @@
   }
 
   .porse-section {
-    @apply prose prose-slate dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-500 hover:prose-a:underline hover:prose-a:underline-offset-2;
+    @apply prose prose-slate dark:prose-invert 
+    max-w-none 
+    prose-a:font-semibold prose-a:text-primary prose-a:no-underline 
+    hover:prose-a:text-primary-500 hover:prose-a:underline hover:prose-a:underline-offset-2;
   }
 
   /* Alerts */
@@ -208,7 +219,11 @@
   }
 
   .card {
-    @apply bg-card dark:bg-card-dark ring-1 ring-neutral-300/50 dark:ring-neutral-750 rounded-lg shadow-sm my-auto overflow-hidden;
+    @apply bg-card dark:bg-card-dark ring-1 
+    ring-neutral-300/50 dark:ring-neutral-750 
+    rounded-lg shadow-sm 
+    my-auto 
+    overflow-hidden;
   }
 
   .card-body {
@@ -259,7 +274,11 @@
   }
 
   .file-input {
-    @apply file:bg-transparent file:text-neutral-900 file:dark:text-white file:shadow-sm file:ring-1 file:ring-neutral-300 file:dark:ring-neutral-750 file:hover:bg-neutral-50 file:dark:hover:bg-neutral-900
+    @apply file:bg-transparent file:text-neutral-900 
+    file:dark:text-white 
+    file:shadow-sm 
+    file:ring-1 file:ring-neutral-300 file:dark:ring-neutral-750 
+    file:hover:bg-neutral-50 file:dark:hover:bg-neutral-900
     file:mr-4 file:my-1 file:py-0 file:px-3
     file:border-0 
     file:cursor-pointer
@@ -285,7 +304,10 @@
   }
 
   .form-field.error .text-input {
-    @apply text-red-900 ring-red-500 placeholder:text-red-400 focus:ring-red-500 dark:ring-rose-500/30 dark:bg-rose-400/10 dark:text-rose-400 dark:placeholder:text-red-200;
+    @apply text-red-900 ring-red-500 
+    placeholder:text-red-400 focus:ring-red-500 
+    dark:ring-rose-500/30 dark:bg-rose-400/10 
+    dark:text-rose-400 dark:placeholder:text-red-200;
   }
 
   .text-input {
@@ -313,6 +335,24 @@
 
   .radio-button-input {
     @apply check-box-input rounded-full;
+  }
+
+  /* Application Layout */
+
+  .top-bar {
+    @apply border-b card-border shrink-0 
+    fixed inset-x-0 top-0 z-40 flex 
+    h-14 
+    items-center justify-between 
+    gap-12 px-4 sm:px-6 lg:left-72 lg:z-30 lg:px-8 lg:left-72
+    transition-opacity 
+    backdrop-blur-sm dark:backdrop-blur 
+    bg-card/90 dark:bg-card-dark/80;
+  }
+
+  .top-bar .button {
+    @apply btn-hover
+    rounded-md p-1;
   }
 
   /* Devise Page Overwrites */

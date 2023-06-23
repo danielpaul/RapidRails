@@ -95,6 +95,8 @@ Checklist for things to update before you launch your app:
 - [ ] Add pages to `config/sitemap.rb` file for sitemap generation.
 - [ ] If you don't want some pages to be indexed by search engines, add `noindex` meta tag and update `config/sitemap.rb` file to exclude those pages.
 
+- [ ] Onboarding flow with custom fields that you require user to fill out after sign up. Or disable the onboarding in the constants file.
+
 # Contenful
 
 We use Contentful (free plan) to manage blog posts. You can use Contentful for other content types as well and the structure is setup with webhooks and caching. Everything ready to go.
@@ -157,32 +159,3 @@ Other setup:
 - [ ] `rake active_storage:purge_unattached_blobs` to purge unattached file that are older than 2 days in active storage. - Run once a day.
 - [ ] `rake anonymize:users` to anonymize users data. - Run once a day. Important to delete user's data in our database. Give's time for them to change their mind before we delete their data.
 - [ ] `rake sitemap:refresh` to refresh sitemap. - Run once a day.
-
-## TODO
-
-- rename codebase and move repo to new name
-- onboarding flow
-
-- front-end UI
-- dark mode improvements
-- animation on button submission with disable_with
-- sidebar on dashbard imporvement
-
-  - typography [x]
-  - colors [x]
-  - buttons
-  - forms
-    - text input
-    - text area
-    - select
-    - radio
-    - checkbox
-    - date picker
-    - time picker
-    - file upload
-  - modals - side modal turboframe and normal modal for content
-
-- SEO / meta tags for differnt cases including mobile ios tags
-- update favicon and other apple icons
-- sitemap
-- user impersonation - from forest admin / consider papertrail

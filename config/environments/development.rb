@@ -10,6 +10,8 @@ Rails.application.configure do
     Bullet.add_footer = true
   end
 
+  Rack::MiniProfiler.config.position = 'bottom-right'
+
   config.action_mailer.delivery_method = :letter_opener_web
   config.action_mailer.perform_deliveries = true
 

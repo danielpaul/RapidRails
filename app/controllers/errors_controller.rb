@@ -8,4 +8,8 @@ class ErrorsController < ApplicationController
   def internal_server
     render status: 500
   end
+
+  def unprocessable_entity
+    render status: 422
+  end
 end
