@@ -6,7 +6,9 @@
 @layer base {
 
   body {
-    @apply antialiased text-neutral-500 dark:text-neutral-400 bg-body dark:bg-body-dark;
+    @apply antialiased 
+    text-neutral-500 dark:text-neutral-400 
+    bg-body dark:bg-body-dark;
   }
 
   body.devise {
@@ -112,7 +114,10 @@
   }
 
   .porse-section {
-    @apply prose prose-slate dark:prose-invert max-w-none prose-a:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-500 hover:prose-a:underline hover:prose-a:underline-offset-2;
+    @apply prose prose-slate dark:prose-invert 
+    max-w-none 
+    prose-a:font-semibold prose-a:text-primary prose-a:no-underline 
+    hover:prose-a:text-primary-500 hover:prose-a:underline hover:prose-a:underline-offset-2;
   }
 
   
@@ -205,7 +210,11 @@
   }
 
   .card {
-    @apply bg-card dark:bg-card-dark ring-1 ring-neutral-300/50 dark:ring-neutral-750 rounded-lg shadow-sm my-auto overflow-hidden;
+    @apply bg-card dark:bg-card-dark ring-1 
+    ring-neutral-300/50 dark:ring-neutral-750 
+    rounded-lg shadow-sm 
+    my-auto 
+    overflow-hidden;
   }
 
   .card-body {
@@ -256,7 +265,11 @@
   }
 
   .file-input {
-    @apply file:bg-transparent file:text-neutral-900 file:dark:text-white file:shadow-sm file:ring-1 file:ring-neutral-300 file:dark:ring-neutral-750 file:hover:bg-neutral-50 file:dark:hover:bg-neutral-900
+    @apply file:bg-transparent file:text-neutral-900 
+    file:dark:text-white 
+    file:shadow-sm 
+    file:ring-1 file:ring-neutral-300 file:dark:ring-neutral-750 
+    file:hover:bg-neutral-50 file:dark:hover:bg-neutral-900
     file:mr-4 file:my-1 file:py-0 file:px-3
     file:border-0 
     file:cursor-pointer
@@ -282,7 +295,10 @@
   }
 
   .form-field.error .text-input {
-    @apply text-red-900 ring-red-500 placeholder:text-red-400 focus:ring-red-500 dark:ring-rose-500/30 dark:bg-rose-400/10 dark:text-rose-400 dark:placeholder:text-red-200;
+    @apply text-red-900 ring-red-500 
+    placeholder:text-red-400 focus:ring-red-500 
+    dark:ring-rose-500/30 dark:bg-rose-400/10 
+    dark:text-rose-400 dark:placeholder:text-red-200;
   }
 
   .text-input {

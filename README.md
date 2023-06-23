@@ -160,29 +160,7 @@ Other setup:
 
 ## TODO
 
-- rename codebase and move repo to new name
-- onboarding flow
-
 - front-end UI
-- dark mode improvements
-- animation on button submission with disable_with
-- sidebar on dashbard imporvement
-
-  - typography [x]
-  - colors [x]
-  - buttons
-  - forms
-    - text input
-    - text area
-    - select
-    - radio
-    - checkbox
-    - date picker
-    - time picker
-    - file upload
-  - modals - side modal turboframe and normal modal for content
 
 - SEO / meta tags for differnt cases including mobile ios tags
 - update favicon and other apple icons
-- sitemap
-- user impersonation - from forest admin / consider papertrail

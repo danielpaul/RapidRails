@@ -14,7 +14,13 @@ class BlogController < ApplicationController
     @post = contentful_service.post(params[:id])
     render_404! if @post.nil?
 
-    set_meta_tags title: @post.title,
-      description: @post.excerpt
+    set_meta_tags(
+      title: @post.title,
+      description: @post.excerpt,
+      article: {
+        published_time: @post.published_at,
+        modified_time: @post.updated_at
+      }
+    )
   end
 end
