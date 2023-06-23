@@ -101,6 +101,12 @@
     disabled:bg-neutral-200 dark:disabled:bg-transparent;
   }
 
+  .btn-hover {
+    @apply hover:text-black dark:hover:text-white
+    transition 
+    hover:bg-zinc-900/5 dark:hover:bg-white/5;
+  }
+
   a {
     @apply hover:transition-colors hover:duration-300;
   }
@@ -329,6 +335,23 @@
   }
 
 
+  /* Application Layout */
+
+  .top-bar {
+    @apply border-b card-border shrink-0 
+    fixed inset-x-0 top-0 z-40 flex 
+    h-14 
+    items-center justify-between 
+    gap-12 px-4 sm:px-6 lg:left-72 lg:z-30 lg:px-8 lg:left-72
+    transition-opacity 
+    backdrop-blur-sm dark:backdrop-blur 
+    bg-card/90 dark:bg-card-dark/80;
+  }
+
+  .top-bar .button {
+    @apply btn-hover
+    rounded-md p-1;
+  }
 
   /* Devise Page Overwrites */
 
