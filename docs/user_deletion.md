@@ -3,6 +3,7 @@
 In it's default setup, deleting a user account revokes their access to the application and soft-deletes the User record. We use the [discard](https://github.com/jhawthorn/discard) gem to soft-delete records across the application.
 
 Depending on legalities of your application, you can choose from three options:
+
 1. Soft-delete(default)
 2. Soft-delete and anonymization
 3. Permanentaly delete the user record
