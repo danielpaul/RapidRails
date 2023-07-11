@@ -2,6 +2,8 @@
 
 We use Sentry for real-time error tracking. It tracks errors both on Rails and JS as two separate projects one for backend and front-end.
 
+You will need an account registered with [sentry](https://sentry.io) that has the configuration setup for your projects both in Rails and JS environments. If part of an organization, your admin will invite you to these projects.
+
 ## Rails Configuration Options
 
 The Rails configuration for Sentry is initialized in the **config/initializers/sentry.rb** file. Here's a brief explanation of the configuration options:
