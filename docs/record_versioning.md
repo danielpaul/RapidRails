@@ -7,12 +7,13 @@ In this codebase, PaperTrail is used to add a object_changes column to the versi
 ```
 class AddObjectChangesToVersions < ActiveRecord::Migration[7.0]
   TEXT_BYTES = 1_073_741_823
-	
+
   def change
     add_column :versions, :object_changes, :text, limit: TEXT_BYTES
   end
 end
 ```
+
 This migration adds the object_changes column to the versions table, which is used by PaperTrail to store the changes made in each update event.
 
 To use PaperTrail in your models, you would typically add a `has_paper_trail` declaration to the model.
@@ -22,6 +23,7 @@ class MyModel < ApplicationRecord
   has_paper_trail
 end
 ```
+
 This will enable versioning for instances of **MyModel**. You can then retrieve versions of an instance using the **versions** method.
 
 ```
@@ -29,7 +31,7 @@ instance = MyModel.find(id)
 versions = instance.versions
 ```
 
-Each version has various attributes like event **(create, update, destroy)**, object_changes (the changes made in this version), and `created_at` (when this version was created). 
+Each version has various attributes like event **(create, update, destroy)**, object_changes (the changes made in this version), and `created_at` (when this version was created).
 
 The `reify` method provided by the PaperTrail gem is used to recreate a previous version of an object. When called on a version instance, it returns an object of the original type as it was at the time of that version.
 
