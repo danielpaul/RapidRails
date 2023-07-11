@@ -3,6 +3,3 @@ Naming/VariableNumber:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-
-Rails:
-  Enabled: true
