@@ -1,7 +1,3 @@
----
-marp: true
----
-
 # Getting Started
 
 Follow the steps below to get started:
