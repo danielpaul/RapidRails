@@ -1,6 +1,6 @@
 # Record Versioning
 
-The PaperTrail gem is a Ruby on Rails plugin that helps you keep a record of how your data is changing. It creates a version history for your models, tracking changes to them over time. This can be useful for auditing or versioning purposes.
+The [PaperTrail](https://github.com/paper-trail-gem/paper_trail) gem is a Ruby on Rails plugin that helps you keep a record of how your data is changing. It creates a version history for your models, tracking changes to them over time. This can be useful for auditing or versioning purposes.
 
 In this codebase, PaperTrail is used to add a object_changes column to the versions table. This column stores the changes diff for each update event.
 
