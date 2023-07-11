@@ -1,6 +1,6 @@
 # Setup Script Configuration
 
-This document provides a guide on how to use the bin/setup script for setting up your Rapid Rails application. The script automates several setup tasks, including installing system and Ruby dependencies, setting up Rails credentials and environment variables, preparing the database, and more.
+This document provides a guide on how to use the `bin/setup` script for setting up your RapidRails application. The script automates several setup tasks, including installing system and Ruby dependencies, setting up Rails credentials and environment variables, preparing the database and more.
 
 ## Services Required
 
