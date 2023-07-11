@@ -1,5 +1,7 @@
 # Authentication
+
 ## Devise
+
 [Devise](https://github.com/heartcombo/devise) is a flexible authentication solution that provides a full-featured authentication system that provides a complete MVC solution based on Rails engines. Some of the modules it includes:
 
 1. **Database Authenticatable**: Encrypts and stores a password in the database to validate the authenticity of a user while signing in.
@@ -35,6 +37,7 @@ end
 Devise is customizable, allowing you to add or remove modules that best suit your application. Devise provides many helper methods like `user_signed_in?` that checks if a user is signed in or `current_user` that returns the **User** record of the signed in user.
 
 ### Configuration
+
 In the provided codebase, devise in configured in `config/initializers/devise.rb`.
 
 1. If using the Rails mailer, don't forget to set the value of the constant `DEFAULT_FROM_EMAIL` for your application.
@@ -42,11 +45,13 @@ In the provided codebase, devise in configured in `config/initializers/devise.rb
 2. If modifying anything related to the sign up or confirmation process, refer to the controllers `RegistrationsController` and `ConfirmationsController` which override and/or inherits from their original devise controllers.
 
 ## Omniauth
+
 Google OmniAuth is a strategy for OmniAuth, a Ruby authentication framework. It provides a standardized interface for different types of authentication.
 
 Google OmniAuth is used to authenticate users via Google's OAuth 2.0 API. This means users can sign in to your application using their Google account credentials. This simplifies the sign-in process for users, as they don't need to remember another username/password.
 
 ### Configuration
+
 In the provided codebase, Google OmniAuth is configured in the same file as devise `config/initializers/devise.rb`.
 
 ```
