@@ -18,6 +18,6 @@ Let's get started with your new Rails project! This documentation should help yo
 
 6. Follow the prompts from the setup script to configure your application. You can read more about the setup script and configuration in the next section.
 
-7. Then simply start your server by running `bin/dev`. 
-    
-    And... thats it! You're all set to go! 🎉
+7. Then simply start your server by running `bin/dev`.
+
+   And... thats it! You're all set to go! 🎉
