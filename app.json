@@ -22,7 +22,7 @@
       "quantity": 1,
       "size": "free"
     },
-    "worker": {
+    "sidekiq": {
       "quantity": 1,
       "size": "free"
     }
