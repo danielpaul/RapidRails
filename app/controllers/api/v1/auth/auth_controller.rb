@@ -1,6 +1,4 @@
-class Api::V1::Auth::AuthController < Api::V1::BaseController
-  before_action :set_user!, except: :extend_token
-  before_action :set_user_from_token!, only: %i[extend_token user update_user]
+class Api::V1::Auth::AuthController < Api::V1::UserAuthenticatedController
   before_action :authorize_confirmed_user!, only: :sign_in
 
   def sign_in
@@ -80,5 +78,9 @@ class Api::V1::Auth::AuthController < Api::V1::BaseController
     return unless current_user
 
     render_unprocessable_entity!(message: t("devise.failure.unconfirmed")) unless current_user.confirmed?
+  end
+
+  def set_sentry_user
+    Sentry.set_user(id: current_user.id)
   end
 end
