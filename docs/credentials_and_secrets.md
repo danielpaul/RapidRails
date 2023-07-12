@@ -19,7 +19,6 @@ To view the application credentials using VS code, run `EDITOR='code --wait' rai
 We use a single credentials file for all environments which is located at [config/credentials.yml.enc](../config/credentials.yml.enc).
 For more details on Rails credentials and how to access or write to the file, refer to this [documentation](https://edgeguides.rubyonrails.org/security.html#environmental-security)
 
-
 ## Local Secrets
 
 ### Local Secrets setup on local system
