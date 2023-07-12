@@ -7,7 +7,9 @@
   </p>
 </div>
 <div class="mt-8 card card-body">
-  <%= render 'devise/shared/social_login' %>
+  <% if ENABLE_GOOGLE_OAUTH %>
+    <%= render 'devise/shared/social_login' %>
+  <% end %>
   <div class="mt-5">
     <%= render FlashMessagesComponent.new(flash) %>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: RapidRailsFormBuilder, html: {class: 'space-y-6'}, data: { controller: "auto-save", auto_save_target: "form", action: "change->auto-save#saveToLocalStorage submit->auto-save#clearLocalStorage" }) do |f| %>

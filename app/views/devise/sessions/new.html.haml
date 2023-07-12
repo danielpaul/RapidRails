@@ -8,7 +8,8 @@
     \#{link_to "create your free account", new_user_registration_path, class: "font-medium link"}
 
 .mt-8.card.card-body
-  = render 'devise/shared/social_login'
+  - if ENABLE_GOOGLE_OAUTH
+    = render 'devise/shared/social_login'
   .mt-5
     = render FlashMessagesComponent.new(flash)
 
