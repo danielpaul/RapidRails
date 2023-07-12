@@ -21,4 +21,4 @@ This method takes four parameters:
 - now: A boolean that determines whether the message should be displayed immediately. This is also optional.
 
 Here's an example of how to use this method:
-> `flash_message(:success, "Hello!", "This is a flash messsage", now: true)`
+> `flash_message(:success, "Hello!", "This is a success message", now: true)`
