@@ -1,12 +1,14 @@
 # Credentials and Local Secrets
 
-Rails credentials allows you to securely store sensitive configuration information and credentials for your Rails application. This feature is particularly useful for storing things like API keys, database passwords, or any other confidential data that your application needs to access.
+We use [Rails credentials]((https://edgeguides.rubyonrails.org/security.html#environmental-security) for storing confidential data like API keys, database passwords..etc. It is used when the keys are shared by all the devs and we want it to exist in our codebase in version control.
 
-Local secrets (environment variables) are secrets that are environment-specific information unique to your local system or the cloud platform you use such as Heroku. We use these variables when every local system requires different credentials. They can also be used to quickly change certain settings that might change very often like disabling a certain feature temporarily. There is no need to update any code and re-deploy the app in this case.
+Local secrets ([environment variables](https://guides.rubyonrails.org/v5.1/configuring.html#rails-environment-settings)) are used when devs might have different keys for their local setup or when there are multiple servers in different environments on the cloud platform(like Heroku).
 
 ## Credentials
 
-We use the default rails credentials file to store application credentials that can be accessed only by the app with the requirement of having a `master.key` file. This file will reside only on your local and your cloud platform as a config variable named `RAILS_MASTER_KEY`. The `master.key` file should not be pushed to github for security purposes.
+- If `bin/setup` was run previously, a `master.key` should already exist and you can skip the next steps.
+- If your admin has already setup the key, create a `master.key` file in the config folder and paste the key in the file without any line breaks.
+- If both the above steps don't apply and a new key needs to be generated, run `EDITOR='echo' bin/rails credentials:edit` to create a new one.
 
 ### Viewing the credentials file
 
@@ -14,47 +16,9 @@ To view the application credentials using VS code, run `EDITOR='code --wait' rai
 
 ### Credentials file setup
 
-The credentials file will look like so. Credentials have different sections for each environment. Environments can also inherit from the **default** credentials. For example, **development** specific credentials will be nested under the `development:` section.
+We use a single credentials file for all environments which is located at [config/credentials.yml.enc](../config/credentials.yml.enc).
+For more details on Rails credentials and how to access or write to the file, refer to this [documentation](https://edgeguides.rubyonrails.org/security.html#environmental-security)
 
-```
-secret_key_base: xxx
-default: &default
-  global:
-    key: 1234
-
-test:
-  <<: *default
-
-development:
-  <<: *default
-
-  test:
-  	key: abcdefg
-
-staging:
-  <<: *default
-
-production:
-  <<: *default
-
-  postmark_api_token: XXX
-
-  aws:
-    access_key_id: XXX
-    secret_access_key: XXX
-    region: eu-west-2
-    bucket: rapid_rails_production
-
-  forest_admin:
-    env_secret: XXX
-    auth_secret: XXX
-```
-
-- To read the value specific key within the app, run a command like so:
-  `Rails.application.credentials.dig(Rails.env.to_sym, :test, :key)`
-  The first param is the rails environment as a symbol. The params are the nested keys for the credentials in the order of nesting. The above command in a **development** environment would return **abcdefg** from the sample credentials file above. You may replace `Rails.env.to_sym` with the specific environment like `:production` to access only production credentials ifs required.
-
-- Running`Rails.application.credentials.dig(Rails.env.to_sym, :global, :key)` in any environment will return **1234** as all the environments inherit the **default** credentials.
 
 ## Local Secrets
 
@@ -62,7 +26,7 @@ production:
 
 We use [dotenv-rails](https://github.com/bkeepers/dotenv) to store local secrets on your local system.
 
-1. Duplicate the `.env.template` file and set the filename as `.env`.
+1. Duplicate the `.env.template` file and set the filename as `.env`. You can skip this step if you've run the `bin/setup` command previously.
 2. You can store your local secrets here like `HOST=localhost:3000`.
 3. To access it anywhere in the application, use the `ENV` object on the variable like `ENV['HOST']`.
 
