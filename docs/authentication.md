@@ -20,7 +20,7 @@ If modifying anything related to the sign up, confirmation or omniauth process, 
 
 ### Configuration
 
-If you don't want to use google omniauth, you can remove the [Sign in with google](../app/views/devise/shared/_social_login.html.haml) button on the [Sign in](../app/views/devise/registrations/new.html.erb) and [Sign up](../app/views/devise/sessions/new.html.haml) pages.
+If you don't want to use google omniauth, you can set the constant `ENABLE_GOOGLE_OAUTH` to `false` which will remove the [Sign in with google](../app/views/devise/shared/_social_login.html.haml) buttons on the [Sign in](../app/views/devise/registrations/new.html.erb) and [Sign up](../app/views/devise/sessions/new.html.haml) pages and also disable the routes for the callback.
 
 1. Client Keys for google oauth be setup via the [Google API console](https://console.developers.google.com/). You can follow [this tutorial](https://fwuensche.medium.com/how-to-use-google-oauth-on-rails-c6e07047e4fb) to set up your google client keys or get them from your admin if the keys are already setup.
 
