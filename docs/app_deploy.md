@@ -2,7 +2,7 @@
 
 ## Deploy without heroku
 
-Setup your `master.key` that you used for your rails credentials file as `RAILS_MASTER_KEY`, domain as `HOST`, `RAILS_ENV` as `production` and `JEMALLOC_ENABLED` as `true`. 
+Setup your `master.key` that you used for your rails credentials file as `RAILS_MASTER_KEY`, domain as `HOST`, `RAILS_ENV` as `production` and `JEMALLOC_ENABLED` as `true`.
 Also setup any environment variables that need to be added to production after deploy depending on the environment of the server.
 Setup **Sidekiq**, **Redis**, **Postgres** and a **Task Scheduler** as we will need them to run our application.
 
