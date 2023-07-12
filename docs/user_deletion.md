@@ -16,10 +16,11 @@ Depending on legalities of your application, you can choose from three options:
 
 We have an optional rake task that if setup, anonymizes user records after a period of time. This task calls [AnonymizationService](../app/services/anonymization_service.rb) which strips all columns of the user's data.
 
-1. Run `rake anonymize:users` to anonymize user records that were discarded a certain number of days ago and have not been anonymized yet. The number of days is stored in a constant called [ANONYMIZE\_USER\_DATA\_AFTER_DAYS](../config/initializers/0_constants.rb) which if set to **0** will anonymize the user record immediately.
+1. Run `rake anonymize:users` to anonymize user records that were discarded a certain number of days ago and have not been anonymized yet. The number of days is stored in a constant called [ANONYMIZE_USER_DATA_AFTER_DAYS](../config/initializers/0_constants.rb) which if set to **0** will anonymize the user record immediately.
 2. Some fields are set to custom values. For example, `full_name` to **"Deleted User"**, `email` to **"prefix@domain"** where **prefix** and **domain** are customizable and password is set to a secure 60 character **SecureRandom** password.
 
 ### IMPORTANT:
+
 If using the anonymizer, don't forget to update the method `anonymize_user` in [AnonymizationService](../app/services/anonymization_service.rb) to clear or randomize any new fields you may add to the **User** record.
 
 ## Permanentaly delete a user record
