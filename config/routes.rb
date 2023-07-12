@@ -23,7 +23,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get :confirm_email, to: "registrations#confirm_email", as: "confirm_email", path: "users/confirm-email"
-    post :cancel_email_change, to: "registrations#cancel_email_change!", as: "cancel_email_change", path: "users/cancel-email-change"
+    post :cancel_email_change, to: "registrations#cancel_email_change!", as: "cancel_email_change",
+      path: "users/cancel-email-change"
   end
 
   # User Onboarding
@@ -42,20 +43,16 @@ Rails.application.routes.draw do
   # ---------- [ API Routes ] ---------- #
   draw :api if ENABLE_API == true || Rails.env.test?
 
-
   # ---------- [ Sitemap ] ---------- #
   if Rails.env.production?
     # Sitemap - redirect /sitemap.xml.gz to s3
-    get '/sitemap.xml.gz' => redirect("#{SITEMAP_HOST}/sitemaps/sitemap.xml.gz")
+    get "/sitemap.xml.gz" => redirect("#{SITEMAP_HOST}/sitemaps/sitemap.xml.gz")
   end
-
 
   # ---------- [ Gems ] ---------- #
   mount ForestLiana::Engine => "/forest"
 
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   if defined?(Sidekiq) && ENV["SIDEKIQ_ADMIN_PASSWORD"] && ENV["SIDEKIQ_ADMIN_USERNAME"]
     require "sidekiq/web"
