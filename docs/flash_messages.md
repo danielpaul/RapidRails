@@ -7,6 +7,7 @@ Flash messages in this application are handled by the FlashHelper module and the
 The FlashMessagesComponent class is used to render flash messages. It takes the flash object as a parameter in its constructor and iterates over it in the template method, rendering an AlertComponent for each message.
 
 Here's an example of how to use this method:
+
 > `flash.now[:notice] = "This is an notice message."`
 
 ## FlashToastComponent
