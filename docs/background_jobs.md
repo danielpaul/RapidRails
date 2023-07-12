@@ -5,6 +5,7 @@
 ## Configuration
 
 For sidekiq to work and process jobs, you need to setup two things:
+
 1. A worker `bundle exec sidekiq` needs to be added on your cloud platform and running. This command should be run on your local as well.
 2. Redis is also required. Set it up on your cloud platform as an add-on and set it up on your local with [this tutorial](https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/).
 
