@@ -14,11 +14,12 @@ Rails.application.routes.draw do
   end
 
   # ---------- [ Devise ] ---------- #
-  devise_for :users, controllers: {
+  custom_controllers = {
     registrations: "registrations",
-    confirmations: "confirmations",
-    omniauth_callbacks: "users/omniauth_callbacks"
+    confirmations: "confirmations"
   }
+  custom_controllers[:omniauth_callbacks] = "users/omniauth_callbacks" if ENABLE_GOOGLE_OAUTH
+  devise_for :users, controllers: custom_controllers
 
   devise_scope :user do
     get :confirm_email, to: "registrations#confirm_email", as: "confirm_email", path: "users/confirm-email"
