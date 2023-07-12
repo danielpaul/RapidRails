@@ -6,6 +6,8 @@ Setup your `master.key` that you used for your rails credentials file as `RAILS_
 Also setup any environment variables that need to be added to production after deploy depending on the environment of the server.
 Setup **Sidekiq**, **Redis**, **Postgres** and a **Task Scheduler** as we will need them to run our application.
 
+If using contenful for your blogs, setup the webhook to call your production server for clearing cache. `https://<HOST>/contentful/webhook` with the secret token (Header as `Authorization:Bearer`) that is set in the credentials file.
+
 ## Heroku Setup
 
 ### Automatic Deploy
