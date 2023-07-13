@@ -20,7 +20,7 @@ The default flow soft-deletes the User record and sign them out.
 
 We have a task `rake anonymize:users` that anonymizes user records after a period of time. This task calls [AnonymizationService](../app/services/anonymization_service.rb) which strips all columns of the user's data.
 
-1. Running `rake anonymize:users` anonymizes user records that were discarded a certain number of days ago and have not been anonymized yet. The number of days is stored in a constant called [ANONYMIZE_USER_DATA_AFTER_DAYS](../config/initializers/0_constants.rb#L21) which if set to **0** will anonymize the user record immediately (when the rake task runs). The rake task should be setup on your cloud platform to run periodically if needed.
+1. Running `rake anonymize:users` anonymizes user records that were discarded a certain number of days ago and have not been anonymized yet. The number of days is stored in a constant called [ANONYMIZE_USER_DATA_AFTER_DAYS](../config/initializers/0_constants.rb) which if set to **0** will anonymize the user record immediately (when the rake task runs). The rake task should be setup on your cloud platform to run periodically if needed.
 2. Some fields are set to custom values. For example, `full_name` to **"Deleted User"**, `email` to **"prefix@domain"** where **prefix** and **domain** are customizable and password is set to a secure 60 character **SecureRandom** password.
 
 ### IMPORTANT:
@@ -29,4 +29,4 @@ If using the anonymizer and if any new attributes are added to the **User** reco
 
 ## Permanentaly delete the user record
 
-If you'd like to permanentaly delete a user record, replace `discard` with `destroy` wherever it is called on a **User** record. The main location where this needs to be replaced is [registrations_controller.rb](../app/controllers/registrations_controller.rb#L24) in the **destroy** action.
+If you'd like to permanentaly delete a user record, replace `discard` with `destroy` wherever it is called on a **User** record. The main location where this needs to be replaced is [registrations_controller.rb](../app/controllers/registrations_controller.rb) in the **destroy** action.
