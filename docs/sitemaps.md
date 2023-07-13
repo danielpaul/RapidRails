@@ -1,6 +1,6 @@
 # Sitemaps
 
-This guide provides a brief overview of how to use the [sitemap.rb](https://github.com/danielpaul/RapidRails/blob/main/config/sitemap.rb) configuration file in your Rails application. For more info visit the [sitemaps_generator GitHub](https://github.com/kjvarga/sitemap_generator).
+This guide provides a brief overview of how to use the [sitemap.rb](https://github.com/danielpaul/RapidRails/blob/main/config/sitemap.rb) configuration file in your Rails application. For more info, visit the [sitemaps_generator GitHub](https://github.com/kjvarga/sitemap_generator).
 
 ## Adding Pages to the Sitemap
 
