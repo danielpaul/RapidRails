@@ -36,6 +36,7 @@ Setup Buildpacks:
 ## Default Config variables setup
 
 Set these config variables on your cloud platform:
+
 - Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
 - Set `HOST` config var to your domain
 - Set `RAILS_ENV` config var to `production`
