@@ -28,8 +28,8 @@ Sidekiq fetches jobs from the queues in the order of their priority defined in t
   - [low_priority, 1]
 ```
 
-## View queues
+## Sidekiq Admin Panel
 
 Sidekiq also provides a web interface for monitoring job queues which can be accessed at `/sidekiq` on your local and your production server.
-To enable the web interface, set the username and password `SIDEKIQ_ADMIN_USERNAME` and `SIDEKIQ_ADMIN_PASSWORD` in the environment variables config.
+To enable the web interface, set the username and password `SIDEKIQ_ADMIN_USERNAME` and `SIDEKIQ_ADMIN_PASSWORD` in the environment variables.
 If you don't want to enable the web interface delete the above environment variables.
