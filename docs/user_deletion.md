@@ -12,7 +12,7 @@ Depending on the way your app would like to handle user deletion, you can setup 
 2. Soft-delete and anonymization
 3. Permanentaly delete the user record
 
-## Soft-delete (default)
+## 1. Soft-delete (default)
 
 The default flow soft-deletes the User record and sign them out.
 
