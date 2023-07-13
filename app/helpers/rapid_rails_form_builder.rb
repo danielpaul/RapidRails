@@ -1,6 +1,6 @@
 class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   class_attribute :text_field_helpers,
-    default: field_helpers - %i[label fields_for fields hidden_field]
+                  default: field_helpers - %i[label fields_for fields hidden_field]
   #  leans on the FormBuilder class_attribute `field_helpers`
   #  you'll want to add a method for each of the specific helpers listed here if you want to style them
 
@@ -97,9 +97,9 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
         field_method,
         object_method,
         options.merge({
-          tailwindified: true,
-          class: "text-input #{options[:class]}"
-        }).except(:label, :error, :hint)
+                        tailwindified: true,
+                        class: "text-input #{options[:class]}"
+                      }).except(:label, :error, :hint)
       )
     end
   end
@@ -109,16 +109,14 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     wrapper_classes = ["form-field"]
     wrapper_classes << "disabled" if options[:disabled]
 
-    if errors_for(method, options).present?
-      wrapper_classes << "error"
-    end
+    wrapper_classes << "error" if errors_for(method, options).present?
 
     wrapper_classes.join(" ")
   end
 
   def label(method, text = nil, options = {}, &block)
     new_options = options.except(:label, :error, :hint, :id).merge(
-      class: "#{options[:class]} #{"required" if options[:required]}"
+      class: "#{options[:class]} #{'required' if options[:required]}"
     )
 
     if options[:id]
@@ -135,34 +133,34 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   # for most fields
-  def form_field(method, options = {}, more_options = {}, &block)
-    label = @template.content_tag(
-      "div",
-      label(
-        method,
-        options[:label],
-        options.merge(class: "label")
-      ),
-      {class: "mb-2"}
-    )
+  def form_field(method, options = {}, more_options = {})
+    label = if options[:label] == false
+              ""
+            else
+              @template.content_tag(
+                "div",
+                label(
+                  method,
+                  options[:label],
+                  options.merge(class: "label")
+                ),
+                { class: "mb-2" }
+              )
+            end
 
     errors = errors_for(method, options)
-    if errors.present?
-      errors = label(method, errors, {class: "error-label"})
-    end
+    errors = label(method, errors, { class: "error-label" }) if errors.present?
 
-    hint = if options[:hint].present?
-      @template.content_tag("p", options[:hint], {class: "hint"})
-    end
+    hint = (@template.content_tag("p", options[:hint], { class: "hint" }) if options[:hint].present?)
 
-    @template.content_tag("div", {class: wrapper_classes(method, options.merge(more_options))}) do
-      label + yield + errors + hint
+    @template.content_tag("div", { class: wrapper_classes(method, options.merge(more_options)) }) do
+      [label, yield, errors, hint].join.html_safe
     end
   end
 
   # only for radio buttons and check boxes
   # where the labels are beside it and we don't support error and hint messages
-  def radio_check_form_field(method, options = {}, &block)
+  def radio_check_form_field(method, options = {})
     label = @template.content_tag(
       "div",
       label(
@@ -172,8 +170,8 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
       )
     )
 
-    @template.content_tag("div", {class: wrapper_classes(method, options)}) do
-      @template.content_tag("div", {class: "group flex items-center"}) do
+    @template.content_tag("div", { class: wrapper_classes(method, options) }) do
+      @template.content_tag("div", { class: "group flex items-center" }) do
         yield + label
       end
     end
@@ -193,7 +191,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     return if (options[:data] && options[:data][:turbo_disable_with]) || options[:data_turbo_disable_with]
 
     # just adds a spinner to the same button text
-    {"data-turbo-submits-with": spinner_svg + value}
+    { "data-turbo-submits-with": spinner_svg + value }
   end
 
   def spinner_svg
