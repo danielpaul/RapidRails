@@ -24,7 +24,7 @@ We have a method [paginated_collection()](../app/controllers/api/v1/base_control
 
 ## Error Codes
 
-The method [handle\_api_error](../app/controllers/api/v1/base_controller.rb) takes care of rendering the error responses.
+The method [handle_api_error](../app/controllers/api/v1/base_controller.rb) takes care of rendering the error responses.
 
 1. Unauthorized - Happens when API key/token is invalid or if the user is not authorized(pundit) to access the endpoint.
 2. Forbidden - This error will not be thrown for the most part. It is only thrown if there is no record to check for authorization(pundit).
