@@ -14,8 +14,8 @@ config.action_mailer.delivery_method = :letter_opener
 
 RapidRails has a mailer layout (based on [Postmark's templates](https://github.com/ActiveCampaign/postmark-templates)) that supports both light and dark mode based on system settings.
 
-| Light | Dark |
-|--|--|
+| Light                                 | Dark                                |
+| ------------------------------------- | ----------------------------------- |
 | ![light mode](images/email_light.png) | ![dark mode](images/email_dark.png) |
 
 ### CTA button
