@@ -59,19 +59,45 @@ class App::TopNavigationComponent < ApplicationComponent
   end
 
   def search_bar
-    div(class: 'max-w-lg flex-auto hidden lg:flex') {
-      button(
-        type: "button",
-        class: 'h-8 w-full items-center gap-2 rounded-full bg-white pl-2 pr-3 text-sm text-zinc-500 ring-1 hover:transition dark:text-zinc-400 dark:ring-inset flex ring-zinc-900/10 hover:ring-zinc-900/20 dark:bg-white/5 dark:ring-white/10 dark:hover:ring-white/20 focus:[&:not(:focus-visible)]:outline-none'
-      ) {
-        unsafe_raw heroicon("magnifying-glass", options: { class: "h-5 w-5" })
-        plain "Find something..."
-
-        div(class: 'ml-auto text-2xs text-zinc-400 dark:text-zinc-500 tracking-tighter') {
-          span(class: 'font-sans') { "⌘K" }
-        }
-      }
-    }
+    div(
+      class:
+        "flex px-2 w-full"
+    ) do
+      div(class: "w-full") do
+        whitespace
+        label(for: "search", class: "sr-only") { "Search" }
+        div(class: "relative") do
+          div(
+            class:
+              "pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+          ) do
+            whitespace
+            svg(
+              class: "h-5 w-5 text-gray-400",
+              viewbox: "0 0 20 20",
+              fill: "currentColor",
+              aria_hidden: "true"
+            ) do |s|
+              s.path(
+                fill_rule: "evenodd",
+                d:
+                  "M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z",
+                clip_rule: "evenodd"
+              )
+            end
+          end
+          whitespace
+          input(
+            id: "search",
+            name: "search",
+            class:
+              "block w-full rounded-md border-0 bg-card dark:bg-[#27262b] py-1.5 pl-10 pr-3 text-slate-800 dark:text-neutral-50 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6",
+            placeholder: "Search",
+            type: "search"
+          )
+        end
+      end
+    end
   end
 
   def user_display
