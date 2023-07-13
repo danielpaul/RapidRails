@@ -51,7 +51,7 @@ class App::TopNavigationComponent < ApplicationComponent
       "@click": "sidebarOpen = !sidebarOpen"
     ) do
       span(class: "sr-only") { "Open sidebar" }
-      unsafe_raw heroicon("bars-3", options: { class: "h-6 w-6" })
+      unsafe_raw heroicon("bars-3", options: {class: "h-6 w-6"})
     end
   end
 
@@ -71,7 +71,7 @@ class App::TopNavigationComponent < ApplicationComponent
             class:
               "pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
           ) do
-            unsafe_raw heroicon("magnifying-glass", options: { class: "h-5 w-5 text-neutral-400" })
+            unsafe_raw heroicon("magnifying-glass", options: {class: "h-5 w-5 text-neutral-400"})
           end
           input(
             id: "search",
@@ -92,7 +92,7 @@ class App::TopNavigationComponent < ApplicationComponent
         type: "button",
         id: "user-menu-button",
         class: "flex items-center -m-1.5 p-1.5",
-        aria: { expanded: "false", haspopup: "true" },
+        aria: {expanded: "false", haspopup: "true"},
         "@click": "dropdownOpen = !dropdownOpen"
       ) do
         span(class: "sr-only") { "Open user menu" }
@@ -101,12 +101,12 @@ class App::TopNavigationComponent < ApplicationComponent
         span(class: "hidden lg:flex lg:items-center") do
           span(
             class: "ml-4 text-sm font-semibold leading-6 text-heading",
-            aria: { hidden: "true" }
+            aria: {hidden: "true"}
           ) do
             @current_user.first_name.capitalize.truncate(20)
           end
 
-          unsafe_raw heroicon("chevron-down", options: { class: "ml-2 h-5 w-5 button" })
+          unsafe_raw heroicon("chevron-down", options: {class: "ml-2 h-5 w-5 button"})
         end
       end
 
@@ -117,10 +117,10 @@ class App::TopNavigationComponent < ApplicationComponent
   def user_dropdown_items
     [
       [
-        { label: "Support", path: "#" }
+        {label: "Support", path: "#"}
       ],
       [
-        { label: "Account Settings", path: edit_user_registration_path }
+        {label: "Account Settings", path: edit_user_registration_path}
       ]
     ]
   end
@@ -129,7 +129,7 @@ class App::TopNavigationComponent < ApplicationComponent
     div(
       role: "menu",
       class: "absolute right-0 z-50 w-64 origin-top-right card shadow-lg mt-4 ring-neutral-900/5",
-      aria: { labelledby: "user-menu-button", orientation: "vertical" },
+      aria: {labelledby: "user-menu-button", orientation: "vertical"},
       tabindex: "-1",
       "x-show": "dropdownOpen",
       "@click.away": "dropdownOpen = false",
@@ -156,7 +156,7 @@ class App::TopNavigationComponent < ApplicationComponent
         end
       end
 
-      link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: item_link_classes
+      link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete}, class: item_link_classes
     end
   end
 end
