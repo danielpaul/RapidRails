@@ -1,6 +1,6 @@
 # Credentials and Local Secrets
 
-We use [Rails credentials]((https://edgeguides.rubyonrails.org/security.html#environmental-security) for storing confidential data like API keys, database passwords..etc. It is used when the keys are shared by all the devs and we want it to exist in our codebase in version control.
+We use [Rails credentials](https://edgeguides.rubyonrails.org/security.html#environmental-security) for storing confidential data like API keys, database passwords..etc. It is used when the keys are shared by all the devs and we want it to exist in our codebase in version control.
 
 Local secrets ([environment variables](https://guides.rubyonrails.org/v5.1/configuring.html#rails-environment-settings)) are used when devs might have different keys for their local setup or when there are multiple servers in different environments on the cloud platform(like Heroku).
 
