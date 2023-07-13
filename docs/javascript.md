@@ -13,4 +13,3 @@ Alpine.js is a minimal JavaScript framework used for adding interactivity to the
 ## Hotwire
 
 Hotwire is a set of tools (Turbo, Stimulus, and Strada) from Basecamp for building modern web applications without much JavaScript. To find out more see the [Hotwire Docs](https://hotwired.dev/).
-
