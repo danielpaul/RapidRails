@@ -6,7 +6,7 @@ A signed in user can delete their account via the **Account Settings**. They may
 
 ![](images/delete_account.png)
 
-Depending on the way your app would like to handle user deletion, you can setup your app for any of the following or write your own flow:
+Depending on the way your app would like to handle user deletion, you can setup your app for any of the following or write your own flow  - based on your app's terms and conditions:
 
 1. Soft-delete (default)
 2. Soft-delete and anonymization
@@ -14,9 +14,11 @@ Depending on the way your app would like to handle user deletion, you can setup 
 
 ## 1. Soft-delete (default)
 
-The default flow soft-deletes the User record and sign them out.
+The default flow soft-deletes the User record and sign them out. The user will not be able to sign up again with the same email and would need to contact your support to restore their account (or permanently delete/anonymize their account).
 
-## Soft-delete and anonymization
+## 2. Soft-delete and anonymization
+
+This is useful where you want to get rid of the user's data from your database but only after a period of time. A use case would be if you still want to retain some data for support queries, refunds, etc. after the user deletes their account and then get rid of the data later. 
 
 We have a task `rake anonymize:users` that anonymizes user records after a period of time. This task calls [AnonymizationService](../app/services/anonymization_service.rb) which strips all columns of the user's data.
 
@@ -25,8 +27,8 @@ We have a task `rake anonymize:users` that anonymizes user records after a perio
 
 ### IMPORTANT:
 
-If using the anonymizer and if any new attributes are added to the **User** record, don't forget to update the method `anonymize_user` in [AnonymizationService](../app/services/anonymization_service.rb) to clear or randomize the new attributes.
+If using the anonymizer for all the new attributes and new models that store personal information, you need to update the method `anonymize_user` in [AnonymizationService](../app/services/anonymization_service.rb) to clear or randomize those values.
 
-## Permanentaly delete the user record
+## 3. Permanentaly delete the user record
 
 If you'd like to permanentaly delete a user record, replace `discard` with `destroy` wherever it is called on a **User** record. The main location where this needs to be replaced is [registrations_controller.rb](../app/controllers/registrations_controller.rb) in the **destroy** action.
