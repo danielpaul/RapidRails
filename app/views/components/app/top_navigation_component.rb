@@ -3,6 +3,7 @@
 class App::TopNavigationComponent < ApplicationComponent
   include Phlex::Rails::Helpers::LinkTo
   include Phlex::Rails::Helpers::Routes
+  include Phlex::Rails::Helpers::FormWith
   include ActionView::Helpers::OutputSafetyHelper
   include Heroicon::Engine.helpers
 
@@ -64,7 +65,7 @@ class App::TopNavigationComponent < ApplicationComponent
       class:
         "px-2 w-full lg:w-3/5 hidden lg:flex"
     ) do
-      div(class: "w-full") do
+      form_with url: root_path, method: :get, class: "w-full" do
         label(for: "search", class: "sr-only") { "Search" }
         div(class: "relative") do
           div(
@@ -79,7 +80,8 @@ class App::TopNavigationComponent < ApplicationComponent
             class:
               "text-input w-full rounded-full py-1.5 pl-10 pr-3 shadow-none ring-neutral-300/50 dark:ring-neutral-750",
             placeholder: "Search...",
-            type: "search"
+            type: "search",
+            value: helpers.params[:search]
           )
         end
       end
