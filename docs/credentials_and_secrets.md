@@ -31,5 +31,5 @@ We use [dotenv-rails](https://github.com/bkeepers/dotenv) to store local secrets
 ### Local Secrets setup on cloud platform
 
 1. On your cloud platform, set the same value for `HOST` in your config variables settings. On heroku it can be changed [like so](https://devcenter.heroku.com/articles/config-vars)
-![](../docs/images/config_vars.png)
+   ![](../docs/images/config_vars.png)
 2. The value of these variable can be quickly changed without re-deploying the app.
