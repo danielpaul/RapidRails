@@ -2,19 +2,14 @@
 
 ## Deploy without heroku
 
-Setup your `master.key` that you used for your rails credentials file as `RAILS_MASTER_KEY`, domain as `HOST`, `RAILS_ENV` as `production` and `JEMALLOC_ENABLED` as `true`.
-Also setup any environment variables that need to be added to production after deploy depending on the environment of the server.
+Setup any environment variables that need to be added to production after deploy depending on the environment of the server.
 Setup **Sidekiq**, **Redis**, **Postgres** and a **Task Scheduler** as we will need them to run our application.
-
-If using contenful for your blogs, setup the webhook to call your production server for clearing cache. `https://<HOST>/contentful/webhook` with the secret token (Header as `Authorization:Bearer`) that is set in the credentials file.
 
 ## Heroku Setup
 
 ### Automatic Deploy
 
-Deploy with an **app.json** file that helps Heroku pre-configure the application. You can click the button below to deploy using our template.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/danielpaul/RapidRails)
+Refer to this [guide](https://devcenter.heroku.com/articles/github-integration) to link your github codebase to Heroku and setup automatic deploys.
 
 ### Manual Deploy
 
@@ -31,13 +26,6 @@ Setup these addons:
 - Redis addon
 - Heroku Scheduler addon
 
-Set these config variables:
-
-- Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
-- Set `HOST` config var to your domain
-- Set `RAILS_ENV` config var to `production`
-- Set `JEMALLOC_ENABLED` config var to `true`
-
 Setup Buildpacks:
 
 - `heroku buildpacks:set heroku/ruby -a <app_name>` (will take last priority)
@@ -45,12 +33,29 @@ Setup Buildpacks:
 - `heroku buildpacks:add --index 2 https://github.com/brandoncc/heroku-buildpack-vips -a <app_name>`
 - `heroku buildpacks:add --index 3 https://github.com/gaffneyc/heroku-buildpack-jemalloc.git -a <app_name>`
 
-## Rake tasks and migrations
+## Default Config variables setup
+
+Set these config variables on your cloud platform:
+- Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
+- Set `HOST` config var to your domain
+- Set `RAILS_ENV` config var to `production`
+- Set `JEMALLOC_ENABLED` config var to `true`
+
+Refer to [this guide](https://devcenter.heroku.com/articles/config-vars) to setup config vars on Heroku.
+![](../docs/images/config_vars.png)
+
+## Contentful setup
+
+If using contenful for your blogs, setup the webhook to call your production server for clearing cache. `https://<HOST>/contentful/webhook` with the secret token (Header as `Authorization:Bearer`) that is set in the credentials file.
+
+# Rake tasks
 
 Add these default take tasks to your scheduler on production.
 
 - `rake active_storage:purge_unattached_blobs` to purge unattached file that are older than 2 days in active storage. - Run once a day.
 - `rake anonymize:users` to anonymize users data. - Run once a day. Important to delete user's data in our database. Give's time for them to change their mind before we delete their data.
 - `rake sitemap:refresh` to refresh sitemap. - Run once a day.
+
+# Database setup
 
 Run rails `db:migrate` on production after deploy to setup your database.
