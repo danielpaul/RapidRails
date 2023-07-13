@@ -6,10 +6,10 @@
 
 For sidekiq to work and process jobs, you need to setup two things:
 
-1. A worker `bundle exec sidekiq` needs to be added on your cloud platform and running. This command should be run on your local as well.
-2. Redis is also required. Set it up on your cloud platform as an add-on and set it up on your local with [this tutorial](https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/).
+1. A worker `bundle exec sidekiq` needs to run for the jobs to be processed. `bin/dev` by default runs sidekiq in addition to your rails server.
+2. Redis is required for keeping track of the tasks queue. Set it up as a service on your servers and on your local with [this tutorial](https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/).
 
-## List of default jobs
+## RapidRails Built-in Jobs
 
 Sidekiq provides the [deliver_later](https://apidock.com/rails/v5.2.3/ActionMailer/MessageDelivery/deliver_later) method which when used with a **Mailer**, adds email jobs to the sidekiq queue. Other sidekiq jobs included in the codebase are:
 
@@ -30,6 +30,6 @@ Sidekiq fetches jobs from the queues in the order of their priority defined in t
 
 ## View queues
 
-Sidekiq also provides a web interface for monitoring job queues which can be accessed at `localhost:3000/sidekiq`
-To enable the web interface, set the username and password in the environment variables `SIDEKIQ_ADMIN_USERNAME` and `SIDEKIQ_ADMIN_PASSWORD` respectively.
+Sidekiq also provides a web interface for monitoring job queues which can be accessed at `/sidekiq` on your local and your production server.
+To enable the web interface, set the username and password `SIDEKIQ_ADMIN_USERNAME` and `SIDEKIQ_ADMIN_PASSWORD` in the environment variables config.
 If you don't want to enable the web interface delete the above environment variables.
