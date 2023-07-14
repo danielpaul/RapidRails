@@ -1,0 +1,62 @@
+# App Deploy
+
+## Deploy without heroku
+
+Setup any environment variables that need to be added to production after deploy depending on the environment of the server.
+Setup **Sidekiq**, **Redis**, **Postgres** and a **Task Scheduler** as we will need them to run our application.
+
+## Heroku Setup
+
+### Automatic Deploy
+
+Refer to this [guide](https://devcenter.heroku.com/articles/github-integration) to link your github codebase to Heroku and setup automatic deploys.
+
+### Manual Deploy
+
+Install [Heroku CLI](https://toolbelt.heroku.com/) and login to Heroku account (`heroku login`).
+
+Create your heroku app and deploy your **master** branch. You may also use the CLI to deploy your app:
+
+1. `heroku git:remote -a example-app` where **example-app** is the name of your app on heroku.
+2. `git push heroku main`
+
+Setup these addons:
+
+- Heroku Postgres addon
+- Redis addon
+- Heroku Scheduler addon
+
+Setup Buildpacks:
+
+- `heroku buildpacks:set heroku/ruby -a <app_name>` (will take last priority)
+- `heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt.git -a <app_name>`
+- `heroku buildpacks:add --index 2 https://github.com/brandoncc/heroku-buildpack-vips -a <app_name>`
+- `heroku buildpacks:add --index 3 https://github.com/gaffneyc/heroku-buildpack-jemalloc.git -a <app_name>`
+
+## Default Config variables setup
+
+Set these config variables on your cloud platform:
+
+- Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
+- Set `HOST` config var to your domain
+- Set `RAILS_ENV` config var to `production`
+- Set `JEMALLOC_ENABLED` config var to `true`
+
+Refer to [this guide](https://devcenter.heroku.com/articles/config-vars) to setup config vars on Heroku.
+![](../docs/images/config_vars.png)
+
+## Contentful setup
+
+If using contenful for your blogs, setup the webhook to call your production server for clearing cache. `https://<HOST>/contentful/webhook` with the secret token (Header as `Authorization:Bearer`) that is set in the credentials file.
+
+# Rake tasks
+
+Add these default take tasks to your scheduler on production.
+
+- `rake active_storage:purge_unattached_blobs` to purge unattached file that are older than 2 days in active storage. - Run once a day.
+- `rake anonymize:users` to anonymize users data. - Run once a day. Important to delete user's data in our database. Give's time for them to change their mind before we delete their data.
+- `rake sitemap:refresh` to refresh sitemap. - Run once a day.
+
+# Database setup
+
+Run rails `db:migrate` on production after deploy to setup your database.
