@@ -6,9 +6,9 @@ This document provides a guide on how to use the `bin/setup` script for setting 
 
 Before running the script, ensure you have the following services installed:
 
-- Ruby
-- Homebrew (for macOS users)
-- Bundler
+- [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+- [Homebrew](https://brew.sh/) (for macOS users)
+- [Bundler](https://bundler.io/)
 
 ## Script Features
 
@@ -28,24 +28,12 @@ The script performs the following tasks:
 
 If you prefer to perform the setup manually, follow these steps:
 
-1. System Dependencies: Install system dependencies manually using Homebrew or your preferred package manager.
+1. System Dependencies: Install system dependencies manually using [Homebrew](https://brew.sh/) or your preferred package manager.
 
-2. Ruby Dependencies: Run bundle install to install Ruby dependencies.
+2. Ruby Dependencies: `bundle install`
 
-3. Rails Credentials & ENV Variables: Create a .env file from the .env.template file. For Rails credentials, create config/credentials.yml.enc and config/master.key files manually.
+3. Rails Credentials & ENV Variables: You can read more about this in our [files documentation]().
 
-4. Database Setup: Create a config/database.yml file from the config/database.yml.template file. Replace rapid_rails with your database name. Then, run bin/rails db:prepare to set up the database.
+4. Database Setup: Create a config/database.yml file from the config/database.yml.template file. Replace rapid_rails with your database name. Then, run `bin/rails` db:prepare to set up the database. You can read more about this in the [rails guides](https://guides.rubyonrails.org/v2.3/getting_started.html#configuring-a-database).
 
-5. Other Tasks: Run bin/rails log:clear tmp:clear to remove old logs and temp files. Restart the application server using bin/rails restart.
-
-## Configuration
-
-You can enable or disable certain parts of the script by commenting out or uncommenting the relevant sections of the code.
-
-For more detailed information on specific topics, refer to the following documentation:
-
-- [Ruby Installation](https://www.ruby-lang.org/en/documentation/installation/)
-- [Homebrew Installation](https://brew.sh/)
-- [Bundler Documentation](https://bundler.io/)
-- [Rails Database Setup](https://guides.rubyonrails.org/v2.3/getting_started.html#configuring-a-database)
-- [Rails Credentials](https://edgeguides.rubyonrails.org/security.html#environmental-security)
+5. Other Tasks: Run `bin/rails log:clear tmp:clear` to remove old logs and temp files. Restart the application server using `bin/rails restart`.
