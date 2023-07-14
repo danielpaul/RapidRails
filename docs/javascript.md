@@ -8,7 +8,7 @@ Importmaps allow us to control how JavaScript modules are imported in our applic
 
 ## Alpine.js
 
-Alpine.js is a minimal JavaScript framework used for adding interactivity to the website. For example, Alpine is used in the [HeaderComponent](https://github.com/danielpaul/RapidRails/blob/main/app/views/components/landing_page/header_component.rb) to open and close the dropdown menu. Alpine is preferred for simple interactivity such as this because we can avoid creating various Stimulus controllers. 
+Alpine.js is a minimal JavaScript framework used for adding interactivity to the website. For example, Alpine is used in the [HeaderComponent](https://github.com/danielpaul/RapidRails/blob/main/app/views/components/landing_page/header_component.rb) to open and close the dropdown menu. Alpine is preferred for simple interactivity such as this because we can avoid creating various Stimulus controllers.
 To find out more see the [Alpine Docs](https://alpinejs.dev/start-here).
 
 ## Hotwire
