@@ -5,12 +5,13 @@ Our [RapidRailsFormBuilder](https://github.com/danielpaul/RapidRails/blob/main/a
 ## Usage
 
 To use this form builder, you need to specify it when using the form_with or form_for helper in your views:
+
 > `= form_for :something, method: :post, builder: RapidRailsFormBuilder do |form|`
 
 To show form errors render the `FormErrorsComponent` inside the form as follows:
 
 > `= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: RapidRailsFormBuilder`  
-&nbsp;&nbsp;&nbsp;&nbsp;`= render FormErrorsComponent.new(resource)`
+> &nbsp;&nbsp;&nbsp;&nbsp;`= render FormErrorsComponent.new(resource)`
 
 ## Fields
 
@@ -53,7 +54,7 @@ These methods create buttons. Here are some examples:
 These methods create select fields.
 
 > `= form.select :number, {"one": 1, "two": 2}`
-  
+
 > `= form.collection_select :posts, Post.all, :id, :title`
 
 ![Select and collection_select](images/select_and_collection_select.png)
