@@ -17,28 +17,28 @@ Here is how to create and set up an AWS S3 bucket to use on your project:
 1. Head over to [AWS](https://aws.amazon.com/s3/) and create an account.
 
 2. Once you're logged in search for "S3" and click the "Buckets" option under the "S3" service.
-    ![Search S3](images/search_s3.png)
+   ![Search S3](images/search_s3.png)
 
 3. Next, click the "Create bucket" option.
-    ![Create Bucket](images/create_bucket.png)
+   ![Create Bucket](images/create_bucket.png)
 
 4. Fill in a bucket name, choose your region and then click the "Create bucket" button at the bottom of the screen.
-    ![Bucket Options](images/bucket_options.png)
+   ![Bucket Options](images/bucket_options.png)
 
 5. Search for "Users" in the search bar and click the option shown below.
-    ![Search Users](images/search_users.png)
+   ![Search Users](images/search_users.png)
 
 6. Click "Add users"
-    ![Add Users](images/add_users.png)
+   ![Add Users](images/add_users.png)
 
 7. Enter a user name. Something like "active-storage-user" will do. Then hit the "Next" button.
-    ![User Details](images/user_details.png)
+   ![User Details](images/user_details.png)
 
 8. Click the "Attach policies directly" radio button. Then search for the policy named "AmazonS3FullAccess" and check the checkbox. Then hit the "Next" button.
-    ![Set Permissions](images/set_permissions.png)
+   ![Set Permissions](images/set_permissions.png)
 
 9. Finally click the "Create user" button.
-    ![Create User](images/create_user.png)
+   ![Create User](images/create_user.png)
 
 10. Now click on the user you just created.
     ![Select User](images/select_user.png)
