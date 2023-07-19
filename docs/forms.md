@@ -81,7 +81,6 @@ These methods create checkbox and radio button fields. Here are some examples:
 
 There are three locations to update to customise:
 
-* Form fields Tailwind styling are located in the [application.tailwind.css](https://github.com/danielpaul/RapidRails/blob/main/app/assets/stylesheets/application.tailwind.css) file and can be customized by editing the classes.
-* The `RapidRailsFormBuilder` adds default classes to the form fields for styling. You can override these classes by specifying the `:class` option. If you would like to change the default styling for all form fields, you can do so by editing the [RapidRailsFormBuilder](https://github.com/danielpaul/RapidRails/blob/main/app/helpers/rapid_rails_form_builder.rb)
-* The [FormErrorsComponent](https://github.com/danielpaul/RapidRails/blob/main/app/views/components/form_errors_component.rb) can also be edited to change the default styling for form errors.
-
+- Form fields Tailwind styling are located in the [application.tailwind.css](https://github.com/danielpaul/RapidRails/blob/main/app/assets/stylesheets/application.tailwind.css) file and can be customized by editing the classes.
+- The `RapidRailsFormBuilder` adds default classes to the form fields for styling. You can override these classes by specifying the `:class` option. If you would like to change the default styling for all form fields, you can do so by editing the [RapidRailsFormBuilder](https://github.com/danielpaul/RapidRails/blob/main/app/helpers/rapid_rails_form_builder.rb)
+- The [FormErrorsComponent](https://github.com/danielpaul/RapidRails/blob/main/app/views/components/form_errors_component.rb) can also be edited to change the default styling for form errors.
