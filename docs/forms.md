@@ -27,11 +27,17 @@ These methods create text-like fields. Here are some examples:
 
 ```
 = form.text_field :username
+
 = form.text_field :username, label: "Name"
+
 = form.email_field :email, placeholder: "testuser@test.com"
+
 = form.email_field :email, hint: "Enter your email"
+
 = form.password_field :password, required: true
+
 = form.password_field :password, error: "Password must be at least 8 characters long"
+
 = form.text_area :bio
 ```
 
@@ -41,11 +47,13 @@ These methods create text-like fields. Here are some examples:
 
 These methods create buttons. Here are some examples:
 
-> `= form.button 'Cancel'`
+```
+= form.button 'Cancel'
 
-> `= form.button 'Cancel', disabled: true`
+= form.button 'Cancel', disabled: true
 
-> `= form.submit 'Submit'`
+= form.submit 'Submit'
+```
 
 ![Buttons](images/buttons.png)
 
@@ -53,9 +61,11 @@ These methods create buttons. Here are some examples:
 
 These methods create select fields.
 
-> `= form.select :number, {"one": 1, "two": 2}`
+```
+= form.select :number, {"one": 1, "two": 2}
 
-> `= form.collection_select :posts, Post.all, :id, :title`
+= form.collection_select :posts, Post.all, :id, :title
+```
 
 ![Select and collection_select](images/select_and_collection_select.png)
 
@@ -63,17 +73,19 @@ These methods create select fields.
 
 These methods create checkbox and radio button fields. Here are some examples:
 
-> `= form.check_box :remember_me`
+```
+= form.check_box :remember_me
 
-> `= form.check_box :remember_me, checked: true`
+= form.check_box :remember_me, checked: true
 
-> `= form.check_box :remember_me, disabled: true`
+= form.check_box :remember_me, disabled: true
 
-> `= form.radio_button :colour, "red", label: "Red"`
+= form.radio_button :colour, "red", label: "Red"
 
-> `= form.radio_button :colour, "blue",  label: "Blue", checked: true`
+= form.radio_button :colour, "blue",  label: "Blue", checked: true
 
-> `= form.radio_button :colour, "black", label: "Black", disabled: true`
+= form.radio_button :colour, "black", label: "Black", disabled: true
+```
 
 ![Check boxes and radio buttons](images/check_boxes_and_radio_buttons.png)
 
