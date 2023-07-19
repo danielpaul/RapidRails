@@ -1,6 +1,6 @@
 # JavaScript
 
-RapidRails leverages modern JS libraries and frameworks such as Alpine.js and Hotwire as well as Rails Importmaps. Here's a brief overview of how each is used:
+RapidRails leverages modern JS libraries and frameworks such as [Alpine.js](https://alpinejs.dev/) and [Hotwire](https://hotwired.dev/) as well as Rails Importmaps. Here's a brief overview of how each is used:
 
 ## Importmaps
 
