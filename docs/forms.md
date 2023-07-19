@@ -43,7 +43,7 @@ These methods create text-like fields. Here are some examples:
 
 ![Text fields](images/text_fields.png)
 
-### **submit and button**
+### `submit` and `button`
 
 These methods create buttons. Here are some examples:
 
@@ -57,7 +57,7 @@ These methods create buttons. Here are some examples:
 
 ![Buttons](images/buttons.png)
 
-### **select and collection_select**
+### `select` and `collection_select`
 
 These methods create select fields.
 
@@ -69,7 +69,7 @@ These methods create select fields.
 
 ![Select and collection_select](images/select_and_collection_select.png)
 
-### **check_box and radio_button**
+### `check_box` and `radio_button`
 
 These methods create checkbox and radio button fields. Here are some examples:
 
