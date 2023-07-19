@@ -4,9 +4,7 @@ In RapidRails, we use [Tailwind CSS](https://tailwindcss.com/docs) for styling. 
 
 ## Customising Styles
 
-In RapidRails, we have created some new classes for things like cards, links and buttons. These classes are defined in the [application.tailwind.css](https://github.com/danielpaul/RapidRails/blob/main/app/assets/stylesheets/application.tailwind.css) file. For example, we have a custom class for buttons which you can use this class in your HTML like so:
-
-> `<button class="btn">Click me</button>`
+RapidRails, includes components for cards, links and buttons. These classes are defined in the [application.tailwind.css](https://github.com/danielpaul/RapidRails/blob/main/app/assets/stylesheets/application.tailwind.css) file. 
 
 You can find more examples of styled UI elements [here](https://github.com/danielpaul/RapidRails/blob/main/app/views/dashboard/index.html.haml).
 
@@ -19,9 +17,6 @@ We use a custom form builder [RapidRailsFormBuilder](https://github.com/danielp
 
 ![Forms](images/forms.png)
 
-## Modifying Default Styles
-
-If you want to change the default styling for all form fields, you can do so by editing the [RapidRailsFormBuilder](https://github.com/danielpaul/RapidRails/blob/main/app/helpers/rapid_rails_form_builder.rb). Classes used for inputs can also be found in the [application.tailwind.css](https://github.com/danielpaul/RapidRails/blob/main/app/assets/stylesheets/application.tailwind.css) file.
 
 ## Colors and Fonts
 
