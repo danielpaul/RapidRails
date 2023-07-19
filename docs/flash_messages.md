@@ -25,8 +25,9 @@ def flash_message(type, heading, body = nil, now: false)
 ```
 
 This method takes four parameters:
+
 - `type` (required): `:success`, `:notice` or `:error`
-- `heading` (required): The heading of the message. 
+- `heading` (required): The heading of the message.
 - `body` (optional): The body of the message.
 - `now` (optional): Determines if the message should be rendered immediately.
 
