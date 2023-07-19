@@ -375,7 +375,7 @@
 
 .page.disabled {
   @apply text-neutral-400 dark:text-neutral-500
-  bg-neutral-200 dark:bg-transparent
+  bg-neutral-200 dark:bg-transparent;
 }
 
 .page.active {
