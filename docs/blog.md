@@ -19,7 +19,9 @@ To create your own blog:
 
 6. Import our sample model structure to the space.
 
-   > `contentful space import --space-id <space_id> --content-file lib/templates/contentful.json`
+```
+contentful space import --space-id <space_id> --content-file lib/templates/contentful.json
+```
 
 7. Click the "Content" tab on the topbar and then the "Add entry" button on the top right hand side.
    ![Add Entry](images/add_entry.png)
