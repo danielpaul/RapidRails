@@ -12,8 +12,10 @@ In a production environment, the sitemap is stored in an AWS S3 bucket. The buck
 
 ## Rake Tasks
 
-To refresh sitemaps run:
+To regenerate the sitemap, you can run the following command:
 
-> `rake sitemap:refresh`
+```
+rake sitemap:refresh
+```
 
 Schedule this rake task to run once a day in production.
