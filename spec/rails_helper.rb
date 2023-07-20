@@ -67,6 +67,9 @@ RSpec.configure do |config|
 
   # FactoryBot methods
   config.include FactoryBot::Syntax::Methods
+
+  # Routes helper for request tests
+  config.include Rails.application.routes.url_helpers
 end
 
 Shoulda::Matchers.configure do |config|
