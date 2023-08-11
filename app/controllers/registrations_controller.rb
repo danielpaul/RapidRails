@@ -1,10 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-  # TODO: Move to Confirmations Controller and update Authentication docs.
-  def confirm_email
-    @email = params[:email]
-    redirect_to root_path if @email.nil?
-  end
-
   def cancel_email_change!
     authenticate_scope!
 
