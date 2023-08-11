@@ -23,7 +23,7 @@ end
 
 ## 3. Update Onboarding View
 
-In the app/views/onboarding/index.html.haml(https://github.com/danielpaul/RapidRails/blob/main/app/views/onboarding/index.html.haml) file, update the form to include the fields you defined in the previous step.
+In the [app/views/onboarding/index.html.haml](https://github.com/danielpaul/RapidRails/blob/main/app/views/onboarding/index.html.haml) file, update the form to include the fields you defined in the previous step.
 
 ```
 = form_with(model: current_user, url: onboarding_path, method: :patch, builder: RapidRailsFormBuilder, class: 'mt-5') do |f|
