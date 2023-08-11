@@ -2,7 +2,6 @@
 
 This guide will help you set up user onboarding in your application with RapidRails.
 
-
 ## 1. Enable Onboarding
 
 In the [config/initializers/0_constants.rb](https://github.com/danielpaul/RapidRails/blob/main/config/initializers/0_constants.rb) file, set the ENABLE_ONBOARDING constant to true.
