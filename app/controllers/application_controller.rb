@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
   def check_onboarding!
     return if ENABLE_ONBOARDING != true
     return if current_user.onboarding_completed?
+    return if request.path == onboarding_path
 
     redirect_to onboarding_path
   end
@@ -47,7 +48,7 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     if devise_controller? &&
-        !(resource_name == :user && controller_name == "registrations" && ["edit", "update"].include?(action_name))
+        !(resource_name == :user && controller_name == "registrations" && %w[edit update].include?(action_name))
       "application_devise"
     else
       "application"
