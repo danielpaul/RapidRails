@@ -19,6 +19,5 @@ module User::Onboarding
 
   def set_onboarding_completed_at
     self.onboarding_completed_at ||= Time.current if onboarding_completed?
-  end  
-
+  end
 end

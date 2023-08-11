@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     if devise_controller? &&
-        !(resource_name == :user && controller_name == "registrations" && ["edit", "update"].include?(action_name))
+        !(resource_name == :user && controller_name == "registrations" && %w[edit update].include?(action_name))
       "application_devise"
     else
       "application"
