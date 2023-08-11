@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
   def check_onboarding!
     return if ENABLE_ONBOARDING != true
     return if current_user.onboarding_completed?
+    return if request.path == onboarding_path
 
     redirect_to onboarding_path
   end
