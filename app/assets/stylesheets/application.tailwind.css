@@ -360,3 +360,34 @@
     @apply shadow-lg;
   }
 }
+
+/* Pagy */
+.pagy-nav.pagination {
+  @apply inline-flex shadow-sm rounded-md;
+}
+
+.page {
+  @apply text-sm font-semibold
+  px-4 py-2
+  border border-neutral-300/50 dark:border-neutral-750
+  hover:bg-neutral-100 dark:hover:bg-neutral-900;
+}
+
+.page.disabled {
+  @apply text-neutral-400 dark:text-neutral-500
+  bg-neutral-200 dark:bg-transparent;
+}
+
+.page.active {
+  @apply bg-primary dark:bg-[#27262b]
+  text-white 
+  cursor-auto;
+}
+
+.page.prev {
+  @apply rounded-l-md;
+}
+
+.page.next {
+  @apply rounded-r-md;
+}
