@@ -45,6 +45,10 @@ Set these config variables on your cloud platform:
 Refer to [this guide](https://devcenter.heroku.com/articles/config-vars) to setup config vars on Heroku.
 ![](../docs/images/config_vars.png)
 
+## Heroku extensions setup
+
+- To ensure proper functionality of Sentry's release detection with Heroku, it is important to run the following command: `heroku labs:enable runtime-dyno-metadata -a <app name>`.
+
 ## Contentful setup
 
 If using contenful for your blogs, setup the webhook to call your production server for clearing cache. `https://<HOST>/contentful/webhook` with the secret token (Header as `Authorization:Bearer`) that is set in the credentials file.
