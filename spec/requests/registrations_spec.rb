@@ -9,7 +9,7 @@ RSpec.describe "Registrations Controller", type: :request do
       Devise.allow_unconfirmed_access_for = 0.days
     end
 
-    context "when xonfirmation is required setting is enabled in devise config" do
+    context "when confirmation is required setting is enabled in devise config" do
       context "when creating a new user" do
         it "should redirect to the `check email for confirmatiom page` after sign up" do
           post_request user_registration_path, {
