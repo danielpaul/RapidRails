@@ -20,3 +20,11 @@ ENABLE_ONBOARDING = true
 ENABLE_GOOGLE_OAUTH = true
 
 ANONYMIZE_USER_DATA_AFTER_DAYS = 7
+
+if Rails.env.production?
+  SITEMAP_HOST = "https://" +
+                 Rails.application.credentials.dig(:aws, :bucket) + 
+                 ".s3." +
+                 Rails.application.credentials.dig(:aws, :region) + 
+                 ".amazonaws.com"
+end
