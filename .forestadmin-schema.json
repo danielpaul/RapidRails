@@ -1137,7 +1137,7 @@
     "liana_version": "8.0.8",
     "stack": {
       "database_type": "postgresql",
-      "orm_version": "7.0.5"
+      "orm_version": "7.0.7"
     }
   }
 }
