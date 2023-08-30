@@ -40,7 +40,6 @@ Set these config variables on your cloud platform:
 - Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
 - Set `HOST` config var to your domain
 - Set `RAILS_ENV` config var to `production`
-- Set `JEMALLOC_ENABLED` config var to `true`
 
 Refer to [this guide](https://devcenter.heroku.com/articles/config-vars) to setup config vars on Heroku.
 ![](../docs/images/config_vars.png)
