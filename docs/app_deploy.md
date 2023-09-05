@@ -27,11 +27,7 @@ Setup these addons:
 - Heroku Scheduler addon
 
 Setup Buildpacks:
-
-- `heroku buildpacks:set heroku/ruby -a <app_name>` (will take last priority)
-- `heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt.git -a <app_name>`
-- `heroku buildpacks:add --index 2 https://github.com/brandoncc/heroku-buildpack-vips -a <app_name>`
-- `heroku buildpacks:add --index 3 https://github.com/gaffneyc/heroku-buildpack-jemalloc.git -a <app_name>`
+- `heroku buildpacks:set heroku/ruby -a <app_name>`
 
 ## Default Config variables setup
 
