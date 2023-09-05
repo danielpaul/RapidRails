@@ -373,13 +373,8 @@
   hover:bg-neutral-100 dark:hover:bg-neutral-900;
 }
 
-.page.disabled {
-  @apply text-neutral-400 dark:text-neutral-500
-  bg-neutral-200 dark:bg-transparent;
-}
-
 .page.active {
-  @apply bg-primary dark:bg-[#27262b]
+  @apply bg-primary
   text-white 
   cursor-auto;
 }
