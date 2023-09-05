@@ -1,6 +1,6 @@
 class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   class_attribute :text_field_helpers,
-                  default: field_helpers - %i[label fields_for fields hidden_field]
+    default: field_helpers - %i[label fields_for fields hidden_field]
   #  leans on the FormBuilder class_attribute `field_helpers`
   #  you'll want to add a method for each of the specific helpers listed here if you want to style them
 
@@ -16,7 +16,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     RUBY_EVAL
   end
 
-  def submit(value = nil, options = {})
+  def submit(value = nil, options = {}, &block)
     classes = options[:class] || "btn-primary"
     super(
       value,
@@ -24,7 +24,8 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
         class: classes
       }.merge(options).merge(
         button_data_disable_with(value, options)
-      )
+      ),
+      &block
     )
   end
 
@@ -97,9 +98,9 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
         field_method,
         object_method,
         options.merge({
-                        tailwindified: true,
-                        class: "text-input #{options[:class]}"
-                      }).except(:label, :error, :hint)
+          tailwindified: true,
+          class: "text-input #{options[:class]}"
+        }).except(:label, :error, :hint)
       )
     end
   end
@@ -116,7 +117,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
 
   def label(method, text = nil, options = {}, &block)
     new_options = options.except(:label, :error, :hint, :id).merge(
-      class: "#{options[:class]} #{'required' if options[:required]}"
+      class: "#{options[:class]} #{"required" if options[:required]}"
     )
 
     if options[:id]
@@ -135,25 +136,25 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
   # for most fields
   def form_field(method, options = {}, more_options = {})
     label = if options[:label] == false
-              ""
-            else
-              @template.content_tag(
-                "div",
-                label(
-                  method,
-                  options[:label],
-                  options.merge(class: "label")
-                ),
-                { class: "mb-2" }
-              )
-            end
+      ""
+    else
+      @template.content_tag(
+        "div",
+        label(
+          method,
+          options[:label],
+          options.merge(class: "label")
+        ),
+        {class: "mb-2"}
+      )
+    end
 
     errors = errors_for(method, options)
-    errors = label(method, errors, { class: "error-label" }) if errors.present?
+    errors = label(method, errors, {class: "error-label"}) if errors.present?
 
-    hint = (@template.content_tag("p", options[:hint], { class: "hint" }) if options[:hint].present?)
+    hint = (@template.content_tag("p", options[:hint], {class: "hint"}) if options[:hint].present?)
 
-    @template.content_tag("div", { class: wrapper_classes(method, options.merge(more_options)) }) do
+    @template.content_tag("div", {class: wrapper_classes(method, options.merge(more_options))}) do
       [label, yield, errors, hint].join.html_safe
     end
   end
@@ -170,8 +171,8 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
       )
     )
 
-    @template.content_tag("div", { class: wrapper_classes(method, options) }) do
-      @template.content_tag("div", { class: "group flex items-center" }) do
+    @template.content_tag("div", {class: wrapper_classes(method, options)}) do
+      @template.content_tag("div", {class: "group flex items-center"}) do
         yield + label
       end
     end
@@ -191,7 +192,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     return if (options[:data] && options[:data][:turbo_disable_with]) || options[:data_turbo_disable_with]
 
     # just adds a spinner to the same button text
-    { "data-turbo-submits-with": spinner_svg + value }
+    {"data-turbo-submits-with": spinner_svg + value}
   end
 
   def spinner_svg
