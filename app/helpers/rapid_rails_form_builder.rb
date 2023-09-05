@@ -16,7 +16,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     RUBY_EVAL
   end
 
-  def submit(value = nil, options = {})
+  def submit(value = nil, options = {}, &block)
     classes = options[:class] || "btn-primary"
     super(
       value,
@@ -24,7 +24,8 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
         class: classes
       }.merge(options).merge(
         button_data_disable_with(value, options)
-      )
+      ),
+      &block
     )
   end
 
