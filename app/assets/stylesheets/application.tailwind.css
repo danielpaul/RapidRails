@@ -123,7 +123,7 @@
     @apply text-primary link-hover;
   }
 
-  .porse-section {
+  .prose-section {
     @apply prose prose-slate dark:prose-invert 
     max-w-none 
     prose-a:font-semibold prose-a:text-primary prose-a:no-underline 
