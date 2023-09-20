@@ -23,7 +23,7 @@ To create your own blog:
 contentful space import --space-id <space_id> --content-file lib/templates/contentful.json
 ```
 
-7. Update the Webhook's domain & webhook secret key in the webhook settings page.
+7. Update the Webhook's domain & webhook secret key in the webhook settings page. Add a secret header named `Authorization:Bearer` and set your own password in the Contentful dashboard and in our credentials file.
 
 8. Click the "Content" tab on the topbar and then the "Add entry" button on the top right hand side.
    ![Add Entry](images/add_entry.png)
