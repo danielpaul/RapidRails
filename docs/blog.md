@@ -15,7 +15,7 @@ To create your own blog:
 4. Copy the "Space ID", "Content Delivery API - access token" and "Content Preview API - access token" and paste them into your `credentials.yml` file.
    ![Contentful IDs](images/contentful_ids.png)
 
-5. Install the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/).
+5. Install the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/) & login with `contentful login`.
 
 6. Import our sample model structure to the space.
 
@@ -23,10 +23,12 @@ To create your own blog:
 contentful space import --space-id <space_id> --content-file lib/templates/contentful.json
 ```
 
-7. Click the "Content" tab on the topbar and then the "Add entry" button on the top right hand side.
+7. Update the Webhook's domain & webhook secret key in the webhook settings page.
+
+8. Click the "Content" tab on the topbar and then the "Add entry" button on the top right hand side.
    ![Add Entry](images/add_entry.png)
 
-8. Then simply fill in the fields and hit "Publish changes".
+9. Then simply fill in the fields and hit "Publish changes".
    ![Publish Post](images/publish_post.png)
 
-9. Visit `http://localhost:3000/blog` and ta-da! Your blog is all set up!
+10. Visit `http://localhost:3000/blog` and ta-da! Your blog is all set up!
