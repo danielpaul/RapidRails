@@ -10,7 +10,7 @@ Rails.application.configure do
     Bullet.add_footer = true
   end
 
-  Rack::MiniProfiler.config.position = 'bottom-right'
+  Rack::MiniProfiler.config.position = "bottom-right"
 
   config.action_mailer.delivery_method = :letter_opener_web
   config.action_mailer.perform_deliveries = true
@@ -81,4 +81,7 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Allow .local domains
+  config.hosts << /.*\.local/
 end
