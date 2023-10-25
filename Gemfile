@@ -80,6 +80,7 @@ gem "jwt"
 
 # Email Delivery
 gem "postmark-rails"
+gem 'premailer-rails'
 
 # Background Jobs
 gem "sidekiq"
