@@ -262,7 +262,7 @@
   /* Forms */
 
   .form-field .label {
-    @apply block text-sm font-medium leading-6 text-neutral-900 dark:text-white;
+    @apply block text-sm font-medium leading-6 text-neutral-900 dark:text-white border-0 p-0 bg-transparent;
   }
 
   .radio-check-label {
