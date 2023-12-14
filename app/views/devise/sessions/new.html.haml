@@ -25,5 +25,6 @@
       %div
         = f.button "Sign in", class: "flex w-full justify-center btn-primary"
 
-.text-center.mt-8
-  = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "link text-sm font-medium"
+- if Devise.allow_unconfirmed_access_for
+  .text-center.mt-8
+    = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "link text-sm font-medium"

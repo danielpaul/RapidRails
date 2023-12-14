@@ -49,10 +49,6 @@ module RapidRails
         development:
           <<: *default
 
-          forest_admin:
-            env_secret: XXX
-            auth_secret: XXX
-
         staging:
           <<: *default
 
@@ -64,10 +60,6 @@ module RapidRails
             region: eu-west-2
             bucket: rapid_rails_staging
 
-          forest_admin:
-            env_secret: XXX
-            auth_secret: XXX
-
         production:
           <<: *default
 
@@ -78,10 +70,6 @@ module RapidRails
             secret_access_key: XXX
             region: eu-west-2
             bucket: rapid_rails_production
-
-          forest_admin:
-            env_secret: XXX
-            auth_secret: XXX
 
       YAML
     end

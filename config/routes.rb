@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get :confirm_email, to: "confirmations#confirm_email", as: "confirm_email", path: "users/confirm-email"
     post :cancel_email_change, to: "registrations#cancel_email_change!", as: "cancel_email_change",
-      path: "users/cancel-email-change"
+                               path: "users/cancel-email-change"
   end
 
   # User Onboarding
@@ -51,8 +51,6 @@ Rails.application.routes.draw do
   end
 
   # ---------- [ Gems ] ---------- #
-  mount ForestLiana::Engine => "/forest"
-
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   if defined?(Sidekiq) && ENV["SIDEKIQ_ADMIN_PASSWORD"] && ENV["SIDEKIQ_ADMIN_USERNAME"]
