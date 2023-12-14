@@ -2,13 +2,7 @@
 
 ## Local Development
 
-We use the gem [Letter Opener Web](https://github.com/fgrehm/letter_opener_web) to deliver emails in development for testing purposes. It provides a web interface based on the original [Letter Opener](https://github.com/ryanb/letter_opener) gem. All delivered emails can be accessed at `http://localhost:3000/letter_opener`.
-
-If you prefer the email to open a new browser tab on delivery, you can update the config to the following in the [development.rb](../config/environments/development.rb) file.
-
-```
-config.action_mailer.delivery_method = :letter_opener
-```
+All emails sent from development are automatically opened in the browser by `letter_opener` gem.
 
 ## Email Styles
 

@@ -50,8 +50,6 @@ Rails.application.routes.draw do
   end
 
   # ---------- [ Gems ] ---------- #
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-
   if defined?(Sidekiq) && ENV["SIDEKIQ_ADMIN_PASSWORD"] && ENV["SIDEKIQ_ADMIN_USERNAME"]
     require "sidekiq/web"
 
