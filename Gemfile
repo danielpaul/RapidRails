@@ -45,9 +45,6 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-# Use Sass to process CSS
-gem "sassc-rails"
-
 # Front-end Things
 gem "hamlit-rails"
 gem "heroicon"
@@ -80,7 +77,7 @@ gem "jwt"
 
 # Email Delivery
 gem "postmark-rails"
-gem 'premailer-rails'
+gem "premailer-rails"
 
 # Background Jobs
 gem "sidekiq"
