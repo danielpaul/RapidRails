@@ -92,9 +92,6 @@ gem "active_storage_validations"
 gem "aws-sdk-s3"
 gem "image_processing"
 
-# Internal Admin Panel
-gem "forest_liana"
-
 group :development, :test do
   gem "dotenv-rails"
 
