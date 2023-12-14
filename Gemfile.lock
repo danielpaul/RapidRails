@@ -128,6 +128,8 @@ GEM
       http (> 0.8, < 6.0)
       multi_json (~> 1)
     crass (1.0.6)
+    css_parser (1.16.0)
+      addressable
     date (3.3.3)
     debug (1.7.2)
       irb (>= 1.5.0)
@@ -215,6 +217,7 @@ GEM
       haml (>= 4.0)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
+    htmlentities (4.3.4)
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -352,13 +355,24 @@ GEM
     postmark-rails (0.22.1)
       actionmailer (>= 3.0.0)
       postmark (>= 1.21.3, < 2.0)
+    premailer (1.21.0)
+      addressable
+      css_parser (>= 1.12.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.12.0)
+      actionmailer (>= 3)
+      net-smtp
+      premailer (~> 1.7, >= 1.7.9)
     public_suffix (5.0.1)
-    puma (6.2.2)
+    puma (6.3.1)
       nio4r (~> 2.0)
     pundit (2.3.0)
       activesupport (>= 3.0.0)
     racc (1.7.1)
     rack (2.2.8)
+    rack-canonical-host (1.2.0)
+      addressable (> 0, < 3)
+      rack (>= 1, < 4)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
     rack-mini-profiler (3.1.0)
@@ -588,8 +602,10 @@ DEPENDENCIES
   pg (~> 1.1)
   phlex-rails
   postmark-rails
+  premailer-rails
   puma
   pundit
+  rack-canonical-host
   rack-mini-profiler
   rails (~> 7.0.4, >= 7.0.4.3)
   rails_live_reload
@@ -618,4 +634,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.16
+   2.4.10

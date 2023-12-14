@@ -123,7 +123,7 @@
     @apply text-primary link-hover;
   }
 
-  .porse-section {
+  .prose-section {
     @apply prose prose-slate dark:prose-invert 
     max-w-none 
     prose-a:font-semibold prose-a:text-primary prose-a:no-underline 
@@ -241,10 +241,28 @@
     @apply px-6 py-3 border-t card-border;
   }
 
+  /* Tables */
+  .thead {
+    @apply bg-gray-50 dark:bg-card-dark;
+  }
+
+  .th {
+    @apply px-3 py-3.5 text-heading text-left text-sm font-semibold;
+  }
+
+  .tbody {
+    @apply bg-card dark:bg-card-dark
+    divide-y divide-neutral-300/50 dark:divide-neutral-750;
+  }
+
+  .td {
+    @apply whitespace-nowrap px-3 py-4 text-sm text-muted;
+  }
+
   /* Forms */
 
   .form-field .label {
-    @apply block text-sm font-medium leading-6 text-neutral-900 dark:text-white;
+    @apply block text-sm font-medium leading-6 text-neutral-900 dark:text-white border-0 p-0 bg-transparent;
   }
 
   .radio-check-label {
@@ -373,13 +391,8 @@
   hover:bg-neutral-100 dark:hover:bg-neutral-900;
 }
 
-.page.disabled {
-  @apply text-neutral-400 dark:text-neutral-500
-  bg-neutral-200 dark:bg-transparent;
-}
-
 .page.active {
-  @apply bg-primary dark:bg-[#27262b]
+  @apply bg-primary
   text-white 
   cursor-auto;
 }
