@@ -16,8 +16,7 @@ Rails.application.routes.draw do
   # ---------- [ Devise ] ---------- #
   custom_controllers = {
     registrations: "registrations",
-    confirmations: "confirmations",
-    passwords: "passwords"
+    confirmations: "confirmations"
   }
   custom_controllers[:omniauth_callbacks] = "users/omniauth_callbacks" if ENABLE_GOOGLE_OAUTH
   devise_for :users, controllers: custom_controllers
