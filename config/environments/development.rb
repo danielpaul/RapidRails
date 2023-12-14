@@ -12,7 +12,7 @@ Rails.application.configure do
 
   Rack::MiniProfiler.config.position = "bottom-right"
 
-  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
 
   # Settings specified here will take precedence over those in config/application.rb.

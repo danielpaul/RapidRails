@@ -41,8 +41,8 @@ brew services start redis
 - `bin/dev` to run the app locally
 - `localhost:3000` to view the app
 - `localhost:3000/rails/mailers` to view mailers preview locally
-- `localhost:3000/letter_opener` to view emails sent locally
 - `localhost:3000/sidekiq` to view sidekiq dashboard
+- Emails sent in local development are automatically opened in the browser by letter_opener.
 
 # Gems Documentations
 
