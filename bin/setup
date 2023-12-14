@@ -9,18 +9,18 @@ $new_project = nil
 $final_checklist = []
 
 def color_text(color, text)
-  case color
-  when :red
-    color = 91
-  when :green
-    color = 92
-  when :yellow
-    color = 93
-  when :blue
-    color = 94
-  else
-    color = 0
-  end
+  color = case color
+          when :red
+            91
+          when :green
+            92
+          when :yellow
+            93
+          when :blue
+            94
+          else
+            0
+          end
 
   "\e[#{color};1m#{text}\e[0m"
 end
@@ -36,13 +36,11 @@ def display_message(type, text)
                 else
                   ["ℹ", :blue]
                 end
-  
+
   render_text = color_text(color, icon) + " #{text}"
 
-  if [:success, :warning, :error].include?(type)
-    $final_checklist << render_text
-  end
-    
+  $final_checklist << render_text if %i[success warning error].include?(type)
+
   puts "\n"
   puts render_text
 end
@@ -62,21 +60,18 @@ def ask_if_new_project
 end
 
 def is_new_project?
-  if $new_project.nil?
-    ask_if_new_project
-  end
+  ask_if_new_project if $new_project.nil?
 
   $new_project == true
 end
 
 FileUtils.chdir APP_ROOT do
-
   # This script is a way to set up or update your development environment automatically.
   # This script is idempotent, so that you can run it at any time and get an expectable outcome.
   # Add necessary setup steps to this file.
 
   puts color_text(:blue, "\n===== Rapid engines are warming up... strap in! =====")
-  puts 
+  puts
 
   # ======================== Install system dependencies ======================== #
   display_message(:info, "Installing system dependencies...")
@@ -91,13 +86,13 @@ FileUtils.chdir APP_ROOT do
 
   # ======================== Install Ruby dependencies ======================== #
   display_message(:info, "Installing Ruby dependencies...")
+  system!("gem install bundler --conservative")
   system("bundle check") || system!("bundle install")
   display_message(:success, "Ruby dependencies.")
 
-
   # ======================== Setup Rails Credentials & ENV variables ======================== #
   display_message :info, "Preparing .env file..."
-  
+
   if File.exist?(".env")
     display_message :warning, ".env file exists. Skipped .env file creation."
   else
@@ -107,7 +102,7 @@ FileUtils.chdir APP_ROOT do
 
   display_message :info, "Preparing Rails credentials file..."
 
-  # credentails exist, master key exists -> skip 
+  # credentails exist, master key exists -> skip
   # credentials exist, master key does not exist -> new project? -> create or skip based on answer
   # credentials do not exist, master key exists -> create
   # credentials do not exist, master key does not exist -> create
@@ -153,9 +148,7 @@ FileUtils.chdir APP_ROOT do
   # Update Database name in config/database.yml
   display_message :info, "Preparing database.yml file..."
 
-  if is_new_project?
-    FileUtils.rm "config/database.yml" if File.exist?("config/database.yml")
-  end
+  FileUtils.rm "config/database.yml" if is_new_project? && File.exist?("config/database.yml")
 
   if File.exist?("config/database.yml")
     display_message :warning, "config/database.yml file exists. Skipped database.yml file setup."
@@ -173,7 +166,6 @@ FileUtils.chdir APP_ROOT do
   system! "bin/rails db:prepare"
   display_message :success, "Database setup."
 
-
   # ======================== Other stuff ======================== #
   display_message :info, "Removing old logs and tempfiles..."
   system! "bin/rails log:clear tmp:clear"
@@ -183,21 +175,20 @@ FileUtils.chdir APP_ROOT do
   system! "bin/rails restart"
   display_message :success, "Application server restarted."
 
-
   puts "\n\n\n"
-  art = <<-MULTI_LINE_STRING
-██████╗░░█████╗░██████╗░██╗██████╗░██████╗░░█████╗░██╗██╗░░░░░░██████╗
-██╔══██╗██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██╔══██╗██║██║░░░░░██╔════╝
-██████╔╝███████║██████╔╝██║██║░░██║██████╔╝███████║██║██║░░░░░╚█████╗░
-██╔══██╗██╔══██║██╔═══╝░██║██║░░██║██╔══██╗██╔══██║██║██║░░░░░░╚═══██╗
-██║░░██║██║░░██║██║░░░░░██║██████╔╝██║░░██║██║░░██║██║███████╗██████╔╝
-╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝╚══════╝╚═════╝░              
-MULTI_LINE_STRING
+  art = <<~MULTI_LINE_STRING
+    ██████╗░░█████╗░██████╗░██╗██████╗░██████╗░░█████╗░██╗██╗░░░░░░██████╗
+    ██╔══██╗██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██╔══██╗██║██║░░░░░██╔════╝
+    ██████╔╝███████║██████╔╝██║██║░░██║██████╔╝███████║██║██║░░░░░╚█████╗░
+    ██╔══██╗██╔══██║██╔═══╝░██║██║░░██║██╔══██╗██╔══██║██║██║░░░░░░╚═══██╗
+    ██║░░██║██║░░██║██║░░░░░██║██████╔╝██║░░██║██║░░██║██║███████╗██████╔╝
+    ╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝╚══════╝╚═════╝░#{'              '}
+  MULTI_LINE_STRING
 
   puts color_text(:blue, art)
   puts "\n"
   puts color_text(:green, "\n=============== You're ready to go! ===============")
   puts
   puts $final_checklist
-  puts 
+  puts
 end
