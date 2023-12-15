@@ -1,0 +1,98 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "RapidRails Docs",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "isWhiteLabeled": true,
+  "feedback": {
+    "suggestEdit": false,
+    "raiseIssue": true,
+    "thumbsRating": false
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#ca3a31",
+    "light": "#ca3a31",
+    "dark": "#ca3a31",
+    "background": {
+      "light": "#faf7f1",
+      "dark": "#161618"
+    },
+    "anchors": {
+      "from": "#ca3a31",
+      "to": "#ca3a31"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@rapidrails.dev"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://cookiechimp.com"
+  },
+  "anchors": [],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "home",
+        "getting_started",
+        "setup",
+        "upgrading"
+      ]
+    },
+    {
+      "group": "Backend",
+      "pages": [
+        "credentials_and_secrets",
+        "active_storage",
+        "background_jobs",
+        "email",
+        "record_versioning",
+        "sitemaps",
+        "blog",
+        "api",
+        "flash_messages",
+        {
+          "group": "Users",
+          "pages": [
+            "authentication",
+            "user_deletion"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Frontend",
+      "pages": [
+        "styling_and_tailwindcss",
+        "forms",
+        "javascript",
+        "view_templates"
+      ]
+    },
+    {
+      "group": "Deploy",
+      "pages": [
+        "deploying",
+        "heroku_database_backup",
+        "automated_testing_and_ci",
+        "error_tracking"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/danielpaulme",
+    "github": "https://github.com/IdentitySquare/CookieChimp-Docs"
+  },
+  "analytics": {
+    "pirsch": {
+      "id": "Vr5YSZNge2WlBW5CxGvi7U2UDRBNPCka"
+    }
+  }
+}
