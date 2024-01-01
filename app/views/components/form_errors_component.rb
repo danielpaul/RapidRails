@@ -12,11 +12,13 @@ class FormErrorsComponent < ApplicationComponent
       type: "danger",
       message: "#{pluralize(@object.errors.count, "error")} prohibited this from being saved:",
       dismissable: false
-    ) do
-      ul(class: "list-disc list-inside") {
-        @object.errors.full_messages.each do |msg|
-          li { msg }
-        end
+    ) do |alert|
+      alert.body {
+        ul(class: "list-disc list-inside") {
+          @object.errors.full_messages.each do |msg|
+            li { msg }
+          end
+        }
       }
     end
   end
