@@ -35,8 +35,8 @@ ANONYMIZE_USER_DATA_AFTER_DAYS = 7
 
 if Rails.env.production?
   SITEMAP_HOST = "https://" +
-                 Rails.application.credentials.dig(Rails.env.to_sym, :aws, :bucket) +
-                 ".s3." +
-                 Rails.application.credentials.dig(Rails.env.to_sym, :aws, :region) +
-                 ".amazonaws.com"
+    Rails.application.credentials.dig(Rails.env.to_sym, :aws, :bucket) +
+    ".s3." +
+    Rails.application.credentials.dig(Rails.env.to_sym, :aws, :region) +
+    ".amazonaws.com"
 end
