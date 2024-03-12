@@ -2,6 +2,9 @@
 
 APP_NAME = "Rapid Rails".freeze
 
+APPLE_TOUCH_ICON_PATH = "/apple-touch-icon.png".freeze
+BROWSER_THEME_COLOR = "#000000".freeze
+
 COMPANY_NAME = "Daniel Paul".freeze
 COMPANY_LOCATION = "London, UK".freeze
 
