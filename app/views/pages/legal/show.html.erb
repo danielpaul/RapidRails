@@ -1,6 +1,6 @@
 <main class="py-24">
   <div class="relative px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-[40rem] porse-section">
+    <div class="mx-auto max-w-[40rem] prose-section">
       <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true).render(@md_file).html_safe %>
     </div>
   </div>
