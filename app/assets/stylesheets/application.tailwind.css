@@ -386,15 +386,19 @@
 
 .page {
   @apply text-sm font-semibold
-  px-4 py-2
   border border-neutral-300/50 dark:border-neutral-750
   hover:bg-neutral-100 dark:hover:bg-neutral-900;
+}
+
+.page a {
+  @apply px-4 py-2;
+  display: block;
 }
 
 .page.active {
   @apply bg-primary
   text-white 
-  cursor-auto;
+  cursor-auto !important;
 }
 
 .page.prev {
