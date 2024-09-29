@@ -34,7 +34,6 @@ module RapidRails
     # RapidRails generators
     config.autoload_paths << "#{root}/lib/generators"
 
-
     # Phlex
     config.autoload_paths << "#{root}/app/views"
     config.autoload_paths << "#{root}/app/views/layouts"
@@ -44,7 +43,7 @@ module RapidRails
     config.exceptions_app = routes
 
     # Mailer
-    config.action_mailer.default_url_options = {host: ENV["HOST"] || 'localhost:3000'}
-    config.action_mailer.asset_host = ENV["ASSET_HOST"] || ENV["HOST"] || 'localhost:3000'
+    config.action_mailer.default_url_options = {host: ENV["HOST"] || "localhost:3000"}
+    config.action_mailer.asset_host = ENV["ASSET_HOST"] || ENV["HOST"] || "localhost:3000"
   end
 end
