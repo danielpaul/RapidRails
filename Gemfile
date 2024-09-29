@@ -3,8 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.3.0"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1", ">= 7.1.3.2"
+# Bundle edge Rails instead: 
+gem "rails", github: "rails/rails", branch: "main"
+# gem "rails", "~> 7.1", ">= 7.1.3.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -79,9 +80,6 @@ gem "jwt"
 gem "postmark-rails"
 gem "premailer-rails"
 
-# Background Jobs
-gem "sidekiq"
-
 # Error Tracking & Performance
 gem "sentry-rails"
 gem "sentry-ruby"
@@ -99,7 +97,7 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
 
   # Performance
-  gem "bullet"
+  # gem "bullet"
 
   # Rspec
   gem "factory_bot_rails"

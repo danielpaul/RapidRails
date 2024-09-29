@@ -1,4 +1,0 @@
-web: bin/rails server -p 3000
-css: bin/rails tailwindcss:watch
-redis: (ps aux | grep 6379 | grep redis | awk '{ print $2 }' | xargs kill -s SIGINT) && redis-server
-worker: bundle exec sidekiq
