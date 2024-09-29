@@ -51,6 +51,8 @@ class User < ApplicationRecord
     :omniauthable, omniauth_providers: [:google_oauth2]
 
   validates :full_name, presence: true, length: {maximum: 100}
+  validate :full_name_does_not_have_urls
+
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
 
   validates :profile_picture,
@@ -66,6 +68,14 @@ class User < ApplicationRecord
 
   def last_name
     (full_name_parts.length > 1) ? full_name_parts.last : nil
+  end
+
+  def email_name_greeting
+    if first_name && first_name.length <= 15
+      first_name
+    else
+      "Friend"
+    end
   end
 
   def initials
@@ -90,5 +100,14 @@ class User < ApplicationRecord
     return [] if full_name.blank?
 
     full_name.split(" ")
+  end
+
+  def full_name_does_not_have_urls
+    return unless full_name.present?
+
+    urls = URI.extract(full_name, ["http", "https"])
+    return if urls.blank?
+
+    errors.add(:full_name, "cannot contain URLs")
   end
 end
