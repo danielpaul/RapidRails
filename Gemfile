@@ -80,6 +80,9 @@ gem "jwt"
 gem "postmark-rails"
 gem "premailer-rails"
 
+# Background Jobs
+gem "sidekiq"
+
 # Error Tracking & Performance
 gem "sentry-rails"
 gem "sentry-ruby"
