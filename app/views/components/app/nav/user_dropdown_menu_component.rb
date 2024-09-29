@@ -13,10 +13,10 @@ class App::Nav::UserDropdownMenuComponent < ApplicationComponent
   def user_dropdown_items
     [
       [
-        { label: "Support", path: "#" }
+        {label: "Support", path: "#"}
       ],
       [
-        { label: "Account Settings", path: edit_user_registration_path }
+        {label: "Account Settings", path: edit_user_registration_path}
       ]
     ]
   end
@@ -25,7 +25,7 @@ class App::Nav::UserDropdownMenuComponent < ApplicationComponent
     div(
       role: "menu",
       class: "absolute right-0 z-50 w-64 origin-top-right card shadow-lg mt-4 ring-neutral-900/5",
-      aria: { labelledby: "user-menu-button", orientation: "vertical" },
+      aria: {labelledby: "user-menu-button", orientation: "vertical"},
       tabindex: "-1",
       "x-show": "dropdownOpen",
       "@click.away": "dropdownOpen = false",
@@ -52,7 +52,7 @@ class App::Nav::UserDropdownMenuComponent < ApplicationComponent
         end
       end
 
-      link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: item_link_classes
+      link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete}, class: item_link_classes
     end
   end
 end
