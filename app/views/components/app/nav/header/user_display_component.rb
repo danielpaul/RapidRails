@@ -8,7 +8,7 @@ class App::Nav::Header::UserDisplayComponent < ApplicationComponent
     @current_user = current_user
   end
 
-  def template
+  def view_template
     div(class: "relative", "x-data": "{ dropdownOpen: false }") do
       button(
         type: "button",

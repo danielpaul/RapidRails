@@ -83,7 +83,7 @@ class App::Nav::Sidebar::MenuComponent < ApplicationComponent
     ]
   end
 
-  def template
+  def view_template
     nav class: "flex flex-1 flex-col" do
       ul class: "flex flex-1 flex-col gap-y-4", role: "list" do
         menu_items.each do |menu_item|

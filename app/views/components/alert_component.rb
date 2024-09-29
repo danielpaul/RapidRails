@@ -10,7 +10,7 @@ class AlertComponent < ApplicationComponent
     @dismissable = dismissable
   end
 
-  def template
+  def view_template
     div(class: "alert-#{@type}", x_data: "{show: true}", x_show: "show", "data-turbo-cache": "false") {
       unsafe_raw heroicon(
         alert_icon(@type),

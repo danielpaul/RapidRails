@@ -5,7 +5,7 @@ class App::Nav::Header::SearchBarComponent < ApplicationComponent
   include ActionView::Helpers::OutputSafetyHelper
   include Heroicon::Engine.helpers
 
-  def template
+  def view_template
     div(
       class:
         "px-2 w-full lg:w-3/5 hidden lg:flex"

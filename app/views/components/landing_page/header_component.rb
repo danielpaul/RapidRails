@@ -13,7 +13,7 @@ class LandingPage::HeaderComponent < ApplicationComponent
     ]
   end
 
-  def template
+  def view_template
     header(
       class: "sticky top-0 z-40 w-full flex-none transition-all duration-500 lg:z-20 bg-transparent",
       x_data: "{ dropdownOpen: false, atTop: true }",

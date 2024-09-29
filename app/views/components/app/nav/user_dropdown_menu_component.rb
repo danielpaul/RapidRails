@@ -21,7 +21,7 @@ class App::Nav::UserDropdownMenuComponent < ApplicationComponent
     ]
   end
 
-  def template
+  def view_template
     div(
       role: "menu",
       class: "absolute right-0 z-50 w-64 origin-top-right card shadow-lg mt-4 ring-neutral-900/5",

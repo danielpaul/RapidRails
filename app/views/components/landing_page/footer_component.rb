@@ -48,7 +48,7 @@ class LandingPage::FooterComponent < ApplicationComponent
     ]
   end
 
-  def template
+  def view_template
     footer(class: "bg-card dark:bg-card-dark border-t card-border", aria_labelledby: "footer-heading") do
       h2(id: "footer-heading", class: "sr-only") { "Footer" }
       div(class: "mx-auto max-w-7xl px-6 pb-8 pt-12 sm:pt-16 lg:px-8 lg:pt-20") do

@@ -5,7 +5,7 @@ class App::Nav::Header::MenuComponent < App::Nav::Header::BaseComponent
     @current_user = current_user
   end
 
-  def template
+  def view_template
     div(id: "top", class: "pb-14") do
       div(class: "top-bar") do
         div(class: "flex items-center gap-x-4 lg:hidden") do
