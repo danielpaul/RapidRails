@@ -7,8 +7,8 @@ ruby "3.3.0"
 gem "rails", github: "rails/rails", branch: "main"
 # gem "rails", "~> 7.1", ">= 7.1.3.2"
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# Asset pipeline library for Rails
+gem "propshaft"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -114,7 +114,7 @@ group :development do
   gem "web-console"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  gem "rack-mini-profiler"
+  # gem "rack-mini-profiler"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   gem "spring"
