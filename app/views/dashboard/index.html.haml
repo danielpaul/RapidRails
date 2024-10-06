@@ -59,7 +59,7 @@
         = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Your Email Field", required: true, hint: "This is a hint. Give helpful information here.", class: 'custom-class'
         = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true, error: "This is an error message. Manually set or with model validation."
         = f.text_field :text, placeholder: "Your text", required: true, disabled: true
-        = f.text_area :text_area, placeholder: "Your text area", required: true, hint: "This is a hint. Give helpful information here."
+        = f.textarea :text_area, placeholder: "Your text area", required: true, hint: "This is a hint. Give helpful information here."
 
         = f.select :select, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {hint: "This is a hint. Give helpful information here.", prompt: "Select something..."}, {required: true}
 
