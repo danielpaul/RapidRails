@@ -22,5 +22,4 @@ class FormErrorsComponent < ApplicationComponent
       }
     end
   end
-
 end
