@@ -2,6 +2,8 @@ class AttachProfilePictureWorker < ApplicationWorker
   sidekiq_options queue: "low_priority", retry: 3
 
   def perform(user_id, image_url)
+    return unless ENABLE_USER_AVATAR_UPLOAD
+
     begin
       image = URI(image_url).open
     rescue OpenURI::HTTPError => e

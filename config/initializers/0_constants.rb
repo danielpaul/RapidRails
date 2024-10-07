@@ -1,5 +1,20 @@
 # File is prefixed with 0_ so that it loads first
 
+# Load the YAML file based on the current environment
+# This is for only ENABLE_FILE_UPLOAD constant since we need to 
+# read that from the Gemfile also for installing gems.
+global_variables = YAML.load_file(
+  File.expand_path('../feature_flags.yml', __dir__), aliases: true
+)[ENV['RAILS_ENV'] || 'development']
+
+global_variables.each do |key, value|
+  global_variable_name = key.upcase.to_sym
+  Object.const_set(global_variable_name, value.freeze)
+end
+
+# Keep all constants and feature flags here so we can find them
+# easily with case sensitive search in a code editor.
+
 APP_NAME = "Rapid Rails".freeze
 
 APPLE_TOUCH_ICON_PATH = "/apple-touch-icon.png".freeze
@@ -49,3 +64,7 @@ if Rails.env.production?
     Rails.application.credentials.dig(Rails.env.to_sym, :aws, :region) +
     ".amazonaws.com"
 end
+
+# Active Storage
+# Other constants set in feature_flags.yml
+ENABLE_USER_AVATAR_UPLOAD = ENABLE_FILE_UPLOAD

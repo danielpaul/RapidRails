@@ -2,7 +2,7 @@
 SitemapGenerator::Sitemap.default_host = HOST
 
 # only if production
-if Rails.env.production?
+if Rails.env.production? && ENABLE_FILE_UPLOAD
   SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
     aws_access_key_id: Rails.application.credentials.dig(Rails.env.to_sym, :aws, :access_key_id),
     aws_secret_access_key: Rails.application.credentials.dig(Rails.env.to_sym, :aws, :secret_access_key),

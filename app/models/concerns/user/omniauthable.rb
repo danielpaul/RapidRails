@@ -37,7 +37,7 @@ module User::Omniauthable
       end
 
       # if the user profile picture exists, user has not uploaded another profile_picture, save it
-      if user && !user.profile_picture.attached? && data["image"].present?
+      if ENABLE_USER_AVATAR_UPLOAD && user && !user.profile_picture.attached? && data["image"].present?
         # sidekiq job to download the image and attach it to the user
         # log the user in ASAP without waiting for slow image request and attachment process
         # to complete. The user will see the default avatar until the image is attached.

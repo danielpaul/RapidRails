@@ -1,3 +1,12 @@
+require 'yaml'
+require 'psych'
+
+global_variables = YAML.load_file(
+  File.expand_path('config/feature_flags.yml', __dir__), aliases: true
+)[ENV['RAILS_ENV'] || 'development']
+
+ENABLE_FILE_UPLOAD = global_variables['enable_file_upload']
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -88,10 +97,13 @@ gem "sentry-rails"
 gem "sentry-ruby"
 gem "sentry-sidekiq"
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "active_storage_validations"
-gem "aws-sdk-s3"
-gem "image_processing"
+# File Uploads
+if ENABLE_FILE_UPLOAD
+  # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+  gem "active_storage_validations"
+  gem "aws-sdk-s3"
+  gem "image_processing"
+end
 
 group :development, :test do
   gem "dotenv-rails"
