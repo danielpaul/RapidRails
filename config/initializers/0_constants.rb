@@ -1,11 +1,11 @@
 # File is prefixed with 0_ so that it loads first
 
 # Load the YAML file based on the current environment
-# This is for only ENABLE_FILE_UPLOAD constant since we need to 
+# This is for only ENABLE_FILE_UPLOAD constant since we need to
 # read that from the Gemfile also for installing gems.
 global_variables = YAML.load_file(
-  File.expand_path('../feature_flags.yml', __dir__), aliases: true
-)[ENV['RAILS_ENV'] || 'development']
+  File.expand_path("../feature_flags.yml", __dir__), aliases: true
+)[ENV["RAILS_ENV"] || "development"]
 
 global_variables.each do |key, value|
   global_variable_name = key.upcase.to_sym
@@ -25,10 +25,10 @@ COMPANY_LOCATION = "London, UK".freeze
 
 HOST = ENV.fetch("HOST") { "localhost:3000" }.freeze
 
-if Rails.env.production?
-  BASE_URL = "https://#{HOST}".freeze
+BASE_URL = if Rails.env.production?
+  "https://#{HOST}".freeze
 else
-  BASE_URL = "http://#{HOST}".freeze
+  "http://#{HOST}".freeze
 end
 
 DEFAULT_FROM_EMAIL_ONLY = "team@#{HOST}".freeze
