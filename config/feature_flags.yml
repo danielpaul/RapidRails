@@ -3,3 +3,6 @@ production: &production
 
 development:
   <<: *production
+
+test:
+  <<: *production
