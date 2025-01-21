@@ -120,8 +120,9 @@ group :development, :test do
   gem "rspec-rails"
   gem "shoulda-matchers"
 
-  # Security
-  gem "brakeman", require: false
+  # Security & Code Quality
+  gem "brakeman"
+  gem "standardrb"
 end
 
 group :development do
