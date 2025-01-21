@@ -12,37 +12,37 @@ class LandingPage::FooterComponent < ApplicationComponent
       {
         heading: "Solutions",
         items: [
-          {label: "Marketing", path: "#"},
-          {label: "Analytics", path: "#"},
-          {label: "Commerce", path: "#"},
-          {label: "Insights", path: "#"}
+          { label: "Marketing", path: "#" },
+          { label: "Analytics", path: "#" },
+          { label: "Commerce", path: "#" },
+          { label: "Insights", path: "#" }
         ]
       },
       {
         heading: "Support",
         items: [
-          {label: "Pricing", path: "#"},
-          {label: "Documentation", path: "#"},
-          {label: "Guides", path: "#"},
-          {label: "API Status", path: "#"}
+          { label: "Pricing", path: "#" },
+          { label: "Documentation", path: "#" },
+          { label: "Guides", path: "#" },
+          { label: "API Status", path: "#" }
         ]
       },
       {
         heading: "Company",
         items: [
-          {label: "About", path: "#"},
-          {label: "Blog", path: (ENABLE_BLOG == true) ? blog_index_path : "#"},
-          {label: "Jobs", path: "#"},
-          {label: "Press", path: "#"},
-          {label: "Partners", path: "#"}
+          { label: "About", path: "#" },
+          { label: "Blog", path: (ENABLE_BLOG == true) ? blog_index_path : "#" },
+          { label: "Jobs", path: "#" },
+          { label: "Press", path: "#" },
+          { label: "Partners", path: "#" }
         ]
       },
       {
         heading: "Legal",
         items: [
-          {label: "Claim", path: "#"},
-          {label: "Privacy", path: page_path("legal/privacy_policy")},
-          {label: "Terms", path: page_path("legal/terms_conditions")}
+          { label: "Claim", path: "#" },
+          { label: "Privacy", path: page_path("legal/privacy_policy") },
+          { label: "Terms", path: page_path("legal/terms_conditions") }
         ]
       }
     ]
