@@ -30,7 +30,7 @@ class FlashToastComponent < ApplicationComponent
             unsafe_raw heroicon(
               alert_icon(alert_type(@toast[:type])),
               variant: "solid",
-              options: { class: "alert-#{alert_type(@toast[:type])}-icon" }
+              options: {class: "alert-#{alert_type(@toast[:type])}-icon"}
             )
           }
 

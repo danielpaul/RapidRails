@@ -24,8 +24,8 @@ class Api::V1::BaseController < ActionController::Base
 
   def set_user_token!
     # Render a new JWT token
-    token = JwtTokenService.generate!({ id: current_user.id })
-    render_ok!({ token: })
+    token = JwtTokenService.generate!({id: current_user.id})
+    render_ok!({token:})
   end
 
   def set_user_from_token!

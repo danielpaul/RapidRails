@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get :confirm_email, to: "confirmations#confirm_email", as: "confirm_email", path: "users/confirm-email"
     post :cancel_email_change, to: "registrations#cancel_email_change!", as: "cancel_email_change",
-                               path: "users/cancel-email-change"
+      path: "users/cancel-email-change"
   end
 
   # User Onboarding

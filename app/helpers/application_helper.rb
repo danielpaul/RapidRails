@@ -7,8 +7,8 @@ module ApplicationHelper
       reverse: true,
       canonical: request.original_url,
       icon: [
-        { href: "/favicon.ico" },
-        { href: "/apple-touch-icon.png", rel: "apple-touch-icon" }
+        {href: "/favicon.ico"},
+        {href: "/apple-touch-icon.png", rel: "apple-touch-icon"}
       ]
     }
 
