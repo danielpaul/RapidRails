@@ -43,6 +43,9 @@ Rails.application.routes.draw do
   # ---------- [ API Routes ] ---------- #
   draw :api if ENABLE_API == true || Rails.env.test?
 
+   # ---------- [ Health Check ] ---------- #
+  get "/up", to: "health_check#show"
+
   # ---------- [ Sitemap ] ---------- #
   if Rails.env.production?
     # Sitemap - redirect /sitemap.xml.gz to s3
