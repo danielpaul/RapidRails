@@ -2,8 +2,8 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @width = 'narrow'
-    
+    @width = "narrow"
+
     set_meta_tags title: "Home"
 
     flash_message(

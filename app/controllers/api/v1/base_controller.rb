@@ -18,54 +18,54 @@ class Api::V1::BaseController < ActionController::Base
   end
 
   def set_api_key!
-    api_key_header = request.headers['X-Api-Key']
+    api_key_header = request.headers["X-Api-Key"]
     @api_key = ApiKey.active.find_by(api_key: api_key_header)
   end
 
   def set_user_token!
     # Render a new JWT token
-    token = JwtTokenService.generate!({ id: current_user.id })
-    render_ok!({ token: })
+    token = JwtTokenService.generate!({id: current_user.id})
+    render_ok!({token:})
   end
 
   def set_user_from_token!
-    token = request.headers['Authorization'].split(' ').last
+    token = request.headers["Authorization"].split(" ").last
     payload = JwtTokenService.decode!(token)[0]
-    @user = User.find(payload['id'])
+    @user = User.find(payload["id"])
   end
 
   def render_unauthorized!(message: "Looks like you don't have the permission to do this.")
-    render json: format_error('unauthorized', message), status: :unauthorized and return
+    render json: format_error("unauthorized", message), status: :unauthorized and return
   end
 
-  def render_unprocessable_entity!(message: t('errors.general'))
-    render json: format_error('unprocessable_entity', message), status: :unprocessable_entity and return
+  def render_unprocessable_entity!(message: t("errors.general"))
+    render json: format_error("unprocessable_entity", message), status: :unprocessable_entity and return
   end
 
   def render_ok!(content)
     render json: content, status: :ok and return
   end
 
-  def render_internal_server_error!(message: t('errors.general'))
-    render json: format_error('internal_server_error', message), status: :internal_server_error and return
+  def render_internal_server_error!(message: t("errors.general"))
+    render json: format_error("internal_server_error", message), status: :internal_server_error and return
   end
 
-  def render_forbidden!(message: t('errors.general'))
-    render json: format_error('forbidden', message), status: :forbidden and return
+  def render_forbidden!(message: t("errors.general"))
+    render json: format_error("forbidden", message), status: :forbidden and return
   end
 
   def paginated_collection(collection, blueprinter, view: :default)
     paginated_records = collection.page(params[:page])
     {
-      "type": 'list',
-      "pages": {
-        "type": 'pages',
-        "page": params[:page].to_i,
-        "per_page": paginated_records.limit_value,
-        "total_pages": paginated_records.total_pages
+      type: "list",
+      pages: {
+        type: "pages",
+        page: params[:page].to_i,
+        per_page: paginated_records.limit_value,
+        total_pages: paginated_records.total_pages
       },
-      "total_count": collection.count,
-      "data": blueprinter.render_as_hash(paginated_records, current_user:, view:)
+      total_count: collection.count,
+      data: blueprinter.render_as_hash(paginated_records, current_user:, view:)
     }
   end
 
@@ -88,11 +88,11 @@ class Api::V1::BaseController < ActionController::Base
   # Common error format for all status codes
   def format_error(error_code, message)
     {
-      "type": 'error.list',
-      "errors": [
+      type: "error.list",
+      errors: [
         {
-          "code": error_code,
-          "message": message
+          code: error_code,
+          message: message
         }
       ]
     }
