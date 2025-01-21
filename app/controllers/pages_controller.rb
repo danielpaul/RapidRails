@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     if params[:id].include?("legal/")
 
       # whitelist for security
-      sanitized_id = ActiveStorage::Filename.new(params[:id].sub("legal/","")).sanitized
+      sanitized_id = ActiveStorage::Filename.new(params[:id].sub("legal/", "")).sanitized
 
       begin
         @md_file = File.read("app/views/pages/legal/#{sanitized_id}.md")
