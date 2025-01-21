@@ -6,8 +6,6 @@ class PagesController < ApplicationController
     set_meta_tags canonical: (params[:id] == "home") ? root_path : page_path(params[:id])
 
     if params[:id].include?("legal/")
-
-      # whitelist for security
       sanitized_id = ActiveStorage::Filename.new(params[:id].sub("legal/","")).sanitized
 
       begin
