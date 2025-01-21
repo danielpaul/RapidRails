@@ -6,10 +6,22 @@ class PagesController < ApplicationController
     set_meta_tags canonical: (params[:id] == "home") ? root_path : page_path(params[:id])
 
     if params[:id].include?("legal/")
+
+      # whitelist for security
+      md_file_whitelist = %w[privacy_policy terms_conditions]
       sanitized_id = ActiveStorage::Filename.new(params[:id].sub("legal/", "")).sanitized
 
+      # Ensure sanitized_id only contains allowed values
+      md_id = if md_file_whitelist.include?(sanitized_id)
+        sanitized_id
+      end
+
       begin
-        @md_file = File.read("app/views/pages/legal/#{sanitized_id}.md")
+        if md_id
+          @md_file = File.read(Rails.root.join("app", "views", "pages", "legal", "#{md_id}.md"))
+        else
+          raise ActionController::RoutingError, "Not Found"
+        end
       rescue Errno::ENOENT
         raise ActionController::RoutingError, "Not Found"
       end
