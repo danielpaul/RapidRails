@@ -119,6 +119,8 @@ GEM
     blueprinter (1.1.0)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
+    brakeman (7.0.0)
+      racc
     builder (3.3.0)
     capybara (3.40.0)
       addressable
@@ -492,6 +494,7 @@ DEPENDENCIES
   binding_of_caller
   blueprinter
   bootsnap
+  brakeman
   capybara
   contentful
   debug

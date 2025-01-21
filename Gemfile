@@ -119,6 +119,9 @@ group :development, :test do
   gem "faker"
   gem "rspec-rails"
   gem "shoulda-matchers"
+
+  # Security
+  gem "brakeman", require: false
 end
 
 group :development do
