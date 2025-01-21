@@ -19,9 +19,9 @@ class AttachProfilePictureWorker < ApplicationWorker
     return if user.profile_picture.attached?
 
     user.profile_picture
-        .attach(
-          io: image,
-          filename: "google_profile_picture.png"
-        )
+      .attach(
+        io: image,
+        filename: "google_profile_picture.png"
+      )
   end
 end

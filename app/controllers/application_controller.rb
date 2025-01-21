@@ -18,10 +18,10 @@ class ApplicationController < ActionController::Base
 
     # Add other fields that can be edited from the user's profile page here
     edit_user_params = if ENABLE_USER_AVATAR_UPLOAD
-                         [:profile_picture]
-                       else
-                         []
-                       end
+      [:profile_picture]
+    else
+      []
+    end
 
     devise_parameter_sanitizer.permit(:sign_up, keys: signup_params)
     devise_parameter_sanitizer.permit(:account_update, keys: signup_params + edit_user_params)
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     if devise_controller? &&
-       !(resource_name == :user && controller_name == "registrations" && %w[edit update].include?(action_name))
+        !(resource_name == :user && controller_name == "registrations" && %w[edit update].include?(action_name))
       "application_devise"
     else
       "application"
