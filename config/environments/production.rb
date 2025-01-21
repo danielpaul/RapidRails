@@ -2,6 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_controller.default_url_options = { host: ENV["HOST"] }
 
   # Code is not reloaded between requests.
   config.enable_reloading = false
@@ -62,7 +63,7 @@ Rails.application.configure do
   }
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = {host: Rails.application.credentials.dig(Rails.env.to_sym, :host)}
+  config.action_mailer.default_url_options = {host: ENV["HOST"] }
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   # config.action_mailer.smtp_settings = {
