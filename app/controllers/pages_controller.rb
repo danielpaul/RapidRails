@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     set_meta_tags canonical: (params[:id] == "home") ? root_path : page_path(params[:id])
 
     if params[:id].include?("legal/")
-      
+
       # whitelist for security
       @md_id = %w[privacy_policy terms_conditions].include?(params[:id]) ? params[:id] : "404"
 
