@@ -6,8 +6,12 @@ class PagesController < ApplicationController
     set_meta_tags canonical: (params[:id] == "home") ? root_path : page_path(params[:id])
 
     if params[:id].include?("legal/")
+      
+      # whitelist for security
+      @md_id = %w[privacy_policy terms_conditions].include?(params[:id]) ? params[:id] : "404"
+
       begin
-        @md_file = File.read("app/views/pages/#{params[:id]}.md")
+        @md_file = File.read("app/views/pages/legal/#{@md_id}.md")
       rescue Errno::ENOENT
         raise ActionController::RoutingError, "Not Found"
       end
