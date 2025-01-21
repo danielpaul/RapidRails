@@ -138,7 +138,7 @@ group :development do
   # Front-end Things
   gem "html2haml"
   gem "letter_opener"
-  gem "rails_live_reload"
+  gem "hotwire-spark"
 
   gem "better_errors"
   gem "binding_of_caller"

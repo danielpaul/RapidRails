@@ -206,6 +206,10 @@ GEM
     heroicon (1.0.0)
       rails (>= 5.2)
     high_voltage (4.0.0)
+    hotwire-spark (0.1.12)
+      listen
+      rails (>= 7.0.0)
+      zeitwerk
     html2haml (2.3.0)
       erubis (~> 2.7.0)
       haml (>= 4.0)
@@ -370,11 +374,6 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rails_live_reload (0.3.6)
-      listen
-      nio4r
-      railties
-      websocket-driver
     rainbow (3.1.1)
     rake (13.2.1)
     rb-fsevent (0.11.2)
@@ -546,6 +545,7 @@ DEPENDENCIES
   hashid-rails
   heroicon
   high_voltage
+  hotwire-spark
   html2haml
   importmap-rails
   jbuilder
@@ -565,7 +565,6 @@ DEPENDENCIES
   pundit
   rack-canonical-host
   rails!
-  rails_live_reload
   redcarpet
   redis
   rich_text_renderer
