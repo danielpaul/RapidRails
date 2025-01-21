@@ -8,10 +8,10 @@ class PagesController < ApplicationController
     if params[:id].include?("legal/")
 
       # whitelist for security
-      @md_id = %w[privacy_policy terms_conditions].include?(params[:id]) ? params[:id] : "404"
+      @md_id = %w[privacy_policy terms_conditions].any?{|e| "legal/#{e}" == params[:id]} ? params[:id] : "404"
 
       begin
-        @md_file = File.read("app/views/pages/legal/#{@md_id}.md")
+        @md_file = File.read("app/views/pages/#{@md_id}.md")
       rescue Errno::ENOENT
         raise ActionController::RoutingError, "Not Found"
       end
