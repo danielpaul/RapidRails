@@ -1,5 +1,5 @@
-require 'rails_helper'
-require 'mail'
+require "rails_helper"
+require "mail"
 
 RSpec.describe "Password Reset", type: :request do
   it "confirms email and logs user in after password reset" do
@@ -7,7 +7,7 @@ RSpec.describe "Password Reset", type: :request do
     reset_token = user.send_reset_password_instructions
 
     # Update password using the reset token
-    response = put user_password_path, params: {
+    put user_password_path, params: {
       user: {
         reset_password_token: reset_token,
         password: "newpassword123",
@@ -31,7 +31,7 @@ RSpec.describe "Password Reset", type: :request do
     reset_token = user.send_reset_password_instructions
 
     # Update password using the reset token
-    response = put user_password_path, params: {
+    put user_password_path, params: {
       user: {
         reset_password_token: reset_token,
         password: "newpassword123",
