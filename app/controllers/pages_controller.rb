@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     set_meta_tags canonical: (params[:id] == "home") ? root_path : page_path(params[:id])
 
     if params[:id].include?("legal/")
-      sanitized_id = ActiveStorage::Filename.new(params[:id].sub("legal/","")).sanitized
+      sanitized_id = ActiveStorage::Filename.new(params[:id].sub("legal/", "")).sanitized
 
       begin
         @md_file = File.read("app/views/pages/legal/#{sanitized_id}.md")
