@@ -7,7 +7,7 @@ class HealthCheckController < ApplicationController
       timestamp: Time.current
     }
 
-    status = health_status.values.include?("down") ? :service_unavailable : :ok
+    status = health_status.value?("down") ? :service_unavailable : :ok
 
     render json: health_status, status: status
   end
