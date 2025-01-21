@@ -17,7 +17,7 @@ class App::Nav::Header::SearchBarComponent < ApplicationComponent
             class:
               "pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
           ) do
-            unsafe_raw heroicon("magnifying-glass", options: {class: "h-5 w-5 text-neutral-400"})
+            unsafe_raw heroicon("magnifying-glass", options: { class: "h-5 w-5 text-neutral-400" })
           end
           input(
             id: "search",

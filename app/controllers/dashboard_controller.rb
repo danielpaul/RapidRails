@@ -28,7 +28,8 @@ class DashboardController < ApplicationController
     )
 
     flash.now[:notice] = "This is an notice message."
-    flash.now[:success] = "This is an alert message. That is really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long."
+    flash.now[:success] =
+      "This is an alert message. That is really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long."
     flash.now[:error] = "This is an error message."
   end
 end
