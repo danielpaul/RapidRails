@@ -40,9 +40,9 @@ module RapidRails
     config.exceptions_app = routes
 
     # URL Hosts
-    config.action_mailer.default_url_options = { host: ENV["HOST"] || "localhost:3000" }
+    config.action_mailer.default_url_options = {host: ENV["HOST"] || "localhost:3000"}
     config.action_mailer.asset_host = ENV["ASSET_HOST"] || ENV["HOST"] || "localhost:3000"
     config.asset_host = ENV["ASSET_HOST"] || ENV["HOST"] || "localhost:3000"
-    config.action_controller.default_url_options = { host: ENV["HOST"] || "localhost:3000" }
+    config.action_controller.default_url_options = {host: ENV["HOST"] || "localhost:3000"}
   end
 end
