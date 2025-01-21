@@ -6,7 +6,7 @@ RSpec.describe "Application Helper" do
       let(:email_address) { "test@gmail.com" }
 
       it "returns the correct Gmail URL" do
-        expected_url = expected_url = "https://mail.google.com/mail/u/test%40gmail.com/#search/from%3A#{ERB::Util.url_encode(DEFAULT_FROM_EMAIL_ONLY)}%20in%3Aanywhere%20newer_than%3A1d"
+        expected_url = "https://mail.google.com/mail/u/test%40gmail.com/#search/from%3A#{ERB::Util.url_encode(DEFAULT_FROM_EMAIL_ONLY)}%20in%3Aanywhere%20newer_than%3A1d"
         expect(open_email_inbox_url(email_address)).to eq(expected_url)
       end
     end

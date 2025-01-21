@@ -95,19 +95,18 @@ class App::Nav::Sidebar::MenuComponent < ApplicationComponent
               end
             end
 
-            if menu_item[:items] && menu_item[:items].any?
+            if menu_item[:items]&.any?
               ul class: "-mx-6 space-y-3 #{menu_item[:item_menu_classes]}", role: "list" do
                 menu_item[:items].each do |item|
                   a_classes = "group flex gap-x-3 py-1 px-6 text-sm font-semibold hover:text-black dark:hover:text-white transition-colors duration-200"
                   icon_classes = "h-5 w-5 shrink-0"
 
-                  if item[:active]
-                    a_classes += " text-black dark:text-white border-l-4 border-primary"
-                    icon_classes += " "
+                  a_classes += if item[:active]
+                    " text-black dark:text-white border-l-4 border-primary"
                   else
-                    a_classes += " text-neutral-500 dark:text-neutral-400"
-                    icon_classes += " "
+                    " text-neutral-500 dark:text-neutral-400"
                   end
+                  icon_classes += " "
 
                   li do
                     link_to(
