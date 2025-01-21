@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     if params[:id].include?("legal/")
 
       # whitelist for security
-      @md_id = %w[privacy_policy terms_conditions].any?{|e| "legal/#{e}" == params[:id]} ? params[:id] : "404"
+      @md_id = (%w[privacy_policy terms_conditions].any? { |e| "legal/#{e}" == params[:id] }) ? params[:id] : "404"
 
       begin
         @md_file = File.read("app/views/pages/#{@md_id}.md")
