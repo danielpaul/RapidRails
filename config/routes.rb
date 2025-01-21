@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   # ---------- [ API Routes ] ---------- #
   draw :api if ENABLE_API == true || Rails.env.test?
 
-   # ---------- [ Health Check ] ---------- #
+  # ---------- [ Health Check ] ---------- #
   get "/up", to: "health_check#show"
 
   # ---------- [ Sitemap ] ---------- #

@@ -6,10 +6,10 @@ class LandingPage::HeaderComponent < ApplicationComponent
 
   def main_menu_items
     [
-      {label: "Product", path: "#"},
-      {label: "Features", path: "#"},
-      {label: "Marketplace", path: "#"},
-      {label: "Company", path: "#"}
+      { label: "Product", path: "#" },
+      { label: "Features", path: "#" },
+      { label: "Marketplace", path: "#" },
+      { label: "Company", path: "#" }
     ]
   end
 
@@ -31,7 +31,7 @@ class LandingPage::HeaderComponent < ApplicationComponent
         div class: "hidden lg:flex lg:gap-x-12" do
           main_menu_items.each do |item|
             link_to item[:label], item[:path],
-              class: "text-sm font-semibold leading-6 text-neutral-900 dark:text-white hover:text-primary-500"
+                    class: "text-sm font-semibold leading-6 text-neutral-900 dark:text-white hover:text-primary-500"
           end
         end
         div class: "flex flex-1 items-center justify-end gap-x-6" do
