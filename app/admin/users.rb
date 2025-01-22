@@ -50,10 +50,9 @@ ActiveAdmin.register User do
 
   action_item :discard, only: :show do
     if resource.discarded_at
-      link_to "Restore User", undiscard_admin_user_path(resource), method: :put, class: 'action-item-button'
+      link_to "Restore User", undiscard_admin_user_path(resource), method: :put, class: "action-item-button"
     else
-      link_to "Discard User", discard_admin_user_path(resource), method: :put, class: 'action-item-button'
+      link_to "Discard User", discard_admin_user_path(resource), method: :put, class: "action-item-button"
     end
   end
-
 end

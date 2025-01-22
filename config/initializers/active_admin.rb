@@ -140,7 +140,7 @@ ActiveAdmin.setup do |config|
   # config.comments_menu = false
   #
   # You can customize the comment menu:
-  config.comments_menu = { parent: 'Metadata', priority: 10 }
+  config.comments_menu = {parent: "Metadata", priority: 10}
 
   # == Batch Actions
   #
@@ -215,17 +215,17 @@ ActiveAdmin.setup do |config|
   # To disable/customize for the :admin namespace:
   #
   config.namespace :admin do |admin|
-  #
-  #     # Disable the links entirely
-  #     admin.download_links = false
-  #
+    #
+    #     # Disable the links entirely
+    #     admin.download_links = false
+    #
 
     admin.download_links = [:csv]
-    
-  #
-  #     # Enable/disable the links based on block (for example, with cancan)
-  #     admin.download_links = proc { can?(:view_download_links) }
-  #
+
+    #
+    #     # Enable/disable the links based on block (for example, with cancan)
+    #     admin.download_links = proc { can?(:view_download_links) }
+    #
   end
 
   # == Pagination

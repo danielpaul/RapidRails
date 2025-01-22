@@ -50,7 +50,6 @@ ActiveAdmin.register_page "Dashboard" do
     div class: "grid grid-cols-1 gap-6 md:grid-cols-2" do
       # Recently Signed Up Users Widget
       div class: "bg-white dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700 overflow-hidden" do
-
         h3 class: "text-sm font-semibold text-gray-800 dark:text-gray-200 p-4 border-b border-gray-300 dark:border-gray-700" do
           "Recently Signed Up Users"
         end
