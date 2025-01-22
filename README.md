@@ -38,12 +38,12 @@ brew services start redis
 
 # Running the app for development
 
-- `bin/dev` to run the app locally
-- `localhost:3000` to view the app
-- `localhost:3000/rails/mailers` to view mailers preview locally
-- `localhost:3000/sidekiq` to view sidekiq dashboard
+- Run `bin/dev` to start the app locally
+- Run `overmind connect web` to connect to the web process logs & run debugger
+- Open `localhost:3000` in your web browser to view the app
+- Open `localhost:3000/rails/mailers` to view mailers preview locally
+- Open `localhost:3000/sidekiq` to view sidekiq dashboard
 - Emails sent in local development are automatically opened in the browser by letter_opener.
-- `overmind connect web` to connect to the web process logs & run debugger
 
 # Gems Documentations
 
