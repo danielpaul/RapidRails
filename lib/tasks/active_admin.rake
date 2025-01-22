@@ -1,7 +1,7 @@
 # https://github.com/activeadmin/activeadmin/discussions/8223
 
 namespace :active_admin do
-  COMMAND = [
+  command = [
     Rails.root.join("bin/tailwindcss").to_s,
     "-i", Rails.root.join("app/assets/stylesheets/active_admin.css").to_s,
     "-o", Rails.root.join("app/assets/builds/active_admin.css").to_s,
@@ -11,12 +11,12 @@ namespace :active_admin do
 
   desc "Build Active Admin Tailwind stylesheets"
   task build: :environment do
-    system(*COMMAND, exception: true)
+    system(*command, exception: true)
   end
 
   desc "Watch Active Admin Tailwind stylesheets"
   task watch: :environment do
-    command = COMMAND.push("--watch")
+    command = command.push("--watch")
     system(*command)
   end
 end
