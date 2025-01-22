@@ -1,7 +1,9 @@
 class PasswordsController < Devise::PasswordsController
   def update
     super do |resource|
-      # only confirm the initial email. not email pending change.
+      # Auto confirm user's email if they did not confirm after signup and are trying
+      # to login again and they reset their password.
+      # Only confirm the initial email. Not email pending change.
       if resource.errors.empty? && !resource.confirmed? && resource.unconfirmed_email.nil?
         resource.confirm
       end
