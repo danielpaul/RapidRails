@@ -40,8 +40,7 @@ class User < ApplicationRecord
   include User::Omniauthable
   include User::Onboarding
   include User::Offboarding
-
-  has_one_attached :profile_picture
+  include User::Avatar
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
@@ -51,14 +50,9 @@ class User < ApplicationRecord
     :omniauthable, omniauth_providers: [:google_oauth2]
 
   validates :full_name, presence: true, length: {maximum: 100}
-  validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
+  validate :full_name_does_not_have_urls
 
-  validates :profile_picture,
-    content_type: {
-      in: ["image/png", "image/jpg", "image/jpeg"],
-      message: "must be a png, jpg, or jpeg image file"
-    },
-    size: {less_than: 10.megabytes}
+  validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
 
   def first_name
     full_name_parts.first
@@ -68,20 +62,16 @@ class User < ApplicationRecord
     (full_name_parts.length > 1) ? full_name_parts.last : nil
   end
 
-  def initials
-    full_name_parts.map(&:first).join
+  def email_name_greeting
+    if first_name && first_name.length <= 15
+      first_name
+    else
+      "Friend"
+    end
   end
 
-  def avatar_url
-    if profile_picture.attached? && profile_picture.variable?
-      # Use ActiveStorage's variant to resize image to 100x100
-      return profile_picture.variant(resize_to_fill: [500, 500]).processed
-    end
-
-    # Don't share real names. Just initials.
-    # Add hash to get unique color variant for each user. Otherwise all DP will be same.
-    hash = Digest::MD5.hexdigest(email.downcase)
-    "https://api.dicebear.com/6.x/initials/png?backgroundType=gradientLinear&seed=#{initials + hash}"
+  def initials
+    full_name_parts.map(&:first).join
   end
 
   private
@@ -90,5 +80,14 @@ class User < ApplicationRecord
     return [] if full_name.blank?
 
     full_name.split(" ")
+  end
+
+  def full_name_does_not_have_urls
+    return unless full_name.present?
+
+    urls = URI.extract(full_name, ["http", "https"])
+    return if urls.blank?
+
+    errors.add(:full_name, "cannot contain URLs")
   end
 end

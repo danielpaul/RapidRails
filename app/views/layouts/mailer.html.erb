@@ -496,8 +496,8 @@
             <tr>
               <td class="email-masthead">
                 <a href="<%= root_url %>" class="f-fallback email-masthead_name">
-                  <%= image_tag "/emails/logo.png", alt: APP_NAME, skip_pipeline: true, class: 'email-masthead_logo light' %>
-                  <%= image_tag "/emails/logo-dark.png", alt: APP_NAME, skip_pipeline: true, class: 'email-masthead_logo dark' %>
+                  <%= image_tag "#{BASE_URL}/emails/logo.png", alt: APP_NAME, skip_pipeline: true, class: 'email-masthead_logo light' %>
+                  <%= image_tag "#{BASE_URL}/emails/logo-dark.png", alt: APP_NAME, skip_pipeline: true, class: 'email-masthead_logo dark' %>
                 </a>
               </td>
             </tr>

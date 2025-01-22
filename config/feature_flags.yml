@@ -1,0 +1,8 @@
+production: &production
+  enable_file_upload: false
+
+development:
+  <<: *production
+
+test:
+  <<: *production

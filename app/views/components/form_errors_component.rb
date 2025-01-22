@@ -5,7 +5,7 @@ class FormErrorsComponent < ApplicationComponent
     @object = object
   end
 
-  def template
+  def view_template
     return if @object.errors.empty?
 
     render AlertComponent.new(
@@ -22,5 +22,4 @@ class FormErrorsComponent < ApplicationComponent
       }
     end
   end
-
 end

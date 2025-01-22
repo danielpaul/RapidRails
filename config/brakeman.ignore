@@ -1,0 +1,51 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Request Forgery",
+      "warning_code": 7,
+      "fingerprint": "7629d6ff0bd196c469f5782e3a61d1c168b7e0afd08a22295a9ccd09c41bc047",
+      "check_name": "ForgerySetting",
+      "message": "`protect_from_forgery` should be called in `Api::V1::BaseController`",
+      "file": "app/controllers/api/v1/base_controller.rb",
+      "line": 1,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross-site_request_forgery/",
+      "code": null,
+      "render_path": null,
+      "location": {
+        "type": "controller",
+        "controller": "Api::V1::BaseController"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "cwe_id": [
+        352
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Dangerous Eval",
+      "warning_code": 13,
+      "fingerprint": "b0882fc40728954518373426b0e2642cc352461eb4caab45d11d134677691644",
+      "check_name": "Evaluation",
+      "message": "Dynamic string evaluated as code",
+      "file": "app/helpers/rapid_rails_form_builder.rb",
+      "line": 8,
+      "link": "https://brakemanscanner.org/docs/warning_types/dangerous_eval/",
+      "code": "class_eval(\"        def #{field_method}(method, options = {})\\n          if options.delete(:tailwindified)\\n            super\\n          else\\n            text_like_field(#{field_method.inspect}, method, options)\\n          end\\n        end\\n\", \"app/helpers/rapid_rails_form_builder.rb\", (8 + 1))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "RapidRailsFormBuilder",
+        "method": null
+      },
+      "user_input": null,
+      "confidence": "Weak",
+      "cwe_id": [
+        913,
+        95
+      ],
+      "note": ""
+    }
+  ],
+  "brakeman_version": "7.0.0"
+}

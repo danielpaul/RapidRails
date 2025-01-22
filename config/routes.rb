@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   # ---------- [ Devise ] ---------- #
   custom_controllers = {
     registrations: "registrations",
-    confirmations: "confirmations"
+    confirmations: "confirmations",
+    passwords: "passwords"
   }
   custom_controllers[:omniauth_callbacks] = "users/omniauth_callbacks" if ENABLE_GOOGLE_OAUTH
   devise_for :users, controllers: custom_controllers
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get :confirm_email, to: "confirmations#confirm_email", as: "confirm_email", path: "users/confirm-email"
     post :cancel_email_change, to: "registrations#cancel_email_change!", as: "cancel_email_change",
-                               path: "users/cancel-email-change"
+      path: "users/cancel-email-change"
   end
 
   # User Onboarding
@@ -42,6 +43,9 @@ Rails.application.routes.draw do
 
   # ---------- [ API Routes ] ---------- #
   draw :api if ENABLE_API == true || Rails.env.test?
+
+  # ---------- [ Health Check ] ---------- #
+  get "/up", to: "health_check#show"
 
   # ---------- [ Sitemap ] ---------- #
   if Rails.env.production?

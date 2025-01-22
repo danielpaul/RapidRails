@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+
   include Pundit::Authorization
   include Pagy::Backend
   include FlashHelper
@@ -17,7 +19,11 @@ class ApplicationController < ActionController::Base
     signup_params = %i[full_name]
 
     # Add other fields that can be edited from the user's profile page here
-    edit_user_params = [:profile_picture]
+    edit_user_params = if ENABLE_USER_AVATAR_UPLOAD
+      [:profile_picture]
+    else
+      []
+    end
 
     devise_parameter_sanitizer.permit(:sign_up, keys: signup_params)
     devise_parameter_sanitizer.permit(:account_update, keys: signup_params + edit_user_params)

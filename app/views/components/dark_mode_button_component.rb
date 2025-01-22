@@ -3,7 +3,7 @@ class DarkModeButtonComponent < ApplicationComponent
   include ActionView::Helpers::OutputSafetyHelper
   include Heroicon::Engine.helpers
 
-  def template
+  def view_template
     div(
       "@click": "darkModeMenu = !darkModeMenu",
       "x-data": "{ darkModeMenu: false }",

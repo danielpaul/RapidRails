@@ -83,7 +83,7 @@ class App::Nav::Sidebar::MenuComponent < ApplicationComponent
     ]
   end
 
-  def template
+  def view_template
     nav class: "flex flex-1 flex-col" do
       ul class: "flex flex-1 flex-col gap-y-4", role: "list" do
         menu_items.each do |menu_item|
@@ -95,19 +95,18 @@ class App::Nav::Sidebar::MenuComponent < ApplicationComponent
               end
             end
 
-            if menu_item[:items] && menu_item[:items].any?
+            if menu_item[:items]&.any?
               ul class: "-mx-6 space-y-3 #{menu_item[:item_menu_classes]}", role: "list" do
                 menu_item[:items].each do |item|
                   a_classes = "group flex gap-x-3 py-1 px-6 text-sm font-semibold hover:text-black dark:hover:text-white transition-colors duration-200"
                   icon_classes = "h-5 w-5 shrink-0"
 
-                  if item[:active]
-                    a_classes += " text-black dark:text-white border-l-4 border-primary"
-                    icon_classes += " "
+                  a_classes += if item[:active]
+                    " text-black dark:text-white border-l-4 border-primary"
                   else
-                    a_classes += " text-neutral-500 dark:text-neutral-400"
-                    icon_classes += " "
+                    " text-neutral-500 dark:text-neutral-400"
                   end
+                  icon_classes += " "
 
                   li do
                     link_to(
@@ -115,7 +114,7 @@ class App::Nav::Sidebar::MenuComponent < ApplicationComponent
                       class: a_classes
                     ) do
                       if item[:icon]
-                        unsafe_raw heroicon(item[:icon], options: { class: icon_classes })
+                        unsafe_raw heroicon(item[:icon], options: {class: icon_classes})
                       else
                         span class: "flex h-5 w-5 shrink-0 items-center justify-center rounded-lg border card-border font-medium text-[0.625rem]" do
                           item[:title][0]
@@ -125,8 +124,8 @@ class App::Nav::Sidebar::MenuComponent < ApplicationComponent
                         item[:title]
                       end
                       if item[:badge]
-                        span class: "ml-auto w-9 min-w-max whitespace-nowrap rounded-full py-0 text-center text-xs leading-5 bg-zinc-900/5 dark:bg-white/5 text-neutral-500 dark:text-neutral-400" do
-                          item[:badge]
+                        span class: "ml-auto" do
+                          render BadgeComponent.new(text: item[:badge], rounded: true)
                         end
                       end
                     end

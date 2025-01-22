@@ -11,7 +11,7 @@ module User::Omniauthable
 
       user_verified_email = (data["email_verified"] == true)
 
-      # ifthe user has not confirmed their email address, confirm if verified
+      # if the user has not confirmed their email address, confirm if verified
       # and reset password - we don't want another user who might have created
       # the account and left it unconfirmed to be able to get in with the password that they set
       if user && !user.confirmed? && user_verified_email
@@ -37,7 +37,7 @@ module User::Omniauthable
       end
 
       # if the user profile picture exists, user has not uploaded another profile_picture, save it
-      if user && !user.profile_picture.attached? && data["image"].present?
+      if ENABLE_USER_AVATAR_UPLOAD && user && !user.profile_picture.attached? && data["image"].present?
         # sidekiq job to download the image and attach it to the user
         # log the user in ASAP without waiting for slow image request and attachment process
         # to complete. The user will see the default avatar until the image is attached.

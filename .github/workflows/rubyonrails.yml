@@ -5,41 +5,56 @@
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests and linters.
 name: "Ruby on Rails CI"
+
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:11-alpine
+        image: postgres:latest
         ports:
           - "5432:5432"
         env:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
+      redis:
+        image: redis
+        ports: ["6379:6379"]
+        options: --entrypoint redis-server
     env:
       RAILS_ENV: test
       HOST: localhost:3000
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-      # Add or replace dependency steps here
+        uses: actions/checkout@v4
+
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
+          bundler: default
           bundler-cache: true
-      # Add or replace database setup steps here
+      
+      - name: Standardrb Check
+        run: bundle exec standardrb
+      
+      - name: Brakeman Check
+        run: bundle exec brakeman
+
       - name: Set up database schema
         run: bin/rails db:schema:load
-      # Add or replace test runners here
+
       - name: Run Minitest
         run: bin/rake
+        
       - name: Run Rspec
         run: bundle exec rspec

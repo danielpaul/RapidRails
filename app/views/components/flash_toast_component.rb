@@ -8,7 +8,7 @@ class FlashToastComponent < ApplicationComponent
     @index = index
   end
 
-  def template
+  def view_template
     div(
       class: "pointer-events-auto w-full max-w-sm overflow-hidden card shadow-lg",
       style: "display: none;",

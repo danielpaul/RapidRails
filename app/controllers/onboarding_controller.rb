@@ -1,7 +1,7 @@
 class OnboardingController < ApplicationController
   before_action :authenticate_user!, :check_if_enabled!
   layout "application_devise"
-  
+
   def index
   end
 
@@ -24,5 +24,4 @@ class OnboardingController < ApplicationController
 
     render_404!
   end
-
 end

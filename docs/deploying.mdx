@@ -1,5 +1,12 @@
 # App Deploy
 
+## GitHub Actions
+
+We use Github Actions as our workflow configuration and takes care of CI.
+For GitHub Actions to work, it is important to save your Rails master key in the Actions secret and variables settings on Github.
+
+Set `RAILS_MASTER_KEY` in the secrets section of your repository settings on Github.
+
 ## Deploy without heroku
 
 Setup any environment variables that need to be added to production after deploy depending on the environment of the server.
@@ -27,6 +34,7 @@ Setup these addons:
 - Heroku Scheduler addon
 
 Setup Buildpacks:
+
 - `heroku buildpacks:set heroku/ruby -a <app_name>`
 
 ## Default Config variables setup
@@ -59,3 +67,11 @@ Add these default take tasks to your scheduler on production.
 # Database setup
 
 Run rails `db:migrate` on production after deploy to setup your database.
+
+# Redis Setup
+
+Redis, setup eviction policy to `allkeys-lru` to ensure that the cache is cleared when the memory limit is reached. Run this command to set the eviction policy:
+
+`heroku redis:maxmemory REDIS --policy allkeys-lru -a example-app`
+
+Without this, Redis will not clear the cache and will throw an error when the memory limit is reached.

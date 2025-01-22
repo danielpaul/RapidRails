@@ -16,13 +16,10 @@ name = "secrets"
 name = "ruby"
 
 [[transformers]]
-name = "rubocop"
-
-[[transformers]]
-name = "standardrb"
-
-[[transformers]]
 name = "prettier"
 
 [[transformers]]
 name = "standardjs"
+
+[[transformers]]
+name = "standardrb"

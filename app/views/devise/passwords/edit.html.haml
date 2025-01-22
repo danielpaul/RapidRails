@@ -11,6 +11,7 @@
 .mt-8.card
   .card-body
     = form_for(resource, as: resource_name, url: password_path(resource_name), builder: RapidRailsFormBuilder, html: {method: :put, class: 'space-y-6 -mt-6'}) do |f|
+      = render FormErrorsComponent.new(resource)
       = f.hidden_field :reset_password_token
 
       = render 'devise/passwords/new_password_fields', f: f

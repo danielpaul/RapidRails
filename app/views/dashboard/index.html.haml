@@ -46,6 +46,32 @@
       = link_to "Link", '#', class: "link"
       = link_to "Link hover", '#', class: "link-hover ml-6"
 
+%section#buttons.mb-12
+  %h1.h1.mb-3 Badges
+  %p.mb-6.text-md Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+
+  .card
+    .card-body
+      %div.space-x-2
+        = render BadgeComponent.new(text: "Gray", color: "gray", rounded: false)
+        = render BadgeComponent.new(text: "Red", color: "red", rounded: false)
+        = render BadgeComponent.new(text: "Yellow", color: "yellow", rounded: false)
+        = render BadgeComponent.new(text: "Green", color: "green", rounded: false)
+        = render BadgeComponent.new(text: "Blue", color: "blue", rounded: false)
+        = render BadgeComponent.new(text: "Indigo", color: "indigo", rounded: false)
+        = render BadgeComponent.new(text: "Purple", color: "purple", rounded: false)
+        = render BadgeComponent.new(text: "Pink", color: "pink", rounded: false)
+      
+      %div.space-x-2.mt-2
+        = render BadgeComponent.new(text: "Gray", color: "gray", rounded: true)
+        = render BadgeComponent.new(text: "Red", color: "red", rounded: true)
+        = render BadgeComponent.new(text: "Yellow", color: "yellow", rounded: true)
+        = render BadgeComponent.new(text: "Green", color: "green", rounded: true)
+        = render BadgeComponent.new(text: "Blue", color: "blue", rounded: true)
+        = render BadgeComponent.new(text: "Indigo", color: "indigo", rounded: true)
+        = render BadgeComponent.new(text: "Purple", color: "purple", rounded: true)
+        = render BadgeComponent.new(text: "Pink", color: "pink", rounded: true)
+      
 %section#forms.mb-12
   %h1.h1.mb-3 Forms
   %p.mb-6.text-md Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
@@ -59,7 +85,7 @@
         = f.email_field :email, autocomplete: 'email', placeholder: "Your email address", label: "Your Email Field", required: true, hint: "This is a hint. Give helpful information here.", class: 'custom-class'
         = f.password_field :password, autocomplete: 'current-password', placeholder: "Your password", required: true, error: "This is an error message. Manually set or with model validation."
         = f.text_field :text, placeholder: "Your text", required: true, disabled: true
-        = f.text_area :text_area, placeholder: "Your text area", required: true, hint: "This is a hint. Give helpful information here."
+        = f.textarea :text_area, placeholder: "Your text area", required: true, hint: "This is a hint. Give helpful information here."
 
         = f.select :select, options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), {hint: "This is a hint. Give helpful information here.", prompt: "Select something..."}, {required: true}
 
