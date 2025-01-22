@@ -1,6 +1,6 @@
 # Terms and Conditions
 
-*Last updated: April 20, 2023*
+_Last updated: April 20, 2023_
 
 These Terms and Conditions govern your use of our website and services. By accessing or using our website or services, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please refrain from using our website and services.
 
@@ -44,4 +44,3 @@ These Terms and Conditions shall be governed by and construed in accordance with
 ## Contact Us
 
 If you have any questions or concerns about these Terms and Conditions, please contact us at [contact@example.com](mailto:contact@example.com).
-
