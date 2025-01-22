@@ -1,5 +1,7 @@
-import { execSync } from 'child_process';
-const activeAdminPath = execSync('bundle show activeadmin', { encoding: 'utf-8' }).trim();
+import { execSync } from 'child_process'
+const activeAdminPath = execSync('bundle show activeadmin', {
+  encoding: 'utf-8'
+}).trim()
 
 export default {
   content: [
@@ -12,8 +14,6 @@ export default {
     './app/views/layouts/active_admin*.{erb,html}',
     './app/javascript/**/*.js'
   ],
-  darkMode: "selector",
-  plugins: [
-    require(`${activeAdminPath}/plugin`)
-  ]
+  darkMode: 'selector',
+  plugins: [require(`${activeAdminPath}/plugin`)]
 }
