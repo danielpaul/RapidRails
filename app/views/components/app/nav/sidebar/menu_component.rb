@@ -124,8 +124,8 @@ class App::Nav::Sidebar::MenuComponent < ApplicationComponent
                         item[:title]
                       end
                       if item[:badge]
-                        span class: "ml-auto w-9 min-w-max whitespace-nowrap rounded-full py-0 text-center text-xs leading-5 bg-zinc-900/5 dark:bg-white/5 text-neutral-500 dark:text-neutral-400" do
-                          item[:badge]
+                        span class: "ml-auto" do
+                          render BadgeComponent.new(text: item[:badge], rounded: true)
                         end
                       end
                     end

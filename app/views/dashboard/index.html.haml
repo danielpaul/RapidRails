@@ -46,6 +46,32 @@
       = link_to "Link", '#', class: "link"
       = link_to "Link hover", '#', class: "link-hover ml-6"
 
+%section#buttons.mb-12
+  %h1.h1.mb-3 Badges
+  %p.mb-6.text-md Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+
+  .card
+    .card-body
+      %div.space-x-2
+        = render BadgeComponent.new(text: "Gray", color: "gray", rounded: false)
+        = render BadgeComponent.new(text: "Red", color: "red", rounded: false)
+        = render BadgeComponent.new(text: "Yellow", color: "yellow", rounded: false)
+        = render BadgeComponent.new(text: "Green", color: "green", rounded: false)
+        = render BadgeComponent.new(text: "Blue", color: "blue", rounded: false)
+        = render BadgeComponent.new(text: "Indigo", color: "indigo", rounded: false)
+        = render BadgeComponent.new(text: "Purple", color: "purple", rounded: false)
+        = render BadgeComponent.new(text: "Pink", color: "pink", rounded: false)
+      
+      %div.space-x-2.mt-2
+        = render BadgeComponent.new(text: "Gray", color: "gray", rounded: true)
+        = render BadgeComponent.new(text: "Red", color: "red", rounded: true)
+        = render BadgeComponent.new(text: "Yellow", color: "yellow", rounded: true)
+        = render BadgeComponent.new(text: "Green", color: "green", rounded: true)
+        = render BadgeComponent.new(text: "Blue", color: "blue", rounded: true)
+        = render BadgeComponent.new(text: "Indigo", color: "indigo", rounded: true)
+        = render BadgeComponent.new(text: "Purple", color: "purple", rounded: true)
+        = render BadgeComponent.new(text: "Pink", color: "pink", rounded: true)
+      
 %section#forms.mb-12
   %h1.h1.mb-3 Forms
   %p.mb-6.text-md Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
