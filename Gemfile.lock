@@ -568,7 +568,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activeadmin (>= 4.0.0.beta)
+  activeadmin (= 4.0.0.beta15)
   annotate
   better_errors
   binding_of_caller

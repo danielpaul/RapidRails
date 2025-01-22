@@ -104,7 +104,7 @@ if ENABLE_FILE_UPLOAD
 end
 
 # Admin Panel
-gem "activeadmin", ">= 4.0.0.beta"
+gem "activeadmin", "4.0.0.beta15"
 
 group :development, :test do
   gem "dotenv-rails"
