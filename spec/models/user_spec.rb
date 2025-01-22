@@ -189,7 +189,7 @@ RSpec.describe User, type: :model do
           assert google_user.discarded?
         end
       end
-      
+
       if ENABLE_USER_AVATAR_UPLOAD
         context "when user has no profile picture" do
           it "attaches profile picture from google account" do
@@ -200,7 +200,6 @@ RSpec.describe User, type: :model do
           end
         end
       end
-      
     end
   end
 end
