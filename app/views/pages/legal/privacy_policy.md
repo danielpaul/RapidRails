@@ -1,6 +1,6 @@
 # Privacy Policy
 
-*Last updated: April 20, 2023*
+_Last updated: April 20, 2023_
 
 This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website or use our services.
 
@@ -48,4 +48,3 @@ We reserve the right to modify this Privacy Policy at any time. Any changes will
 ## Contact Us
 
 If you have any questions or concerns about this Privacy Policy, please contact us at [contact@example.com](mailto:contact@example.com).
-
