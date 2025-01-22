@@ -189,15 +189,18 @@ RSpec.describe User, type: :model do
           assert google_user.discarded?
         end
       end
-
-      context "when user has no profile picture" do
-        it "attaches profile picture from google account" do
-          expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 0
-          expect {
-            User.from_omniauth(omniauth_data)
-          }.to have_enqueued_job(ActiveStorage::AnalyzeJob)
+      
+      if ENABLE_USER_AVATAR_UPLOAD
+        context "when user has no profile picture" do
+          it "attaches profile picture from google account" do
+            expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 0
+            expect {
+              User.from_omniauth(omniauth_data)
+            }.to have_enqueued_job(ActiveStorage::AnalyzeJob)
+          end
         end
       end
+      
     end
   end
 end
