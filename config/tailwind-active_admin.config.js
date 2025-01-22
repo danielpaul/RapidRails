@@ -1,6 +1,4 @@
 import { execSync } from 'child_process';
-import activeAdminPlugin from '@activeadmin/activeadmin/plugin';
-
 const activeAdminPath = execSync('bundle show activeadmin', { encoding: 'utf-8' }).trim();
 
 export default {
@@ -16,6 +14,6 @@ export default {
   ],
   darkMode: "selector",
   plugins: [
-    activeAdminPlugin
+    require(`${activeAdminPath}/plugin`)
   ]
 }
