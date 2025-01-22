@@ -6,7 +6,7 @@ class BadgeComponent < Phlex::HTML
     @rounded = rounded
   end
 
-  def template
+  def view_template
     span class: badge_classes do
       @text
     end

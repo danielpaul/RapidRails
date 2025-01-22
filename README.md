@@ -41,6 +41,7 @@ brew services start redis
 - Run `bin/dev` to start the app locally
 - Run `overmind connect web` to connect to the web process logs & run debugger
 - Open `localhost:3000` in your web browser to view the app
+- Open `localhost:3000/admin` to view the admin panel (create an AdminUser record via console).
 - Open `localhost:3000/rails/mailers` to view mailers preview locally
 - Open `localhost:3000/sidekiq` to view sidekiq dashboard
 - Emails sent in local development are automatically opened in the browser by letter_opener.

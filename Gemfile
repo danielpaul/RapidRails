@@ -103,6 +103,9 @@ if ENABLE_FILE_UPLOAD
   gem "image_processing"
 end
 
+# Admin Panel
+gem "activeadmin", "4.0.0.beta15"
+
 group :development, :test do
   gem "dotenv-rails"
 
