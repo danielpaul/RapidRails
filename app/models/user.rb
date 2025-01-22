@@ -74,6 +74,17 @@ class User < ApplicationRecord
     full_name_parts.map(&:first).join
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[
+      email
+      full_name
+      sign_in_count
+      current_sign_in_at
+      created_at
+      onboarding_completed_at
+    ]
+  end
+
   private
 
   def full_name_parts
