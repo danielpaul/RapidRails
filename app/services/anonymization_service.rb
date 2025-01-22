@@ -22,8 +22,6 @@ class AnonymizationService
     )
   end
 
-  private_class_method :generate_anonymized_email
-
   def self.generate_anonymized_email(prefix, domain = "deleted.example.com")
     email = "#{prefix}@#{domain}"
     counter = 1
