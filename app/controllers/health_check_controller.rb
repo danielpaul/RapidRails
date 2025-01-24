@@ -19,13 +19,13 @@ class HealthCheckController < ApplicationController
 
   def database_check
     ActiveRecord::Base.connection.active? ? "up" : "down"
-  rescue StandardError
+  rescue
     "down"
   end
 
   def redis_check
-    $redis.ping == "PONG" ? "up" : "down"
-  rescue StandardError
+    ($redis.ping == "PONG") ? "up" : "down"
+  rescue
     "down"
   end
 end
