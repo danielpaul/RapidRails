@@ -26,7 +26,7 @@ class FlashToastComponent < ApplicationComponent
     ) {
       div(class: "p-4") {
         div(class: "flex items-start") {
-          div(class: "flex-shrink-0") {
+          div(class: "shrink-0") {
             unsafe_raw heroicon(
               alert_icon(alert_type(@toast[:type])),
               variant: "solid",
