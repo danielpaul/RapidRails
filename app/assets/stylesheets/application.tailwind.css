@@ -75,7 +75,7 @@
 
   .btn {
     @apply rounded-md py-2 px-4 text-sm font-semibold 
-    focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 
+    focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 
     hover:transition-all hover:duration-300
     cursor-pointer disabled:cursor-not-allowed;
   }
@@ -90,7 +90,7 @@
 
   .btn-secondary {
     @apply btn text-neutral-900 dark:text-white 
-    shadow-sm 
+    shadow-xs 
     ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750
     bg-card dark:bg-[#27262b]
     hover:bg-neutral-100 dark:hover:bg-neutral-900
@@ -144,7 +144,7 @@
 
   .alert-close-btn {
     @apply inline-flex rounded-md p-1
-    focus:outline-none focus:ring-2 focus:ring-offset-1 mt-1
+    focus:outline-hidden focus:ring-2 focus:ring-offset-1 mt-1
     transition hover:bg-zinc-900/5 dark:hover:bg-white/5;
   }
 
@@ -220,7 +220,7 @@
   .card {
     @apply bg-card dark:bg-card-dark ring-1 
     ring-neutral-300/50 dark:ring-neutral-750 
-    rounded-lg shadow-sm 
+    rounded-lg shadow-xs 
     my-auto 
     overflow-hidden;
   }
@@ -293,7 +293,7 @@
   .file-input {
     @apply file:bg-transparent file:text-neutral-900 
     file:dark:text-white 
-    file:shadow-sm 
+    file:shadow-xs 
     file:ring-1 file:ring-neutral-300 file:dark:ring-neutral-750 
     file:hover:bg-neutral-50 file:dark:hover:bg-neutral-900
     file:mr-4 file:my-1 file:py-0 file:px-3
@@ -312,7 +312,7 @@
     focus:bg-neutral-50 dark:focus:bg-neutral-900
     border-0 
     py-1.5 px-3 
-    shadow-sm
+    shadow-xs
     ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750
     placeholder:text-neutral-500 
     text-slate-800 dark:text-neutral-50 
@@ -363,7 +363,7 @@
     items-center justify-between 
     gap-6 px-4 sm:px-6 lg:left-72 lg:z-30 lg:px-8 lg:left-72
     transition-opacity 
-    backdrop-blur-sm dark:backdrop-blur 
+    backdrop-blur-xs dark:backdrop-blur-sm 
     bg-card/90 dark:bg-card-dark/80;
   }
 
@@ -381,7 +381,7 @@
 
 /* Pagy */
 .pagy-nav.pagination {
-  @apply inline-flex shadow-sm rounded-md;
+  @apply inline-flex shadow-xs rounded-md;
 }
 
 .page {
