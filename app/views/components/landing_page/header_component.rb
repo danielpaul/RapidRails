@@ -17,7 +17,7 @@ class LandingPage::HeaderComponent < ApplicationComponent
     header(
       class: "sticky top-0 z-40 w-full flex-none transition-all duration-500 lg:z-20 bg-transparent",
       x_data: "{ dropdownOpen: false, atTop: true }",
-      ":class": "{ 'bg-transparent': atTop, 'shadow-xs backdrop-blur bg-white dark:bg-body-dark/75 supports-backdrop-blur:bg-white/95 dark:supports-backdrop-blur:bg-body-dark/95 border-b lg:border-slate-900/10 dark:border-none': !atTop}",
+      ":class": "{ 'bg-transparent': atTop, 'shadow-xs backdrop-blur-sm bg-white dark:bg-body-dark/75 supports-backdrop-blur:bg-white/95 dark:supports-backdrop-blur:bg-body-dark/95 border-b lg:border-slate-900/10 dark:border-none': !atTop}",
       "@scroll.window": "atTop = (window.pageYOffset < 50)",
       x_init: "atTop = (window.pageYOffset < 50)"
     ) do
