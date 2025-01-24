@@ -7,8 +7,7 @@ if Rails.env.production? && ENABLE_FILE_UPLOAD
     access_key_id: Rails.application.credentials.dig(Rails.env.to_sym, :cloudflare, :access_key_id),
     secret_access_key: Rails.application.credentials.dig(Rails.env.to_sym, :cloudflare, :secret_access_key),
     endpoint: "https://#{Rails.application.credentials.dig(Rails.env.to_sym, :cloudflare, :account_id)}.r2.cloudflarestorage.com",
-    region: 'auto'
-  )
+    region: "auto")
 
   SitemapGenerator::Sitemap.sitemaps_host = SITEMAP_HOST
   SitemapGenerator::Sitemap.sitemaps_path = APP_SLUG
