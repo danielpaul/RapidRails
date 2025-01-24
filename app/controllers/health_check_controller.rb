@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controller for checking the health status of various application components
 class HealthCheckController < ApplicationController
   def show
     health_status = {
@@ -21,7 +24,7 @@ class HealthCheckController < ApplicationController
   end
 
   def redis_check
-    (Redis.new.ping == "PONG") ? "up" : "down"
+    (Redis.new(REDIS_CONFIG).ping == "PONG") ? "up" : "down"
   rescue
     "down"
   end
