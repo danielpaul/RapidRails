@@ -53,6 +53,9 @@ GEM
       kaminari (>= 1.2.1)
       railties (>= 7.0)
       ransack (>= 4.0)
+    activeadmin_assets (1.0.2)
+      activeadmin (>= 4.0.0.beta7, < 5.0.0)
+      importmap-rails (>= 2.0.0)
     activejob (8.0.1)
       activesupport (= 8.0.1)
       globalid (>= 0.3.6)
@@ -569,6 +572,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (= 4.0.0.beta15)
+  activeadmin_assets
   annotate
   better_errors
   binding_of_caller

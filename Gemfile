@@ -96,6 +96,7 @@ gem "sentry-sidekiq"
 
 # Admin Panel
 gem "activeadmin", "4.0.0.beta15"
+gem "activeadmin_assets"
 
 group :development, :test do
   gem "dotenv-rails"

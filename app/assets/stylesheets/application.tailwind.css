@@ -1,8 +1,10 @@
 @import "tailwindcss";
-/* @config '../../../config/tailwind.config.js'; */
+
+/* Dark mode with classes */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Inter var", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* --font-sans: "Inter var", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   
   /* Colors */
   --color-primary: #007aff;
@@ -24,8 +26,6 @@
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/aspect-ratio";
 @plugin "@tailwindcss/typography";
-/* @plugin "@tailwindcss/container-queries"; */
-
 
 @utility text-heading {
   @apply text-neutral-900 dark:text-white;
