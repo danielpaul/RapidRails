@@ -8,9 +8,13 @@ test:
 production:
   adapter: redis
   url: <%= ENV["REDIS_URL"] || ENV["REDISCLOUD_URL"] || "redis://localhost:6379/1" %>
+  ssl_params:
+    verify_mode: <%= OpenSSL::SSL::VERIFY_NONE %>
   channel_prefix: rapid_rails_production
 
 staging:
   adapter: redis
   url: <%= ENV["REDIS_URL"] || ENV["REDISCLOUD_URL"] || "redis://localhost:6379/1" %>
+  ssl_params:
+    verify_mode: <%= OpenSSL::SSL::VERIFY_NONE %>
   channel_prefix: rapid_rails_staging

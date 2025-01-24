@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controller for checking the health status of various application components
 class HealthCheckController < ApplicationController
   def show
     health_status = {
@@ -16,13 +19,13 @@ class HealthCheckController < ApplicationController
 
   def database_check
     ActiveRecord::Base.connection.active? ? "up" : "down"
-  rescue
+  rescue StandardError
     "down"
   end
 
   def redis_check
-    (Redis.new.ping == "PONG") ? "up" : "down"
-  rescue
+    $redis.ping == "PONG" ? "up" : "down"
+  rescue StandardError
     "down"
   end
 end
