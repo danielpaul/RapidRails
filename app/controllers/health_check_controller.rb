@@ -24,7 +24,7 @@ class HealthCheckController < ApplicationController
   end
 
   def redis_check
-    $redis.ping == "PONG" ? "up" : "down"
+    Redis.new(REDIS_CONFIG).ping == "PONG" ? "up" : "down"
   rescue StandardError
     "down"
   end
