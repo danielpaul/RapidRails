@@ -5,7 +5,7 @@
 
 @theme {
   /* --font-sans: "Inter var", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
-  
+
   /* Colors */
   --color-primary: #007aff;
   --color-primary-500: #0077ed;
@@ -32,7 +32,7 @@
 }
 
 @utility h1 {
-  @apply text-2xl md:text-3xl font-bold tracking-tight text-heading;;
+  @apply text-2xl md:text-3xl font-bold tracking-tight text-heading;
 }
 
 @utility btn {
@@ -52,7 +52,7 @@
 }
 
 @utility link-hover {
-  @apply hover:underline hover:text-primary-500 hover:underline-offset-2
+  @apply hover:underline hover:text-primary-500 hover:underline-offset-2;
 }
 
 @utility alert-close-btn {

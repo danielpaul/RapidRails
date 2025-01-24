@@ -5,5 +5,5 @@ REDIS_CONFIG = {
 }
 
 if Rails.env.production? || Rails.env.staging?
-  REDIS_CONFIG[:ssl_params] = { verify_mode: OpenSSL::SSL::VERIFY_NONE }
+  REDIS_CONFIG[:ssl_params] = {verify_mode: OpenSSL::SSL::VERIFY_NONE}
 end
