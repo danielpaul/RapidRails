@@ -1,5 +1,55 @@
 @import "tailwindcss";
-@config '../../../config/tailwind.config.js';
+/* @config '../../../config/tailwind.config.js'; */
+
+@theme {
+  --font-sans: "Inter var", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+  /* Colors */
+  --color-primary: #007aff;
+  --color-primary-500: #0077ed;
+  --color-primary-600: #006edb;
+
+  --color-body: #fafafa;
+  --color-body-dark: #010409;
+
+  --color-card: #ffffff;
+  --color-card-dark: #18171c;
+
+  --color-neutral-750: #38383d;
+
+  /* Font Sizes */
+  --font-size-base: 0.9rem;
+}
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/aspect-ratio";
+@plugin "@tailwindcss/typography";
+/* @plugin "@tailwindcss/container-queries"; */
+
+
+@utility text-heading {
+  @apply text-neutral-900 dark:text-white;
+}
+
+@utility h1 {
+  @apply text-2xl md:text-3xl font-bold tracking-tight text-heading;;
+}
+
+@utility btn {
+  @apply rounded-md py-2 px-4 text-sm font-semibold 
+    focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 
+    hover:transition-all hover:duration-300
+    cursor-pointer disabled:cursor-not-allowed;
+}
+
+@utility btn-secondary {
+  @apply btn text-neutral-900 dark:text-white 
+    shadow-xs 
+    ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750
+    bg-card dark:bg-[#27262b]
+    hover:bg-neutral-100 dark:hover:bg-neutral-900
+    disabled:bg-neutral-200 dark:disabled:bg-transparent;
+}
 
 @layer base {
   body {
@@ -27,13 +77,13 @@
   }
 
   .text-heading {
-    @apply text-neutral-900 dark:text-white;
+    @apply text-heading;
   }
 
   /* Typography */
 
   .h1 {
-    @apply text-2xl md:text-3xl font-bold tracking-tight text-heading;
+    @apply h1;
   }
 
   .h2 {
@@ -73,10 +123,7 @@
   /* Links & Buttons */
 
   .btn {
-    @apply rounded-md py-2 px-4 text-sm font-semibold 
-    focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 
-    hover:transition-all hover:duration-300
-    cursor-pointer disabled:cursor-not-allowed;
+    @apply btn;
   }
 
   .btn-primary {
@@ -88,12 +135,7 @@
   }
 
   .btn-secondary {
-    @apply btn text-neutral-900 dark:text-white 
-    shadow-xs 
-    ring-1 ring-inset ring-neutral-300 dark:ring-neutral-750
-    bg-card dark:bg-[#27262b]
-    hover:bg-neutral-100 dark:hover:bg-neutral-900
-    disabled:bg-neutral-200 dark:disabled:bg-transparent;
+    @apply btn-secondary;
   }
 
   .btn-danger {
