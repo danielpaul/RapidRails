@@ -3,18 +3,15 @@ SitemapGenerator::Sitemap.default_host = HOST
 
 # only if production
 if Rails.env.production? && ENABLE_FILE_UPLOAD
-  SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
-    aws_access_key_id: Rails.application.credentials.dig(Rails.env.to_sym, :aws, :access_key_id),
-    aws_secret_access_key: Rails.application.credentials.dig(Rails.env.to_sym, :aws, :secret_access_key),
-    fog_provider: "AWS",
-    fog_directory: Rails.application.credentials.dig(Rails.env.to_sym, :aws, :bucket),
-    fog_region: Rails.application.credentials.dig(Rails.env.to_sym, :aws, :region),
-    fog_path_style: "sitemaps",
-    fog_public: true
+  SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(Rails.application.credentials.dig(Rails.env.to_sym, :cloudflare, :sitemaps_bucket),
+    access_key_id: Rails.application.credentials.dig(Rails.env.to_sym, :cloudflare, :access_key_id),
+    secret_access_key: Rails.application.credentials.dig(Rails.env.to_sym, :cloudflare, :secret_access_key),
+    endpoint: "https://#{Rails.application.credentials.dig(Rails.env.to_sym, :cloudflare, :account_id)}.r2.cloudflarestorage.com",
+    region: 'auto'
   )
 
   SitemapGenerator::Sitemap.sitemaps_host = SITEMAP_HOST
-  SitemapGenerator::Sitemap.sitemaps_path = "sitemaps"
+  SitemapGenerator::Sitemap.sitemaps_path = APP_SLUG
 end
 
 SitemapGenerator::Sitemap.create do

@@ -88,6 +88,7 @@ gem "sentry-sidekiq"
 
 # File Uploads
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+# with Cloudflare R2 we still use AWS S3 compatible storage & SDK
 # !!! Comment in the gems to ENABLE_FILE_UPLOAD
 # gem "active_storage_validations"
 # gem "aws-sdk-s3"

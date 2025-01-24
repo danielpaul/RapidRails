@@ -4,6 +4,7 @@
 # easily with case sensitive search in a code editor.
 
 APP_NAME = "Rapid Rails".freeze
+APP_SLUG = "rapidrails".freeze
 
 APPLE_TOUCH_ICON_PATH = "/apple-touch-icon.png".freeze
 BROWSER_THEME_COLOR = "#000000".freeze
@@ -49,11 +50,8 @@ ENABLE_USER_AVATAR_UPLOAD = ENABLE_FILE_UPLOAD
 
 ANONYMIZE_USER_DATA_AFTER_DAYS = 7
 
-# Sitemap
+# Sitemaps
 if Rails.env.production?
-  SITEMAP_HOST = "https://" +
-    Rails.application.credentials.dig(Rails.env.to_sym, :aws, :bucket) +
-    ".s3." +
-    Rails.application.credentials.dig(Rails.env.to_sym, :aws, :region) +
-    ".amazonaws.com"
+  SITEMAP_HOST = Rails.application.credentials.dig(Rails.env.to_sym, :cloudflare, :sitemaps_public_bucket_url)
+  SITEMAP_URL = "#{SITEMAP_HOST}/#{APP_SLUG}/sitemap.xml.gz".freeze
 end
