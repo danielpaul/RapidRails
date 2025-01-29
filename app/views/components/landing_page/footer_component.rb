@@ -98,7 +98,7 @@ class LandingPage::FooterComponent < ApplicationComponent
                   "text-input",
                 placeholder: "Enter your email"
               )
-              div(class: "mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0") do
+              div(class: "mt-4 sm:ml-4 sm:mt-0 sm:shrink-0") do
                 button(
                   type: "submit",
                   class:

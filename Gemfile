@@ -24,7 +24,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails"
+gem "tailwindcss-rails", ">= 4.0.0.rc"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -96,6 +96,7 @@ gem "sentry-sidekiq"
 
 # Admin Panel
 gem "activeadmin", "4.0.0.beta15"
+gem "activeadmin_assets"
 
 group :development, :test do
   gem "dotenv-rails"

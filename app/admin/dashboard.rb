@@ -5,7 +5,9 @@ ActiveAdmin.register_page "Dashboard" do
 
   content title: proc { I18n.t("active_admin.dashboard") } do
     # Stat Cards
-    div class: "grid grid-cols-1 gap-6 md:grid-cols-4 mb-6" do
+    # Since we are not compiling active admin assets and using activeadmin_assets gem, we cannot add
+    # custom CSS classes that ActiveAdmin gem does not use. Need to do custom CSS for things we need.
+    div class: "grid grid-cols-1 gap-6 mb-6", style: "grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));" do
       # Total Users Stat
       div class: "bg-white dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700 p-4 text-center" do
         h3 class: "text-sm font-semibold text-gray-800 dark:text-gray-200" do
@@ -47,7 +49,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
-    div class: "grid grid-cols-1 gap-6 md:grid-cols-2" do
+    div class: "grid grid-cols-1 gap-6 md:grid-cols-2", style: "grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));" do
       # Recently Signed Up Users Widget
       div class: "bg-white dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700 overflow-hidden" do
         h3 class: "text-sm font-semibold text-gray-800 dark:text-gray-200 p-4 border-b border-gray-300 dark:border-gray-700" do
