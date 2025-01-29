@@ -136,7 +136,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
 
-  gem "annotate"
+  gem "annotaterb"
 end
 
 group :test do
