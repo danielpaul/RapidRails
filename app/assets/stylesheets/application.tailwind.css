@@ -99,11 +99,11 @@
 }
 
 @utility file-input {
-  @apply file:bg-transparent file:text-neutral-900 
-  file:dark:text-white 
+  @apply file:bg-transparent
+  file:text-neutral-900 dark:file:text-white 
   file:shadow-xs 
-  file:ring-1 file:ring-neutral-300 file:dark:ring-neutral-750 
-  file:hover:bg-neutral-50 file:dark:hover:bg-neutral-900
+  file:ring-1 file:ring-neutral-300 dark:file:ring-neutral-750 
+  file:hover:bg-neutral-50 dark:file:hover:bg-neutral-900
   file:mr-4 file:my-1 file:py-0 file:px-3
   file:border-0 
   file:cursor-pointer
