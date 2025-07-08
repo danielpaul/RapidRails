@@ -1,6 +1,5 @@
 module User::Offboarding
   extend ActiveSupport::Concern
-  include Discard::Model
 
   included do
     has_many :user_account_feedbacks
