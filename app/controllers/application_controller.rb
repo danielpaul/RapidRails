@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
     # Add other fields that can be edited from the user's profile page here
     edit_user_params = if ENABLE_USER_AVATAR_UPLOAD
-      [:profile_picture]
+      [ :profile_picture ]
     else
       []
     end

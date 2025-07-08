@@ -6,10 +6,10 @@ class LandingPage::HeaderComponent < ApplicationComponent
 
   def main_menu_items
     [
-      {label: "Product", path: "#"},
-      {label: "Features", path: "#"},
-      {label: "Marketplace", path: "#"},
-      {label: "Company", path: "#"}
+      { label: "Product", path: "#" },
+      { label: "Features", path: "#" },
+      { label: "Marketplace", path: "#" },
+      { label: "Company", path: "#" }
     ]
   end
 

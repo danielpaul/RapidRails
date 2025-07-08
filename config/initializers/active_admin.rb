@@ -140,7 +140,7 @@ ActiveAdmin.setup do |config|
   # config.comments_menu = false
   #
   # You can customize the comment menu:
-  config.comments_menu = {parent: "Metadata", priority: 10}
+  config.comments_menu = { parent: "Metadata", priority: 10 }
 
   # == Batch Actions
   #
@@ -220,7 +220,7 @@ ActiveAdmin.setup do |config|
     #     admin.download_links = false
     #
 
-    admin.download_links = [:csv]
+    admin.download_links = [ :csv ]
 
     #
     #     # Enable/disable the links based on block (for example, with cancan)

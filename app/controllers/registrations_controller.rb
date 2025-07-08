@@ -93,7 +93,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def user_delete_params
     params.require(:user).permit(
-      user_account_feedbacks_attributes: [:feedback]
+      user_account_feedbacks_attributes: [ :feedback ]
     )
   end
 end

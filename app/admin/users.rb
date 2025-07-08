@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   menu priority: 1
-  actions :all, except: [:destroy]
+  actions :all, except: [ :destroy ]
 
   permit_params :email, :password, :password_confirmation, :full_name
 

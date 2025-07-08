@@ -14,7 +14,7 @@
 #  index_api_keys_on_api_key  (api_key) UNIQUE
 #
 class ApiKey < ApplicationRecord
-  enum :status, {active: 0, disabled: 1}
+  enum :status, { active: 0, disabled: 1 }
 
   validates_presence_of :name, :api_key
   validates_length_of :api_key, is: 27

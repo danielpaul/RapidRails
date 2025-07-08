@@ -107,7 +107,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
 
   # wrapper with error and disabled classes
   def wrapper_classes(method, options)
-    wrapper_classes = ["form-field"]
+    wrapper_classes = [ "form-field" ]
     wrapper_classes << "disabled" if options[:disabled]
 
     wrapper_classes << "error" if errors_for(method, options).present?
@@ -145,17 +145,17 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
           options[:label],
           options.merge(class: "label")
         ),
-        {class: "mb-2"}
+        { class: "mb-2" }
       )
     end
 
     errors = errors_for(method, options)
-    errors = label(method, errors, {class: "error-label"}) if errors.present?
+    errors = label(method, errors, { class: "error-label" }) if errors.present?
 
-    hint = (@template.content_tag("p", options[:hint], {class: "hint"}) if options[:hint].present?)
+    hint = (@template.content_tag("p", options[:hint], { class: "hint" }) if options[:hint].present?)
 
-    @template.content_tag("div", {class: wrapper_classes(method, options.merge(more_options))}) do
-      [label, yield, errors, hint].join.html_safe
+    @template.content_tag("div", { class: wrapper_classes(method, options.merge(more_options)) }) do
+      [ label, yield, errors, hint ].join.html_safe
     end
   end
 
@@ -171,8 +171,8 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
       )
     )
 
-    @template.content_tag("div", {class: wrapper_classes(method, options)}) do
-      @template.content_tag("div", {class: "group flex items-center"}) do
+    @template.content_tag("div", { class: wrapper_classes(method, options) }) do
+      @template.content_tag("div", { class: "group flex items-center" }) do
         yield + label
       end
     end
@@ -192,7 +192,7 @@ class RapidRailsFormBuilder < ActionView::Helpers::FormBuilder
     return if (options[:data] && options[:data][:turbo_disable_with]) || options[:data_turbo_disable_with]
 
     # just adds a spinner to the same button text
-    {"data-turbo-submits-with": spinner_svg + value}
+    { "data-turbo-submits-with": spinner_svg + value }
   end
 
   def spinner_svg

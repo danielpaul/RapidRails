@@ -20,7 +20,7 @@ module AlertHelper
       div(class: "-mx-1.5 -my-1.5") do
         button(type: "button", class: "close-btn", "@click": "show = false") do
           span(class: "sr-only") { "Close" }
-          unsafe_raw heroicon("x-mark", options: {class: "h-4 w-4"})
+          unsafe_raw heroicon("x-mark", options: { class: "h-4 w-4" })
         end
       end
     end

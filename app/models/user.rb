@@ -48,12 +48,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable,
     :confirmable, :trackable,
-    :omniauthable, omniauth_providers: [:google_oauth2]
+    :omniauthable, omniauth_providers: [ :google_oauth2 ]
 
-  validates :full_name, presence: true, length: {maximum: 100}
+  validates :full_name, presence: true, length: { maximum: 100 }
   validate :full_name_does_not_have_urls
 
-  validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
 
   def first_name
     full_name_parts.first

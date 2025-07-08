@@ -8,6 +8,6 @@ module FlashHelper
       flash[:toast] ||= []
     end
 
-    toast << {type:, heading:, body:}
+    toast << { type:, heading:, body: }
   end
 end

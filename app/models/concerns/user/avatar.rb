@@ -7,10 +7,10 @@ module User::Avatar
 
       validates :profile_picture,
         content_type: {
-          in: ["image/png", "image/jpeg"],
+          in: [ "image/png", "image/jpeg" ],
           message: "must be a png or jpeg image file"
         },
-        size: {less_than: 10.megabytes}
+        size: { less_than: 10.megabytes }
     end
   end
 
@@ -18,7 +18,7 @@ module User::Avatar
     if ENABLE_USER_AVATAR_UPLOAD && profile_picture.attached? && profile_picture.variable?
       # Use ActiveStorage's variant to resize image to 500x500 and return the URL
       return Rails.application.routes.url_helpers.url_for(
-        profile_picture.variant(resize_to_fill: [500, 500])
+        profile_picture.variant(resize_to_fill: [ 500, 500 ])
       )
     end
 
