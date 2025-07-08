@@ -5,10 +5,10 @@ ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :full_name
 
   scope :all, default: true
-  scope("Active") { |users| users.where(discarded_at: nil) }
+  scope("Active") { |users| users.kept }
   scope("Onboarded") { |users| users.where.not(onboarding_completed_at: nil) }
   scope("Not Onboarded") { |users| users.where(onboarding_completed_at: nil) }
-  scope("Deleted") { |users| users.where.not(discarded_at: nil) }
+  scope("Deleted") { |users| users.discarded }
 
   index do
     selectable_column
