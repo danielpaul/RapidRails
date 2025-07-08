@@ -11,22 +11,20 @@ class AlertComponent < ApplicationComponent
   end
 
   def view_template
-    div(class: "alert-#{@type}", x_data: "{show: true}", x_show: "show", "data-turbo-cache": "false") {
+    div(class: "alert-#{@type}", x_data: "{show: true}", x_show: "show", "data-turbo-cache": "false") do
       unsafe_raw heroicon(
         alert_icon(@type),
         variant: "solid",
-        options: {class: "alert-#{@type}-icon"}
+        options: { class: "alert-#{@type}-icon" }
       )
-      div {
+      div do
         div(class: "font-medium") { @message }
 
-        if @body
-          div(class: "mt-2 body", &@body)
-        end
-      }
+        div(class: "mt-2 body", &@body) if @body
+      end
 
       close_button if @dismissable
-    }
+    end
   end
 
   def body(&block)

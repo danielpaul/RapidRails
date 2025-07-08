@@ -7,19 +7,17 @@ module ApplicationHelper
       reverse: true,
       canonical: request.original_url,
       icon: [
-        {href: "/favicon.ico"},
-        {href: "/apple-touch-icon.png", rel: "apple-touch-icon"}
+        { href: "/favicon.ico" },
+        { href: "/apple-touch-icon.png", rel: "apple-touch-icon" }
       ],
       "theme-color": [
-        {content: BROWSER_THEME_COLOR_LIGHT, media: "(prefers-color-scheme: light)"},
-        {content: BROWSER_THEME_COLOR_DARK, media: "(prefers-color-scheme: dark)"}
+        { content: BROWSER_THEME_COLOR_LIGHT, media: "(prefers-color-scheme: light)" },
+        { content: BROWSER_THEME_COLOR_DARK, media: "(prefers-color-scheme: dark)" }
       ],
       "color-scheme": "light dark"
     }
 
-    if !Rails.env.production?
-      meta_tags[:noindex] = true
-    end
+    meta_tags[:noindex] = true unless Rails.env.production?
 
     meta_tags
   end

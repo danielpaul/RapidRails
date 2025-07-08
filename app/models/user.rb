@@ -46,21 +46,21 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :validatable,
-    :confirmable, :trackable,
-    :omniauthable, omniauth_providers: [:google_oauth2]
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :trackable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :full_name, presence: true, length: {maximum: 100}
+  validates :full_name, presence: true, length: { maximum: 100 }
   validate :full_name_does_not_have_urls
 
-  validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
 
   def first_name
     full_name_parts.first
   end
 
   def last_name
-    (full_name_parts.length > 1) ? full_name_parts.last : nil
+    full_name_parts.length > 1 ? full_name_parts.last : nil
   end
 
   def email_name_greeting
@@ -75,7 +75,7 @@ class User < ApplicationRecord
     full_name_parts.map(&:first).join
   end
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[
       email
       full_name
@@ -97,7 +97,7 @@ class User < ApplicationRecord
   def full_name_does_not_have_urls
     return unless full_name.present?
 
-    urls = URI.extract(full_name, ["http", "https"])
+    urls = URI.extract(full_name, %w[http https])
     return if urls.blank?
 
     errors.add(:full_name, "cannot contain URLs")

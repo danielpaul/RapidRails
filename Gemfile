@@ -116,7 +116,9 @@ group :development, :test do
 
   # Security & Code Quality
   gem "brakeman"
-  gem "standardrb"
+
+  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
@@ -130,9 +132,9 @@ group :development do
   gem "spring"
 
   # Front-end Things
+  gem "hotwire-spark"
   gem "html2haml"
   gem "letter_opener"
-  gem "hotwire-spark"
 
   gem "better_errors"
   gem "binding_of_caller"

@@ -2,8 +2,7 @@ class OnboardingController < ApplicationController
   before_action :authenticate_user!, :check_if_enabled!
   layout "application_devise"
 
-  def index
-  end
+  def index; end
 
   def update
     if current_user.update(onboarding_params)

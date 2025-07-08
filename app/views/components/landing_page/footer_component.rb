@@ -12,37 +12,37 @@ class LandingPage::FooterComponent < ApplicationComponent
       {
         heading: "Solutions",
         items: [
-          {label: "Marketing", path: "#"},
-          {label: "Analytics", path: "#"},
-          {label: "Commerce", path: "#"},
-          {label: "Insights", path: "#"}
+          { label: "Marketing", path: "#" },
+          { label: "Analytics", path: "#" },
+          { label: "Commerce", path: "#" },
+          { label: "Insights", path: "#" }
         ]
       },
       {
         heading: "Support",
         items: [
-          {label: "Pricing", path: "#"},
-          {label: "Documentation", path: "#"},
-          {label: "Guides", path: "#"},
-          {label: "API Status", path: "#"}
+          { label: "Pricing", path: "#" },
+          { label: "Documentation", path: "#" },
+          { label: "Guides", path: "#" },
+          { label: "API Status", path: "#" }
         ]
       },
       {
         heading: "Company",
         items: [
-          {label: "About", path: "#"},
-          {label: "Blog", path: (ENABLE_BLOG == true) ? blog_index_path : "#"},
-          {label: "Jobs", path: "#"},
-          {label: "Press", path: "#"},
-          {label: "Partners", path: "#"}
+          { label: "About", path: "#" },
+          { label: "Blog", path: ENABLE_BLOG == true ? blog_index_path : "#" },
+          { label: "Jobs", path: "#" },
+          { label: "Press", path: "#" },
+          { label: "Partners", path: "#" }
         ]
       },
       {
         heading: "Legal",
         items: [
-          {label: "Claim", path: "#"},
-          {label: "Privacy", path: page_path("legal/privacy_policy")},
-          {label: "Terms", path: page_path("legal/terms_conditions")}
+          { label: "Claim", path: "#" },
+          { label: "Privacy", path: page_path("legal/privacy_policy") },
+          { label: "Terms", path: page_path("legal/terms_conditions") }
         ]
       }
     ]
@@ -57,7 +57,7 @@ class LandingPage::FooterComponent < ApplicationComponent
             main_menu_items.each_slice(2) do |slice|
               div(class: "md:grid md:grid-cols-2 md:gap-8") do
                 slice.each_with_index do |item, index|
-                  div(class: (index != 0) ? "mt-10 md:mt-0" : nil) do
+                  div(class: index != 0 ? "mt-10 md:mt-0" : nil) do
                     h3(
                       class:
                         "text-sm font-semibold leading-6 text-neutral-900 dark:text-white "

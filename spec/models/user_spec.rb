@@ -34,7 +34,7 @@
 #
 RSpec.describe User, type: :model do
   subject(:user) { FactoryBot.build(:user) }
-  let(:omniauth_data) {
+  let(:omniauth_data) do
     {
       "email" => "me@gmail.com",
       "email_verified" => true,
@@ -44,7 +44,7 @@ RSpec.describe User, type: :model do
       "name" => "Daniel Paul",
       "unverified_email" => "me@gmail.com"
     }
-  }
+  end
 
   describe "validations" do
     it { should validate_presence_of(:full_name) }
@@ -114,14 +114,14 @@ RSpec.describe User, type: :model do
       it "does not create user record if verified or unverified" do
         omniauth_data["email"] = "invalid email"
 
-        expect {
+        expect do
           @user = User.from_omniauth(omniauth_data)
-        }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Email is invalid")
+        end.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Email is invalid")
 
         omniauth_data["email_verified"] = false
-        expect {
+        expect do
           @user2 = User.from_omniauth(omniauth_data)
-        }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Email is invalid")
+        end.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Email is invalid")
       end
     end
 
@@ -194,9 +194,9 @@ RSpec.describe User, type: :model do
         context "when user has no profile picture" do
           it "attaches profile picture from google account" do
             expect(ActiveJob::Base.queue_adapter.enqueued_jobs.count).to eq 0
-            expect {
+            expect do
               User.from_omniauth(omniauth_data)
-            }.to have_enqueued_job(ActiveStorage::AnalyzeJob)
+            end.to have_enqueued_job(ActiveStorage::AnalyzeJob)
           end
         end
       end

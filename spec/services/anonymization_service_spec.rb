@@ -4,19 +4,19 @@ require "rails_helper"
 
 RSpec.describe AnonymizationService do
   describe ".anonymize_user" do
-    let!(:user) {
+    let!(:user) do
       FactoryBot.create(:user,
-        unconfirmed_email: "abc@email.com",
-        reset_password_token: "123456",
-        confirmation_token: "123456")
-    }
+                        unconfirmed_email: "abc@email.com",
+                        reset_password_token: "123456",
+                        confirmation_token: "123456")
+    end
 
     context "when the user exists and is not anonymized" do
       it "anonymizes the user data" do
-        expect {
+        expect do
           AnonymizationService.anonymize_user(user.id)
           user.reload
-        }.to change(user, :anonymized_at).from(nil)
+        end.to change(user, :anonymized_at).from(nil)
 
         expect(user.full_name).to eq("Deleted User")
         expect(user.reload.email).to match("#{user.id}@deleted.example.com")
@@ -31,9 +31,9 @@ RSpec.describe AnonymizationService do
 
     context "when the user does not exist" do
       it "does not raise an error" do
-        expect {
+        expect do
           AnonymizationService.anonymize_user(-1)
-        }.not_to raise_error
+        end.not_to raise_error
       end
     end
 
@@ -43,10 +43,10 @@ RSpec.describe AnonymizationService do
       end
 
       it "does not change the user data" do
-        expect {
+        expect do
           AnonymizationService.anonymize_user(user.id)
           user.reload
-        }.not_to change(user, :anonymized_at)
+        end.not_to change(user, :anonymized_at)
 
         expect(user.full_name).not_to eq("Deleted User")
         expect(user.email).not_to match(/\A\d+@deleted\.example\.com\z/)

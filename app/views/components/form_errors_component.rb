@@ -10,16 +10,16 @@ class FormErrorsComponent < ApplicationComponent
 
     render AlertComponent.new(
       type: "danger",
-      message: "#{pluralize(@object.errors.count, "error")} prohibited this from being saved:",
+      message: "#{pluralize(@object.errors.count, 'error')} prohibited this from being saved:",
       dismissable: false
     ) do |alert|
-      alert.body {
-        ul(class: "list-disc list-inside") {
+      alert.body do
+        ul(class: "list-disc list-inside") do
           @object.errors.full_messages.each do |msg|
             li { msg }
           end
-        }
-      }
+        end
+      end
     end
   end
 end

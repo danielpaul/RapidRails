@@ -23,33 +23,33 @@ class FlashToastComponent < ApplicationComponent
       "x-transition:leave": "transition ease-in duration-100",
       "x-transition:leave-start": "opacity-100",
       "x-transition:leave-end": "opacity-0"
-    ) {
-      div(class: "p-4") {
-        div(class: "flex items-start") {
-          div(class: "shrink-0") {
+    ) do
+      div(class: "p-4") do
+        div(class: "flex items-start") do
+          div(class: "shrink-0") do
             unsafe_raw heroicon(
               alert_icon(alert_type(@toast[:type])),
               variant: "solid",
-              options: {class: "alert-#{alert_type(@toast[:type])}-icon"}
+              options: { class: "alert-#{alert_type(@toast[:type])}-icon" }
             )
-          }
+          end
 
-          div(class: "ml-3 w-0 flex-1") {
-            h5(class: "h5 font-medium") {
+          div(class: "ml-3 w-0 flex-1") do
+            h5(class: "h5 font-medium") do
               @toast[:heading]
-            }
+            end
 
             if @toast[:body]
-              p(class: "mt-1 p") {
+              p(class: "mt-1 p") do
                 @toast[:body]
-              }
+              end
             end
-          }
+          end
 
           close_button
-        }
-      }
-    }
+        end
+      end
+    end
   end
 
   private

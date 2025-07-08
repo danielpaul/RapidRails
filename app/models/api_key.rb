@@ -14,7 +14,7 @@
 #  index_api_keys_on_api_key  (api_key) UNIQUE
 #
 class ApiKey < ApplicationRecord
-  enum :status, {active: 0, disabled: 1}
+  enum :status, { active: 0, disabled: 1 }
 
   validates_presence_of :name, :api_key
   validates_length_of :api_key, is: 27
@@ -25,6 +25,6 @@ class ApiKey < ApplicationRecord
   private
 
   def set_api_key!
-    self.api_key = "#{Rails.env.production? ? "live" : "test"}_#{SecureRandom.urlsafe_base64}"
+    self.api_key = "#{Rails.env.production? ? 'live' : 'test'}_#{SecureRandom.urlsafe_base64}"
   end
 end

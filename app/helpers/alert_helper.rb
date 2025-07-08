@@ -16,13 +16,13 @@ module AlertHelper
   end
 
   def close_button
-    div(class: "ml-auto pl-3") {
-      div(class: "-mx-1.5 -my-1.5") {
-        button(type: "button", class: "close-btn", "@click": "show = false") {
+    div(class: "ml-auto pl-3") do
+      div(class: "-mx-1.5 -my-1.5") do
+        button(type: "button", class: "close-btn", "@click": "show = false") do
           span(class: "sr-only") { "Close" }
-          unsafe_raw heroicon("x-mark", options: {class: "h-4 w-4"})
-        }
-      }
-    }
+          unsafe_raw heroicon("x-mark", options: { class: "h-4 w-4" })
+        end
+      end
+    end
   end
 end

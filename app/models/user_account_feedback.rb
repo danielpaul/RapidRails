@@ -19,7 +19,7 @@
 class UserAccountFeedback < ApplicationRecord
   belongs_to :user
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[
       feedback
       created_at

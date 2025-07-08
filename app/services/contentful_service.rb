@@ -1,6 +1,5 @@
 class ContentfulService
-  def initialize
-  end
+  def initialize; end
 
   def posts(page = 1)
     per_page = 10

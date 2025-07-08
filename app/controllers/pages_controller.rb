@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   layout "application_landing_page"
 
   def show
-    set_meta_tags canonical: (params[:id] == "home") ? root_path : page_path(params[:id])
+    set_meta_tags canonical: params[:id] == "home" ? root_path : page_path(params[:id])
 
     if params[:id].include?("legal/")
 
@@ -12,16 +12,12 @@ class PagesController < ApplicationController
       sanitized_id = ActiveStorage::Filename.new(params[:id].sub("legal/", "")).sanitized
 
       # Ensure sanitized_id only contains allowed values
-      md_id = if md_file_whitelist.include?(sanitized_id)
-        sanitized_id
-      end
+      md_id = (sanitized_id if md_file_whitelist.include?(sanitized_id))
 
       begin
-        if md_id
-          @md_file = File.read(Rails.root.join("app", "views", "pages", "legal", "#{md_id}.md"))
-        else
-          raise ActionController::RoutingError, "Not Found"
-        end
+        raise ActionController::RoutingError, "Not Found" unless md_id
+
+        @md_file = File.read(Rails.root.join("app", "views", "pages", "legal", "#{md_id}.md"))
       rescue Errno::ENOENT
         raise ActionController::RoutingError, "Not Found"
       end

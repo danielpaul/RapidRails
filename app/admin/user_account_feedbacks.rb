@@ -1,5 +1,5 @@
 ActiveAdmin.register UserAccountFeedback do
-  actions :all, except: [:update, :destroy]
+  actions :all, except: %i[update destroy]
   menu parent: "Metadata", priority: 10
 
   index do
