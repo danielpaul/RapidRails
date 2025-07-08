@@ -27,9 +27,13 @@ class Api::V1::BaseController < ActionController::Base
   end
 
   def set_user_from_token!
+    # Set user from JWT token
     token = request.headers["Authorization"].split(" ").last
     payload = JwtTokenService.decode!(token)[0]
     @user = User.find(payload["id"])
+  rescue JWT::DecodeError
+    # If invalid bearer token
+    render_unauthorized!
   end
 
   def render_unauthorized!(message: "Looks like you don't have the permission to do this.")

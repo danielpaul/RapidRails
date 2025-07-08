@@ -60,16 +60,6 @@ class Api::V1::Auth::AuthController < Api::V1::UserAuthenticatedController
     @user = User.find_by_email(auth_params[:email]&.downcase)
   end
 
-  def set_user_from_token!
-    # Set user from JWT token
-    token = request.headers["Authorization"].split(" ").last
-    payload = JwtTokenService.decode!(token)[0]
-    @user = User.find(payload["id"])
-  rescue JWT::DecodeError
-    # If invalid bearer token
-    render_unauthorized!
-  end
-
   def render_unauthorized_user!
     render_unauthorized! unless current_user
   end
