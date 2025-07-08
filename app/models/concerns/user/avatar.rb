@@ -7,8 +7,8 @@ module User::Avatar
 
       validates :profile_picture,
         content_type: {
-          in: ["image/png", "image/jpg", "image/jpeg"],
-          message: "must be a png, jpg, or jpeg image file"
+          in: ["image/png", "image/jpeg"],
+          message: "must be a png or jpeg image file"
         },
         size: {less_than: 10.megabytes}
     end

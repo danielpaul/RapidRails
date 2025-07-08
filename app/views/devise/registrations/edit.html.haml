@@ -18,7 +18,7 @@
                 .col-span-2
                   = image_tag @user.avatar_url, class:  "rounded-full h-16 w-16 col-span-2"
                 .col-span-8
-                  = f.file_field :profile_picture, accept: "image/png, image/jpg, image/jpeg", hint: "png, jpg or jpeg image formats. Max file size 5MB.", label: {text: "Change Profile Picture"}
+                  = f.file_field :profile_picture, accept: "image/png, image/jpeg", hint: "png or jpeg image formats. Max file size 5MB.", label: {text: "Change Profile Picture"}
            
             = f.text_field :full_name, autocomplete: "name", placeholder: "John Doe", required: true
             
