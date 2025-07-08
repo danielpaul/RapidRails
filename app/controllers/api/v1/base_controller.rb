@@ -31,8 +31,8 @@ class Api::V1::BaseController < ActionController::Base
     token = request.headers["Authorization"].split(" ").last
     payload = JwtTokenService.decode!(token)[0]
     @user = User.find(payload["id"])
-  rescue JWT::DecodeError
-    # If invalid bearer token
+  rescue JWT::DecodeError, ActiveRecord::RecordNotFound
+    # If invalid bearer token or user not found
     render_unauthorized!
   end
 

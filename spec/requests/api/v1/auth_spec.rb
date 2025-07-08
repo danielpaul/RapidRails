@@ -165,7 +165,7 @@ RSpec.describe "Auth Controller", type: :request do
   describe "#extend_token" do
     context "when valid JWT token is passed" do
       it "returns a JWT token" do
-        jwt_token = JwtTokenService.generate!({id: @user.id})
+        jwt_token = JwtTokenService.generate!({ id: @user.id })
         post_request(
           api_v1_auth_extend_token_path,
           nil,

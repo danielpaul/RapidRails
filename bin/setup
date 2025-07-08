@@ -78,7 +78,7 @@ FileUtils.chdir APP_ROOT do
 
   # Install system dependencies if Homebrew is installed
   if system('[[ (-x "$(command -v brew)") ]]')
-    system("brew bundle check --no-lock --no-upgrade") || system!("brew bundle --no-upgrade --no-lock")
+    system("brew bundle check --no-upgrade") || system!("brew bundle --no-upgrade")
     display_message(:success, "System dependencies.")
   else
     display_message(:warning, "Homebrew not installed. Skipped system dependencies installation.")
