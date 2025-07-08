@@ -4,11 +4,15 @@ Rails.application.routes.draw do
   end
 
   # ---------- [ Static Pages ] ---------- #
-  root to: "pages#show", id: "home"
-  get "pages/*id" => "pages#show", :as => :page, :format => false
+  if ENABLE_LANDING_PAGES == true
+    root to: "pages#show", id: "home"
+    get "pages/*id" => "pages#show", :as => :page, :format => false
+  else
+    root to: "dashboard#index"
+  end
 
   # ---------- [ Blog ] ---------- #
-  if ENABLE_BLOG == true
+  if ENABLE_LANDING_PAGES == true && ENABLE_BLOG == true
     resources :blog, only: %i[index show], path: "blog"
     post "/contentful/webhook", to: "contentful#webhook"
   end
