@@ -44,7 +44,7 @@ ActiveAdmin.register_page "Dashboard" do
           "Deleted Users"
         end
         h6 class: "text-2xl font-bold text-gray-900 dark:text-gray-100 mt-2" do
-          User.where.not(discarded_at: nil).count
+          User.discarded.count
         end
       end
     end
