@@ -135,6 +135,7 @@ Set config vars:
 - [ ] Set `RAILS_MASTER_KEY` config var to decrypt `credentials.yml.enc` file
 - [ ] Set `HOST` config var to your domain
 - [ ] Set `RAILS_ENV` config var to `production`
+- [ ] Enable dyno metadata for Sentry deploy tagging `heroku labs:enable runtime-dyno-metadata -a <app_name>`
 
 Setup Buildpacks:
 
