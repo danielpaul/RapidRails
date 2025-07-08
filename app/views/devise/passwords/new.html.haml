@@ -13,7 +13,7 @@
       Enter the email address associated with your account and we'll send you a link to reset your password.
   
   .card-body
-    = form_for(resource, as: resource_name, url: password_path(resource_name), builder: RapidRailsFormBuilder, html: {method: :post, class: 'space-y-6 -mt-6'}) do |f|
+    = form_for(resource, as: resource_name, url: password_path(resource_name), builder: RapidRailsFormBuilder, html: {method: :post, class: 'space-y-6'}) do |f|
       = render FormErrorsComponent.new(resource)
 
       = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your email address", autofocus: true
