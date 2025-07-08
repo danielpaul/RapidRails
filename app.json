@@ -3,7 +3,7 @@
   "description": "Solid foundation for new Rails projects, with all the essential features and best practices built-in.",
   "website": "https://rapidrails.dev",
   "scripts": {
-    "postdeploy": "bundle exec rails db:migrate"
+    "postdeploy": "bundle exec rails db:prepare"
   },
   "env": {
     "BUNDLE_WITHOUT": "development:test",
