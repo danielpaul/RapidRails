@@ -16,7 +16,7 @@
               <dt class="sr-only">Date</dt>
               <dd class="absolute top-0 inset-x-0 text-slate-700 dark:text-slate-400">
                 <time datetime="<%= @post.published_at.iso8601 %>">
-                  <%= @post.published_at.to_time.strftime('%A, %B %d, %Y') %>
+                  <%= @post.published_at.strftime('%A, %B %d, %Y') %>
                 </time>
               </dd>
             </dl>
