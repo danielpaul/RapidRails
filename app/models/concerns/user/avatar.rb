@@ -22,6 +22,12 @@ module User::Avatar
       )
     end
 
+    initials_avatar_url
+  rescue ActiveStorage::FileNotFoundError
+    initials_avatar_url
+  end
+
+  def initials_avatar_url
     # Don't share real names. Just initials.
     # Add hash to get unique color variant for each user. Otherwise all DP will be same.
     hash = Digest::MD5.hexdigest(email.downcase)
