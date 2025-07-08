@@ -37,6 +37,39 @@ Setup Buildpacks:
 
 - `heroku buildpacks:set heroku/ruby -a <app_name>`
 
+## Render Setup
+
+### Automatic Deploy
+
+Deploy with a render.yaml file that helps Render pre-configure the application.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/danielpaul/RapidRails)
+
+### Manual Deploy
+
+1. Create a new Web Service on [Render](https://render.com)
+2. Connect your GitHub repository
+3. Configure the following settings:
+   - **Build Command:** `bundle install`
+   - **Start Command:** `bundle exec puma -C config/puma.rb`
+   - **Environment:** `production`
+
+### Required Services for Render
+
+Create these additional services in Render:
+
+- **PostgreSQL Database** - Create a new PostgreSQL database
+- **Redis** - Create a new Redis instance for caching and Sidekiq
+- **Background Worker** - Create a new Background Worker with start command: `bundle exec sidekiq -C config/sidekiq.yml`
+
+### Render Cron Jobs
+
+Configure these cron jobs in Render:
+
+- `bundle exec rake active_storage:purge_unattached_blobs` - Run daily
+- `bundle exec rake anonymize:users` - Run daily  
+- `bundle exec rake sitemap:refresh` - Run daily
+
 ## Default Config variables setup
 
 Set these config variables on your cloud platform:

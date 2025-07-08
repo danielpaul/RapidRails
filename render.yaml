@@ -1,0 +1,46 @@
+services:
+  # Main web application
+  - type: web
+    name: rapidrails-web
+    env: ruby
+    buildCommand: bundle install
+    startCommand: bundle exec puma -C config/puma.rb
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: BUNDLE_WITHOUT
+        value: development:test
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: HOST
+        sync: false
+
+  # Background job processor
+  - type: worker
+    name: rapidrails-sidekiq
+    env: ruby
+    buildCommand: bundle install
+    startCommand: bundle exec sidekiq -C config/sidekiq.yml
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: BUNDLE_WITHOUT
+        value: development:test
+      - key: RAILS_MASTER_KEY
+        sync: false
+
+databases:
+  # PostgreSQL database
+  - name: rapidrails-db
+    databaseName: rapidrails_production
+    user: rapidrails
+
+  # Redis for caching and Sidekiq
+  - name: rapidrails-redis
+    plan: starter
+
+# Cron jobs for scheduled tasks
+# Note: These need to be configured manually in Render dashboard
+# - rake active_storage:purge_unattached_blobs (daily)
+# - rake anonymize:users (daily)  
+# - rake sitemap:refresh (daily)

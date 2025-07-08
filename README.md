@@ -155,6 +155,53 @@ Other setup:
 - [ ] Contentful - setup webhook to production server for clearing cache. `https://<HOST>/contentful/webhook` with the secret token (Header as `Authorization:Bearer`) that is set in the credentials file.
 - [ ] Setup Rake tasks below on the scheduler addon
 
+# Deploying to Render
+
+### Automatic Deploy
+
+Deploy with a render.yaml file that helps Render pre-configure the application.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/danielpaul/RapidRails)
+
+### Manual Deploy
+
+1. Create a new Web Service on [Render](https://render.com)
+2. Connect your GitHub repository
+3. Configure the following settings:
+   - **Build Command:** `bundle install`
+   - **Start Command:** `bundle exec puma -C config/puma.rb`
+   - **Environment:** `production`
+
+### Required Environment Variables
+
+Set these environment variables in your Render dashboard:
+
+- [ ] `RAILS_MASTER_KEY` - Secret key for decrypting Rails credentials (found in config/credentials.key)
+- [ ] `HOST` - Your domain (e.g., `yourapp.onrender.com`)
+- [ ] `RAILS_ENV` - Set to `production`
+
+### Required Services
+
+Create these additional services in Render:
+
+- [ ] **PostgreSQL Database** - Create a new PostgreSQL database
+- [ ] **Redis** - Create a new Redis instance for caching and Sidekiq
+- [ ] **Background Worker** - Create a new Background Worker with start command: `bundle exec sidekiq -C config/sidekiq.yml`
+
+### Post Deploy
+
+Run migrations in the Render shell:
+
+- [ ] `bundle exec rails db:prepare`
+
+### Scheduled Tasks
+
+Configure these cron jobs in Render:
+
+- [ ] `bundle exec rake active_storage:purge_unattached_blobs` - Run daily
+- [ ] `bundle exec rake anonymize:users` - Run daily
+- [ ] `bundle exec rake sitemap:refresh` - Run daily
+
 # Rake Tasks
 
 - [ ] `rake active_storage:purge_unattached_blobs` to purge unattached file that are older than 2 days in active storage. - Run once a day.
