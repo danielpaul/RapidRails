@@ -147,7 +147,7 @@ Setup Buildpacks:
 
 Run migrations:
 
-- [ ] `heroku run rake db:migrate`
+- [ ] `heroku run rails db:prepare`
 
 Other setup:
 

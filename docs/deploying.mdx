@@ -66,7 +66,7 @@ Add these default take tasks to your scheduler on production.
 
 # Database setup
 
-Run rails `db:migrate` on production after deploy to setup your database.
+Run rails `db:prepare` on production after deploy to set up your database if it does not exist and apply migrations.
 
 # Redis Setup
 
