@@ -90,6 +90,24 @@ GEM
     arbre (2.1.0)
       activesupport (>= 7.0)
     ast (2.4.2)
+    aws-eventstream (1.4.0)
+    aws-partitions (1.1125.0)
+    aws-sdk-core (3.226.2)
+      aws-eventstream (~> 1, >= 1.3.0)
+      aws-partitions (~> 1, >= 1.992.0)
+      aws-sigv4 (~> 1.9)
+      base64
+      jmespath (~> 1, >= 1.6.1)
+      logger
+    aws-sdk-kms (1.106.0)
+      aws-sdk-core (~> 3, >= 3.225.0)
+      aws-sigv4 (~> 1.5)
+    aws-sdk-s3 (1.192.0)
+      aws-sdk-core (~> 3, >= 3.225.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.5)
+    aws-sigv4 (1.12.1)
+      aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
     benchmark (0.4.0)
@@ -235,6 +253,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.6.2)
     json (2.9.1)
     jwt (2.10.1)
       base64
@@ -572,6 +591,7 @@ DEPENDENCIES
   activeadmin (= 4.0.0.beta15)
   activeadmin_assets
   annotaterb
+  aws-sdk-s3 (>= 1.185)
   better_errors
   binding_of_caller
   blueprinter
