@@ -9,7 +9,12 @@ module ApplicationHelper
       icon: [
         {href: "/favicon.ico"},
         {href: "/apple-touch-icon.png", rel: "apple-touch-icon"}
-      ]
+      ],
+      "theme-color": [
+        {content: BROWSER_THEME_COLOR_LIGHT, media: "(prefers-color-scheme: light)"},
+        {content: BROWSER_THEME_COLOR_DARK, media: "(prefers-color-scheme: dark)"}
+      ],
+      "color-scheme": "light dark"
     }
 
     if !Rails.env.production?
