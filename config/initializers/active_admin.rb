@@ -140,7 +140,7 @@ ActiveAdmin.setup do |config|
   # config.comments_menu = false
   #
   # You can customize the comment menu:
-  config.comments_menu = { parent: "Metadata", priority: 10 }
+  config.comments_menu = {parent: "Metadata", priority: 10}
 
   # == Batch Actions
   #

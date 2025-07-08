@@ -15,7 +15,7 @@ class App::Nav::Header::BaseComponent < ApplicationComponent
       "@click": "sidebarOpen = !sidebarOpen"
     ) do
       span(class: "sr-only") { "Open sidebar" }
-      unsafe_raw heroicon("bars-3", options: { class: "h-6 w-6" })
+      unsafe_raw heroicon("bars-3", options: {class: "h-6 w-6"})
     end
   end
 

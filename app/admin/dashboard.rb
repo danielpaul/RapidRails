@@ -50,7 +50,7 @@ ActiveAdmin.register_page "Dashboard" do
     end
 
     div class: "grid grid-cols-1 gap-6 md:grid-cols-2",
-        style: "grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));" do
+      style: "grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));" do
       # Recently Signed Up Users Widget
       div class: "bg-white dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700 overflow-hidden" do
         h3 class: "text-sm font-semibold text-gray-800 dark:text-gray-200 p-4 border-b border-gray-300 dark:border-gray-700" do
@@ -58,7 +58,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
 
         table_for User.order(created_at: :desc).limit(10),
-                  class: "table-auto w-full text-sm text-gray-600 dark:text-gray-300" do
+          class: "table-auto w-full text-sm text-gray-600 dark:text-gray-300" do
           column(:id)
           column(:full_name)
           column(:email)
@@ -73,7 +73,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
 
         table_for User.where.not(onboarding_completed_at: nil).order(onboarding_completed_at: :desc).limit(10),
-                  class: "table-auto w-full text-sm text-gray-600 dark:text-gray-300" do
+          class: "table-auto w-full text-sm text-gray-600 dark:text-gray-300" do
           column(:id)
           column(:full_name)
           column(:email)

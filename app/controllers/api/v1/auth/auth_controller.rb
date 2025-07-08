@@ -12,12 +12,12 @@ class Api::V1::Auth::AuthController < Api::V1::UserAuthenticatedController
 
   def forgot_password
     current_user&.send_reset_password_instructions
-    render_ok!({ message: t("devise.passwords.send_paranoid_instructions") })
+    render_ok!({message: t("devise.passwords.send_paranoid_instructions")})
   end
 
   def confirm_email
     current_user&.send_confirmation_instructions
-    render_ok!({ message: t("devise.confirmations.send_paranoid_instructions") })
+    render_ok!({message: t("devise.confirmations.send_paranoid_instructions")})
   end
 
   def extend_token
@@ -39,7 +39,7 @@ class Api::V1::Auth::AuthController < Api::V1::UserAuthenticatedController
 
   def update_user
     if current_user.update(user_params)
-      render_ok!({ message: t("devise.registrations.updated") })
+      render_ok!({message: t("devise.registrations.updated")})
     else
       render_unprocessable_entity!(message: current_user.errors.full_messages.join(", "))
     end

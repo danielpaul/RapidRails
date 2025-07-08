@@ -25,8 +25,8 @@ RSpec.describe "Auth Controller", type: :request do
       it "should gain access and return user token" do
         post_request(
           api_v1_auth_sign_in_path,
-          { email: @user.email, password: @user.password },
-          { "X-API-KEY": @api_key }
+          {email: @user.email, password: @user.password},
+          {"X-API-KEY": @api_key}
         )
 
         expect(response.status).to eq(200)
@@ -39,8 +39,8 @@ RSpec.describe "Auth Controller", type: :request do
         @user.update confirmed_at: nil
         post_request(
           api_v1_auth_sign_in_path,
-          { email: @user.email, password: @user.password },
-          { "X-API-KEY": @api_key }
+          {email: @user.email, password: @user.password},
+          {"X-API-KEY": @api_key}
         )
 
         expected_error(I18n.t("devise.failure.unconfirmed"), 422)
@@ -52,8 +52,8 @@ RSpec.describe "Auth Controller", type: :request do
         it "should not gain access" do
           post_request(
             api_v1_auth_sign_in_path,
-            { email: @user.email, password: "random password" },
-            { "X-API-KEY": @api_key }
+            {email: @user.email, password: "random password"},
+            {"X-API-KEY": @api_key}
           )
 
           expected_error(
@@ -67,8 +67,8 @@ RSpec.describe "Auth Controller", type: :request do
         it "should not gain access" do
           post_request(
             api_v1_auth_sign_in_path,
-            { email: "random email" },
-            { "X-API-KEY": @api_key }
+            {email: "random email"},
+            {"X-API-KEY": @api_key}
           )
 
           expected_error(I18n.t("devise.failure.invalid", authentication_keys: "email"), 401)
@@ -81,8 +81,8 @@ RSpec.describe "Auth Controller", type: :request do
             @api_key_record.disabled!
             post_request(
               api_v1_auth_sign_in_path,
-              { email: @user.email, password: @user.password },
-              { "X-API-KEY": @api_key }
+              {email: @user.email, password: @user.password},
+              {"X-API-KEY": @api_key}
             )
           end
         end
@@ -91,8 +91,8 @@ RSpec.describe "Auth Controller", type: :request do
           it "should not gain access" do
             post_request(
               api_v1_auth_sign_in_path,
-              { email: @user.email, password: @user.password },
-              { "X-API-KEY": "random key" }
+              {email: @user.email, password: @user.password},
+              {"X-API-KEY": "random key"}
             )
           end
         end
@@ -108,8 +108,8 @@ RSpec.describe "Auth Controller", type: :request do
       it "sends the password reset email" do
         post_request(
           api_v1_auth_forgot_password_path,
-          { email: @user.email },
-          { "X-API-KEY": @api_key }
+          {email: @user.email},
+          {"X-API-KEY": @api_key}
         )
 
         expect(ActionMailer::Base.deliveries.count).to eq 1
@@ -121,8 +121,8 @@ RSpec.describe "Auth Controller", type: :request do
       it "returns paranoid instructions" do
         post_request(
           api_v1_auth_forgot_password_path,
-          { email: "random email" },
-          { "X-API-KEY": @api_key }
+          {email: "random email"},
+          {"X-API-KEY": @api_key}
         )
         expect(ActionMailer::Base.deliveries.count).to eq 0
       end
@@ -138,8 +138,8 @@ RSpec.describe "Auth Controller", type: :request do
       it "sends the confirmation email" do
         post_request(
           api_v1_auth_confirm_email_path,
-          { email: @user.email },
-          { "X-API-KEY": @api_key }
+          {email: @user.email},
+          {"X-API-KEY": @api_key}
         )
         expect(ActionMailer::Base.deliveries.count).to eq 1
         expect(ActionMailer::Base.deliveries[0].subject).to eq I18n.t("devise.mailer.confirmation_instructions.subject")
@@ -150,8 +150,8 @@ RSpec.describe "Auth Controller", type: :request do
       it "returns paranoid instructions" do
         post_request(
           api_v1_auth_confirm_email_path,
-          { email: "random email" },
-          { "X-API-KEY": @api_key }
+          {email: "random email"},
+          {"X-API-KEY": @api_key}
         )
         expect(ActionMailer::Base.deliveries.count).to eq 0
       end
@@ -165,11 +165,11 @@ RSpec.describe "Auth Controller", type: :request do
   describe "#extend_token" do
     context "when valid JWT token is passed" do
       it "returns a JWT token" do
-        jwt_token = JwtTokenService.generate!({ id: @user.id })
+        jwt_token = JwtTokenService.generate!({id: @user.id})
         post_request(
           api_v1_auth_extend_token_path,
           nil,
-          { "X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}" }
+          {"X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}"}
         )
         expect(response.status).to eq(200)
         expect(JSON.parse(response.body)["token"]).to_not be nil
@@ -181,7 +181,7 @@ RSpec.describe "Auth Controller", type: :request do
         post_request(
           api_v1_auth_extend_token_path,
           nil,
-          { "X-API-KEY": @api_key, Authorization: "Bearer random token" }
+          {"X-API-KEY": @api_key, Authorization: "Bearer random token"}
         )
         expect(response.status).to eq(401)
       end
@@ -191,9 +191,9 @@ RSpec.describe "Auth Controller", type: :request do
   describe "GET#user" do
     context "when valid JWT token is passed" do
       it "returns user details" do
-        jwt_token = JwtTokenService.generate!({ id: @user.id })
+        jwt_token = JwtTokenService.generate!({id: @user.id})
         get api_v1_auth_user_path,
-            headers: { "X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}" }
+          headers: {"X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}"}
 
         expect(response.status).to eq(200)
         expect(JSON.parse(response.body)).to eq(
@@ -210,7 +210,7 @@ RSpec.describe "Auth Controller", type: :request do
     context "when invalid JWT token is passed" do
       it "renders unauthorized state" do
         get api_v1_auth_user_path,
-            headers: { "X-API-KEY": @api_key, Authorization: "Bearer random_token" }
+          headers: {"X-API-KEY": @api_key, Authorization: "Bearer random_token"}
 
         expected_error("Looks like you don't have the permission to do this.", 401)
       end
@@ -220,10 +220,10 @@ RSpec.describe "Auth Controller", type: :request do
   describe "PUT#user" do
     context "when valid JWT token is passed with valid params" do
       it "updates the user" do
-        jwt_token = JwtTokenService.generate!({ id: @user.id })
+        jwt_token = JwtTokenService.generate!({id: @user.id})
         put api_v1_auth_user_path,
-            params: { full_name: "Sample full name" },
-            headers: { "X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}" }
+          params: {full_name: "Sample full name"},
+          headers: {"X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}"}
 
         expected_message("Your account has been updated successfully.")
         expect(@user.reload.full_name).to eq("Sample full name")
@@ -232,10 +232,10 @@ RSpec.describe "Auth Controller", type: :request do
 
     context "when valid JWT token is passed with invalid params" do
       it "does not update the user" do
-        jwt_token = JwtTokenService.generate!({ id: @user.id })
+        jwt_token = JwtTokenService.generate!({id: @user.id})
         put api_v1_auth_user_path,
-            params: { password: "1234" },
-            headers: { "X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}" }
+          params: {password: "1234"},
+          headers: {"X-API-KEY": @api_key, Authorization: "Bearer #{jwt_token}"}
 
         expected_error("Password is too short (minimum is 8 characters)", 422)
       end
@@ -244,7 +244,7 @@ RSpec.describe "Auth Controller", type: :request do
     context "when invalid JWT token is passed" do
       it "renders unauthorized state" do
         put api_v1_auth_user_path,
-            headers: { "X-API-KEY": @api_key, Authorization: "Bearer random_token" }
+          headers: {"X-API-KEY": @api_key, Authorization: "Bearer random_token"}
 
         expected_error("Looks like you don't have the permission to do this.", 401)
       end

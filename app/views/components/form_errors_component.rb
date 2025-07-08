@@ -10,7 +10,7 @@ class FormErrorsComponent < ApplicationComponent
 
     render AlertComponent.new(
       type: "danger",
-      message: "#{pluralize(@object.errors.count, 'error')} prohibited this from being saved:",
+      message: "#{pluralize(@object.errors.count, "error")} prohibited this from being saved:",
       dismissable: false
     ) do |alert|
       alert.body do

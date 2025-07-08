@@ -16,10 +16,10 @@ COMPANY_LOCATION = "London, UK".freeze
 HOST = ENV.fetch("HOST") { "localhost:3000" }.freeze
 
 BASE_URL = if Rails.env.production?
-             "https://#{HOST}".freeze
-           else
-             "http://#{HOST}".freeze
-           end
+  "https://#{HOST}".freeze
+else
+  "http://#{HOST}".freeze
+end
 
 DEFAULT_FROM_EMAIL_ONLY = "team@#{HOST}".freeze
 DEFAULT_FROM_EMAIL = "#{APP_NAME} <#{DEFAULT_FROM_EMAIL_ONLY}>".freeze

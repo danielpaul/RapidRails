@@ -6,9 +6,9 @@ RSpec.describe AnonymizationService do
   describe ".anonymize_user" do
     let!(:user) do
       FactoryBot.create(:user,
-                        unconfirmed_email: "abc@email.com",
-                        reset_password_token: "123456",
-                        confirmation_token: "123456")
+        unconfirmed_email: "abc@email.com",
+        reset_password_token: "123456",
+        confirmation_token: "123456")
     end
 
     context "when the user exists and is not anonymized" do

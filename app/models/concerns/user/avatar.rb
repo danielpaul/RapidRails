@@ -6,11 +6,11 @@ module User::Avatar
       has_one_attached :profile_picture
 
       validates :profile_picture,
-                content_type: {
-                  in: ["image/png", "image/jpeg"],
-                  message: "must be a png or jpeg image file"
-                },
-                size: { less_than: 10.megabytes }
+        content_type: {
+          in: ["image/png", "image/jpeg"],
+          message: "must be a png or jpeg image file"
+        },
+        size: {less_than: 10.megabytes}
     end
   end
 

@@ -12,7 +12,7 @@ class DarkModeButtonComponent < ApplicationComponent
       a(
         href: "#",
         class: "text-neutral-400 hover:text-neutral-500 dark:hidden",
-        data: { action: "click->dark-mode#darkMode:prevent" }
+        data: {action: "click->dark-mode#darkMode:prevent"}
       ) do
         unsafe_raw heroicon(
           "sun",
@@ -25,7 +25,7 @@ class DarkModeButtonComponent < ApplicationComponent
       a(
         href: "#",
         class: "text-neutral-400 hover:text-neutral-500 hidden dark:block",
-        data: { action: "click->dark-mode#lightMode:prevent" }
+        data: {action: "click->dark-mode#lightMode:prevent"}
       ) do
         unsafe_raw heroicon(
           "moon",

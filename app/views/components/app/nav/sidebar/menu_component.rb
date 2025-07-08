@@ -102,10 +102,10 @@ class App::Nav::Sidebar::MenuComponent < ApplicationComponent
                   icon_classes = "h-5 w-5 shrink-0"
 
                   a_classes += if item[:active]
-                                 " text-black dark:text-white border-l-4 border-primary"
-                               else
-                                 " text-neutral-500 dark:text-neutral-400"
-                               end
+                    " text-black dark:text-white border-l-4 border-primary"
+                  else
+                    " text-neutral-500 dark:text-neutral-400"
+                  end
                   icon_classes += " "
 
                   li do
@@ -114,7 +114,7 @@ class App::Nav::Sidebar::MenuComponent < ApplicationComponent
                       class: a_classes
                     ) do
                       if item[:icon]
-                        unsafe_raw heroicon(item[:icon], options: { class: icon_classes })
+                        unsafe_raw heroicon(item[:icon], options: {class: icon_classes})
                       else
                         span class: "flex h-5 w-5 shrink-0 items-center justify-center rounded-lg border card-border font-medium text-[0.625rem]" do
                           item[:title][0]

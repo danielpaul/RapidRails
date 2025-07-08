@@ -15,7 +15,7 @@ class AlertComponent < ApplicationComponent
       unsafe_raw heroicon(
         alert_icon(@type),
         variant: "solid",
-        options: { class: "alert-#{@type}-icon" }
+        options: {class: "alert-#{@type}-icon"}
       )
       div do
         div(class: "font-medium") { @message }

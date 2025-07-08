@@ -11,6 +11,6 @@ class JwtTokenService
   end
 
   def self.decode_without_validation!(token)
-    JWT.decode(token, SECRET_KEY, true, { verify_expiration: false })
+    JWT.decode(token, SECRET_KEY, true, {verify_expiration: false})
   end
 end
