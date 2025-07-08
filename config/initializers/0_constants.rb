@@ -42,9 +42,13 @@ SENTRY_DSN_JS = "XXX".freeze
 
 # Application Features
 ENABLE_API = false
+ENABLE_LANDING_PAGES = true
 ENABLE_BLOG = true
 ENABLE_ONBOARDING = true
 ENABLE_GOOGLE_OAUTH = true
+
+TERMS_CONDITIONS_PATH = "/pages/legal/terms_conditions".freeze
+PRIVACY_POLICY_PATH = "/pages/legal/privacy_policy".freeze
 
 ENABLE_FILE_UPLOAD = false
 ENABLE_USER_AVATAR_UPLOAD = ENABLE_FILE_UPLOAD

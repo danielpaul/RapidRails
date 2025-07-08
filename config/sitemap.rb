@@ -38,12 +38,14 @@ SitemapGenerator::Sitemap.create do
   #   end
 
   # All our static pages
-  HighVoltage.page_ids.each do |page|
-    add page, changefreq: "weekly"
+  if ENABLE_LANDING_PAGES == true
+    HighVoltage.page_ids.each do |page|
+      add page, changefreq: "weekly"
+    end
   end
 
   # Blog Index & Posts
-  if ENABLE_BLOG == true
+  if ENABLE_LANDING_PAGES == true && ENABLE_BLOG == true
     ContentfulService.new.all_posts.each do |post|
       add blog_post_path(post.id), changefreq: "weekly"
     end
