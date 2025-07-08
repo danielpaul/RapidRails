@@ -46,7 +46,7 @@ def display_message(type, text)
 end
 
 def system!(*args)
-  system(*args) || abort("\n" + display_message(:error, "Command #{args} failed"))
+  system(*args, exception: true) || abort("\n" + display_message(:error, "Command #{args} failed"))
 end
 
 def ask(question)
