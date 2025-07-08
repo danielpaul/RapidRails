@@ -10,7 +10,7 @@
 .mt-8.card.card-body
   - if ENABLE_GOOGLE_OAUTH
     = render 'devise/shared/social_login'
-  .mt-5
+  %div{ class: (ENABLE_GOOGLE_OAUTH ? 'mt-5' : nil) }
     = render FlashMessagesComponent.new(flash)
 
     = form_for(resource, as: resource_name, url: session_path(resource_name), builder: RapidRailsFormBuilder, html: {class: 'space-y-6'}) do |f|
