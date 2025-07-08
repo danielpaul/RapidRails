@@ -36,6 +36,7 @@ class User < ApplicationRecord
   include Rails.application.routes.url_helpers
   include Hashid::Rails
   has_paper_trail
+  include Discard::Model
 
   include User::Omniauthable
   include User::Onboarding
