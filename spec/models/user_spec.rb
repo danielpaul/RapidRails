@@ -152,6 +152,7 @@ RSpec.describe User, type: :model do
           google_user = User.from_omniauth(omniauth_data)
 
           assert google_user.confirmed?
+          expect(ActionMailer::Base.deliveries.count).to eq(0)
         end
       end
 
