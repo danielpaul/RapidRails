@@ -25,3 +25,7 @@ Create two buckets:
 Update the secrets on the credentials file.
 
 NOTE: ENABLE_FILE_UPLOAD must be set to true in the constants file for file uploads to work. Also enable the required gems in the Gemfile.
+### Proxy uploads through Rails
+
+To allow Cloudflare to cache uploaded files, we serve Active Storage files using the proxy route. This is configured in `config/initializers/active_storage.rb` by setting `config.active_storage.resolve_model_to_route` to `:rails_storage_proxy`.
+
