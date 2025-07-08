@@ -20,7 +20,7 @@
   --color-neutral-750: #38383d;
 
   /* Font Sizes */
-  --font-size-base: 0.9rem;
+  --text-base: 0.9rem;
 }
 
 @plugin "@tailwindcss/forms";
@@ -186,8 +186,10 @@
     @apply h1 text-3xl sm:text-5xl;
   }
 
+  p,
   .p {
-    @apply text-base text-neutral-700 dark:text-neutral-300 leading-6;
+    @apply text-neutral-700 dark:text-neutral-300 leading-6;
+    font-size: var(--text-base);
   }
 
   hr {
